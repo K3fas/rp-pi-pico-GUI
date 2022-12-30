@@ -69,6 +69,11 @@ void SetupRP()
 #endif
 }
 
+void OnClickedEvent1()
+{
+    printf("Im clicked\n");
+}
+
 int main()
 {
     adc_init();
@@ -84,45 +89,50 @@ int main()
     auto game = Pong::PongGame();
     game.Init();
 
+    auto mainView = MainView(true);
     auto view = View();
 
     auto rect = new UI::Rectangle(IVGA::Rectangle({50, 50}, Width{50}, Height{50}), VColors::Color::DarkCyan);
     view.AddElement(rect);
     std::vector<UI::Drawable *> vect = std::vector<UI::Drawable *>();
 
-    for (int i = 0; i < WIDTH * 10; i++)
+    for (int i = 0; i < WIDTH * 5; i++)
     {
         view.AddElement(new UI::Rectangle(IVGA::Rectangle(Point(i % WIDTH, i % 20), Width{1}, Height{1}), VColors::Color::Red));
     }
 
     view.AddElement(new UI::Label("test", IVGA::Point(80, 120), VColors::Color::Blue));
 
+    rect->handler = OnClickedEvent1;
+
+    mainView.SetCurrentView(view);
+
     while (1)
     {
 
-        timers.startTime = time_us_64();
+        // timers.startTime = time_us_64();
 
-        game.Render();
-        timers.renderTime = time_us_64() - timers.startTime;
+        // game.Render();
+        // timers.renderTime = time_us_64() - timers.startTime;
 
         tuh_task();
         hid_app_task();
-        timers.hidTime = time_us_64() - timers.renderTime - timers.startTime;
+        // timers.hidTime = time_us_64() - timers.renderTime - timers.startTime;
 
-        ProcessButtons(Pong::buttons);
-        timers.processInputTime = time_us_64() - timers.hidTime - timers.startTime;
+        // ProcessButtons(Pong::buttons);
+        // timers.processInputTime = time_us_64() - timers.hidTime - timers.startTime;
 
-        game.Update(1);
-        timers.gameUpdateTime = time_us_64() - timers.processInputTime - timers.startTime;
-        Core1Wait();
-        WaitVSync();
-        timers.vSyncTime = time_us_64() - timers.gameUpdateTime - timers.startTime;
-
-        // timers.startTime = time_us_64();
-        // view.DrawAll();
-        // timers.renderTime = time_us_64() - timers.startTime;
+        // game.Update(1);
+        // timers.gameUpdateTime = time_us_64() - timers.processInputTime - timers.startTime;
+        // Core1Wait();
         // WaitVSync();
-        // timers.vSyncTime = time_us_64() - timers.renderTime - timers.startTime;
+        // timers.vSyncTime = time_us_64() - timers.gameUpdateTime - timers.startTime;
+
+        timers.startTime = time_us_64();
+        mainView.Update();
+        timers.renderTime = time_us_64() - timers.startTime;
+        WaitVSync();
+        timers.vSyncTime = time_us_64() - timers.renderTime - timers.startTime;
 
         LED_blink_task();
 
@@ -254,8 +264,6 @@ void LED_blink_task()
     if (led_state)
     {
         start_ms += interval_on_ms;
-        auto val = gpio_get(24);
-        printf("VBUS Voltage: %d\r\n", val);
     }
     else
     {

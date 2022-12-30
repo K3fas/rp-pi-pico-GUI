@@ -262,6 +262,7 @@ static void process_mouse_report(hid_mouse_report_t const *report)
 		report->buttons &MOUSE_BUTTON_RIGHT ? MOUSE.mouseKeys[2] = 1 : MOUSE.mouseKeys[2] = 0;
 		report->buttons &MOUSE_BUTTON_BACKWARD ? MOUSE.mouseKeys[3] = 1 : MOUSE.mouseKeys[3] = 0;
 		report->buttons &MOUSE_BUTTON_FORWARD ? MOUSE.mouseKeys[4] = 1 : MOUSE.mouseKeys[4] = 0;
+		MOUSE.clicked = true;
 	}
 
 	//------------- cursor movement -------------//
@@ -270,7 +271,7 @@ static void process_mouse_report(hid_mouse_report_t const *report)
 	// Process moving cursor
 	MOUSE.mousePos[0] = report->x;
 	MOUSE.mousePos[1] = report->y;
-	MOUSE.mousePos[2] = 1;
+	MOUSE.moved = true;
 	MOUSE.processTime += time_us_64() - startTime;
 }
 

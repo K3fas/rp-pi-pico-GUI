@@ -15,7 +15,7 @@ namespace IVGA
 	{
 		int x, y;
 		Point() = default;
-		Point(Point &) = default;
+		Point(const Point &) = default;
 		Point(int x, int y) : x(x), y(y) {}
 	};
 	struct Width

@@ -10,9 +10,11 @@ namespace HID
 
     struct MOUSE_t
     {
-        int8_t mousePos[3] = {};
+        int8_t mousePos[2] = {};
         uint8_t mouseKeys[5] = {};
         uint64_t processTime;
+        bool moved;
+        bool clicked;
     };
 
 }
