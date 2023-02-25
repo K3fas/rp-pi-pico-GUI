@@ -1,8 +1,25 @@
 #pragma once
-#include "VColors.hpp"	 // colors
+#include "VColors.hpp" // colors
+
+#define PICOVGA 0 // choose between PicoVGA and PicoQVGA lib
+
+#if PICOVGA
+
+#include "global.h"
+#include "util/canvas.h"
+
+#define WIDTH 512
+#define HEIGHT 400
+#define WIDTHBYTE WIDTH
+
+#else
+
 #include "qvga/draw.h"	 // draw
 #include "qvga/qvga.h"	 // main lib
 #include "qvga/config.h" // configs
+
+#endif
+
 #include <string>
 
 // #include "cursor8.bmp.h"
@@ -10,6 +27,12 @@
 namespace IVGA
 {
 	using namespace VColors;
+
+#if PICOVGA
+
+	static sCanvas can;
+
+#endif
 
 	struct Point
 	{
@@ -64,6 +87,72 @@ namespace IVGA
 		Circle(Point center, Radius radius)
 			: center(center), radius(radius) {}
 	};
+
+#if PICOVGA
+
+	void IDrawRectangle(const Point &point, const Width &width, const Height &heigth, const Color &color)
+	{
+		DrawRect(&can, point.x, point.y, width.v, heigth.v, color);
+	}
+
+	void IDrawRectangle(const Rectangle &rect, const Color &color)
+	{
+		DrawRect(&can, rect.start.x, rect.start.y, rect.width.v, rect.height.v, color);
+	}
+
+	void IDrawFrame(const Rectangle &rect, const Color &color)
+	{
+		DrawFrame(&can, rect.start.x, rect.start.y, rect.width.v, rect.height.v, color);
+	}
+
+	void IDrawPoint(const Point &point, const Color &color)
+	{
+		DrawPoint(&can, point.x, point.y, color);
+	}
+
+	void IDrawClear()
+	{
+		DrawClear(&can);
+	}
+
+	void IDrawLine(const Point &start, const Point &end, const Color &color)
+	{
+		DrawLine(&can, start.x, start.y, end.x, end.y, color);
+	}
+
+	void IDrawCircle(const Point &point, const Radius &radius, const Color &color, bool isFilled = true)
+	{
+		if (isFilled)
+		{
+			DrawFillCircle(&can, point.x, point.y, radius.v, color);
+		}
+		else
+		{
+			DrawCircle(&can, point.x, point.y, radius.v, color);
+		}
+	}
+
+	void IDrawText(const char *text, const Point &point, const Color &color, uint8_t textSize = 1)
+	{
+		// DrawText(&can, text, point.x, point.y, color);
+	}
+
+	void IDrawText(const char *text, const Point &point, const Color &color, const Color &backgorund)
+	{
+		// DrawTextBg(text, point.x, point.y, color, backgorund);
+	}
+
+	void IDrawImage(sCanvas *source, const Rectangle coords, int ws)
+	{
+		// DrawImg(&can, source, coords.start.x, coords.start.y, coords.width.v, coords.width.v, ws);
+	}
+
+	void ICore1Exec(void (*fnc)())
+	{
+		Core1Exec(fnc);
+	}
+
+#else
 
 	void IDrawRectangle(const Point &point, const Width &width, const Height &heigth, const Color &color)
 	{
@@ -133,4 +222,6 @@ namespace IVGA
 	{
 		Core1Exec(fnc);
 	}
+
+#endif
 }

@@ -415,7 +415,7 @@ namespace UI
 			if (settings == UpdateSettings::Core0)
 			{
 				cursor.HandleCursor();
-				DrawClear();
+				IDrawClear();
 				Render();
 				cursor.DrawElement();
 			}
@@ -432,7 +432,7 @@ namespace UI
 		{
 			cursor.DrawElement();
 			cursor.HandleCursor();
-			DrawClear();
+			IDrawClear();
 			currentView->DrawToDraw();
 			cursor.DrawElement();
 		}
