@@ -24,8 +24,10 @@ void DrawRect(int x, int y, int w, int h, uint8_t col)
 	}
 
 	// limit w
-	if (x + w > WIDTH) w = WIDTH - x;
-	if (w <= 0) return;
+	if (x + w > WIDTH)
+		w = WIDTH - x;
+	if (w <= 0)
+		return;
 
 	// limit y
 	if (y < 0)
@@ -35,16 +37,19 @@ void DrawRect(int x, int y, int w, int h, uint8_t col)
 	}
 
 	// limit h
-	if (y + h > HEIGHT) h = HEIGHT - y;
-	if (h <= 0) return;
+	if (y + h > HEIGHT)
+		h = HEIGHT - y;
+	if (h <= 0)
+		return;
 
 	// draw
-	uint8_t *d = &pDrawBuf[x + y*WIDTH];
+	uint8_t *d = &pDrawBuf[x + y * WIDTH];
 	int wb = WIDTH - w;
 	int i;
 	for (; h > 0; h--)
 	{
-		for (i = w; i > 0; i--) *d++ = col;
+		for (i = w; i > 0; i--)
+			*d++ = col;
 		d += wb;
 	}
 }
@@ -52,11 +57,12 @@ void DrawRect(int x, int y, int w, int h, uint8_t col)
 // Draw frame
 void DrawFrame(int x, int y, int w, int h, uint8_t col)
 {
-	if ((w <= 0) || (h <= 0)) return;
-	DrawRect(x, y, w-1, 1, col);
-	DrawRect(x+w-1, y, 1, h-1, col);
-	DrawRect(x+1, y+h-1, w-1, 1, col);
-	DrawRect(x, y+1, 1, h-1, col);
+	if ((w <= 0) || (h <= 0))
+		return;
+	DrawRect(x, y, w - 1, 1, col);
+	DrawRect(x + w - 1, y, 1, h - 1, col);
+	DrawRect(x + 1, y + h - 1, w - 1, 1, col);
+	DrawRect(x, y + 1, 1, h - 1, col);
 }
 
 // clear canvas (fill with black color)
@@ -69,10 +75,11 @@ void DrawClear()
 void DrawPoint(int x, int y, uint8_t col)
 {
 	// check coordinates
-	if (((uint32_t)x >= (uint32_t)WIDTH) || ((uint32_t)y >= (uint32_t)HEIGHT)) return;
+	if (((uint32_t)x >= (uint32_t)WIDTH) || ((uint32_t)y >= (uint32_t)HEIGHT))
+		return;
 
 	// draw pixel
-	pDrawBuf[x + y*WIDTH] = col;
+	pDrawBuf[x + y * WIDTH] = col;
 }
 
 // Draw line
@@ -101,14 +108,14 @@ void DrawLine(int x1, int y1, int x2, int y2, uint8_t col)
 	}
 
 	// destination address
-	uint8_t *d = &pDrawBuf[x1 + y1*WIDTH];
+	uint8_t *d = &pDrawBuf[x1 + y1 * WIDTH];
 
 	// steeply in X direction, X is prefered as base
 	if (dx > dy)
 	{
-		int m = 2*dy;
+		int m = 2 * dy;
 		int p = m - dx;
-		dx = 2*dx;
+		dx = 2 * dx;
 
 		// slow mode, check coordinates
 		if (((uint32_t)x1 >= (uint32_t)WIDTH) || ((uint32_t)x2 >= (uint32_t)WIDTH) ||
@@ -117,11 +124,13 @@ void DrawLine(int x1, int y1, int x2, int y2, uint8_t col)
 			x2 += sx;
 			for (; x1 != x2; x1 += sx)
 			{
-				if (((uint32_t)x1 < (uint32_t)WIDTH) && ((uint32_t)y1 < (uint32_t)HEIGHT)) *d = col;
+				if (((uint32_t)x1 < (uint32_t)WIDTH) && ((uint32_t)y1 < (uint32_t)HEIGHT))
+					*d = col;
 				if (p > 0)
 				{
 					d += ddy;
-					y1 += sy;;
+					y1 += sy;
+					;
 					p -= dx;
 				}
 				p += m;
@@ -150,9 +159,9 @@ void DrawLine(int x1, int y1, int x2, int y2, uint8_t col)
 	// steeply in Y direction, Y is prefered as base
 	else
 	{
-		int m = 2*dx;
+		int m = 2 * dx;
 		int p = m - dy;
-		dy = 2*dy;
+		dy = 2 * dy;
 
 		// slow mode, check coordinates
 		if (((uint32_t)x1 >= (uint32_t)WIDTH) || ((uint32_t)x2 >= (uint32_t)WIDTH) ||
@@ -161,7 +170,8 @@ void DrawLine(int x1, int y1, int x2, int y2, uint8_t col)
 			y2 += sy;
 			for (; y1 != y2; y1 += sy)
 			{
-				if (((uint32_t)x1 < (uint32_t)WIDTH) && ((uint32_t)y1 < (uint32_t)HEIGHT)) *d = col;
+				if (((uint32_t)x1 < (uint32_t)WIDTH) && ((uint32_t)y1 < (uint32_t)HEIGHT))
+					*d = col;
 				if (p > 0)
 				{
 					d += sx;
@@ -196,8 +206,9 @@ void DrawLine(int x1, int y1, int x2, int y2, uint8_t col)
 void DrawFillCircle(int x0, int y0, int r, uint8_t col)
 {
 	int x, y;
-	if (r <= 0) return;
-	int r2 = r*(r-1);
+	if (r <= 0)
+		return;
+	int r2 = r * (r - 1);
 	r--;
 
 	// full circle
@@ -205,7 +216,8 @@ void DrawFillCircle(int x0, int y0, int r, uint8_t col)
 	{
 		for (x = -r; x <= r; x++)
 		{
-			if ((x*x + y*y) <= r2) DrawPoint(x+x0, y+y0, col);
+			if ((x * x + y * y) <= r2)
+				DrawPoint(x + x0, y + y0, col);
 		}
 	}
 }
@@ -214,7 +226,8 @@ void DrawFillCircle(int x0, int y0, int r, uint8_t col)
 void DrawCircle(int x0, int y0, int r, uint8_t col)
 {
 	int x, y;
-	if (r <= 0) return;
+	if (r <= 0)
+		return;
 	r--;
 
 	x = 0;
@@ -223,22 +236,22 @@ void DrawCircle(int x0, int y0, int r, uint8_t col)
 
 	while (x <= y)
 	{
-		DrawPoint(x0+y, y0-x, col);
-		DrawPoint(x0+x, y0-y, col);
-		DrawPoint(x0-x, y0-y, col);
-		DrawPoint(x0-y, y0-x, col);
-		DrawPoint(x0-y, y0+x, col);
-		DrawPoint(x0-x, y0+y, col);
-		DrawPoint(x0+x, y0+y, col);
-		DrawPoint(x0+y, y0+x, col);
+		DrawPoint(x0 + y, y0 - x, col);
+		DrawPoint(x0 + x, y0 - y, col);
+		DrawPoint(x0 - x, y0 - y, col);
+		DrawPoint(x0 - y, y0 - x, col);
+		DrawPoint(x0 - y, y0 + x, col);
+		DrawPoint(x0 - x, y0 + y, col);
+		DrawPoint(x0 + x, y0 + y, col);
+		DrawPoint(x0 + y, y0 + x, col);
 
 		x++;
 		if (p > 0)
 		{
 			y--;
-			p -= 2*y;
+			p -= 2 * y;
 		}
-		p += 2*x + 1;
+		p += 2 * x + 1;
 	}
 }
 
@@ -257,7 +270,8 @@ void DrawText(const char *text, int x, int y, uint8_t col)
 	{
 		// get next character of the text
 		ch = (uint8_t)*text++;
-		if (ch == 0) break;
+		if (ch == 0)
+			break;
 
 		// prepare pointer to font sample
 		s = &Font8x8[ch];
@@ -275,7 +289,8 @@ void DrawText(const char *text, int x, int y, uint8_t col)
 			for (j = 8; j > 0; j--)
 			{
 				// pixel is set
-				if ((ch & 0x80) != 0) DrawPoint(x, y, col);
+				if ((ch & 0x80) != 0)
+					DrawPoint(x, y, col);
 				x++;
 				ch <<= 1;
 			}
@@ -302,7 +317,8 @@ void DrawText2(const char *text, int x, int y, uint8_t col)
 	{
 		// get next character of the text
 		ch = (uint8_t)*text++;
-		if (ch == 0) break;
+		if (ch == 0)
+			break;
 
 		// prepare pointer to font sample
 		s = &Font8x8[ch];
@@ -323,9 +339,9 @@ void DrawText2(const char *text, int x, int y, uint8_t col)
 				if ((ch & 0x80) != 0)
 				{
 					DrawPoint(x, y, col);
-					DrawPoint(x+1, y, col);
-					DrawPoint(x, y+1, col);
-					DrawPoint(x+1, y+1, col);
+					DrawPoint(x + 1, y, col);
+					DrawPoint(x, y + 1, col);
+					DrawPoint(x + 1, y + 1, col);
 				}
 				x += 2;
 				ch <<= 1;
@@ -353,7 +369,8 @@ void DrawTextBg(const char *text, int x, int y, uint8_t col, uint8_t bgcol)
 	{
 		// get next character of the text
 		ch = (uint8_t)*text++;
-		if (ch == 0) break;
+		if (ch == 0)
+			break;
 
 		// prepare pointer to font sample
 		s = &Font8x8[ch];
@@ -399,7 +416,7 @@ void DrawTextBuf(const char *textbuf, uint8_t col, uint8_t bgcol)
 	// loop through characters of text
 	for (y0 = 0; y0 < HEIGHT; y0 += 8)
 	{
-		d = &pDrawBuf[y0*WIDTH];
+		d = &pDrawBuf[y0 * WIDTH];
 
 		for (x0 = 0; x0 < WIDTH; x0 += 8)
 		{
@@ -425,7 +442,7 @@ void DrawTextBuf(const char *textbuf, uint8_t col, uint8_t bgcol)
 				}
 				d += WIDTH - 8;
 			}
-			d += 8 - 8*WIDTH;
+			d += 8 - 8 * WIDTH;
 		}
 	}
 }
@@ -443,7 +460,7 @@ void DrawFTextBuf(const char *textbuf, uint8_t bgcol)
 	// loop through characters of text
 	for (y0 = 0; y0 < HEIGHT; y0 += 8)
 	{
-		d = &pDrawBuf[y0*WIDTH];
+		d = &pDrawBuf[y0 * WIDTH];
 
 		for (x0 = 0; x0 < WIDTH; x0 += 8)
 		{
@@ -472,7 +489,7 @@ void DrawFTextBuf(const char *textbuf, uint8_t bgcol)
 				}
 				d += WIDTH - 8;
 			}
-			d += 8 - 8*WIDTH;
+			d += 8 - 8 * WIDTH;
 		}
 	}
 }
@@ -489,23 +506,27 @@ void DrawImg(const uint8_t *src, int xd, int yd, int w, int h, int ws)
 	}
 
 	// limit w
-	if (xd + w > WIDTH) w = WIDTH - xd;
-	if (w <= 0) return;
+	if (xd + w > WIDTH)
+		w = WIDTH - xd;
+	if (w <= 0)
+		return;
 
 	// limit coordinate Y
 	if (yd < 0)
 	{
 		h += yd;
-		src += -yd*ws;
+		src += -yd * ws;
 		yd = 0;
 	}
 
 	// limit h
-	if (yd + h > HEIGHT) h = HEIGHT - yd;
-	if (h <= 0) return;
+	if (yd + h > HEIGHT)
+		h = HEIGHT - yd;
+	if (h <= 0)
+		return;
 
 	// draw image
-	uint8_t *d = &pDrawBuf[xd + yd*WIDTH];
+	uint8_t *d = &pDrawBuf[xd + yd * WIDTH];
 	for (; h > 0; h--)
 	{
 		memcpy(d, src, w);
@@ -526,23 +547,27 @@ void DrawBlit(const uint8_t *src, int xd, int yd, int w, int h, int ws, uint8_t 
 	}
 
 	// limit w
-	if (xd + w > WIDTH) w = WIDTH - xd;
-	if (w <= 0) return;
+	if (xd + w > WIDTH)
+		w = WIDTH - xd;
+	if (w <= 0)
+		return;
 
 	// limit coordinate Y
 	if (yd < 0)
 	{
 		h += yd;
-		src += -yd*ws;
+		src += -yd * ws;
 		yd = 0;
 	}
 
 	// limit h
-	if (yd + h > HEIGHT) h = HEIGHT - yd;
-	if (h <= 0) return;
+	if (yd + h > HEIGHT)
+		h = HEIGHT - yd;
+	if (h <= 0)
+		return;
 
 	// draw image
-	uint8_t *d = &pDrawBuf[xd + yd*WIDTH];
+	uint8_t *d = &pDrawBuf[xd + yd * WIDTH];
 	int i;
 	uint8_t c;
 	int wbd = WIDTH - w;
@@ -552,7 +577,8 @@ void DrawBlit(const uint8_t *src, int xd, int yd, int w, int h, int ws, uint8_t 
 		for (i = w; i > 0; i--)
 		{
 			c = *src++;
-			if (c != col) *d = c;
+			if (c != col)
+				*d = c;
 			d++;
 		}
 		d += wbd;
@@ -575,43 +601,48 @@ void DrawBlit(const uint8_t *src, int xd, int yd, int w, int h, int ws, uint8_t 
 void DrawImgMat(const uint8_t *src, int ws, int hs, int x, int y, int w, int h, const cMat2Df *m, uint8_t mode, uint8_t color)
 {
 	// limit x
-	int x0 = -w/2; // start X coordinate
+	int x0 = -w / 2; // start X coordinate
 	if (x < 0)
 	{
 		w += x;
 		x0 -= x;
 		x = 0;
 	}
-	if (x + w > WIDTH) w = WIDTH - x;
-	if (w <= 0) return;
+	if (x + w > WIDTH)
+		w = WIDTH - x;
+	if (w <= 0)
+		return;
 
 	// limit y
 	int h0 = h;
-	int y0 = (mode == DRAWIMG_PERSP) ? (-h) : (-h/2); // start Y coordinate
+	int y0 = (mode == DRAWIMG_PERSP) ? (-h) : (-h / 2); // start Y coordinate
 	if (y < 0)
 	{
 		h += y;
 		y0 -= y;
 		y = 0;
 	}
-	if (y + h > HEIGHT) h = HEIGHT - y;
-	if (h <= 0) return;
+	if (y + h > HEIGHT)
+		h = HEIGHT - y;
+	if (h <= 0)
+		return;
 
 	// load transformation matrix and convert to integer fractional number
-	int m11 = (int)(m->m11*FRACTMUL+0.5f);
-	int m12 = (int)(m->m12*FRACTMUL+0.5f);
-	int m13 = (int)(m->m13*FRACTMUL+0.5f);
-	int m21 = (int)(m->m21*FRACTMUL+0.5f);
-	int m22 = (int)(m->m22*FRACTMUL+0.5f);
-	int m23 = (int)(m->m23*FRACTMUL+0.5f);
+	int m11 = (int)(m->m11 * FRACTMUL + 0.5f);
+	int m12 = (int)(m->m12 * FRACTMUL + 0.5f);
+	int m13 = (int)(m->m13 * FRACTMUL + 0.5f);
+	int m21 = (int)(m->m21 * FRACTMUL + 0.5f);
+	int m22 = (int)(m->m22 * FRACTMUL + 0.5f);
+	int m23 = (int)(m->m23 * FRACTMUL + 0.5f);
 
 	// zero size image
-	if ((m11 == 0) || (m22 == 0)) return;
+	if ((m11 == 0) || (m22 == 0))
+		return;
 
 	// prepare variables
-	int xy0m, yy0m; // temporary Y members
-	uint8_t *d = &pDrawBuf[WIDTH*y + x]; // destination image
-	int wbd = WIDTH - w; // destination width bytes
+	int xy0m, yy0m;						   // temporary Y members
+	uint8_t *d = &pDrawBuf[WIDTH * y + x]; // destination image
+	int wbd = WIDTH - w;				   // destination width bytes
 	int i, x2, y2;
 
 	// wrap image
@@ -623,14 +654,14 @@ void DrawImgMat(const uint8_t *src, int ws, int hs, int x, int y, int w, int h, 
 
 		for (; h > 0; h--)
 		{
-			xy0m = x0*m11 + y0*m12 + m13;
-			yy0m = x0*m21 + y0*m22 + m23;
-		
+			xy0m = x0 * m11 + y0 * m12 + m13;
+			yy0m = x0 * m21 + y0 * m22 + m23;
+
 			for (i = w; i > 0; i--)
 			{
-				x2 = (xy0m>>FRACT) & xmask;
-				y2 = (yy0m>>FRACT) & ymask;
-				*d++ = src[x2 + y2*ws];
+				x2 = (xy0m >> FRACT) & xmask;
+				y2 = (yy0m >> FRACT) & ymask;
+				*d++ = src[x2 + y2 * ws];
 				xy0m += m11; // x0*m11
 				yy0m += m21; // x0*m21
 			}
@@ -649,14 +680,15 @@ void DrawImgMat(const uint8_t *src, int ws, int hs, int x, int y, int w, int h, 
 
 		for (; h > 0; h--)
 		{
-			xy0m = x0*m11 + y0*m12 + m13;
-			yy0m = x0*m21 + y0*m22 + m23;
+			xy0m = x0 * m11 + y0 * m12 + m13;
+			yy0m = x0 * m21 + y0 * m22 + m23;
 
 			for (i = w; i > 0; i--)
 			{
-				x2 = xy0m>>FRACT;
-				y2 = yy0m>>FRACT;
-				if (((uint32_t)x2 < ww) && ((uint32_t)y2 < hh)) *d = src[x2 + y2*ws];
+				x2 = xy0m >> FRACT;
+				y2 = yy0m >> FRACT;
+				if (((uint32_t)x2 < ww) && ((uint32_t)y2 < hh))
+					*d = src[x2 + y2 * ws];
 				d++;
 				xy0m += m11; // x0*m11
 				yy0m += m21; // x0*m21
@@ -675,18 +707,22 @@ void DrawImgMat(const uint8_t *src, int ws, int hs, int x, int y, int w, int h, 
 
 		for (; h > 0; h--)
 		{
-			xy0m = x0*m11 + y0*m12 + m13;
-			yy0m = x0*m21 + y0*m22 + m23;
-		
+			xy0m = x0 * m11 + y0 * m12 + m13;
+			yy0m = x0 * m21 + y0 * m22 + m23;
+
 			for (i = w; i > 0; i--)
 			{
-				x2 = xy0m>>FRACT;
-				y2 = yy0m>>FRACT;
-				if (x2 < 0) x2 = 0;
-				if (x2 > ww) x2 = ww;
-				if (y2 < 0) y2 = 0;
-				if (y2 > hh) y2 = hh;
-				*d++ = src[x2 + y2*ws];
+				x2 = xy0m >> FRACT;
+				y2 = yy0m >> FRACT;
+				if (x2 < 0)
+					x2 = 0;
+				if (x2 > ww)
+					x2 = ww;
+				if (y2 < 0)
+					y2 = 0;
+				if (y2 > hh)
+					y2 = hh;
+				*d++ = src[x2 + y2 * ws];
 				xy0m += m11; // x0*m11
 				yy0m += m21; // x0*m21
 			}
@@ -704,15 +740,15 @@ void DrawImgMat(const uint8_t *src, int ws, int hs, int x, int y, int w, int h, 
 
 		for (; h > 0; h--)
 		{
-			xy0m = x0*m11 + y0*m12 + m13;
-			yy0m = x0*m21 + y0*m22 + m23;
-		
+			xy0m = x0 * m11 + y0 * m12 + m13;
+			yy0m = x0 * m21 + y0 * m22 + m23;
+
 			for (i = w; i > 0; i--)
 			{
-				x2 = xy0m>>FRACT;
-				y2 = yy0m>>FRACT;
+				x2 = xy0m >> FRACT;
+				y2 = yy0m >> FRACT;
 				if (((uint32_t)x2 < ww) && ((uint32_t)y2 < hh))
-					*d = src[x2 + y2*ws];
+					*d = src[x2 + y2 * ws];
 				else
 					*d = color;
 				d++;
@@ -733,17 +769,18 @@ void DrawImgMat(const uint8_t *src, int ws, int hs, int x, int y, int w, int h, 
 
 		for (; h > 0; h--)
 		{
-			xy0m = x0*m11 + y0*m12 + m13;
-			yy0m = x0*m21 + y0*m22 + m23;
-		
+			xy0m = x0 * m11 + y0 * m12 + m13;
+			yy0m = x0 * m21 + y0 * m22 + m23;
+
 			for (i = w; i > 0; i--)
 			{
-				x2 = xy0m>>FRACT;
-				y2 = yy0m>>FRACT;
+				x2 = xy0m >> FRACT;
+				y2 = yy0m >> FRACT;
 				if (((uint32_t)x2 < ww) && ((uint32_t)y2 < hh))
 				{
-					c = src[x2 + y2*ws];
-					if (c != color) *d = c;
+					c = src[x2 + y2 * ws];
+					if (c != color)
+						*d = c;
 				}
 				d++;
 				xy0m += m11; // x0*m11
@@ -763,24 +800,24 @@ void DrawImgMat(const uint8_t *src, int ws, int hs, int x, int y, int w, int h, 
 
 		for (; h > 0; h--)
 		{
-			int dist = FRACTMUL*h0/(h0 + y0 + color + 1);
-			int m11b = (m11*dist)>>FRACT;
-			int m21b = (m21*dist)>>FRACT;
-			int m12b = (m12*dist)>>FRACT;
-			int m22b = (m22*dist)>>FRACT;
+			int dist = FRACTMUL * h0 / (h0 + y0 + color + 1);
+			int m11b = (m11 * dist) >> FRACT;
+			int m21b = (m21 * dist) >> FRACT;
+			int m12b = (m12 * dist) >> FRACT;
+			int m22b = (m22 * dist) >> FRACT;
 
-			xy0m = x0*m11b + y0*m12b + m13;
-			yy0m = x0*m21b + y0*m22b + m23;
-		
+			xy0m = x0 * m11b + y0 * m12b + m13;
+			yy0m = x0 * m21b + y0 * m22b + m23;
+
 			for (i = w; i > 0; i--)
 			{
-				x2 = (xy0m>>FRACT) & xmask;
+				x2 = (xy0m >> FRACT) & xmask;
 				xy0m += m11b; // x0*m11
 
-				y2 = (yy0m>>FRACT) & ymask;
+				y2 = (yy0m >> FRACT) & ymask;
 				yy0m += m21b; // x0*m21
 
-				*d++ = src[x2 + y2*ws];
+				*d++ = src[x2 + y2 * ws];
 			}
 			y0++;
 			d += wbd;
@@ -797,13 +834,14 @@ void DrawImgMat(const uint8_t *src, int ws, int hs, int x, int y, int w, int h, 
 void DrawImgLine(const uint8_t *src, int xd, int yd, int wd, int ws, int wbs)
 {
 	// some base checks
-	if ((wd <= 0) || (ws <= 0) || (yd < 0) || (yd >= HEIGHT)) return;
+	if ((wd <= 0) || (ws <= 0) || (yd < 0) || (yd >= HEIGHT))
+		return;
 
 	// pixel increment
-	int dinc = FRACTMUL*ws/wd;
+	int dinc = FRACTMUL * ws / wd;
 
 	// prepare buffers
-	uint8_t *d = &pDrawBuf[xd + yd*WIDTH]; // destination address
+	uint8_t *d = &pDrawBuf[xd + yd * WIDTH]; // destination address
 	int i;
 
 	int dadd = 0;
@@ -812,7 +850,7 @@ void DrawImgLine(const uint8_t *src, int xd, int yd, int wd, int ws, int wbs)
 		*d++ = *src;
 		dadd += dinc;
 		src += dadd >> FRACT;
-		dadd &= (FRACTMUL-1);
+		dadd &= (FRACTMUL - 1);
 	}
 }
 
@@ -826,19 +864,19 @@ void DrawImgLine(const uint8_t *src, int xd, int yd, int wd, int ws, int wbs)
 //	GP6 ... B6 ... VGA R1
 //	GP7 ... B7 ... VGA R2
 uint8_t RainbowGrad[] = {
-	B7,			// dark red
-	B5+B6+B7,		// red
-	B4+B6+B7,		// orange
-	B2+B3+B4+B5+B6+B7,	// yellow
-	B2+B3+B4+B7,		// yellow-green
-	B2+B3+B4,		// green
-	B0+B3+B4,		// green-cyan
-	B0+B1+B2+B3+B4,		// cyan
-	B0+B1+B4,		// cyan-blue
-	B0+B1,			// blue
-	B0+B1+B7,		// blue-magenta
-	B0+B1+B5+B6+B7,		// magenta
-	B1+B7,			// dark magenta
+	B7,							 // dark red
+	B5 + B6 + B7,				 // red
+	B4 + B6 + B7,				 // orange
+	B2 + B3 + B4 + B5 + B6 + B7, // yellow
+	B2 + B3 + B4 + B7,			 // yellow-green
+	B2 + B3 + B4,				 // green
+	B0 + B3 + B4,				 // green-cyan
+	B0 + B1 + B2 + B3 + B4,		 // cyan
+	B0 + B1 + B4,				 // cyan-blue
+	B0 + B1,					 // blue
+	B0 + B1 + B7,				 // blue-magenta
+	B0 + B1 + B5 + B6 + B7,		 // magenta
+	B1 + B7,					 // dark magenta
 };
 
 #define RAINBOW_NUM count_of(RainbowGrad)
@@ -850,7 +888,7 @@ void GenGrad(uint8_t *dst, int w)
 	int i;
 	for (i = 0; i < w; i++)
 	{
-		*dst++ = RainbowGrad[i*RAINBOW_NUM/w];
+		*dst++ = RainbowGrad[i * RAINBOW_NUM / w];
 	}
 }
 
@@ -867,7 +905,8 @@ int DecUNum(char *buf, uint32_t num, char sep /* = 0 */)
 	int n = 0;
 	uint32_t k;
 	int sepn = 0;
-	do {
+	do
+	{
 		// thousand separator
 		if ((sepn == 3) && (sep != 0))
 		{
@@ -878,7 +917,7 @@ int DecUNum(char *buf, uint32_t num, char sep /* = 0 */)
 		}
 
 		k = num / 10;
-		num -= k*10;
+		num -= k * 10;
 		d--;
 		*d = (char)(num + '0');
 		num = k;
@@ -887,7 +926,7 @@ int DecUNum(char *buf, uint32_t num, char sep /* = 0 */)
 	} while (num != 0);
 
 	// copy number to destination buffer
-	memcpy(buf, d, n+1);
+	memcpy(buf, d, n + 1);
 	return n;
 }
 
@@ -895,7 +934,8 @@ int DecUNum(char *buf, uint32_t num, char sep /* = 0 */)
 //  sep = thousand separator, 0=none
 int DecNum(char *buf, int32_t num, char sep /* = 0 */)
 {
-	if (num >= 0) return DecUNum(buf, num, sep);
+	if (num >= 0)
+		return DecUNum(buf, num, sep);
 
 	num = -num;
 	*buf++ = '-';
@@ -913,7 +953,8 @@ void DecHexNum(char *buf, uint32_t num, uint8_t dig)
 	{
 		buf--;
 		ch = (num & 0x0f) + '0';
-		if (ch > '9') ch += 'A' - ('9'+1);
+		if (ch > '9')
+			ch += 'A' - ('9' + 1);
 		*buf = ch;
 		num >>= 4;
 	}
@@ -922,9 +963,9 @@ void DecHexNum(char *buf, uint32_t num, uint8_t dig)
 // decode 2 digits of number
 void Dec2Dig(char *buf, uint8_t num)
 {
-	uint8_t n = num/10;
+	uint8_t n = num / 10;
 	*buf++ = (char)(n + '0');
-	num -= n*10;
+	num -= n * 10;
 	*buf++ = (char)(num + '0');
 	*buf = 0;
 }
@@ -932,12 +973,12 @@ void Dec2Dig(char *buf, uint8_t num)
 // decode 2 digits of number with space character
 void Dec2DigSpc(char *buf, uint8_t num)
 {
-	uint8_t n = num/10;
+	uint8_t n = num / 10;
 	if (n == 0)
 		*buf++ = ' ';
 	else
 		*buf++ = (char)(n + '0');
-	num -= n*10;
+	num -= n * 10;
 	*buf++ = (char)(num + '0');
 	*buf = 0;
 }
@@ -946,6 +987,7 @@ void Dec2DigSpc(char *buf, uint8_t num)
 int TextLen(const char *txt)
 {
 	const char *t = txt;
-	while (*t != 0) t++;
+	while (*t != 0)
+		t++;
 	return t - txt;
 }

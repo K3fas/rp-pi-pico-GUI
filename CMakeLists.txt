@@ -22,9 +22,17 @@ add_compile_options(-Wall
         -Wno-maybe-uninitialized
         )
 
-# Hardware-specific examples in subdirectories:
+
+include(tools/FindRaspPicoImg.cmake)
+include(tools/FindRaspPicoSnd.cmake)
+add_subdirectory(tools)
 
 add_subdirectory(gui)
 add_subdirectory(qvga_lib)
 #add_subdirectory(vga_lib)
+
+# Hardware-specific examples in subdirectories:
+
+
+
 
