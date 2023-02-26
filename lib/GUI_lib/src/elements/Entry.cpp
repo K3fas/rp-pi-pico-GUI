@@ -2,4 +2,4 @@
 // Created by kefas on 26.2.23.
 //
 
-#include "Entry.hpp"
+#include "../../include/elements/Entry.hpp"

@@ -11,7 +11,7 @@ target_sources(dev PUBLIC
 
 
 # Make sure TinyUSB can find tusb_config.h
-target_include_directories(Framework PUBLIC
+target_include_directories(dev PUBLIC
         ${CMAKE_CURRENT_LIST_DIR} )
 
 # pull in common dependencies

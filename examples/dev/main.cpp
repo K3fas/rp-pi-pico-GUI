@@ -10,15 +10,11 @@
 #include "tusb.h"
 #include "tusb_data.hpp"
 
-#include "RP_GUI.hpp"
+#include "rpgui.hpp"
 
 #include "timers.hpp"
 
-#define SPEED_TEST
-
-using namespace UI;
-using namespace IVGA;
-using namespace VColors;
+using namespace rpgui;
 
 void ProcessButtons(bool *buttons);
 void PrintTimings();
@@ -48,62 +44,27 @@ int main()
     board_init();
     tusb_init();
 
-    printf("RP GUI Example\r\n");
+    printf("RP DEV\r\n");
     sleep_ms(2000);
 
     SetupRP();
 
-    auto mainView = MainView(UpdateSettings::Core0);
-    auto view = View();
+    auto rect = ui::Rectangle(types::Point{10, 10}, types::Width{20}, types::Height{40}, colors::Color::Yellow);
+    rect.color = colors::Color::Red;
 
-    view.AddElement(new Label{"GUI test", Point{WIDTH / 2, 30}, Color::Red, Color::Blue});
-    view.AddElement(new UI::Rectangle{IVGA::Rectangle{Point{20, 20}, Width{60}, Height{20}}, Color::Magenta});
-    view.AddElement(new Button{IVGA::Rectangle{Point{20, 60}, Width{60}, Height{20}}, Color::Blue, ProcessButtonClicked});
-    view.AddElement(new Label{"Button", Point{20, 60}, Color::Red, Color::Tranparent});
+    auto lay = layout::StackLayout(types::Point{60, 10}, types::Width{120}, types::Height{200});
+    lay.AddElement(new ui::Rectangle(types::Point{10, 10}, types::Width{20}, types::Height{40}, colors::Color::Red));
+    lay.AddElement(new ui::Rectangle(types::Point{10, 10}, types::Width{20}, types::Height{20}, colors::Color::Green));
+    lay.AddElement(new ui::Rectangle(types::Point{10, 10}, types::Width{20}, types::Height{40}, colors::Color::Blue));
 
-    view.AddElement(new Indicator{Radius{10}, Point{160, 70}, &indicatorState, Color::Blue, Color::Red});
-    view.AddElement(new Indicator{Radius{10}, Point{60, 180}, &led_state});
-
-#ifdef SPEED_TEST
-    for (size_t i = 0; i < 9; i++)
-    {
-        for (size_t j = 0; j < WIDTH; j++)
-        {
-            view.AddElement(new UI::Rectangle{IVGA::Rectangle{Point{i * 2, j}, Width{1}, Height{1}}, Color::Red});
-        }
-    }
-#endif
-
-    mainView.SetCurrentView(view);
     while (1)
     {
-#ifdef TIMERS
-        timers.core0.start = time_us_64();
-#endif
+
         tuh_task();
         hid_app_task();
 
-#ifdef TIMERS
-        timers.core0.tusb = time_us_64() - timers.core0.start;
-#endif
-
-#ifdef TIMERS
-        timers.core0.mainLoop = time_us_64() - timers.core0.tusb - timers.core0.start;
-#endif
-
-        mainView.Update();
-#ifdef TIMERS
-        timers.core0.draw = time_us_64() - timers.core0.mainLoop - timers.core0.start;
-#endif
-
-        Core1Wait();
-        WaitVSync();
-#ifdef TIMERS
-        timers.core0.VSync = time_us_64() - timers.core0.draw - timers.core0.start;
-#endif
-#ifdef TIMERS
-        timers.Print();
-#endif
+        rect.Draw();
+        lay.Draw();
 
         LED_blink_task();
     }

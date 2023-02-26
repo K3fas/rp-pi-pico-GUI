@@ -10,7 +10,7 @@ extern HID::MOUSE_t MOUSE;
 
 namespace UI
 {
-	using namespace VColors;
+	using namespace rpgui::colors;
 	using namespace IVGA;
 
 	constexpr float sensitivity = 2;
@@ -68,8 +68,8 @@ namespace UI
 	public:
 		Point position;
 		std::string text;
-		VColors::Color textColor;
-		VColors::Color backgroundColor;
+		Color textColor;
+		Color backgroundColor;
 
 		Label() = default;
 		Label(std::string text, Point position, VColors::Color textColor = VColors::Color::White, VColors::Color backgroundColor = VColors::Color::Black)
@@ -80,7 +80,7 @@ namespace UI
 
 		void DrawElement() const
 		{
-			if (backgroundColor == Color::Tranparent)
+			if (backgroundColor == Color::Transparent)
 			{
 				IDrawText(text.c_str(), position, textColor);
 			}

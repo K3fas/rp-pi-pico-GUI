@@ -1,8 +1,0 @@
-//
-// Created by kefas on 26.2.23.
-//
-
-#ifndef PICO_KIT_FRAMEWORK_POLYLINE_H
-#define PICO_KIT_FRAMEWORK_POLYLINE_H
-
-#endif //PICO_KIT_FRAMEWORK_POLYLINE_H

@@ -1,5 +1,8 @@
 #pragma once
-namespace VColors
+
+#include "stdint.h"
+
+namespace rpgui::colors
 {
 	// 8 Color bits of VGA output
 
@@ -52,7 +55,7 @@ namespace VColors
 		Black = (uint8_t)0,
 		White = (uint8_t)255,
 
-		Tranparent
+		Transparent
 
 	};
 

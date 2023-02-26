@@ -2,4 +2,4 @@
 // Created by kefas on 26.2.23.
 //
 
-#include "Slider.hpp"
+#include "../../include/elements/Slider.hpp"

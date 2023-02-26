@@ -1,8 +1,10 @@
 # GUI TODO
+- Move IVGA header to xvga_lib ... make separated implementations
 ## RESTRUCTURE Namespaces
 
-rpgui::control      -user accesible API for controls
-rpgui::
+rpgui::ui      -user accessible API for controls
+rpgui::view
+rpgui::layout
 rpgui::common   -base classes
 rpgui::???      
 

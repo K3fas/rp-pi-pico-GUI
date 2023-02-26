@@ -1,7 +1,7 @@
 #pragma once
 #include "VColors.hpp" // colors
 
-#define PICOVGA 1 // choose between PicoVGA and PicoQVGA lib
+#define PICOVGA 0 // choose between PicoVGA and PicoQVGA lib
 
 #if PICOVGA
 
@@ -19,13 +19,15 @@
 
 #endif
 
+#include "common/Types.hpp"
+#include "common/Base.hpp"
 #include <string>
 
 // #include "cursor8.bmp.h"
 
 namespace IVGA
 {
-	using namespace VColors;
+	using namespace rpgui::colors;
 
 #if PICOVGA
 
@@ -152,15 +154,20 @@ namespace IVGA
 	}
 
 #else
-
+	// To be deprecated
 	void IDrawRectangle(const Point &point, const Width &width, const Height &heigth, const Color &color)
 	{
 		DrawRect(point.x, point.y, width.v, heigth.v, color);
 	}
-
+	// To be deprecated
 	void IDrawRectangle(const Rectangle &rect, const Color &color)
 	{
 		DrawRect(rect.start.x, rect.start.y, rect.width.v, rect.height.v, color);
+	}
+
+	void IDrawRectangle(const rpgui::common::Coord &coord, const Color &color)
+	{
+		DrawRect(coord.x, coord.y, coord.w, coord.h, color);
 	}
 
 	void IDrawFrame(const Rectangle &rect, const Color &color)
