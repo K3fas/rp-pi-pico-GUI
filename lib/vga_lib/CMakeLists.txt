@@ -4,6 +4,7 @@ pico_generate_pio_header(vga_lib ${CMAKE_CURRENT_LIST_DIR}/src/vga.pio)
 
 qvga_generate_img_header(vga_lib ${CMAKE_CURRENT_LIST_DIR}/font/font8x8.bmp Font8x8)
 
+
 target_sources(vga_lib INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}/src/vga.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/canvas.cpp

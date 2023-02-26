@@ -8,11 +8,13 @@
 #ifndef _MAT2D_H
 #define _MAT2D_H
 
+#include "global.h"
+
 // transformation matrix
-template <typename m2type> class cMat2D 
+template <typename m2type>
+class cMat2D
 {
 public:
-
 	// transformation matrix
 	m2type m11, m12, m13;
 	m2type m21, m22, m23;
@@ -20,27 +22,35 @@ public:
 	// trasform X
 	inline m2type GetX(m2type x, m2type y) const
 	{
-		return x*m11 + y*m12 + m13;
-	}	
+		return x * m11 + y * m12 + m13;
+	}
 
 	// trasform Y
 	inline m2type GetY(m2type x, m2type y) const
 	{
-		return x*m21 + y*m22 + m23;
-	}	
+		return x * m21 + y * m22 + m23;
+	}
 
 	// set unit matrix
 	inline void Unit()
 	{
-		m11 = 1; m12 = 0; m13 = 0;
-		m21 = 0; m22 = 1; m23 = 0;
+		m11 = 1;
+		m12 = 0;
+		m13 = 0;
+		m21 = 0;
+		m22 = 1;
+		m23 = 0;
 	}
 
 	// copy matrix
-	inline void Copy(const cMat2D* m)
+	inline void Copy(const cMat2D *m)
 	{
-		m11 = m->m11; m12 = m->m12; m13 = m->m13;
-		m21 = m->m21; m22 = m->m22; m23 = m->m23;
+		m11 = m->m11;
+		m12 = m->m12;
+		m13 = m->m13;
+		m21 = m->m21;
+		m22 = m->m22;
+		m23 = m->m23;
 	}
 
 	// translate in X direction
@@ -51,7 +61,7 @@ public:
 	{
 		m13 += tx;
 	}
-	
+
 	// translate in Y direction
 	//  1  0  0   m11 m12 m13   m11 m12 m13
 	//  0  1 ty * m21 m22 m23 = m21 m22 m23+ty
@@ -70,7 +80,7 @@ public:
 		m11 *= sx;
 		m12 *= sx;
 		m13 *= sx;
-	}	
+	}
 
 	// scale in Y direction
 	//  1  0  0   m11 m12 m13    m11    m12    m13
@@ -81,8 +91,8 @@ public:
 		m21 *= sy;
 		m22 *= sy;
 		m23 *= sy;
-	}	
-	
+	}
+
 	// rotate, using sin and cos
 	//  cosa -sina  0   m11 m12 m13   m11*cosa-m21*sina  m12*cosa-m22*sina  m13*cosa-m23*sina
 	//  sina  cosa  0 * m21 m22 m23 = m11*sina+m21*cosa  m12*sina+m22*cosa  m13*sina+m23*cosa
@@ -91,18 +101,18 @@ public:
 	{
 		m2type t1 = m11;
 		m2type t2 = m21;
-		m11 = t1*cosa - t2*sina;
-		m21 = t1*sina + t2*cosa;
+		m11 = t1 * cosa - t2 * sina;
+		m21 = t1 * sina + t2 * cosa;
 
 		t1 = m12;
 		t2 = m22;
-		m12 = t1*cosa - t2*sina;
-		m22 = t1*sina + t2*cosa;
+		m12 = t1 * cosa - t2 * sina;
+		m22 = t1 * sina + t2 * cosa;
 
 		t1 = m13;
 		t2 = m23;
-		m13 = t1*cosa - t2*sina;
-		m23 = t1*sina + t2*cosa;
+		m13 = t1 * cosa - t2 * sina;
+		m23 = t1 * sina + t2 * cosa;
 	}
 
 	// rotate, using angle
@@ -160,9 +170,9 @@ public:
 	//  0  0  1     0   0   1     0          0          1
 	inline void ShearX(m2type dx)
 	{
-		m11 += m21*dx;
-		m12 += m22*dx;
-		m13 += m23*dx;
+		m11 += m21 * dx;
+		m12 += m22 * dx;
+		m13 += m23 * dx;
 	}
 
 	// Shear in Y direction
@@ -171,9 +181,9 @@ public:
 	//  0  0  1     0   0   1     0          0          1
 	inline void ShearY(m2type dy)
 	{
-		m21 += m11*dy;
-		m22 += m12*dy;
-		m23 += m13*dy;
+		m21 += m11 * dy;
+		m22 += m12 * dy;
+		m23 += m13 * dy;
 	}
 
 	// flip in Y direction
@@ -185,7 +195,7 @@ public:
 		m21 = -m21;
 		m22 = -m22;
 		m23 = -m23;
-	}	
+	}
 
 	// flip in X direction
 	//  -1 0  0   m11 m12 m13    -m11  -m12   -m13
@@ -217,10 +227,10 @@ public:
 	//  tx ... shift in X direction (ws = whole image width)
 	//  ty ... shift in Y direction (hs = whole image height)
 	void PrepDrawImg(int ws, int hs, int x0, int y0, int wd, int hd,
-		float shearx, float sheary, float r, float tx, float ty);
+					 float shearx, float sheary, float r, float tx, float ty);
 
 	// export matrix to int array[6]
-	void ExportInt(int* mat) const;
+	void ExportInt(int *mat) const;
 };
 
 #endif // _MAT2D_H

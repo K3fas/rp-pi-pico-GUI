@@ -27,9 +27,9 @@ include(tools/FindRaspPicoImg.cmake)
 include(tools/FindRaspPicoSnd.cmake)
 add_subdirectory(tools)
 
-add_subdirectory(gui)
-add_subdirectory(qvga_lib)
-#add_subdirectory(vga_lib)
+add_subdirectory(lib)
+add_subdirectory(examples)
+
 
 # Hardware-specific examples in subdirectories:
 

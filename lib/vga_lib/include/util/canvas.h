@@ -8,6 +8,8 @@
 #ifndef _CANVAS_H
 #define _CANVAS_H
 
+#include "global.h"
+
 #define DRAW_HWINTER 1 // 1=use hardware interpolator to draw images
 
 // canvas format

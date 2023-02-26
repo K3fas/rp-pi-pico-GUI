@@ -1,11 +1,10 @@
 #pragma once
 #include "VColors.hpp" // colors
 
-#define PICOVGA 0 // choose between PicoVGA and PicoQVGA lib
+#define PICOVGA 1 // choose between PicoVGA and PicoQVGA lib
 
 #if PICOVGA
 
-#include "global.h"
 #include "util/canvas.h"
 
 #define WIDTH 512
