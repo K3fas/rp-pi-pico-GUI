@@ -7,7 +7,7 @@
 
 #include "stdint.h"
 
-namespace rpgui::types
+namespace rpgui::type
 {
     struct Width
     {
@@ -40,6 +40,6 @@ namespace rpgui::types
         Radius r;
     };
 
-} // namespace rpgui::types
+} // namespace rpgui::type
 
 #endif // PICO_KIT_FRAMEWORK_TYPES_HPP

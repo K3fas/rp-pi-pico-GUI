@@ -1,4 +1,8 @@
-#pragma once
+
+
+#ifndef PICO_KIT_IVGA
+#define PICO_KIT_IVGA
+
 #include "VColors.hpp" // colors
 
 #define PICOVGA 0 // choose between PicoVGA and PicoQVGA lib
@@ -155,42 +159,42 @@ namespace IVGA
 
 #else
 	// To be deprecated
-	void IDrawRectangle(const Point &point, const Width &width, const Height &heigth, const Color &color)
+	inline void IDrawRectangle(const Point &point, const Width &width, const Height &heigth, const Color &color)
 	{
 		DrawRect(point.x, point.y, width.v, heigth.v, color);
 	}
 	// To be deprecated
-	void IDrawRectangle(const Rectangle &rect, const Color &color)
+	inline void IDrawRectangle(const Rectangle &rect, const Color &color)
 	{
 		DrawRect(rect.start.x, rect.start.y, rect.width.v, rect.height.v, color);
 	}
 
-	void IDrawRectangle(const rpgui::common::Coord &coord, const Color &color)
+	inline void IDrawRectangle(const rpgui::common::Bounds &coord, const Color &color)
 	{
 		DrawRect(coord.x, coord.y, coord.w, coord.h, color);
 	}
 
-	void IDrawFrame(const Rectangle &rect, const Color &color)
+	inline void IDrawFrame(const Rectangle &rect, const Color &color)
 	{
 		DrawFrame(rect.start.x, rect.start.y, rect.width.v, rect.height.v, color);
 	}
 
-	void IDrawPoint(const Point &point, const Color &color)
+	inline void IDrawPoint(const Point &point, const Color &color)
 	{
 		DrawPoint(point.x, point.y, color);
 	}
 
-	void IDrawClear()
+	inline void IDrawClear()
 	{
 		DrawClear();
 	}
 
-	void IDrawLine(const Point &start, const Point &end, const Color &color)
+	inline void IDrawLine(const Point &start, const Point &end, const Color &color)
 	{
 		DrawLine(start.x, start.y, end.x, end.y, color);
 	}
 
-	void IDrawCircle(const Point &point, const Radius &radius, const Color &color, bool isFilled = true)
+	inline void IDrawCircle(const Point &point, const Radius &radius, const Color &color, bool isFilled = true)
 	{
 		if (isFilled)
 		{
@@ -202,7 +206,7 @@ namespace IVGA
 		}
 	}
 
-	void IDrawText(const char *text, const Point &point, const Color &color, int textSize = 1)
+	inline void IDrawText(const char *text, const Point &point, const Color &color, int textSize = 1)
 	{
 		if (textSize > 1)
 		{
@@ -214,20 +218,22 @@ namespace IVGA
 		}
 	}
 
-	void IDrawText(const char *text, const Point &point, const Color &color, const Color &backgorund)
+	inline void IDrawText(const char *text, const Point &point, const Color &color, const Color &backgorund)
 	{
 		DrawTextBg(text, point.x, point.y, color, backgorund);
 	}
 
-	void IDrawImage(const uint8_t *source, const Rectangle coords, int ws)
+	inline void IDrawImage(const uint8_t *source, const Rectangle coords, int ws)
 	{
 		DrawImg(source, coords.start.x, coords.start.y, coords.width.v, coords.width.v, ws);
 	}
 
-	void ICore1Exec(void (*fnc)())
+	inline void ICore1Exec(void (*fnc)())
 	{
 		Core1Exec(fnc);
 	}
 
 #endif
 }
+
+#endif // PICO_KIT_IVGA

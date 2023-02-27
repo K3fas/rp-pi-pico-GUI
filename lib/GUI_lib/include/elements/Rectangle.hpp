@@ -7,7 +7,8 @@
 
 #include "../include.hpp"
 
-using namespace rpgui::types;
+using namespace rpgui::type;
+using namespace rpgui::common;
 
 namespace rpgui::ui
 {
@@ -15,12 +16,15 @@ namespace rpgui::ui
     {
     private:
     public:
-        Rectangle() = delete;
-        Rectangle(const Point start, const Point end, const Color color);
-        Rectangle(const Point start, const Width width, const Height height, const Color color);
-        ~Rectangle();
+        Rectangle(const rpgui::type::Width width, const rpgui::type::Height height, const Color color)
+            : View(rpgui::common::Bounds{0, 0, width.v, height.v}, color) {}
+        Rectangle(const Bounds &bounds, const Color color)
+            : View(bounds, color) {}
 
-        void Draw() const final;
+        ~Rectangle() {}
+
+        void Draw() const final { IVGA::IDrawRectangle(this->GetBounds(), this->color); }
+        void Draw(const Bounds &bounds) const final { IVGA::IDrawRectangle(bounds, this->color); }
     };
 
 } // namespace rpgui::ui

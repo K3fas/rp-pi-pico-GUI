@@ -22,8 +22,6 @@ target_link_libraries(dev
     qvga_lib
     GUI_lib
     pico_stdlib
-    tinyusb_host
-    tinyusb_board
     hardware_adc
     )
 

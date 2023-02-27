@@ -49,7 +49,7 @@ namespace Events
             if (e.Type() == Clicked::descriptor)
             {
                 // This demonstrates how to obtain the underlying event type in case a
-                // slot is set up to handle multiple events of different types.
+                // slot is set up to handle multiple events of different type.
                 const Clicked &demoEvent = static_cast<const Event &>(e);
                 printf("Event fired: %s\n", demoEvent.Type());
             }

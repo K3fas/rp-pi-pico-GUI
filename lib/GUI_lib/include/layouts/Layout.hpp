@@ -10,18 +10,18 @@
 #include "../include.hpp"
 
 using namespace rpgui::common;
-using namespace rpgui::types;
+using namespace rpgui::type;
 
 namespace rpgui::layout
 {
     class Layout : public View
     {
-    private:
+    protected:
         std::vector<View *> _children;
 
     public:
         Layout() = delete;
-        Layout(const Coord coords, Color bgColor = colors::Color::Black) : View(coords, bgColor) {}
+        Layout(const Bounds coords, Color bgColor = colors::Color::Black) : View(coords, bgColor) {}
 
         ~Layout()
         {
@@ -34,15 +34,6 @@ namespace rpgui::layout
         const std::vector<View *> &GetChildren() const
         {
             return _children;
-        }
-
-        bool AddElement(View *element)
-        {
-            if (!element)
-                return false;
-
-            _children.emplace_back(element);
-            return true;
         }
     };
 

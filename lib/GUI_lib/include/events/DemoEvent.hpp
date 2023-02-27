@@ -1,8 +1,0 @@
-//
-// Created by kefas on 27.2.23.
-//
-
-#ifndef PICO_KIT_FRAMEWORK_DEMOEVENT_HPP
-#define PICO_KIT_FRAMEWORK_DEMOEVENT_HPP
-
-#endif //PICO_KIT_FRAMEWORK_DEMOEVENT_HPP

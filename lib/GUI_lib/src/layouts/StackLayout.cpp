@@ -14,19 +14,15 @@ namespace rpgui::layout
 
     void StackLayout::Draw() const
     {
-        auto coord = this->GetCoords();
-        auto elements = this->GetChildren();
-
-        // TODO HANDLE MARGINS
-        for (auto &&element : elements)
+        for (auto &&element : _children)
         {
-            auto elCoord = element->GetCoords();
-            coord.h = elCoord.h; // sets heiht of item and draws it
-            element->SetCoords(coord);
             element->Draw();
-
-            coord.y += elCoord.h; // prepares start point for next element
         }
+    }
+
+    void StackLayout::Draw(const Bounds &coords) const
+    {
+        Draw();
     }
 
 } // namespace rpgui::layout
