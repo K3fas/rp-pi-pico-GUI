@@ -28,20 +28,6 @@ namespace rpgui::common
         this->_coords = coords;
     }
 
-    const Bounds View::GetAdjustedBounds(const Bounds &bounds, const Margin &margin)
-    {
-        return Bounds{
-            bounds.x + margin.l,
-            bounds.y + margin.t,
-            bounds.w - margin.l - margin.r,
-            bounds.h - margin.t - margin.b,
-        };
-    }
-
-    const Bounds View::GetAdjustedBounds() const
-    {
-        return GetAdjustedBounds(this->GetBounds(), this->GetMargin());
-    }
     Clickable::Clickable()
     {
     }

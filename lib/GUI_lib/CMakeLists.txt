@@ -4,6 +4,7 @@ target_sources(GUI_lib INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}/src/hid_handler.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/RP_GUI.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/common/Base.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/common/View.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/elements/Button.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/elements/CheckBox.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/elements/Entry.cpp

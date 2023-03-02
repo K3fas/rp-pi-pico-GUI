@@ -60,15 +60,18 @@ int main()
 
     Dispatcher<MouseEventType> dispatcher;
 
-    dispatcher.Subscribe(MouseEventType::Clicked, onClicked);
-
     auto lay = layout::StackLayout(type::Point{60, 10}, type::Width{120}, type::Height{200});
     auto rect1 = ui::Rectangle(type::Width{20}, type::Height{20}, colors::Color::Green);
-    rect1.SetMargin(Margin{5, 5, 5, 5});
+    rect1.margin = Margin{5, 5, 5, 5};
 
     lay.AddElement(ui::Rectangle(type::Width{20}, type::Height{40}, colors::Color::Red));
     lay.AddElement(rect1);
     lay.AddElement(ui::Rectangle(type::Width{20}, type::Height{40}, colors::Color::Blue));
+
+    auto btn = ui::Button{type::Width{30}, type::Height{30}, colors::Color::Red};
+
+    btn.AddHandler(MouseEventType::Clicked, onClicked);
+    lay.AddElement(btn);
 
     MouseEvent clicked(MouseEventType::Clicked, "onClickHandler");
     dispatcher.Post(clicked);

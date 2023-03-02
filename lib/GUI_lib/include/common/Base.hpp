@@ -25,15 +25,6 @@ namespace rpgui::common
             : x(x), y(y), w(w), h(h) {}
     };
 
-    struct Margin
-    {
-        uint8_t l, t, r, b;
-
-        Margin() : l(0), t(0), r(0), b(0) {}
-        Margin(uint8_t l, uint8_t t, uint8_t r, uint8_t b)
-            : l(l), t(t), r(r), b(b) {}
-    };
-
     class Element
     {
     private:
@@ -71,29 +62,6 @@ namespace rpgui::common
         void SetBounds(const Bounds &coords);
         virtual void Draw() const = 0;
         virtual void Draw(const Bounds &coords) const = 0;
-    };
-
-    class View : public VisualElement
-    {
-    private:
-        Margin _margin;
-        bool _bMargin;
-
-    public:
-        View() = default;
-        View(const View &) = default;
-        View(const Bounds &coords, const Color color) : VisualElement(coords, color) {}
-        virtual ~View() {}
-
-        const Margin &GetMargin() const { return _margin; }
-        static const Bounds GetAdjustedBounds(const Bounds &bounds, const Margin &margin);
-        const Bounds GetAdjustedBounds() const;
-
-        void SetMargin(const Margin margin)
-        {
-            _bMargin = true;
-            _margin = margin;
-        }
     };
 
     class Clickable

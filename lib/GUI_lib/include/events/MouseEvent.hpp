@@ -20,7 +20,6 @@ namespace rpgui::event
     class MouseEvent : public Event<MouseEventType>
     {
     private:
-        /* data */
     public:
         MouseEvent(const MouseEventType &type, const std::string &name) : Event<MouseEventType>(type, name){};
         virtual ~MouseEvent() = default;

@@ -15,17 +15,19 @@
 namespace rpgui::event
 {
     template <typename T>
+    using SlotType = std::function<void(const Event<T> &)>;
+
+    template <typename T>
     class Dispatcher
     {
-        using SlotType = std::function<void(const Event<T> &)>;
-
+    public:
     private:
-        std::map<T, std::vector<SlotType>> _observers;
+        std::map<T, std::vector<rpgui::event::SlotType<T>>> _observers;
 
     public:
         Dispatcher() = default;
 
-        void Subscribe(T type, const SlotType &function) { _observers[type].push_back(function); }
+        void Subscribe(T type, const SlotType<T> &function) { _observers[type].push_back(function); }
 
         void Post(Event<T> &event)
         {

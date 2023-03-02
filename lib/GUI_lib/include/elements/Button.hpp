@@ -6,9 +6,11 @@
 #define PICO_KIT_FRAMEWORK_BUTTON_HPP
 
 #include "../include.hpp"
+#include "../rpCore.hpp"
 
 using namespace rpgui::type;
 using namespace rpgui::common;
+using namespace rpgui::event;
 
 namespace rpgui::ui
 {
@@ -20,10 +22,15 @@ namespace rpgui::ui
             : View(Bounds{0, 0, width.v, heigth.v}, color) {}
         Button(const Bounds &bounds, const Color &color)
             : View(bounds, color) {}
-        ~Button();
+        ~Button() {}
 
         void Draw() const { IVGA::IDrawRectangle(this->GetBounds(), this->color); }
         void Draw(const Bounds &bounds) const { IVGA::IDrawRectangle(bounds, this->color); }
+
+        void AddHandler(const MouseEventType type, const SlotType<MouseEventType> &function)
+        {
+            rpgui::core::MainApp::AddListener(type, function);
+        }
     };
 
 } // namespace rpgui::ui

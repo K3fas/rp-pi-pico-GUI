@@ -36,7 +36,7 @@ namespace rpgui::layout
             bounds.y += _currentHeight;
             bounds.h = elementHeigth;
 
-            auto adjusted = GetAdjustedBounds(bounds, toAdd->GetMargin());
+            auto adjusted = GetAdjustedBounds(bounds, toAdd->margin);
 
             toAdd->SetBounds(adjusted);
 
