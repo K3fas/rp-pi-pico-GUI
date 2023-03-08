@@ -2,7 +2,7 @@
 // Created by kefas on 26.2.23.
 //
 
-#include "../../include/common/Base.hpp"
+#include "common/Base.hpp"
 
 namespace rpgui::common
 {
@@ -26,14 +26,6 @@ namespace rpgui::common
     void VisualElement::SetBounds(const Bounds &coords)
     {
         this->_coords = coords;
-    }
-
-    Clickable::Clickable()
-    {
-    }
-
-    Clickable::~Clickable()
-    {
     }
 
 } // namespace rpgui::common

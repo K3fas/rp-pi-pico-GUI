@@ -12,6 +12,8 @@
 
 #include "rpgui.hpp"
 
+#include <rp_logger.hpp>
+
 #include "timers.hpp"
 
 using namespace rpgui;

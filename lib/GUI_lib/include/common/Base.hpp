@@ -6,7 +6,7 @@
 #define PICO_KIT_FRAMEWORK_BASE_HPP
 
 #include "stdint.h"
-#include "../../include/VColors.hpp"
+#include "VColors.hpp"
 
 using namespace rpgui::colors;
 
@@ -62,16 +62,6 @@ namespace rpgui::common
         void SetBounds(const Bounds &coords);
         virtual void Draw() const = 0;
         virtual void Draw(const Bounds &coords) const = 0;
-    };
-
-    class Clickable
-    {
-    protected:
-        EventHandler _clicked, _pressed, _released;
-
-    public:
-        Clickable();
-        ~Clickable();
     };
 
 } // namespace rpgui::common

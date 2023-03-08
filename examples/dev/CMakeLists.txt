@@ -23,6 +23,7 @@ target_link_libraries(dev
     GUI_lib
     pico_stdlib
     hardware_adc
+    rplog_lib
     )
 
 # create map/bin/hex file etc.

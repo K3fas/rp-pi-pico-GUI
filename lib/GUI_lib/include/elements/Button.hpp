@@ -5,8 +5,8 @@
 #ifndef PICO_KIT_FRAMEWORK_BUTTON_HPP
 #define PICO_KIT_FRAMEWORK_BUTTON_HPP
 
-#include "../include.hpp"
-#include "../rpCore.hpp"
+#include "include.hpp"
+#include "rp_core.hpp"
 
 using namespace rpgui::type;
 using namespace rpgui::common;

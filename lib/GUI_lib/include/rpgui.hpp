@@ -22,7 +22,7 @@
 
 #include "pages/Page.hpp"
 
-#include "rpCore.hpp"
+#include "rp_core.hpp"
 
 #include "IVGA.hpp"
 
