@@ -340,6 +340,7 @@ void QVgaDmaInit()
 
 	// set DMA IRQ handler
 	irq_set_exclusive_handler(DMA_IRQ_0, QVgaLine);
+	// irq_add_shared_handler(DMA_IRQ_0, QVgaLine,PICO_SHARED_IRQ_HANDLER_DEFAULT_ORDER_PRIORITY);
 
 	// set highest IRQ priority
 	irq_set_priority(DMA_IRQ_0, 0);
