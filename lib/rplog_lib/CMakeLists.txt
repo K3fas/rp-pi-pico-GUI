@@ -10,6 +10,4 @@ target_include_directories(rplog_lib INTERFACE ${CMAKE_CURRENT_LIST_DIR}/include
 target_link_libraries(rplog_lib INTERFACE  
                         pico_stdlib 
                         FatFs_SPI
-                        hardware_cloks
-                        hardware_adc
                         )

@@ -68,10 +68,11 @@ namespace rpgui::core
 
             cursorPos.x += MOUSE.mousePos[0] * sensitivity * 0.020;
             cursorPos.y += MOUSE.mousePos[1] * sensitivity * 0.020;
-            if (cursorPos.x > WIDTH)
-                cursorPos.x = WIDTH;
-            if (cursorPos.y > HEIGHT)
-                cursorPos.y = HEIGHT;
+            // TODO CHANGE THIS !
+            if (cursorPos.x > 512)
+                cursorPos.x = 512;
+            if (cursorPos.y > 400)
+                cursorPos.y = 512;
             if (cursorPos.x < 0)
                 cursorPos.x = 0;
             if (cursorPos.y < 0)

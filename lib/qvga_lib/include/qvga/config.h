@@ -31,8 +31,8 @@
 #define QVGA_SM		0	// QVGA state machine
 
 // QVGA DMA channel
-#define QVGA_DMA_CB	0	// DMA control block of base layer
-#define QVGA_DMA_PIO	1	// DMA copy data to PIO (raises IRQ0 on quiet)
+#define QVGA_DMA_CB	1	// DMA control block of base layer
+#define QVGA_DMA_PIO	2	// DMA copy data to PIO (raises IRQ0 on quiet)
 
 // QVGA display resolution
 #define WIDTH	320		// display width

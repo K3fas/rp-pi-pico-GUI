@@ -218,7 +218,7 @@ extern const ALIGNED u8 FontThin8x8[2048];
 #include "boot/uf2.h"
 
 #include "pico.h"
-// #include "tusb_config.h"
+#include "tusb_config.h"
 
 #include "pico/assert.h"
 #include "pico/binary_info.h"

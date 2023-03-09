@@ -25,7 +25,9 @@ target_sources(GUI_lib INTERFACE
 target_include_directories(GUI_lib INTERFACE ${CMAKE_CURRENT_LIST_DIR}/include)
 
 target_link_libraries(GUI_lib INTERFACE 
-                        qvga_lib 
+                        qvga_lib
+                        #vga_lib 
                         pico_stdlib 
                         tinyusb_host
-                        tinyusb_board)
+                        tinyusb_board
+                        )

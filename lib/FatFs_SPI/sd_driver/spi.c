@@ -23,7 +23,7 @@ specific language governing permissions and limitations under the License.
 //
 #include "spi.h"
 
-static bool irqChannel1 = false;
+static bool irqChannel1 = true;
 static bool irqShared = true;
 
 static spi_t *spi_get_by_rx_dma(const uint rx_dma) {

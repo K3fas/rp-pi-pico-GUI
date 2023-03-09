@@ -24,8 +24,8 @@ namespace rpgui::ui
             : View(bounds, color) {}
         ~Button() {}
 
-        void Draw() const { IVGA::IDrawRectangle(this->GetBounds(), this->color); }
-        void Draw(const Bounds &bounds) const { IVGA::IDrawRectangle(bounds, this->color); }
+        void Draw() const;
+        void Draw(const Bounds &bounds) const;
 
         void AddHandler(const MouseEventType type, const SlotType<MouseEventType> &function)
         {

@@ -23,8 +23,8 @@ namespace rpgui::ui
 
         ~Rectangle() {}
 
-        void Draw() const final { IVGA::IDrawRectangle(this->GetBounds(), this->color); }
-        void Draw(const Bounds &bounds) const final { IVGA::IDrawRectangle(bounds, this->color); }
+        void Draw() const final;
+        void Draw(const Bounds &bounds) const final;
     };
 
 } // namespace rpgui::ui

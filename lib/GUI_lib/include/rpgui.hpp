@@ -24,6 +24,5 @@
 
 #include "rp_core.hpp"
 
-#include "IVGA.hpp"
 
 #endif // PICO_KIT_FRAMEWORK_RPGUI_HPP
