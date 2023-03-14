@@ -9,12 +9,12 @@ using namespace rpgui::common;
 
 const Bounds View::GetAdjustedBounds(const Bounds &bounds, const Margin &margin)
 {
-    return Bounds{
+    return Bounds(
         bounds.x + margin.l,
         bounds.y + margin.t,
         bounds.w - margin.l - margin.r,
-        bounds.h - margin.t - margin.b,
-    };
+        bounds.h - margin.t - margin.b
+    );
 }
 
 const Bounds View::GetAdjustedBounds() const

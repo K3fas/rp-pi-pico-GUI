@@ -9,7 +9,3 @@ void rpgui::ui::Rectangle::Draw() const
 {
      IVGA::IDrawRectangle(this->GetBounds(), this->color); 
 }
-void rpgui::ui::Rectangle::Draw(const Bounds &bounds) const
-{
-     IVGA::IDrawRectangle(bounds, this->color); 
-}

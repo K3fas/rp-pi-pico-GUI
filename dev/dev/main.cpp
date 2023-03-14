@@ -123,23 +123,23 @@ int main()
 
     auto btn = ui::Button{type::Width{30}, type::Height{30}, colors::Color::Red};
 
-    btn.AddHandler(MouseEventType::Clicked, onClicked);
+    btn.SetOnClickHandler(MouseEventType::Clicked, onClicked);
     lay.AddElement(btn);
 
     MouseEvent clicked(MouseEventType::Clicked, "onClickHandler");
-    dispatcher.Post(clicked);
 
     auto lay1 = layout::StackLayout(type::Point{240, 10}, type::Width{40}, type::Height{1});
     lay1.AddElement(rect1);
     lay1.AddElement(rect1);
     lay1.AddElement(rect1);
-    lay1.AddElement(rect1);
-    lay1.AddElement(rect1);
-    lay1.AddElement(rect1);
+    lay1.AddElement(ui::CheckBox(Width(20),Height(20),Color::Blue,Color::Red));
+    lay1.AddElement(ui::Label("Test"));
 
     auto page = new page::Page();
     page->AddLayout(lay);
     page->AddLayout(lay1);
+
+    dispatcher.Post(clicked);
 
     core::MainApp::AddPage(page);
     while (1)
@@ -174,9 +174,4 @@ void LED_blink_task()
 
     gpio_put(PICO_DEFAULT_LED_PIN, !led_state);
     led_state = 1 - led_state; // toggle
-}
-
-void ProcessButtonClicked()
-{
-    indicatorState = !indicatorState;
 }

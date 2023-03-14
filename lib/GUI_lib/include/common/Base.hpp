@@ -23,6 +23,9 @@ namespace rpgui::common
         Bounds() : x(0), y(0), w(0), h(0) {}
         Bounds(int16_t x, int16_t y, uint16_t w, uint32_t h)
             : x(x), y(y), w(w), h(h) {}
+        
+        Bounds(const Bounds&) = default;
+        ~Bounds() = default;
     };
 
     class Element
@@ -34,6 +37,7 @@ namespace rpgui::common
 
     public:
         Element();
+        Element(const Element&) = default;
         virtual ~Element();
 
         void SetParrent(Element *parrent) { _parrent = parrent; }
@@ -46,22 +50,21 @@ namespace rpgui::common
     class VisualElement : public Element
     {
     private:
-        Bounds _coords;
+        Bounds _bounds;
 
     public:
         Color color;
 
     public:
         VisualElement();
-        VisualElement(const Bounds &coords, const Color color) : _coords(coords), color(color) {}
-
+        VisualElement(const Bounds &coords, const Color color) : _bounds(coords), color(color) {}
+        VisualElement(const VisualElement&) = default;
         virtual ~VisualElement();
 
-        virtual const Bounds GetBounds() const { return _coords; }
+        virtual const Bounds GetBounds() const { return _bounds; }
 
         void SetBounds(const Bounds &coords);
         virtual void Draw() const = 0;
-        virtual void Draw(const Bounds &coords) const = 0;
     };
 
 } // namespace rpgui::common

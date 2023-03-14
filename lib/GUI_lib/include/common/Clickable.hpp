@@ -6,25 +6,25 @@
 #define PICO_KIT_FRAMEWORK_CLICKABLE_HPP
 
 #include <functional>
-#include "events/Dispatcher.hpp"
+#include "Dispatcher.hpp"
+#include "include.hpp"
 
-namespace rpgui::event
-{
-    enum class MouseEventType;
-}
+using namespace rpgui::type;
+using namespace rpgui::event;
 
 namespace rpgui::common
 {
     class Clickable
     {
     protected:
-        // rpgui::event::SlotType<rpgui::event::MouseEventType::Clicked> _clicked;
-        // rpgui::event::SlotType<rpgui::event::MouseEventType::Pressed> _pressed;
-        // rpgui::event::SlotType<rpgui::event::MouseEventyType::Released> _released;
+        SlotType<MouseEventType> _clicked;
 
     public:
         Clickable() = default;
+        Clickable(const Clickable&) = default;
         ~Clickable() = default;
+
+        virtual void SetOnClickHandler(const MouseEventType type, const SlotType<MouseEventType> &function);
     };
 } // namespace rpgui::common
 

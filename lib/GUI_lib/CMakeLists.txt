@@ -3,8 +3,10 @@ add_library(GUI_lib INTERFACE)
 target_sources(GUI_lib INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}/src/hid_handler.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/RP_GUI.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/rp_core.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/common/Base.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/common/View.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/common/Clickable.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/elements/Button.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/elements/CheckBox.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/elements/Entry.cpp
@@ -20,9 +22,18 @@ target_sources(GUI_lib INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}/src/layouts/AbsoluteLayout.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/layouts/StackLayout.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/layouts/Layout.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/events/Dispatcher.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/events/MouseEvent.cpp
         )
 
-target_include_directories(GUI_lib INTERFACE ${CMAKE_CURRENT_LIST_DIR}/include)
+target_include_directories(GUI_lib INTERFACE
+${CMAKE_CURRENT_LIST_DIR}/include
+${CMAKE_CURRENT_LIST_DIR}/include/common
+${CMAKE_CURRENT_LIST_DIR}/include/elements
+${CMAKE_CURRENT_LIST_DIR}/include/events
+${CMAKE_CURRENT_LIST_DIR}/include/layouts
+${CMAKE_CURRENT_LIST_DIR}/include/pages
+                )
 
 target_link_libraries(GUI_lib INTERFACE 
                         qvga_lib

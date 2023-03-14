@@ -28,7 +28,6 @@ extern sCanvas Canvas;
 
 // #include "cursor8.bmp.h"
 
-
 namespace IVGA
 {
     using namespace rpgui::colors;
@@ -234,6 +233,11 @@ namespace IVGA
     inline void ICore1Exec(void (*fnc)())
     {
         Core1Exec(fnc);
+    }
+
+    inline void IWaitVSync()
+    {
+        WaitVSync();
     }
 
 #endif

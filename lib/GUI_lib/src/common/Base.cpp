@@ -23,9 +23,9 @@ namespace rpgui::common
     {
     }
 
-    void VisualElement::SetBounds(const Bounds &coords)
+    void VisualElement::SetBounds(const Bounds &bounds)
     {
-        this->_coords = coords;
+        this->_bounds = bounds;
     }
 
 } // namespace rpgui::common

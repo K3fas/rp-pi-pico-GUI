@@ -22,7 +22,6 @@ namespace rpgui::layout
         ~StackLayout();
 
         void Draw() const final;
-        void Draw(const Bounds &coords) const final;
 
         template <typename T>
         bool AddElement(const T &element)

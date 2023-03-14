@@ -24,7 +24,6 @@ namespace rpgui::ui
         ~Rectangle() {}
 
         void Draw() const final;
-        void Draw(const Bounds &bounds) const final;
     };
 
 } // namespace rpgui::ui

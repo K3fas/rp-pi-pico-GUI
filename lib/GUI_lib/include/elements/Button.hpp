@@ -6,7 +6,6 @@
 #define PICO_KIT_FRAMEWORK_BUTTON_HPP
 
 #include "include.hpp"
-#include "rp_core.hpp"
 
 using namespace rpgui::type;
 using namespace rpgui::common;
@@ -24,13 +23,9 @@ namespace rpgui::ui
             : View(bounds, color) {}
         ~Button() {}
 
-        void Draw() const;
-        void Draw(const Bounds &bounds) const;
-
-        void AddHandler(const MouseEventType type, const SlotType<MouseEventType> &function)
-        {
-            rpgui::core::MainApp::AddListener(type, function);
-        }
+        void Draw() const final;
+        
+        
     };
 
 } // namespace rpgui::ui

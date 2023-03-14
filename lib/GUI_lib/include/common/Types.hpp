@@ -40,6 +40,13 @@ namespace rpgui::type
         Radius r;
     };
 
+    enum class MouseEventType
+    {
+        Clicked,
+        Released,
+        Pressed,
+    };
+
 } // namespace rpgui::type
 
-#endif // PICO_KIT_FRAMEWORK_TYPES_HPP
+#endif // PICO_KIT_FRAMEWORK_TYPES_HPPT

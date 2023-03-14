@@ -7,3 +7,15 @@
 ## Include hell resolve ???
 - Pri includnuti vgalib pisti usb kniznica 
 - Incluovanie IVGA v kombinacii z vga_lib nadava na undefined sCanvas .... pri pouziti zvlast funguje
+#
+
+
+
+## SD example, praca zo zlockami atd example...
+- na sd bitmapa a z nej vga kniznica zobrazi na monitoru 
+- prerobit raspPicoImg a Snd ... 
+- nemecek postup prace z obrazkami 
+- runtime preklad obrazkou z bmp
+
+
+# UPDATE SDK 

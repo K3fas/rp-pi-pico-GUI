@@ -5,23 +5,20 @@
 #ifndef PICO_KIT_FRAMEWORK_MOUSEEVENT_HPP
 #define PICO_KIT_FRAMEWORK_MOUSEDEVENT_HPP
 
+#include "include.hpp"
 #include "Event.hpp"
 #include <string>
 
+
+using namespace rpgui::type;
+
 namespace rpgui::event
 {
-    enum class MouseEventType
-    {
-        Clicked,
-        Released,
-        Pressed,
-    };
-
     class MouseEvent : public Event<MouseEventType>
     {
     private:
     public:
-        MouseEvent(const MouseEventType &type, const std::string &name) : Event<MouseEventType>(type, name){};
+        MouseEvent(const MouseEventType &type, const std::string &name);
         virtual ~MouseEvent() = default;
     };
 

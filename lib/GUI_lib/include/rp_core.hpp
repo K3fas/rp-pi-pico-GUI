@@ -27,6 +27,7 @@ namespace rpgui::core
     {
     private:
         static constexpr float sensitivity = 2.0f;
+        static constexpr bool waitVSync = true;
 
         inline static std::vector<Page *> _pages;
         inline static Dispatcher<MouseEventType> _mouseHandler;
@@ -58,6 +59,7 @@ namespace rpgui::core
             if (MOUSE.clicked)
             {
                 _mouseHandler.Post(_events.clicked);
+                MOUSE.clicked = !MOUSE.clicked;
             }
         }
 
@@ -91,18 +93,16 @@ namespace rpgui::core
             _pages.emplace_back(page);
         }
 
-        static void Update()
-        {
-            ProcessMouseInput();
-            ProcessMouseMovement();
-            DrawPages();
-        }
+        static void Update();
 
         template <typename T>
-        static void AddListener(T type, const rpgui::event::SlotType<T> &function)
+        static void AddListener(T type, const rpgui::event::SlotType<T> &function, Clickable* sender)
         {
             _mouseHandler.Subscribe(type, function);
         }
+
+        private:   
+            static void updateOnCore1();
     };
 
 } // namespace rpgui::core

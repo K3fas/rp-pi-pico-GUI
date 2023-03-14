@@ -20,9 +20,4 @@ namespace rpgui::layout
         }
     }
 
-    void StackLayout::Draw(const Bounds &coords) const
-    {
-        Draw();
-    }
-
 } // namespace rpgui::layout

@@ -19,7 +19,7 @@ namespace rpgui::event
 
     public:
         Event() = default;
-        Event(T type, const std::string &name) : _type(type), _name(name) {}
+        Event(T type, const std::string &name) : _type(type), _name(name){};
         virtual ~Event() = default;
 
         inline const T Type() const { return _type; }
