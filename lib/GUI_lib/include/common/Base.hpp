@@ -36,6 +36,11 @@ namespace rpgui::common
         {
             return Bounds(x + rhs.x, y + rhs.y, w, h);
         }
+
+        friend Bounds operator-(const Bounds &lhs, const uint8_t rhs)
+        {
+            return Bounds(lhs.x + rhs, lhs.y + rhs, lhs.w - rhs * 2, lhs.h - rhs * 2);
+        }
     };
 
     class Element
@@ -67,13 +72,13 @@ namespace rpgui::common
 
     public:
         VisualElement();
-        VisualElement(const Bounds &coords, const Color color) : _bounds(coords), color(color) {}
+        VisualElement(const Bounds &bounds, const Color color) : _bounds(bounds), color(color) {}
         VisualElement(const VisualElement &) = default;
         virtual ~VisualElement();
 
         const Bounds GetBounds() const { return _bounds; }
 
-        virtual void SetBounds(const Bounds &coords);
+        virtual void SetBounds(const Bounds &bounds);
 
         virtual void Draw() const = 0;
     };

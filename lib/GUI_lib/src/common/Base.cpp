@@ -3,6 +3,7 @@
 //
 
 #include "common/Base.hpp"
+#include "Base.hpp"
 
 namespace rpgui::common
 {
@@ -27,5 +28,4 @@ namespace rpgui::common
     {
         this->_bounds = bounds;
     }
-
 } // namespace rpgui::common

@@ -133,6 +133,7 @@ int main()
     auto lay1 = layout::StackLayout(type::Point{240, 10}, type::Width{40}, type::Height{1});
     lay1.AddElement(new ui::CheckBox(Width(20),Height(20),Color::Gray,Color::White));
     lay1.AddElement(new ui::Label("Test"));
+    lay1.AddElement(new ui::Switch<uint8_t>(Width{10},Height{11},Color::Red,Color::Blue,2));
 
     auto page = new page::Page();
     page->AddLayout(lay);

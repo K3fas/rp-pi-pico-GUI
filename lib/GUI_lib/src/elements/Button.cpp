@@ -11,19 +11,27 @@ void rpgui::ui::Button::SetText(const std::string &text)
     _text.str = text;
 
     auto tWidth = text.length() * fontSize;
-    // Put text to center of button
     _text.bounds = Bounds(0, 0,
                           tWidth,
                           fontSize);
 }
 
+void rpgui::ui::Button::SetBounds(const Bounds &bounds)
+{
+    this->rpgui::common::View::SetBounds(bounds);
+    // Put text to center of button
+    _text.bounds = Bounds(bounds.x + (bounds.w - _text.bounds.w) / 2,
+                          bounds.y + (bounds.h - _text.bounds.h) / 2,
+                          _text.bounds.w,
+                          _text.bounds.h);
+}
+
 void rpgui::ui::Button::Draw() const
 {
-    auto bounds = this->GetBounds();
-    IVGA::IDrawRectangle(bounds, this->color);
+    IVGA::IDrawRectangle(this->GetBounds(), this->color);
     if (!_text.str.empty())
     {
-        IVGA::IDrawText(_text.str.c_str(), IVGA::Point{bounds.x + (bounds.w - _text.bounds.w) / 2, bounds.y + (bounds.h - _text.bounds.h) / 2},
+        IVGA::IDrawText(_text.str.c_str(), IVGA::Point{_text.bounds.x, _text.bounds.y},
                         this->textColor);
     }
 }

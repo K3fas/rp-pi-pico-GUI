@@ -26,9 +26,10 @@ namespace rpgui::layout
         template <typename T>
         bool AddElement(T *element)
         {
-            element->SetParrent(this);
-            auto elementHeigth = element->GetBounds().h;
             auto bounds = this->GetBounds();
+            auto elementHeigth = element->GetBounds().h;
+            element->SetParrent(this);
+            
             bounds.y += _currentHeight;
             bounds.h = elementHeigth;
 

@@ -20,6 +20,11 @@ namespace rpgui::core
         const uint16_t _size = 2;
 
     public:
+        struct pos_t
+        {
+            float x = 0, y = 0;
+        } pos;
+        
         Cursor() = default;
         Cursor(const Cursor &) = delete;
         ~Cursor() = default;

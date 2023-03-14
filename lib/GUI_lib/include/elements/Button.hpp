@@ -35,6 +35,8 @@ namespace rpgui::ui
 
         void SetText(const std::string& text);
 
+        void SetBounds(const Bounds& bounds);
+
         void Draw() const final;
     };
 

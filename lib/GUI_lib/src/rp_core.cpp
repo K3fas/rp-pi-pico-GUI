@@ -66,20 +66,19 @@ void rpgui::core::MainApp::processMouseMovement()
 {
     if (!MOUSE.moved)
         return;
-    auto pos = MainApp::_cursor.GetBounds();
-    pos.x += MOUSE.mousePos[0] * sensitivity * 0.020;
-    pos.y += MOUSE.mousePos[1] * sensitivity * 0.020;
+    MainApp::_cursor.pos.x += MOUSE.mousePos[0] * sensitivity * 0.020;
+    MainApp::_cursor.pos.y += MOUSE.mousePos[1] * sensitivity * 0.020;
 
-    if (pos.x > WIDTH)
-        pos.x = WIDTH;
-    if (pos.y > HEIGHT)
-        pos.y = HEIGHT;
-    if (pos.x < 0)
-        pos.x = 0;
-    if (pos.y < 0)
-        pos.y = 0;
+    if (MainApp::_cursor.pos.x > WIDTH)
+        MainApp::_cursor.pos.x = WIDTH;
+    if (MainApp::_cursor.pos.y > HEIGHT)
+        MainApp::_cursor.pos.y = HEIGHT;
+    if (MainApp::_cursor.pos.x < 0)
+        MainApp::_cursor.pos.x = 0;
+    if (MainApp::_cursor.pos.y < 0)
+        MainApp::_cursor.pos.y = 0;
 
-    MainApp::_cursor.SetBounds(pos);
+    MainApp::_cursor.SetBounds(Bounds(MainApp::_cursor.pos.x, MainApp::_cursor.pos.y, 0, 0));
 
     MOUSE.mousePos[0] = 0;
     MOUSE.mousePos[1] = 0;
