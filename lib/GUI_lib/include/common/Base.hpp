@@ -26,6 +26,11 @@ namespace rpgui::common
         
         Bounds(const Bounds&) = default;
         ~Bounds() = default;
+
+        Bounds operator- (const uint8_t rhs)
+        {
+            return Bounds(x+rhs,y+rhs,w-rhs*2,h-rhs*2);
+        }
     };
 
     class Element
@@ -61,9 +66,10 @@ namespace rpgui::common
         VisualElement(const VisualElement&) = default;
         virtual ~VisualElement();
 
-        virtual const Bounds GetBounds() const { return _bounds; }
+        const Bounds GetBounds() const { return _bounds; }
 
-        void SetBounds(const Bounds &coords);
+        virtual void SetBounds(const Bounds &coords);
+        
         virtual void Draw() const = 0;
     };
 

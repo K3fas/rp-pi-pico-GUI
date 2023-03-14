@@ -18,6 +18,10 @@
 #include "elements/Stepper.hpp"
 #include "elements/Switch.hpp"
 
+#include "common/Types.hpp"
+
+#include "events/Event.hpp"
+
 #include "layouts/StackLayout.hpp"
 
 #include "pages/Page.hpp"

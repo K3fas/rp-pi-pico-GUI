@@ -8,6 +8,11 @@
 #include <stdint.h>
 #include "Base.hpp"
 
+namespace rpgui::type
+{
+    struct Point;
+}
+
 namespace rpgui::common
 {
     struct Margin
@@ -49,6 +54,8 @@ namespace rpgui::common
 
         static const Bounds GetAdjustedBounds(const Bounds &bounds, const Margin &margin);
         const Bounds GetAdjustedBounds() const;
+
+        bool IsInBounds(const rpgui::type::Point &point);
     };
 } // namespace rpgui::common
 

@@ -3,8 +3,9 @@
 //
 
 #include "Clickable.hpp"
-#include "Types.hpp"
 #include "rp_core.hpp"
+#include "Types.hpp"
+#include "MouseDispatcher.hpp"
 
 using namespace rpgui::type;
 

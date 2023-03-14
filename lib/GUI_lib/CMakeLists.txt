@@ -19,11 +19,11 @@ target_sources(GUI_lib INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}/src/elements/Slider.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/elements/Stepper.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/elements/Switch.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/elements/Cursor.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/layouts/AbsoluteLayout.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/layouts/StackLayout.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/layouts/Layout.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/events/Dispatcher.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/src/events/MouseEvent.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/events/MouseDispatcher.cpp
         )
 

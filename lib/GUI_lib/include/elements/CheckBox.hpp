@@ -7,6 +7,15 @@
 
 #include "include.hpp"
 
+namespace rpgui::type{
+    enum class MouseEventType;
+}
+
+namespace rpgui::event{
+    template<typename T>
+    class Event;
+}
+
 using namespace rpgui::type;
 using namespace rpgui::common;
 
@@ -30,6 +39,9 @@ namespace rpgui::ui
         ~CheckBox() {}
 
         void Draw() const final;
+
+    private:
+        static void changeState(rpgui::event::Event<MouseEventType> &event, Clickable* sender);
     };
 
 } // namespace rpgui::element

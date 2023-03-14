@@ -2,8 +2,11 @@
 // Created by kefas on 27.2.23.
 //
 #include "MouseDispatcher.hpp"
+#include "Cursor.hpp"
 
-void rpgui::event::MouseDispatcher::Post(Event<MouseEventType> &event)
+
+
+void rpgui::event::MouseDispatcher::Post(Event<MouseEventType> &event, uint16_t x, uint16_t y)
 {
     // No subscribers found
     if (_listeners.find(event.Type()) == _listeners.end())
@@ -15,7 +18,11 @@ void rpgui::event::MouseDispatcher::Post(Event<MouseEventType> &event)
             return;
         // Posts event to handling function of listener,
         // with information of sender objs
-        listener.handler(event,listener.sender);
+        auto view = (rpgui::common::View*)listener.sender;
+        view->GetBounds();
+        if(view->IsInBounds(Point{x,y})){
+            listener.handler(event,listener.sender);
+        }
     }
 }
 
@@ -23,3 +30,4 @@ void rpgui::event::MouseDispatcher::Subscribe(MouseEventType type, const Handler
 {
     _listeners[type].push_back(handler);
 }
+

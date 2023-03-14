@@ -176,9 +176,9 @@ namespace IVGA
         DrawRect(coord.x, coord.y, coord.w, coord.h, color);
     }
 
-    inline void IDrawFrame(const Rectangle &rect, const Color &color)
+    inline void IDrawFrame(const rpgui::common::Bounds &coord, const Color &color)
     {
-        DrawFrame(rect.start.x, rect.start.y, rect.width.v, rect.height.v, color);
+        DrawFrame(coord.x, coord.y, coord.w, coord.h, color);
     }
 
     inline void IDrawPoint(const Point &point, const Color &color)
