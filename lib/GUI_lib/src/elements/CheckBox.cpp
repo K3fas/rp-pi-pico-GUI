@@ -55,5 +55,5 @@ void rpgui::ui::CheckBox::Draw() const
 void rpgui::ui::CheckBox::changeState(rpgui::event::Event<MouseEventType> &event, Clickable *sender)
 {
     auto box = (ui::CheckBox *)sender;
-    box->checked = !box->checked;
+    box->checked = !(box->checked);
 }

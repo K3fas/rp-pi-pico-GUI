@@ -126,11 +126,12 @@ int main()
     auto btn = new ui::Button{type::Width{30}, type::Height{30}, colors::Color::SemiCyan};
 
     btn->SetOnClickHandler(MouseEventType::Clicked, onClicked);
+    btn->SetText("Button");
     lay.AddElement(btn);
 
 
     auto lay1 = layout::StackLayout(type::Point{240, 10}, type::Width{40}, type::Height{1});
-    lay1.AddElement(new ui::CheckBox(Width(20),Height(20),Color::Blue,Color::Red));
+    lay1.AddElement(new ui::CheckBox(Width(20),Height(20),Color::Gray,Color::White));
     lay1.AddElement(new ui::Label("Test"));
 
     auto page = new page::Page();
