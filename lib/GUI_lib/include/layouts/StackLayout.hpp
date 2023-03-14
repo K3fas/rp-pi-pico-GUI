@@ -24,24 +24,21 @@ namespace rpgui::layout
         void Draw() const final;
 
         template <typename T>
-        bool AddElement(const T &element)
+        bool AddElement(T *element)
         {
-            auto cp = new T(element);
-            View *toAdd = cp;
-
-            toAdd->SetParrent(this);
-            auto elementHeigth = toAdd->GetBounds().h;
+            element->SetParrent(this);
+            auto elementHeigth = element->GetBounds().h;
             auto bounds = this->GetBounds();
             bounds.y += _currentHeight;
             bounds.h = elementHeigth;
 
-            auto adjusted = GetAdjustedBounds(bounds, toAdd->margin);
+            auto adjusted = GetAdjustedBounds(bounds, element->margin);
 
-            toAdd->SetBounds(adjusted);
+            element->SetBounds(adjusted);
 
             _currentHeight += elementHeigth;
 
-            _children.emplace_back(toAdd);
+            _children.emplace_back(element);
             return true;
         }
     };

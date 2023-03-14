@@ -48,12 +48,17 @@ void SetupRP()
 #endif
 }
 
-void onClicked(const Event<MouseEventType> &event)
+void onClicked(Event<MouseEventType> &event, Clickable* sender)
 {
+    auto btn = (ui::Button*) sender;
     if (event.Type() == MouseEventType::Clicked)
     {
         printf("Clicked Event function called");
     }
+    if(btn){
+        btn->color = Color::DarkRed;
+    }
+    event.SetHandled();
 }
 
 int main()
@@ -67,7 +72,7 @@ int main()
     SetupRP();
 
     // Logger
-
+/*
     sd_card_t *pSD = sd_get_by_num(0);
     FRESULT fr = f_mount(&pSD->fatfs, pSD->pcName, 1);
     if (FR_OK != fr)
@@ -108,38 +113,32 @@ int main()
     }
 
     f_unmount(pSD->pcName);
-
+*/
     // GUI
-
-    Dispatcher<MouseEventType> dispatcher;
 
     auto lay = layout::StackLayout(type::Point{60, 10}, type::Width{120}, type::Height{200});
     auto rect1 = ui::Rectangle(type::Width{20}, type::Height{20}, colors::Color::Green);
     rect1.margin = Margin{5, 5, 5, 5};
 
-    lay.AddElement(ui::Rectangle(type::Width{20}, type::Height{40}, colors::Color::Red));
-    lay.AddElement(rect1);
-    lay.AddElement(ui::Rectangle(type::Width{20}, type::Height{40}, colors::Color::Blue));
+    lay.AddElement(new ui::Rectangle(type::Width{20}, type::Height{40}, colors::Color::Red));
+    lay.AddElement(new ui::Rectangle(type::Width{20}, type::Height{40}, colors::Color::Blue));
 
-    auto btn = ui::Button{type::Width{30}, type::Height{30}, colors::Color::Red};
+    auto btn = new ui::Button{type::Width{30}, type::Height{30}, colors::Color::SemiCyan};
 
-    btn.SetOnClickHandler(MouseEventType::Clicked, onClicked);
+    btn->SetOnClickHandler(MouseEventType::Clicked, onClicked);
     lay.AddElement(btn);
 
-    MouseEvent clicked(MouseEventType::Clicked, "onClickHandler");
 
     auto lay1 = layout::StackLayout(type::Point{240, 10}, type::Width{40}, type::Height{1});
-    lay1.AddElement(rect1);
-    lay1.AddElement(rect1);
-    lay1.AddElement(rect1);
-    lay1.AddElement(ui::CheckBox(Width(20),Height(20),Color::Blue,Color::Red));
-    lay1.AddElement(ui::Label("Test"));
+    lay1.AddElement(new ui::CheckBox(Width(20),Height(20),Color::Blue,Color::Red));
+    lay1.AddElement(new ui::Label("Test"));
 
     auto page = new page::Page();
     page->AddLayout(lay);
     page->AddLayout(lay1);
 
-    dispatcher.Post(clicked);
+    extern HID::MOUSE_t MOUSE;
+    MOUSE.clicked = true;
 
     core::MainApp::AddPage(page);
     while (1)

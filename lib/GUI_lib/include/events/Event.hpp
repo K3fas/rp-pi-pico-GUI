@@ -6,6 +6,7 @@
 #define PICO_KIT_FRAMEWORK_EVENT_HPP
 
 #include <string>
+#include <functional>
 
 namespace rpgui::event
 {
@@ -25,8 +26,9 @@ namespace rpgui::event
         inline const T Type() const { return _type; }
         inline const std::string &Name() const { return _name; }
         virtual bool IsHandled() { return _handled; }
+        void SetHandled() { _handled = true; }
     };
 
-} // namespace rpgui::evnt
+} // namespace rpgui::event
 
 #endif // PICO_KIT_FRAMEWORK_EVENT_HPP

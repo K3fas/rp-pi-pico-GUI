@@ -3,13 +3,16 @@
 //
 
 #include "Clickable.hpp"
+#include "Types.hpp"
 #include "rp_core.hpp"
+
+using namespace rpgui::type;
 
 namespace rpgui::common
 {
-    void rpgui::common::Clickable::SetOnClickHandler(const MouseEventType type, const SlotType<MouseEventType> &function)
+    void Clickable::SetOnClickHandler(const rpgui::type::MouseEventType type, const rpgui::type::HandleFunc &function)
     {
-        rpgui::core::MainApp::AddListener(type,function,this);
+        rpgui::core::MainApp::AddListener(type,Handler{function,this});
     }
 
 } // namespace rpgui::common

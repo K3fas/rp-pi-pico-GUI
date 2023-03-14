@@ -24,6 +24,7 @@ target_sources(GUI_lib INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}/src/layouts/Layout.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/events/Dispatcher.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/events/MouseEvent.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/events/MouseDispatcher.cpp
         )
 
 target_include_directories(GUI_lib INTERFACE

@@ -6,9 +6,9 @@
 #define PICO_KIT_FRAMEWORK_CORE_HPP
 
 #include "include.hpp"
-#include "pages/Page.hpp"
-#include "events/MouseEvent.hpp"
-#include "events/Dispatcher.hpp"
+#include "Page.hpp"
+#include "MouseEvent.hpp"
+#include "MouseDispatcher.hpp"
 
 #include "tusb.h"
 #include "tusb_data.hpp"
@@ -30,7 +30,7 @@ namespace rpgui::core
         static constexpr bool waitVSync = true;
 
         inline static std::vector<Page *> _pages;
-        inline static Dispatcher<MouseEventType> _mouseHandler;
+        inline static MouseDispatcher _mouseHandler;
         inline static struct events_s
         {
             inline static MouseEvent pressed = MouseEvent(MouseEventType::Pressed, "onPressedEvent");
@@ -90,19 +90,18 @@ namespace rpgui::core
 
         static void AddPage(Page *page)
         {
-            _pages.emplace_back(page);
+            _pages.push_back(page);
         }
 
         static void Update();
 
-        template <typename T>
-        static void AddListener(T type, const rpgui::event::SlotType<T> &function, Clickable* sender)
+        static void AddListener(MouseEventType type, const Handler& handler)
         {
-            _mouseHandler.Subscribe(type, function);
+            _mouseHandler.Subscribe(type, handler);
         }
 
-        private:   
-            static void updateOnCore1();
+    private:
+        static void updateOnCore1();
     };
 
 } // namespace rpgui::core

@@ -30,8 +30,6 @@ namespace rpgui::ui
         ~CheckBox() {}
 
         void Draw() const final;
-
-        void SetOnClickHandler(const MouseEventType type, const SlotType<MouseEventType> &function) final;
     };
 
 } // namespace rpgui::element

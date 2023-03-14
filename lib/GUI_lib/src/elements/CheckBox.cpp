@@ -38,7 +38,3 @@ void rpgui::ui::CheckBox::Draw() const
     }
 }
 
-void rpgui::ui::CheckBox::SetOnClickHandler(const MouseEventType type, const SlotType<MouseEventType> &function)
-{
-    rpgui::core::MainApp::AddListener(type, function, this);
-}
