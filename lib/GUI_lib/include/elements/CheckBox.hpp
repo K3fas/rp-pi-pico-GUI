@@ -7,12 +7,14 @@
 
 #include "include.hpp"
 
-namespace rpgui::type{
+namespace rpgui::type
+{
     enum class MouseEventType;
 }
 
-namespace rpgui::event{
-    template<typename T>
+namespace rpgui::event
+{
+    template <typename T>
     class Event;
 }
 
@@ -28,20 +30,24 @@ namespace rpgui::ui
         const uint8_t _minWidth = 5;
 
     public:
-        bool checked;
+        BindableProperty<bool> checked;
         Color tickColor;
 
     public:
-        CheckBox(const Width &width, const Height &heigth, const Color backgroundColor, const Color tickColor = Color::White);
+        CheckBox() = delete;
+        CheckBox(const CheckBox &) = default;
+        ~CheckBox() = default;
 
-        CheckBox(const Bounds &bounds, const Color &backgroundColor, const Color tickColor = Color::White)
-            : View(bounds, backgroundColor), tickColor(tickColor) {}
-        ~CheckBox() {}
+        CheckBox(const Width &width, const Height &height, const bool &value, const Color backgroundColor, const Color tickColor = Color::White);
+        CheckBox(const Width &width, const Height &height, bool &value, const Color backgroundColor, const Color tickColor = Color::White);
+
+        CheckBox(const Bounds &bounds, const Color &backgroundColor, const bool &value, const Color tickColor = Color::White);
+        CheckBox(const Bounds &bounds, const Color &backgroundColor, bool &value, const Color tickColor = Color::White);
 
         void Draw() const final;
 
     private:
-        static void changeState(rpgui::event::Event<MouseEventType> &event, Clickable* sender);
+        static void changeState(rpgui::event::Event<MouseEventType> &event, Clickable *sender);
     };
 
 } // namespace rpgui::element
