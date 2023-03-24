@@ -8,6 +8,8 @@
 #include "tusb.h"
 #include "tusb_data.hpp"
 
+#include "timers.hpp"
+
 #include <vector>
 
 namespace rpgui::core
@@ -18,7 +20,6 @@ namespace rpgui::core
 namespace rpgui::event
 {
     class MouseDispatcher;
-    class MouseEvent;
     class Handler;
 }
 
@@ -47,14 +48,17 @@ namespace rpgui::core
         static constexpr bool waitVSync = true;
 
         inline static std::vector<Page *> _pages;
-        inline static Page* _selectedPage;
+        inline static Page *_selectedPage;
 
         static enum class clickState {
             none,
             pressed,
         } _clickState;
+
         static MouseDispatcher _mouseHandler;
         static Cursor _cursor;
+
+        inline static timers_t timers;
 
     public:
         MainApp() = delete;

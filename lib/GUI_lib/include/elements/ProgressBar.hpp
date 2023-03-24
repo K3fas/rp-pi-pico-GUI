@@ -29,8 +29,8 @@ namespace rpgui::ui
         ProgressBar(const ProgressBar &) = default;
         ~ProgressBar() = default;
 
-        ProgressBar(const Point start, const Width& width, const Height& height, Color progressColor, uint16_t max, uint16_t min);
-        ProgressBar(const Bounds& bounds,Color progressColor, uint16_t max, uint16_t min);
+        ProgressBar(const Point start, const Width& width, const Height& height, Color progressColor, uint16_t min, uint16_t max);
+        ProgressBar(const Bounds& bounds,Color progressColor, uint16_t min, uint16_t max);
 
         void SetProgess(const double progress);
         void SetBorderSize(const uint8_t size);

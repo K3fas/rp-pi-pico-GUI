@@ -4,7 +4,7 @@
 #include "MouseDispatcher.hpp"
 #include "Cursor.hpp"
 
-void rpgui::event::MouseDispatcher::Post(Event<MouseEventType> &event, uint16_t x, uint16_t y)
+void rpgui::event::MouseDispatcher::Post(MouseEvent<MouseEventType> &event)
 {
     // No subscribers found
     for (auto const &priority : _listeners)
@@ -20,7 +20,7 @@ void rpgui::event::MouseDispatcher::Post(Event<MouseEventType> &event, uint16_t 
             // with information of sender objs
             auto view = (rpgui::common::View *)handler.sender;
             view->GetBounds();
-            if (view->IsInBounds(Point(x, y)))
+            if (view->IsInBounds(Point(event.xPos, event.yPos)))
             {
                 handler.handler(event, handler.sender);
             }

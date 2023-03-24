@@ -8,7 +8,6 @@
 
 #include "bsp/board.h"
 #include "tusb.h"
-#include "tusb_data.hpp"
 
 #include "rpgui.hpp"
 
@@ -48,14 +47,15 @@ void SetupRP()
 #endif
 }
 
-void onClicked(Event<MouseEventType> &event, Clickable* sender)
+void onClicked(MouseEvent<MouseEventType> &event, Clickable *sender)
 {
-    auto btn = (ui::Button*) sender;
+    auto btn = (ui::Button *)sender;
     if (event.Type() == MouseEventType::Clicked)
     {
-        printf("Clicked Event function called");
+        printf("Clicked MouseEvent function called");
     }
-    if(btn){
+    if (btn)
+    {
         btn->color = Color::DarkRed;
     }
     event.SetHandled();
@@ -71,48 +71,48 @@ int main()
     SetupRP();
 
     // Logger
-/*
-    sd_card_t *pSD = sd_get_by_num(0);
-    FRESULT fr = f_mount(&pSD->fatfs, pSD->pcName, 1);
-    if (FR_OK != fr)
-        panic("f_mount error: %s (%d)\n", FRESULT_str(fr), fr);
-    FIL fil;
-    const char *const filename = "log.txt";
-    fr = f_open(&fil, filename, FA_OPEN_APPEND | FA_WRITE);
-    if (FR_OK != fr && FR_EXIST != fr)
-        panic("f_open(%s) error: %s (%d)\n", filename, FRESULT_str(fr), fr);
-    if (f_printf(&fil, "Hello, world!\n") < 0)
-    {
-        printf("f_printf failed\n");
-    }
+    /*
+        sd_card_t *pSD = sd_get_by_num(0);
+        FRESULT fr = f_mount(&pSD->fatfs, pSD->pcName, 1);
+        if (FR_OK != fr)
+            panic("f_mount error: %s (%d)\n", FRESULT_str(fr), fr);
+        FIL fil;
+        const char *const filename = "log.txt";
+        fr = f_open(&fil, filename, FA_OPEN_APPEND | FA_WRITE);
+        if (FR_OK != fr && FR_EXIST != fr)
+            panic("f_open(%s) error: %s (%d)\n", filename, FRESULT_str(fr), fr);
+        if (f_printf(&fil, "Hello, world!\n") < 0)
+        {
+            printf("f_printf failed\n");
+        }
 
-    rplog::Logger logger;
-    logger.AddLoggingFile(&fil, rplog::Level::TRACE);
-    logger.Log("TEEST");
+        rplog::Logger logger;
+        logger.AddLoggingFile(&fil, rplog::Level::TRACE);
+        logger.Log("TEEST");
 
-    fr = f_close(&fil);
-    if (FR_OK != fr)
-    {
-        printf("f_close error: %s (%d)\n", FRESULT_str(fr), fr);
-    }
-    fr = f_open(&fil, filename, FA_OPEN_APPEND | FA_WRITE | FA_READ);
-    if (FR_OK != fr && FR_EXIST != fr)
-        panic("f_open(%s) error: %s (%d)\n", filename, FRESULT_str(fr), fr);
+        fr = f_close(&fil);
+        if (FR_OK != fr)
+        {
+            printf("f_close error: %s (%d)\n", FRESULT_str(fr), fr);
+        }
+        fr = f_open(&fil, filename, FA_OPEN_APPEND | FA_WRITE | FA_READ);
+        if (FR_OK != fr && FR_EXIST != fr)
+            panic("f_open(%s) error: %s (%d)\n", filename, FRESULT_str(fr), fr);
 
-    char buf[256];
-    while (f_gets(buf, sizeof buf, &fil))
-    {
-        printf("%s", buf);
-    }
+        char buf[256];
+        while (f_gets(buf, sizeof buf, &fil))
+        {
+            printf("%s", buf);
+        }
 
-    fr = f_close(&fil);
-    if (FR_OK != fr)
-    {
-        printf("f_close error: %s (%d)\n", FRESULT_str(fr), fr);
-    }
+        fr = f_close(&fil);
+        if (FR_OK != fr)
+        {
+            printf("f_close error: %s (%d)\n", FRESULT_str(fr), fr);
+        }
 
-    f_unmount(pSD->pcName);
-*/
+        f_unmount(pSD->pcName);
+    */
     // GUI
 
     auto lay = new layout::StackLayout(type::Point{60, 10}, type::Width{120}, type::Height{200});
@@ -127,15 +127,23 @@ int main()
     btn->SetOnClickHandler(MouseEventType::Clicked, onClicked);
     btn->SetText("Button");
     lay->AddElement(btn);
-    lay->AddElement(new ui::ProgressBar(Bounds(0,0,16,16),Color::Red,100,0));
 
+    auto bar = new ui::ProgressBar(Bounds(0, 0, 16, 16), Color::Red, 0, 100);
+    lay->AddElement(bar);
+    bar->SetProgess(43.0);
 
     auto lay1 = new layout::StackLayout(type::Point{240, 10}, type::Width{40}, type::Height{1});
-    lay1->AddElement(new ui::CheckBox(Width(20),Height(20),Color::Gray,Color::White));
+    lay1->AddElement(new ui::CheckBox(Width(20), Height(20), false, Color::Gray, Color::White));
     std::string binder = "Databinder";
-    lay1->AddElement(new ui::Label(binder));
-    lay1->AddElement(new ui::Label("Implicit"));
-    lay1->AddElement(new ui::Stepper<uint8_t>(Width{10},Height{11},Color::Red,Color::Blue,2));
+    lay->AddElement(new ui::Label(binder));
+    lay->AddElement(new ui::Label("Implicit"));
+    lay1->AddElement(new ui::Stepper<uint8_t>(Width{10}, Height{11}, Color::Red, Color::Blue, 2));
+
+    auto radBtn = new ui::RadioButton(Point(0, 0), Width(60), Height(16), Color::Red);
+    radBtn->AddItem("Dog");
+    radBtn->AddItem("Cat");
+    radBtn->AddItem("Camel");
+    lay->AddElement(radBtn);
 
     auto page = new page::Page();
     page->AddLayout(lay);

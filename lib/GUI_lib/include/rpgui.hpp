@@ -20,7 +20,7 @@
 
 #include "common/Types.hpp"
 
-#include "events/Event.hpp"
+#include "events/MouseEvent.hpp"
 
 #include "layouts/StackLayout.hpp"
 

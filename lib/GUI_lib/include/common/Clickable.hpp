@@ -12,7 +12,7 @@
 namespace rpgui::event
 {
     template <typename T>
-    class Event;
+    class MouseEvent;
 }
 
 namespace rpgui::common
@@ -23,7 +23,7 @@ namespace rpgui::common
 namespace rpgui::type
 {
 
-    using HandleFunc = std::function<void(rpgui::event::Event<rpgui::type::MouseEventType> &, rpgui::common::Clickable *)>;
+    using HandleFunc = std::function<void(rpgui::event::MouseEvent<rpgui::type::MouseEventType> &, rpgui::common::Clickable *)>;
 }
 
 using namespace rpgui::type;

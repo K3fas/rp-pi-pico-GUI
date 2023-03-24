@@ -5,7 +5,7 @@
 #include "CheckBox.hpp"
 #include "IVGA.hpp"
 #include "rp_core.hpp"
-#include "Event.hpp"
+#include "MouseEvent.hpp"
 #include "MouseDispatcher.hpp"
 
 using namespace rpgui::type;
@@ -55,6 +55,9 @@ rpgui::ui::CheckBox::CheckBox(const Bounds &bounds, const Color &backgroundColor
 }
 void rpgui::ui::CheckBox::Draw() const
 {
+    #ifdef TRACKING
+    auto start = time_us_32();
+#endif
     auto bounds = this->GetBounds();
     
     if (checked.GetValue())
@@ -79,9 +82,12 @@ void rpgui::ui::CheckBox::Draw() const
         IVGA::IDrawFrame(bounds-1,this->color);
         IVGA::IDrawRectangle(bounds-2, this->tickColor);
     }
+#ifdef TRACKING
+    printf("CheckBox Draw took %f\n",time_us_32()-start);
+#endif
 }
 
-void rpgui::ui::CheckBox::changeState(rpgui::event::Event<MouseEventType> &event, Clickable *sender)
+void rpgui::ui::CheckBox::changeState(rpgui::event::MouseEvent<MouseEventType> &event, Clickable *sender)
 {
     auto box = (ui::CheckBox *)sender;
     box->checked.SetValue(!(box->checked.GetValue()));

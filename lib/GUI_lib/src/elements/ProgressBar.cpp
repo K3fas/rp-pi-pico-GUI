@@ -5,12 +5,12 @@
 #include "ProgressBar.hpp"
 #include "IVGA.hpp"
 
-rpgui::ui::ProgressBar::ProgressBar(const Point start, const Width &width, const Height &height, Color progressColor, uint16_t max, uint16_t min)
+rpgui::ui::ProgressBar::ProgressBar(const Point start, const Width &width, const Height &height, Color progressColor, uint16_t min, uint16_t max)
     : View(Bounds(start.x, start.y, width.v, height.v), Color::SemiGray), _max(max), _min(min), progressColor(progressColor), borderColor(Color::Gray)
 {
 }
 
-rpgui::ui::ProgressBar::ProgressBar(const Bounds &bounds, Color progressColor, uint16_t max, uint16_t min)
+rpgui::ui::ProgressBar::ProgressBar(const Bounds &bounds, Color progressColor, uint16_t min, uint16_t max)
     : View(bounds, Color::SemiGray), _max(max), _min(min), progressColor(progressColor), borderColor(Color::Gray)
 {
 }
@@ -54,7 +54,14 @@ void rpgui::ui::ProgressBar::Draw() const
 
 void rpgui::ui::ProgressBar::calculateCenter()
 {
+#ifdef TRACKING
+    auto start = time_us_32();
+#endif
     // adjusted for border size
     auto width = this->GetBounds().w - _borderSize * 2;
-    _center = ((_max - _min) / width) * _progress;
+    auto nom = ((_max - _min) * _progress);
+    _center = nom / width;
+#ifdef TRACKING
+    printf("ProgressBar Draw took %f\n", time_us_32() - start);
+#endif
 }

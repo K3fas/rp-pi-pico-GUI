@@ -56,6 +56,7 @@ namespace rpgui::common
         const Bounds GetAdjustedBounds() const;
 
         bool IsInBounds(const rpgui::type::Point &point);
+        static bool IsInBounds(const rpgui::common::Bounds bounds,const rpgui::type::Point &point);
     };
 } // namespace rpgui::common
 

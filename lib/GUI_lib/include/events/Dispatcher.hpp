@@ -15,7 +15,7 @@
 namespace rpgui::event
 {
     template <typename T>
-    using SlotType = std::function<void(const Event<T> &)>;
+    using SlotType = std::function<void(const MouseEvent<T> &)>;
 
     template <typename T>
     class Dispatcher
@@ -29,11 +29,11 @@ namespace rpgui::event
 
         void Subscribe(T type, const SlotType<T> &function) { _observers[type].push_back(function); }
 
-        void Post(Event<T> &event);
+        void Post(MouseEvent<T> &event);
     };
 
     template <typename T>
-    inline void Dispatcher<T>::Post(Event<T> &event)
+    inline void Dispatcher<T>::Post(MouseEvent<T> &event)
     {
         // No subscribers found
         if (_observers.find(event.Type()) == _observers.end())

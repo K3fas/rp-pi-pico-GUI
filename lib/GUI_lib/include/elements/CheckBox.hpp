@@ -15,7 +15,7 @@ namespace rpgui::type
 namespace rpgui::event
 {
     template <typename T>
-    class Event;
+    class MouseEvent;
 }
 
 using namespace rpgui::type;
@@ -47,7 +47,7 @@ namespace rpgui::ui
         void Draw() const final;
 
     private:
-        static void changeState(rpgui::event::Event<MouseEventType> &event, Clickable *sender);
+        static void changeState(rpgui::event::MouseEvent<MouseEventType> &event, Clickable *sender);
     };
 
 } // namespace rpgui::element

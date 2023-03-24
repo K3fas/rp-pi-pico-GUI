@@ -6,7 +6,7 @@
 #define PICO_KIT_FRAMEWORK_MOUSEDISPATCHER_HPP
 
 #include "include.hpp"
-#include "Event.hpp"
+#include "MouseEvent.hpp"
 
 #include <map>
 #include <functional>
@@ -42,7 +42,7 @@ namespace rpgui::event
         MouseDispatcher(const MouseDispatcher &) = default;
         ~MouseDispatcher() = default;
 
-        void Post(Event<MouseEventType> &event, uint16_t x, uint16_t y );
+        void Post(MouseEvent<MouseEventType> &event);
 
         void Subscribe(MouseEventType type, const Handler &handler, uint8_t priority = 0);
     };

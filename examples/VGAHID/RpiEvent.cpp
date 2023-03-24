@@ -2,12 +2,12 @@
 
 using namespace Events;
 
-void Dispatcher::Subscribe(const Event::DescriptorType &descriptor, SlotType &&slot)
+void Dispatcher::Subscribe(const MouseEvent::DescriptorType &descriptor, SlotType &&slot)
 {
     _observers[descriptor].push_back(slot);
 }
 
-void Dispatcher::Post(const Event &event) const
+void Dispatcher::Post(const MouseEvent &event) const
 {
     auto type = event.Type();
 

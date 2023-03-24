@@ -44,8 +44,8 @@ namespace rpgui::ui
         void SetBounds(const Bounds &bounds) override;
 
     private:
-        static void add(rpgui::event::Event<MouseEventType> &event, Clickable *sender);
-        static void sub(rpgui::event::Event<MouseEventType> &event, Clickable *sender);
+        static void add(rpgui::event::MouseEvent<MouseEventType> &event, Clickable *sender);
+        static void sub(rpgui::event::MouseEvent<MouseEventType> &event, Clickable *sender);
     };
 
     template <typename T>
@@ -77,14 +77,20 @@ namespace rpgui::ui
     template <typename T>
     inline void Stepper<T>::Draw() const
     {
+#ifdef TRACKING
+        auto start = time_us_32();
+#endif
         for (uint8_t i = 0; i < frameWidth; i++)
         {
             IVGA::IDrawFrame(this->GetBounds() - i, this->backgroundColor);
         }
         auto b = _bSub->GetBounds();
-        IVGA::IDrawRectangle(Bounds(b.x+b.w, b.y, frameWidth, b.h),backgroundColor);
+        IVGA::IDrawRectangle(Bounds(b.x + b.w, b.y, frameWidth, b.h), backgroundColor);
         _bAdd->Draw();
         _bSub->Draw();
+#ifdef TRACKING
+        printf("Stepper Draw took %f\n", time_us_32() - start);
+#endif
     }
 
     template <typename T>
@@ -98,14 +104,14 @@ namespace rpgui::ui
     }
 
     template <typename T>
-    inline void Stepper<T>::add(rpgui::event::Event<MouseEventType> &event, Clickable *sender)
+    inline void Stepper<T>::add(rpgui::event::MouseEvent<MouseEventType> &event, Clickable *sender)
     {
         rpgui::ui::Stepper<T> *sw = (rpgui::ui::Stepper<T> *)sender;
         ++(sw->counter);
     }
 
     template <typename T>
-    void rpgui::ui::Stepper<T>::sub(rpgui::event::Event<MouseEventType> &event, Clickable *sender)
+    void rpgui::ui::Stepper<T>::sub(rpgui::event::MouseEvent<MouseEventType> &event, Clickable *sender)
     {
         rpgui::ui::Stepper<T> *sw = (rpgui::ui::Stepper<T> *)sender;
         --(sw->counter);
@@ -113,4 +119,4 @@ namespace rpgui::ui
 
 } // namespace rpgui::ui
 
-#endif //PICO_KIT_FRAMEWORK_STEPPER_HPP
+#endif // PICO_KIT_FRAMEWORK_STEPPER_HPP

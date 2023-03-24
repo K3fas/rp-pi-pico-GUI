@@ -4,6 +4,7 @@
 
 #include "common/Base.hpp"
 #include "Base.hpp"
+#include "IVGA.hpp"
 
 namespace rpgui::common
 {
@@ -32,6 +33,8 @@ namespace rpgui::common
 
     void VisualElement::SetBounds(const Bounds &bounds)
     {
+        IVGA::IDrawRectangle(this->_bounds,Color::Black);
         this->_bounds = bounds;
+        // TODO: Test this ...
     }
 } // namespace rpgui::common

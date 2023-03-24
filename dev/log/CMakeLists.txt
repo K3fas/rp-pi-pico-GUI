@@ -22,6 +22,7 @@ target_link_libraries(log
     PUBLIC
     #qvga_lib
     #GUI_lib
+    vga_lib 
     pico_stdlib
     hardware_adc
     rplog_lib

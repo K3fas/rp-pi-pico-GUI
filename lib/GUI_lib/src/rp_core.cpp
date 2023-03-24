@@ -10,11 +10,13 @@
 #include "Cursor.hpp"
 #include "Types.hpp"
 
+
 using namespace rpgui::core;
 
 MouseDispatcher MainApp::_mouseHandler;
 Cursor MainApp::_cursor;
 MainApp::clickState MainApp::_clickState;
+
 
 void rpgui::core::MainApp::drawPage()
 {
@@ -36,7 +38,7 @@ void rpgui::core::MainApp::AddPage(Page *page)
 
 void rpgui::core::MainApp::Update()
 {
-    updateOnCore1();
+    IVGA::ICore1Exec(updateOnCore1);
 }
 
 void rpgui::core::MainApp::AddListener(MouseEventType type, const Handler &handler)
@@ -46,15 +48,22 @@ void rpgui::core::MainApp::AddListener(MouseEventType type, const Handler &handl
 
 void rpgui::core::MainApp::updateOnCore1()
 {
+    //IVGA::IDrawClear();
+    //MainApp::timers.core1.start = time_us_32();
     processMouseInput();
     processMouseMovement();
+    drawCursor();
+    //MainApp::timers.core1.tusb = time_us_32() -MainApp::timers.core1.start;
+    drawPage();
+    drawCursor();
+    
+    //MainApp::timers.core1.draw = time_us_32() -MainApp::timers.core1.start;
     if (rpgui::core::MainApp::waitVSync)
     {
         IVGA::IWaitVSync();
     }
-    IVGA::IDrawClear();
-    drawPage();
-    drawCursor();
+    //MainApp::timers.core1.VSync = time_us_32() -MainApp::timers.core1.start;
+    //MainApp::timers.Print();
 }
 
 void rpgui::core::MainApp::drawCursor()
@@ -70,9 +79,9 @@ void rpgui::core::MainApp::processMouseInput()
     {
         MainApp::_clickState = MainApp::clickState::pressed;
 
-        auto event = Event<MouseEventType>(MouseEventType::Pressed, "onPressed");
         auto pos = _cursor.GetBounds();
-        MainApp::_mouseHandler.Post(event, pos.x, pos.y);
+        auto event = MouseEvent<MouseEventType>(MouseEventType::Pressed, pos.x,pos.y);
+        MainApp::_mouseHandler.Post(event);
     }
 
     // handle released key
@@ -80,11 +89,11 @@ void rpgui::core::MainApp::processMouseInput()
     {
         MainApp::_clickState = MainApp::clickState::none;
 
-        auto eReleased = Event<MouseEventType>(MouseEventType::Released, "onReleased");
-        auto eClicked = Event<MouseEventType>(MouseEventType::Clicked, "onClicked");
         auto pos = _cursor.GetBounds();
-        MainApp::_mouseHandler.Post(eReleased, pos.x, pos.y);
-        MainApp::_mouseHandler.Post(eClicked, pos.x, pos.y);
+        auto eReleased = MouseEvent<MouseEventType>(MouseEventType::Released, pos.x, pos.y);
+        auto eClicked = MouseEvent<MouseEventType>(MouseEventType::Clicked, pos.x, pos.y);
+        MainApp::_mouseHandler.Post(eReleased);
+        MainApp::_mouseHandler.Post(eClicked);
     }
 }
 
@@ -104,7 +113,7 @@ void rpgui::core::MainApp::processMouseMovement()
     if (MainApp::_cursor.pos.y < 0)
         MainApp::_cursor.pos.y = 0;
 
-    MainApp::_cursor.SetBounds(Bounds(MainApp::_cursor.pos.x, MainApp::_cursor.pos.y, 0, 0));
+    MainApp::_cursor.SetBounds(Bounds(MainApp::_cursor.pos.x, MainApp::_cursor.pos.y, _cursor.size*2+1, _cursor.size*2+1));
 
     MOUSE.mousePos[0] = 0;
     MOUSE.mousePos[1] = 0;

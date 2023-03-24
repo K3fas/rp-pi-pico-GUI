@@ -5,15 +5,15 @@
 
 namespace Events
 {
-    class Event
+    class MouseEvent
     {
     public:
-        virtual ~Event();
+        virtual ~MouseEvent();
         using DescriptorType = const char *;
         virtual DescriptorType Type() const = 0;
     };
 
-    class Clicked : public Event
+    class Clicked : public MouseEvent
     {
     public:
         Clicked();
@@ -30,28 +30,28 @@ namespace Events
     class Dispatcher
     {
     public:
-        using SlotType = std::function<void(const Event &)>;
+        using SlotType = std::function<void(const MouseEvent &)>;
 
-        void Subscribe(const Event::DescriptorType &descriptor, SlotType &&slot);
+        void Subscribe(const MouseEvent::DescriptorType &descriptor, SlotType &&slot);
 
-        void Post(const Event &event) const;
+        void Post(const MouseEvent &event) const;
 
     private:
         // lookup map for events
-        std::map<Event::DescriptorType, std::vector<SlotType>> _observers;
+        std::map<MouseEvent::DescriptorType, std::vector<SlotType>> _observers;
     };
 
     class ClassObserver
     {
     public:
-        void handle(const Event &e)
+        void handle(const MouseEvent &e)
         {
             if (e.Type() == Clicked::descriptor)
             {
                 // This demonstrates how to obtain the underlying event type in case a
                 // slot is set up to handle multiple events of different type.
-                const Clicked &demoEvent = static_cast<const Event &>(e);
-                printf("Event fired: %s\n", demoEvent.Type());
+                const Clicked &demoEvent = static_cast<const MouseEvent &>(e);
+                printf("MouseEvent fired: %s\n", demoEvent.Type());
             }
         }
     };

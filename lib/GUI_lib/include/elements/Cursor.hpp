@@ -16,10 +16,9 @@ namespace rpgui::core
 {
     class Cursor : public rpgui::common::VisualElement
     {
-    private:
-        const uint16_t _size = 2;
 
     public:
+        const uint16_t size = 2;
         struct pos_t
         {
             float x = 0, y = 0;

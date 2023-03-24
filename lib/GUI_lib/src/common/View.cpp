@@ -34,3 +34,13 @@ bool rpgui::common::View::IsInBounds(const rpgui::type::Point& point)
     
     return false;
 }
+
+bool rpgui::common::View::IsInBounds(const rpgui::common::Bounds bounds, const rpgui::type::Point &point)
+{
+    if (point.x > bounds.x && point.x < bounds.x + bounds.w &&
+        point.y > bounds.y && point.y < bounds.y + bounds.h)
+        return true;
+
+    
+    return false;
+}

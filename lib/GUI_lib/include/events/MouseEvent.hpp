@@ -11,20 +11,21 @@
 namespace rpgui::event
 {
     template <typename T>
-    class Event
+    class MouseEvent
     {
     private:
         T _type;
-        std::string _name;
         bool _handled = false;
 
     public:
-        Event() = default;
-        Event(T type, const std::string &name) : _type(type), _name(name){};
-        virtual ~Event() = default;
+        const int16_t xPos, yPos;
+
+    public:
+        MouseEvent() = default;
+        MouseEvent(T type, const int16_t xPos, const int16_t yPos) : _type(type), xPos(xPos), yPos(yPos) {}
+        virtual ~MouseEvent() = default;
 
         inline const T Type() const { return _type; }
-        inline const std::string &Name() const { return _name; }
         virtual bool IsHandled() { return _handled; }
         void SetHandled() { _handled = true; }
     };

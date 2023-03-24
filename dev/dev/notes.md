@@ -9,7 +9,8 @@
 - Incluovanie IVGA v kombinacii z vga_lib nadava na undefined sCanvas .... pri pouziti zvlast funguje
 #
 
-EEeeee... data binding nejako sprovoznit.. tak aby prvky v sebe nedrzali hodnoty e.g. label, stepper, chceck box ... 
+## DATABINDING
+pridany zatial do button a checkbox
 
 
 
