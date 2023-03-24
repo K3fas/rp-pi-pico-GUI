@@ -8,6 +8,8 @@
 #include "Event.hpp"
 #include "MouseDispatcher.hpp"
 
+using namespace rpgui::type;
+
 rpgui::ui::CheckBox::CheckBox(const Width &width, const Height &height, const Color backgroundColor, const Color tickColor)
     : tickColor(tickColor)
 {
@@ -36,12 +38,12 @@ void rpgui::ui::CheckBox::Draw() const
         auto inner = bounds-2;
         IVGA::IDrawRectangle(inner, this->color);
         // Left top to bottom right
-        IVGA::IDrawLine(IVGA::Point{inner.x, inner.y},
-                        IVGA::Point{inner.x + inner.w, inner.y + inner.h},
+        IVGA::IDrawLine(Point(inner.x, inner.y),
+                        Point(inner.x + inner.w, inner.y + inner.h),
                         this->tickColor);
         // Right top to bottom left
-        IVGA::IDrawLine(IVGA::Point{inner.x + inner.w, inner.y},
-                        IVGA::Point{inner.x, inner.y + inner.h},
+        IVGA::IDrawLine(Point(inner.x + inner.w, inner.y),
+                        Point(inner.x, inner.y + inner.h),
                         this->tickColor);
     }
     else
