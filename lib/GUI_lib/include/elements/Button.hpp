@@ -17,21 +17,31 @@ namespace rpgui::ui
     class Button : public View, public Clickable
     {
     private:
-        struct
+        struct textBounds
         {
-            std::string str;
+            BindableProperty<std::string> str;
             Bounds bounds;
+
+            textBounds(const std::string& text)
+                :str(text){}
+            textBounds(std::string& text)
+                :str(text){}
         } _text;
 
     public:
         Color textColor = Color::White;
 
     public:
-        Button(const Width &width, const Height &heigth, const Color &color)
-            : View(Bounds{0, 0, width.v, heigth.v}, color) {}
-        Button(const Bounds &bounds, const Color &color)
-            : View(bounds, color) {}
-        ~Button() {}
+
+        Button() = delete;
+        Button(const Button&) = default;
+        ~Button() = default;
+        
+        Button(const Width &width, const Height &heigth, const Color &color, std::string& text);
+        Button(const Width &width, const Height &heigth, const Color &color, const std::string& text = "");
+
+        Button(const Bounds &bounds, const Color &color, std::string& text);
+        Button(const Bounds &bounds, const Color &color, const std::string& text = "");
 
         void SetText(const std::string& text);
 
