@@ -250,7 +250,7 @@ static void process_mouse_report(hid_mouse_report_t const *report)
 	auto startTime = time_us_64();
 	//------------- button state  -------------//
 	uint8_t button_changed_mask = report->buttons ^ prev_report.buttons;
-	if (button_changed_mask & report->buttons)
+	if (button_changed_mask)
 	{
 		printf(" %c%c%c ",
 			   report->buttons & MOUSE_BUTTON_LEFT ? 'L' : '-',
@@ -273,6 +273,8 @@ static void process_mouse_report(hid_mouse_report_t const *report)
 	MOUSE.mousePos[1] += report->y;
 	MOUSE.moved = true;
 	MOUSE.processTime += time_us_64() - startTime;
+
+	prev_report = *report;
 }
 
 //--------------------------------------------------------------------+
