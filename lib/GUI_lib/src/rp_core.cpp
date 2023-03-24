@@ -14,6 +14,7 @@ using namespace rpgui::core;
 
 MouseDispatcher MainApp::_mouseHandler;
 Cursor MainApp::_cursor;
+MainApp::clickState MainApp::_clickState;
 
 void rpgui::core::MainApp::drawPages()
 {
@@ -53,12 +54,27 @@ void rpgui::core::MainApp::drawCursor()
 
 void rpgui::core::MainApp::processMouseInput()
 {
-    if (MOUSE.clicked)
+    // lmb only
+    // handle new pressed key
+    if (MOUSE.mouseKeys[0] == true && MainApp::_clickState == MainApp::clickState::none)
     {
-        auto event = Event<MouseEventType>(MouseEventType::Clicked, "onClicked");
-        auto pos = MainApp::_cursor.GetBounds();
+        MainApp::_clickState = MainApp::clickState::pressed;
+
+        auto event = Event<MouseEventType>(MouseEventType::Pressed, "onPressed");
+        auto pos = _cursor.GetBounds();
         MainApp::_mouseHandler.Post(event, pos.x, pos.y);
-        MOUSE.clicked = !MOUSE.clicked;
+    }
+
+    // handle released key
+    if (MOUSE.mouseKeys[0] == false && MainApp::_clickState == MainApp::clickState::pressed)
+    {
+        MainApp::_clickState = MainApp::clickState::none;
+
+        auto eReleased = Event<MouseEventType>(MouseEventType::Released, "onReleased");
+        auto eClicked = Event<MouseEventType>(MouseEventType::Clicked, "onClicked");
+        auto pos = _cursor.GetBounds();
+        MainApp::_mouseHandler.Post(eReleased, pos.x, pos.y);
+        MainApp::_mouseHandler.Post(eClicked, pos.x, pos.y);
     }
 }
 

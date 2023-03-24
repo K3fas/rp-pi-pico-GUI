@@ -191,7 +191,7 @@ namespace IVGA
         DrawClear();
     }
 
-    inline void IDrawLine(const Point &start, const Point &end, const Color &color)
+    inline void IDrawLine(const rpgui::type::Point &start, const rpgui::type::Point &end, const Color& color)
     {
         DrawLine(start.x, start.y, end.x, end.y, color);
     }

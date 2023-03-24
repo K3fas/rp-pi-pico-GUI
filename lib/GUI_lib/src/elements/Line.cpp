@@ -2,4 +2,15 @@
 // Created by kefas on 26.2.23.
 //
 
-#include "elements/Line.hpp"
+ #include "Line.hpp"
+ #include "IVGA.hpp"
+
+rpgui::ui::Line::Line(const Point & start, const Point & end, Color color)
+    :View(Bounds(), color), start(start), end(end)
+{
+}
+
+void rpgui::ui::Line::Draw() const
+{
+    IVGA::IDrawLine(start,end,color);
+}

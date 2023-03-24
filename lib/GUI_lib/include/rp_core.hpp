@@ -47,6 +47,11 @@ namespace rpgui::core
         static constexpr bool waitVSync = true;
 
         inline static std::vector<Page *> _pages;
+
+        static enum class clickState {
+            none,
+            pressed,
+        } _clickState;
         static MouseDispatcher _mouseHandler;
         static Cursor _cursor;
 
