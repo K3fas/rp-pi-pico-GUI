@@ -16,6 +16,12 @@ namespace rpgui::common
     {
     }
 
+    void Element::SetActive(Element *element)
+    {
+        if(_parrent)
+            _parrent->SetActive(element);
+    }
+
     VisualElement::VisualElement()
     {
     }

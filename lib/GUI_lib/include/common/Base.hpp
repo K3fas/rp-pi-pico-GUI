@@ -57,6 +57,10 @@ namespace rpgui::common
 
         void SetParrent(Element *parrent) { _parrent = parrent; }
 
+        /// @brief Callback function for setting ellement as active on screen
+        /// @param element 
+        virtual void SetActive(Element* element);
+
         const Element *GetParrent() const { return _parrent; }
         const uint16_t GetId() const { return _id; }
         static uint16_t GetElementCount() { return _count; }

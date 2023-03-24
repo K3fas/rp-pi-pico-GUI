@@ -18,6 +18,7 @@ namespace rpgui::layout
     {
     protected:
         std::vector<View *> _children;
+        Element* _activeElement;
 
     public:
         Layout() = delete;

@@ -27,6 +27,8 @@ namespace rpgui::layout
 
         void Draw() const final;
 
+        void SetActive(Element* element) final;
+
         template <typename T>
             requires std::is_base_of<View,T>::value
         bool AddElement(T *element)

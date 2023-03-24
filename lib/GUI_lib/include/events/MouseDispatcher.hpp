@@ -21,15 +21,21 @@ namespace rpgui::event
 
     struct Handler
     {
+        inline static uint16_t counter = 0;
+        const uint16_t id;
         HandleFunc handler;
         Clickable *sender;
+
+        Handler(const HandleFunc& func, Clickable* sender);
     };
 
     class MouseDispatcher
     {
 
     private:
-        std::map<MouseEventType, std::vector<Handler>> _listeners;
+        using PriorityListener = std::map<uint8_t,std::map<MouseEventType, std::vector<Handler>>>;
+        PriorityListener _listeners;
+
 
     public:
         MouseDispatcher() = default;
@@ -38,7 +44,7 @@ namespace rpgui::event
 
         void Post(Event<MouseEventType> &event, uint16_t x, uint16_t y );
 
-        void Subscribe(MouseEventType type, const Handler &handler);
+        void Subscribe(MouseEventType type, const Handler &handler, uint8_t priority = 0);
     };
 
 } // namespace rpgui::event
