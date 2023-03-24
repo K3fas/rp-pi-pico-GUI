@@ -6,4 +6,5 @@
 #include "View.hpp"
 #include "Types.hpp"
 #include "Clickable.hpp"
+#include "BindableProperty.hpp"
 

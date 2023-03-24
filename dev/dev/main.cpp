@@ -67,7 +67,6 @@ int main()
     tusb_init();
 
     printf("\r\nRP DEV\r\n");
-    sleep_ms(2000);
 
     SetupRP();
 
@@ -133,7 +132,9 @@ int main()
 
     auto lay1 = new layout::StackLayout(type::Point{240, 10}, type::Width{40}, type::Height{1});
     lay1->AddElement(new ui::CheckBox(Width(20),Height(20),Color::Gray,Color::White));
-    lay1->AddElement(new ui::Label("Test"));
+    std::string binder = "Databinder";
+    lay1->AddElement(new ui::Label(binder));
+    lay1->AddElement(new ui::Label("Implicit"));
     lay1->AddElement(new ui::Stepper<uint8_t>(Width{10},Height{11},Color::Red,Color::Blue,2));
 
     auto page = new page::Page();
