@@ -7,7 +7,7 @@
 
 #include <vector>
 #include <type_traits>
-#include "../include.hpp"
+#include "include.hpp"
 
 using namespace rpgui::common;
 using namespace rpgui::type;
@@ -21,20 +21,12 @@ namespace rpgui::layout
 
     public:
         Layout() = delete;
-        Layout(const Bounds coords, Color bgColor = colors::Color::Black) : View(coords, bgColor) {}
+        Layout(const Layout&) = delete; 
+        ~Layout();
 
-        ~Layout()
-        {
-            for (auto &&element : _children)
-            {
-                delete element;
-            }
-        }
-
-        const std::vector<View *> &GetChildren() const
-        {
-            return _children;
-        }
+        Layout(const Bounds coords, Color bgColor = colors::Color::Transparent);
+       
+        const std::vector<View *> &GetChildren() const;
     };
 
 } // namespace rpgui::layout

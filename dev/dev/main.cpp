@@ -116,25 +116,25 @@ int main()
 */
     // GUI
 
-    auto lay = layout::StackLayout(type::Point{60, 10}, type::Width{120}, type::Height{200});
+    auto lay = new layout::StackLayout(type::Point{60, 10}, type::Width{120}, type::Height{200});
     auto rect1 = ui::Rectangle(type::Width{20}, type::Height{20}, colors::Color::Green);
     rect1.margin = Margin{5, 5, 5, 5};
 
-    lay.AddElement(new ui::Rectangle(type::Width{20}, type::Height{40}, colors::Color::Red));
-    lay.AddElement(new ui::Rectangle(type::Width{20}, type::Height{40}, colors::Color::Blue));
+    lay->AddElement(new ui::Rectangle(type::Width{20}, type::Height{40}, colors::Color::Red));
+    lay->AddElement(new ui::Rectangle(type::Width{20}, type::Height{40}, colors::Color::Blue));
 
     auto btn = new ui::Button{type::Width{30}, type::Height{30}, colors::Color::SemiCyan};
 
     btn->SetOnClickHandler(MouseEventType::Clicked, onClicked);
     btn->SetText("Button");
-    lay.AddElement(btn);
-    lay.AddElement(new ui::ProgressBar(Bounds(0,0,16,16),Color::Red,100,0));
+    lay->AddElement(btn);
+    lay->AddElement(new ui::ProgressBar(Bounds(0,0,16,16),Color::Red,100,0));
 
 
-    auto lay1 = layout::StackLayout(type::Point{240, 10}, type::Width{40}, type::Height{1});
-    lay1.AddElement(new ui::CheckBox(Width(20),Height(20),Color::Gray,Color::White));
-    lay1.AddElement(new ui::Label("Test"));
-    lay1.AddElement(new ui::Stepper<uint8_t>(Width{10},Height{11},Color::Red,Color::Blue,2));
+    auto lay1 = new layout::StackLayout(type::Point{240, 10}, type::Width{40}, type::Height{1});
+    lay1->AddElement(new ui::CheckBox(Width(20),Height(20),Color::Gray,Color::White));
+    lay1->AddElement(new ui::Label("Test"));
+    lay1->AddElement(new ui::Stepper<uint8_t>(Width{10},Height{11},Color::Red,Color::Blue,2));
 
     auto page = new page::Page();
     page->AddLayout(lay);

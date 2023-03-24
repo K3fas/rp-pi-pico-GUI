@@ -6,7 +6,8 @@
 #define PICO_KIT_FRAMEWORK_PAGE_HPP
 
 #include <vector>
-#include "../layouts/Layout.hpp"
+#include "Layout.hpp"
+#include <type_traits>
 
 using namespace rpgui::layout;
 
@@ -31,11 +32,10 @@ namespace rpgui::page
         }
 
         template <typename T>
-        void AddLayout(const T &layout)
+            requires std::is_base_of<Layout, T>::value
+        void AddLayout( T *layout)
         {
-            auto cp = new T(layout);
-            auto toAdd = static_cast<Layout *>(cp);
-            _children.emplace_back(toAdd);
+            _children.emplace_back((Layout*) layout);
         }
     };
 

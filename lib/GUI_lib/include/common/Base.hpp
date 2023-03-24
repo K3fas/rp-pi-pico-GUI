@@ -76,7 +76,7 @@ namespace rpgui::common
         VisualElement(const VisualElement &) = default;
         virtual ~VisualElement();
 
-        const Bounds GetBounds() const { return _bounds; }
+        const Bounds& GetBounds() const { return _bounds; }
 
         virtual void SetBounds(const Bounds &bounds);
 

@@ -16,12 +16,22 @@ MouseDispatcher MainApp::_mouseHandler;
 Cursor MainApp::_cursor;
 MainApp::clickState MainApp::_clickState;
 
-void rpgui::core::MainApp::drawPages()
+void rpgui::core::MainApp::drawPage()
 {
-    for (auto &&page : _pages)
+    _selectedPage->Draw();
+}
+
+void rpgui::core::MainApp::AddPage(Page *page)
+{
+    if(page == nullptr)
+        return;
+    
+    if (_selectedPage == nullptr)
     {
-        page->Draw();
+        _selectedPage = page;
     }
+
+    _pages.push_back(page);
 }
 
 void rpgui::core::MainApp::Update()
@@ -43,7 +53,7 @@ void rpgui::core::MainApp::updateOnCore1()
         IVGA::IWaitVSync();
     }
     IVGA::IDrawClear();
-    drawPages();
+    drawPage();
     drawCursor();
 }
 

@@ -47,6 +47,7 @@ namespace rpgui::core
         static constexpr bool waitVSync = true;
 
         inline static std::vector<Page *> _pages;
+        inline static Page* _selectedPage;
 
         static enum class clickState {
             none,
@@ -59,17 +60,14 @@ namespace rpgui::core
         MainApp() = delete;
         ~MainApp() = delete;
 
-        static void AddPage(Page *page)
-        {
-            _pages.push_back(page);
-        }
+        static void AddPage(Page *page);
 
         static void Update();
 
         static void AddListener(MouseEventType type, const Handler &handler);
 
     private:
-        static void drawPages();
+        static void drawPage();
 
         static void processMouseInput();
 

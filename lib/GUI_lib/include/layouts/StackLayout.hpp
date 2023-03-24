@@ -5,8 +5,12 @@
 #ifndef PICO_KIT_FRAMEWORK_STACKLAYOUT_HPP
 #define PICO_KIT_FRAMEWORK_STACKLAYOUT_HPP
 
-#include "../include.hpp"
+#include "include.hpp"
 #include "Layout.hpp"
+#include <type_traits>
+
+using namespace rpgui::type;
+using namespace rpgui::common;
 
 namespace rpgui::layout
 {
@@ -17,13 +21,14 @@ namespace rpgui::layout
         uint16_t _currentHeight = 0;
 
     public:
-        StackLayout(const rpgui::type::Point start, const rpgui::type::Width width, const rpgui::type::Height height)
-            : Layout(rpgui::common::Bounds{start.x, start.y, width.v, height.v}) {}
+        StackLayout(const Point start, const Width width, const Height height)
+            : Layout(Bounds{start.x, start.y, width.v, height.v}) {}
         ~StackLayout();
 
         void Draw() const final;
 
         template <typename T>
+            requires std::is_base_of<View,T>::value
         bool AddElement(T *element)
         {
             auto bounds = this->GetBounds();
@@ -39,7 +44,7 @@ namespace rpgui::layout
 
             _currentHeight += elementHeigth;
 
-            _children.emplace_back(element);
+            _children.emplace_back((View*)element);
             return true;
         }
     };

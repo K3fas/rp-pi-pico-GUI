@@ -2,8 +2,9 @@
 // Created by kefas on 26.2.23.
 //
 
-#include "../../include/layouts/StackLayout.hpp"
-#include "../../include/include.hpp"
+#include "StackLayout.hpp"
+#include "include.hpp"
+#include "IVGA.hpp"
 
 namespace rpgui::layout
 {
@@ -14,6 +15,10 @@ namespace rpgui::layout
 
     void StackLayout::Draw() const
     {
+        if(color != Color::Transparent)
+        {
+            IVGA::IDrawRectangle(GetBounds(),color);
+        }
         for (auto &&element : _children)
         {
             element->Draw();
