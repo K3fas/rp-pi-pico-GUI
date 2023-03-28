@@ -5,7 +5,7 @@
 #include "tusb_data.hpp"
 
 // comment out to disable performance tracking
-#define TIMERS
+//#define TIMERS
 #define PRINT_CORE0
 #define PRINT_CORE1
 

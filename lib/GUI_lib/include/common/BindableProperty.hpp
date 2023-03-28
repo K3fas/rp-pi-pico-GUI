@@ -57,6 +57,7 @@ namespace rpgui::common
         return _value;
     }
 
+
 } // namespace rpgui::common
 
 #endif  //PICO_KIT_FRAMEWORK_BINDABLE_HPP

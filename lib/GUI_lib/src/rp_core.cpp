@@ -17,6 +17,8 @@ MouseDispatcher MainApp::_mouseHandler;
 Cursor MainApp::_cursor;
 MainApp::clickState MainApp::_clickState;
 
+extern void hid_app_task(void);
+
 
 void rpgui::core::MainApp::drawPage()
 {
@@ -38,6 +40,8 @@ void rpgui::core::MainApp::AddPage(Page *page)
 
 void rpgui::core::MainApp::Update()
 {
+    tuh_task();
+    hid_app_task();
     IVGA::ICore1Exec(updateOnCore1);
 }
 

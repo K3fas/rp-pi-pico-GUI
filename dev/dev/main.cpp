@@ -119,9 +119,6 @@ int main()
     auto rect1 = ui::Rectangle(type::Width{20}, type::Height{20}, colors::Color::Green);
     rect1.margin = Margin{5, 5, 5, 5};
 
-    lay->AddElement(new ui::Rectangle(type::Width{20}, type::Height{40}, colors::Color::Red));
-    lay->AddElement(new ui::Rectangle(type::Width{20}, type::Height{40}, colors::Color::Blue));
-
     auto btn = new ui::Button{type::Width{30}, type::Height{30}, colors::Color::SemiCyan};
 
     btn->SetOnClickHandler(MouseEventType::Clicked, onClicked);
@@ -145,6 +142,10 @@ int main()
     radBtn->AddItem("Camel");
     lay->AddElement(radBtn);
 
+    lay->AddElement(new ui::Switch(Width(10),Height(10),true));
+
+    lay->AddElement(new ui::Slider(Width(10), Height(12),Color::SemiGray));
+
     auto page = new page::Page();
     page->AddLayout(lay);
     page->AddLayout(lay1);
@@ -155,8 +156,7 @@ int main()
     core::MainApp::AddPage(page);
     while (1)
     {
-        tuh_task();
-        hid_app_task();
+        
 
         core::MainApp::Update();
 
