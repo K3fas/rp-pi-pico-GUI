@@ -3,6 +3,7 @@
 //
 #include "Slider.hpp"
 #include "IVGA.hpp"
+#include "rp_core.hpp"
 
 rpgui::ui::Slider::Slider(const Width &width, const Height &heigth, const Color &color, double &value)
     : View(Bounds(0, 0, width.v, heigth.v), color), value(value)
@@ -35,7 +36,7 @@ void rpgui::ui::Slider::Draw() const
 
 void rpgui::ui::Slider::handlePressed(MouseEvent<MouseEventType> &event, Clickable *sender)
 {
-
+    this->SetActive(this);
 }
 
 void rpgui::ui::Slider::handleReleased(MouseEvent<MouseEventType> &event, Clickable *sender)

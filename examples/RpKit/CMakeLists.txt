@@ -4,6 +4,8 @@ add_executable(RpKit)
 
 #qvga_generate_img_header(VGAHID ${CMAKE_CURRENT_LIST_DIR}/img/cursor_small.bmp Cursor8Img)
 
+pico_generate_pio_header(RpKit ${CMAKE_CURRENT_LIST_DIR}/quadrature_encoder.pio)
+
 # Example source
 target_sources(RpKit PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}/main.cpp
@@ -22,7 +24,9 @@ target_link_libraries(RpKit
     PUBLIC
     GUI_lib
     pico_stdlib
+    pico_multicore
     hardware_adc
+    hardware_pio
     rplog_lib
     )
 

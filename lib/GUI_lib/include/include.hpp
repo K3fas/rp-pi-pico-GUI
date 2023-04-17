@@ -13,4 +13,5 @@
 #include "Types.hpp"
 #include "Clickable.hpp"
 #include "BindableProperty.hpp"
+#include "Activatable.hpp"
 

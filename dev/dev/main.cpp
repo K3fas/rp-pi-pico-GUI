@@ -12,12 +12,6 @@
 #include "rpgui.hpp"
 
 #include <rp_logger.hpp>
-#include "f_util.h"
-#include "ff.h"
-#include "pico/stdlib.h"
-#include "rtc.h"
-
-#include "hw_config.h"
 
 #include "timers.hpp"
 
@@ -71,48 +65,7 @@ int main()
     SetupRP();
 
     // Logger
-    /*
-        sd_card_t *pSD = sd_get_by_num(0);
-        FRESULT fr = f_mount(&pSD->fatfs, pSD->pcName, 1);
-        if (FR_OK != fr)
-            panic("f_mount error: %s (%d)\n", FRESULT_str(fr), fr);
-        FIL fil;
-        const char *const filename = "log.txt";
-        fr = f_open(&fil, filename, FA_OPEN_APPEND | FA_WRITE);
-        if (FR_OK != fr && FR_EXIST != fr)
-            panic("f_open(%s) error: %s (%d)\n", filename, FRESULT_str(fr), fr);
-        if (f_printf(&fil, "Hello, world!\n") < 0)
-        {
-            printf("f_printf failed\n");
-        }
-
-        rplog::Logger logger;
-        logger.AddLoggingFile(&fil, rplog::Level::TRACE);
-        logger.Log("TEEST");
-
-        fr = f_close(&fil);
-        if (FR_OK != fr)
-        {
-            printf("f_close error: %s (%d)\n", FRESULT_str(fr), fr);
-        }
-        fr = f_open(&fil, filename, FA_OPEN_APPEND | FA_WRITE | FA_READ);
-        if (FR_OK != fr && FR_EXIST != fr)
-            panic("f_open(%s) error: %s (%d)\n", filename, FRESULT_str(fr), fr);
-
-        char buf[256];
-        while (f_gets(buf, sizeof buf, &fil))
-        {
-            printf("%s", buf);
-        }
-
-        fr = f_close(&fil);
-        if (FR_OK != fr)
-        {
-            printf("f_close error: %s (%d)\n", FRESULT_str(fr), fr);
-        }
-
-        f_unmount(pSD->pcName);
-    */
+   
     // GUI
 
     auto lay = new layout::StackLayout(type::Point{60, 10}, type::Width{120}, type::Height{200});
@@ -125,9 +78,6 @@ int main()
     btn->SetText("Button");
     lay->AddElement(btn);
 
-    auto bar = new ui::ProgressBar(Bounds(0, 0, 16, 16), Color::Red, 0, 100);
-    lay->AddElement(bar);
-    bar->SetProgess(43.0);
 
     auto lay1 = new layout::StackLayout(type::Point{240, 10}, type::Width{40}, type::Height{1});
     lay1->AddElement(new ui::CheckBox(Width(20), Height(20), false, Color::Gray, Color::White));
@@ -150,8 +100,6 @@ int main()
     page->AddLayout(lay);
     page->AddLayout(lay1);
 
-    extern HID::MOUSE_t MOUSE;
-    MOUSE.clicked = true;
 
     core::MainApp::AddPage(page);
     while (1)

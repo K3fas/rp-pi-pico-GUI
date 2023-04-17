@@ -12,7 +12,7 @@
 #include "pico/stdlib.h"
 #include "rtc.h"
 
-#include "hw_config.h"
+#include <iostream>
 
 void LED_blink_task();
 
@@ -41,46 +41,75 @@ int main()
 
     // Logger
 
-    sd_card_t *pSD = sd_get_by_num(0);
-    FRESULT fr = f_mount(&pSD->fatfs, pSD->pcName, 1);
-    if (FR_OK != fr)
-        panic("f_mount error: %s (%d)\n", FRESULT_str(fr), fr);
-    FIL fil;
-    const char *const filename = "log.txt";
-    fr = f_open(&fil, filename, FA_OPEN_APPEND | FA_WRITE);
-    if (FR_OK != fr && FR_EXIST != fr)
-        panic("f_open(%s) error: %s (%d)\n", filename, FRESULT_str(fr), fr);
-    if (f_printf(&fil, "Hello, world!\n") < 0)
-    {
-        printf("f_printf failed\n");
-    }
+    // sd_card_t *pSD = sd_get_by_num(0);
+    // FRESULT fr = f_mount(&pSD->fatfs, pSD->pcName, 1);
+    // if (FR_OK != fr)
+    //     panic("f_mount error: %s (%d)\n", FRESULT_str(fr), fr);
+    // FIL fil;
+    // const char *const filename = "log.txt";
+    // fr = f_open(&fil, filename, FA_OPEN_APPEND | FA_WRITE);
+    // if (FR_OK != fr && FR_EXIST != fr)
+    //     panic("f_open(%s) error: %s (%d)\n", filename, FRESULT_str(fr), fr);
+    // if (f_printf(&fil, "Hello, world!\n") < 0)
+    // {
+    //     printf("f_printf failed\n");
+    // }
 
-    rplog::Logger logger;
-    logger.AddLoggingFile(&fil, rplog::Level::TRACE);
-    logger.Log("TEEST");
+    // rplog::Logger logger;
+    // logger.AddLoggingFile(&fil, rplog::Level::TRACE);
+    // logger.Log("TEEST");
 
-    fr = f_close(&fil);
-    if (FR_OK != fr)
-    {
-        printf("f_close error: %s (%d)\n", FRESULT_str(fr), fr);
-    }
-    fr = f_open(&fil, filename, FA_OPEN_APPEND | FA_WRITE);
-    if (FR_OK != fr && FR_EXIST != fr)
-        panic("f_open(%s) error: %s (%d)\n", filename, FRESULT_str(fr), fr);
+    // fr = f_close(&fil);
+    // if (FR_OK != fr)
+    // {
+    //     printf("f_close error: %s (%d)\n", FRESULT_str(fr), fr);
+    // }
+    // fr = f_open(&fil, filename, FA_OPEN_APPEND | FA_WRITE);
+    // if (FR_OK != fr && FR_EXIST != fr)
+    //     panic("f_open(%s) error: %s (%d)\n", filename, FRESULT_str(fr), fr);
 
-    char buf[256];
-    while (f_gets(buf, sizeof buf, &fil))
-    {
-        printf("%s", buf);
-    }
+    // char buf[256];
+    // while (f_gets(buf, sizeof buf, &fil))
+    // {
+    //     printf("%s", buf);
+    // }
 
-    fr = f_close(&fil);
-    if (FR_OK != fr)
-    {
-        printf("f_close error: %s (%d)\n", FRESULT_str(fr), fr);
-    }
+    // fr = f_close(&fil);
+    // if (FR_OK != fr)
+    // {
+    //     printf("f_close error: %s (%d)\n", FRESULT_str(fr), fr);
+    // }
 
-    f_unmount(pSD->pcName);
+    std::cout << " COUT TEST MESSAGE" << std::endl;
+    auto logger = new rplog::Logger();
+    logger->logLevel = rplog::Level::INFORMATION;
+    logger->AddSink(std::cout);
+    logger->AddSink(std::cerr);
+    logger->Log(" LOGGER COUT TRACE MESSAGE", rplog::Level::TRACE);
+    logger->Log(" LOGGER COUT DEBUG MESSAGE", rplog::Level::DEBUG);
+    logger->Log(" LOGGER COUT INFORMATION MESSAGE", rplog::Level::INFORMATION);
+    logger->Log(" LOGGER COUT WARNING MESSAGE", rplog::Level::WARNING);
+    logger->Log(" LOGGER COUT ERROR MESSAGE", rplog::Level::ERROR);
+    logger->Log(" LOGGER COUT CRITICAL MESSAGE", rplog::Level::CRITICAL);
+
+    std::cout << std::endl
+              << "Static logger test:" << std::endl;
+    rplog::Logger::logTrace(std::cout, "LOGGER COUT TRACE MESSAGE");
+    rplog::Logger::logDebug(std::cout, "LOGGER COUT DEBUG MESSAGE");
+    rplog::Logger::logInfo(std::cout, "LOGGER COUT INFORMATION MESSAGE");
+    rplog::Logger::logWarning(std::cout, "LOGGER COUT WARNING MESSAGE");
+    rplog::Logger::logError(std::cout, "LOGGER COUT ERROR MESSAGE");
+    rplog::Logger::logCritical(std::cout, "LOGGER COUT CRITICAL MESSAGE");
+
+    auto result = logger->AddFile("text.txt");
+    rplog::Logger::InitSD();
+    result = logger->AddFile("text.txt");
+    std::cout << result;
+    logger->Log("FILE TEST !!!", rplog::Level::INFORMATION);
+    logger->CloseFiles();
+    rplog::Logger::CloseSD();
+
+    // f_unmount(pSD->pcName);
     while (1)
     {
         LED_blink_task();

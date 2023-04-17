@@ -7,7 +7,6 @@ add_executable(log)
 # Example source
 target_sources(log PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}/main.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/hw_config.c
         )
 
 
@@ -20,9 +19,7 @@ target_include_directories(log PUBLIC
 # for TinyUSB device support and tinyusb_board for the additional board support library used
 target_link_libraries(log
     PUBLIC
-    #qvga_lib
-    #GUI_lib
-    vga_lib 
+    GUI_lib
     pico_stdlib
     hardware_adc
     rplog_lib

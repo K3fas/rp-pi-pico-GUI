@@ -37,8 +37,6 @@ using namespace rpgui::page;
 using namespace rpgui::event;
 using namespace rpgui::type;
 
-extern HID::MOUSE_t MOUSE;
-
 namespace rpgui::core
 {
     class MainApp

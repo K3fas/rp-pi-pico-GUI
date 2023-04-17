@@ -27,6 +27,7 @@ void rpgui::ui::Label::Draw() const
 #endif
 
     auto bounds = this->GetBounds();
+    IVGA::IDrawRectangle(bounds, Color::Black);
     IVGA::IDrawText(text.GetValue().c_str(), IVGA::Point(bounds.x,bounds.y),textColor,color);
     #ifdef TRACKING
     printf("Button Draw took %f\n",time_us_32()-start);

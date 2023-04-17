@@ -16,12 +16,12 @@ namespace rpgui::ui
     class ProgressBar : public View
     {
     private:
-        double _progress;
-        uint16_t _center; 
-        uint16_t _max, _min;
+        uint16_t _center;
+        const uint16_t _max, _min;
         uint8_t _borderSize = 1;
 
     public:
+        BindableProperty<double> progress;
         Color progressColor, borderColor;
 
     public:
@@ -29,19 +29,36 @@ namespace rpgui::ui
         ProgressBar(const ProgressBar &) = default;
         ~ProgressBar() = default;
 
-        ProgressBar(const Point start, const Width& width, const Height& height, Color progressColor, uint16_t min, uint16_t max);
-        ProgressBar(const Bounds& bounds,Color progressColor, uint16_t min, uint16_t max);
+        ProgressBar(const Width &width, const Height &height, const double &progress, uint16_t min = 0, uint16_t max = 100,
+                    Color backgorundColor = Color::SemiGray,
+                    Color progressColor = Color::Red,
+                    Color borderColor = Color::Gray);
 
-        void SetProgess(const double progress);
+        ProgressBar(const Width &width, const Height &height, double &progress, uint16_t min = 0, uint16_t max = 100,
+                    Color backgorundColor = Color::SemiGray,
+                    Color progressColor = Color::Red,
+                    Color borderColor = Color::Gray);
+
+        ProgressBar(const Bounds &bounds, const double &progress, uint16_t min = 0, uint16_t max = 100,
+                    Color backgorundColor = Color::SemiGray,
+                    Color progressColor = Color::Red,
+                    Color borderColor = Color::Gray);
+
+        ProgressBar(const Bounds &bounds, double &progress, uint16_t min = 0, uint16_t max = 100,
+                    Color backgorundColor = Color::SemiGray,
+                    Color progressColor = Color::Red,
+                    Color borderColor = Color::Gray);
+
         void SetBorderSize(const uint8_t size);
-        void SetBounds(const Bounds& bounds) final;  
-
-        double GetProgress() const;
+        void SetBounds(const Bounds &bounds) final;
 
         void Draw() const final;
 
+        void Test();
+
     private:
         void calculateCenter();
+        uint16_t getNewCenter() const;
     };
 
 } // namespace rpgui::ui

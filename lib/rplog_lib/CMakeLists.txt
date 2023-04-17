@@ -2,6 +2,7 @@ add_library(rplog_lib INTERFACE)
 
 target_sources(rplog_lib INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}/src/rp_logger.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/hw_config.c
         
         )
 

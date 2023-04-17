@@ -79,7 +79,7 @@ void rpgui::core::MainApp::processMouseInput()
 {
     // lmb only
     // handle new pressed key
-    if (MOUSE.mouseKeys[0] == true && MainApp::_clickState == MainApp::clickState::none)
+    if (HID::mouse.mouseKeys[0] == true && MainApp::_clickState == MainApp::clickState::none)
     {
         MainApp::_clickState = MainApp::clickState::pressed;
 
@@ -89,7 +89,7 @@ void rpgui::core::MainApp::processMouseInput()
     }
 
     // handle released key
-    if (MOUSE.mouseKeys[0] == false && MainApp::_clickState == MainApp::clickState::pressed)
+    if (HID::mouse.mouseKeys[0] == false && MainApp::_clickState == MainApp::clickState::pressed)
     {
         MainApp::_clickState = MainApp::clickState::none;
 
@@ -103,10 +103,10 @@ void rpgui::core::MainApp::processMouseInput()
 
 void rpgui::core::MainApp::processMouseMovement()
 {
-    if (!MOUSE.moved)
+    if (!HID::mouse.moved)
         return;
-    MainApp::_cursor.pos.x += MOUSE.mousePos[0] * sensitivity * 0.020;
-    MainApp::_cursor.pos.y += MOUSE.mousePos[1] * sensitivity * 0.020;
+    MainApp::_cursor.pos.x += HID::mouse.mousePos[0] * sensitivity * 0.020;
+    MainApp::_cursor.pos.y += HID::mouse.mousePos[1] * sensitivity * 0.020;
 
     if (MainApp::_cursor.pos.x > WIDTH)
         MainApp::_cursor.pos.x = WIDTH;
@@ -119,8 +119,8 @@ void rpgui::core::MainApp::processMouseMovement()
 
     MainApp::_cursor.SetBounds(Bounds(MainApp::_cursor.pos.x, MainApp::_cursor.pos.y, _cursor.size*2+1, _cursor.size*2+1));
 
-    MOUSE.mousePos[0] = 0;
-    MOUSE.mousePos[1] = 0;
+    HID::mouse.mousePos[0] = 0;
+    HID::mouse.mousePos[1] = 0;
 
-    MOUSE.moved = false;
+    HID::mouse.moved = false;
 }

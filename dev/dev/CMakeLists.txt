@@ -7,7 +7,6 @@ add_executable(dev)
 # Example source
 target_sources(dev PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}/main.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/hw_config.c
         )
 
 
