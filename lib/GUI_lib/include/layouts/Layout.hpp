@@ -21,9 +21,9 @@ namespace rpgui::layout
         Element* _activeElement = nullptr;
 
     public:
-        Layout() = delete;
+        Layout() = default;
         Layout(const Layout&) = delete; 
-        ~Layout();
+        virtual ~Layout();
 
         Layout(const Bounds coords, Color bgColor = colors::Color::Transparent);
        

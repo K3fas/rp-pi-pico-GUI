@@ -54,7 +54,7 @@ void rpgui::ui::Button::Draw() const
     IVGA::IDrawRectangle(this->GetBounds(), this->color);
     if (!_text.str.GetValue().empty())
     {
-        IVGA::IDrawText(_text.str.GetValue().c_str(), IVGA::Point{_text.bounds.x, _text.bounds.y},
+        IVGA::IDrawText(_text.str.GetValue().c_str(), rpgui::type::Point{_text.bounds.x, _text.bounds.y},
                         this->textColor);
     }
 #ifdef TRACKING

@@ -37,5 +37,5 @@ void rpgui::ui::Entry::Draw() const
 {
     auto bounds = this->GetBounds();
     IVGA::IDrawRectangle(bounds, Color::Black);
-    IVGA::IDrawText(text.GetValue().c_str(), IVGA::Point(bounds.x,bounds.y),textColor,color);
+    IVGA::IDrawText(text.GetValue().c_str(), rpgui::type::Point(bounds.x,bounds.y),textColor,color);
 }

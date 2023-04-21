@@ -9,6 +9,8 @@
 
 namespace rpgui::type
 {
+    typedef uint16_t ID;
+
     struct Width
     {
         uint16_t v;

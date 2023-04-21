@@ -21,7 +21,7 @@ namespace rpgui::event
         const int16_t xPos, yPos;
 
     public:
-        MouseEvent() = default;
+        MouseEvent() = delete;
         MouseEvent(T type, const int16_t xPos, const int16_t yPos) : _type(type), xPos(xPos), yPos(yPos) {}
         virtual ~MouseEvent() = default;
 

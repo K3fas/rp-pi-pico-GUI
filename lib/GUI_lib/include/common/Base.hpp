@@ -5,7 +5,7 @@
 #ifndef PICO_KIT_FRAMEWORK_BASE_HPP
 #define PICO_KIT_FRAMEWORK_BASE_HPP
 
-#include "stdint.h"
+#include "Types.hpp"
 #include "VColors.hpp"
 
 using namespace rpgui::colors;
@@ -47,7 +47,7 @@ namespace rpgui::common
     {
     private:
         inline static uint16_t _count = 0;
-        uint16_t _id;
+        rpgui::type::ID _id;
         Element *_parrent;
 
     public:

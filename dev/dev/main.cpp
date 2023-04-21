@@ -56,7 +56,7 @@ void onClicked(MouseEvent<MouseEventType> &event, Clickable *sender)
 }
 
 int main()
-{
+    {
     board_init();
     tusb_init();
 
@@ -67,6 +67,8 @@ int main()
     // Logger
    
     // GUI
+
+    rpgui::core::init();
 
     auto lay = new layout::StackLayout(type::Point{60, 10}, type::Width{120}, type::Height{200});
     auto rect1 = ui::Rectangle(type::Width{20}, type::Height{20}, colors::Color::Green);

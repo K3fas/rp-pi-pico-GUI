@@ -39,6 +39,8 @@ using namespace rpgui::type;
 
 namespace rpgui::core
 {
+    void init();
+
     class MainApp
     {
     private:
@@ -62,6 +64,8 @@ namespace rpgui::core
         MainApp() = delete;
         ~MainApp() = delete;
 
+        
+
         static void AddPage(Page *page);
 
         static void Update();
@@ -75,7 +79,7 @@ namespace rpgui::core
 
         static void processMouseMovement();
 
-        static void updateOnCore1();
+        static void updateOnCoreX();
 
         static void drawCursor();
     };

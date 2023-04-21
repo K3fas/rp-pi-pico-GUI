@@ -58,17 +58,17 @@
 #endif
 
 // === VGA port pins
-//	GP0 ... VGA B0 blue
-//	GP1 ... VGA B1
-//	GP2 ... VGA G0 green
-//	GP3 ... VGA G1
-//	GP4 ... VGA G2
-//	GP5 ... VGA R0 red
-//	GP6 ... VGA R1
-//	GP7 ... VGA R2
-//	GP8 ... VGA SYNC synchronization (inverted: negative SYNC=LOW=0x80, BLACK=HIGH=0x00)
+//	GP11 ... VGA B0 blue
+//	GP12 ... VGA B1
+//	GP13 ... VGA G0 green
+//	GP14 ... VGA G1
+//	GP15 ... VGA G2
+//	GP16 ... VGA R0 red
+//	GP17 ... VGA R1
+//	GP18 ... VGA R2
+//	GP19 ... VGA SYNC synchronization (inverted: negative SYNC=LOW=0x80, BLACK=HIGH=0x00)
 #define VGA_GPIO_FIRST 11                                 // first VGA GPIO
-#define VGA_GPIO_NUM 10                                    // number of VGA GPIOs, including HSYNC and VSYNC
+#define VGA_GPIO_NUM 9                                    // number of VGA GPIOs, including HSYNC and VSYNC
 #define VGA_GPIO_OUTNUM 8                                 // number of VGA color GPIOs, without HSYNC and VSYNC
 #define VGA_GPIO_LAST (VGA_GPIO_FIRST + VGA_GPIO_NUM - 1) // last VGA GPIO
 #define VGA_GPIO_SYNC 19                                  // VGA SYNC GPIO

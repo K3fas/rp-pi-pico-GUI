@@ -5,7 +5,7 @@
 
 rpgui::layout::Layout::~Layout()
 {
-    for (auto &&element : _children)
+    for (auto element : _children)
     {
         delete element;
     }

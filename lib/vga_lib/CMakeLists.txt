@@ -54,13 +54,17 @@ target_sources(vga_lib INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}/font/font_boldB_8x16.cpp
         )
 
-target_include_directories(vga_lib INTERFACE ${CMAKE_CURRENT_LIST_DIR}/include ${CMAKE_CURRENT_LIST_DIR}/render)
+target_include_directories(vga_lib INTERFACE 
+        ${CMAKE_CURRENT_LIST_DIR}/render
+        ${CMAKE_CURRENT_LIST_DIR}/include
+        ${CMAKE_CURRENT_LIST_DIR}/include/util
+        ${CMAKE_CURRENT_LIST_DIR}/include/vga)
 
 target_link_libraries(vga_lib INTERFACE
                         pico_stdlib 
                         pico_multicore 
                         pico_stdio_semihosting
-                        pico_stdio_usb
+                        #pico_stdio_usb
                         pico_mem_ops
                         hardware_pwm 
                         hardware_dma 

@@ -9,10 +9,6 @@
 namespace rpgui::layout
 {
 
-    StackLayout::~StackLayout()
-    {
-    }
-
     void StackLayout::Draw() const
     {
         if (color != Color::Transparent)
@@ -25,7 +21,7 @@ namespace rpgui::layout
         }
         if (_activeElement)
         {
-            auto element = (VisualElement*)_activeElement;
+            auto element = (VisualElement *)_activeElement;
             element->Draw();
         }
     }

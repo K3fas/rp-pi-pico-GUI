@@ -34,6 +34,7 @@ typedef struct
 	u8 format; // canvas format CANVAS_*
 } sCanvas;
 
+
 // Draw rectangle
 void DrawRect(sCanvas *canvas, int x, int y, int w, int h, u8 col);
 

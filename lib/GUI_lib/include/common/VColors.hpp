@@ -2,18 +2,25 @@
 
 #include "stdint.h"
 
+
+
 namespace rpgui::colors
 {
 	// 8 Color bits of VGA output
 
-	constexpr uint8_t b0 = 1 << 0;
-	constexpr uint8_t b1 = 1 << 1;
-	constexpr uint8_t b2 = 1 << 2;
-	constexpr uint8_t b3 = 1 << 3;
-	constexpr uint8_t b4 = 1 << 4;
-	constexpr uint8_t b5 = 1 << 5;
-	constexpr uint8_t b6 = 1 << 6;
-	constexpr uint8_t b7 = 1 << 7;
+	namespace hide
+	{
+		constexpr uint8_t b0 = 1 << 0;
+		constexpr uint8_t b1 = 1 << 1;
+		constexpr uint8_t b2 = 1 << 2;
+		constexpr uint8_t b3 = 1 << 3;
+		constexpr uint8_t b4 = 1 << 4;
+		constexpr uint8_t b5 = 1 << 5;
+		constexpr uint8_t b6 = 1 << 6;
+		constexpr uint8_t b7 = 1 << 7;
+	}
+	
+	using namespace rpgui::colors::hide;
 
 	enum Color
 	{

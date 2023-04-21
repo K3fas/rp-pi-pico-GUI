@@ -1,190 +1,57 @@
 #ifndef PICO_KIT_IVGA
 #define PICO_KIT_IVGA
 
-#include "VColors.hpp" // colors
+#include "VColors.hpp"
+#include "font8x8.bmp.h"
 
-#define PICOVGA 0 // choose between PicoVGA and PicoQVGA lib
 
-#if PICOVGA
-
-#include "util/canvas.h"
-
-#define WIDTH 512
-#define HEIGHT 400
-#define WIDTHBYTE WIDTH
-extern sCanvas Canvas;
-
-#else
-
-#include "qvga/draw.h"   // draw
-#include "qvga/qvga.h"   // main lib
-#include "qvga/config.h" // configs
-
-#endif
-
-#include "common/Types.hpp"
-#include "common/Base.hpp"
-#include <string>
-
-// #include "cursor8.bmp.h"
-
-namespace IVGA
+namespace rpgui::type
 {
-    using namespace rpgui::colors;
+    class Point;
+    class Width;
+    class Height;
+    class Radius;
+}
 
-#if PICOVGA
-
-#endif
+namespace rpgui::common
+{
+    class Bounds;
+    class Sprite;
+}
 
 using namespace rpgui::type;
 using namespace rpgui::common;
+using namespace rpgui::colors;
 
-#if PICOVGA
 
-    inline void IDrawRectangle(const Point &point, const Width &width, const Height &heigth, const Color &color)
-    {
-        DrawRect(&Canvas, point.x, point.y, width.v, heigth.v, color);
-    }
+namespace IVGA
+{
+    void init();
 
-    inline void IDrawRectangle(const rpgui::common::Bounds &coord, const Color &color)
-    {
-        DrawRect(&Canvas, coord.x, coord.y, coord.w, coord.h, color);
-    }
+    void IDrawRectangle(const Point &point, const Width &width, const Height &heigth, const Color &color);
 
-    inline void IDrawFrame(const Bounds &bounds, const Color &color)
-    {
-        DrawFrame(&Canvas, bounds.x, bounds.y, bounds.w, bounds.h, color);
-    }
+    void IDrawRectangle(const Bounds &coord, const Color &color);
 
-    inline void IDrawPoint(const Point &point, const Color &color)
-    {
-        DrawPoint(&Canvas, point.x, point.y, color);
-    }
+    void IDrawFrame(const Bounds &coord, const Color &color);
 
-    inline void IDrawClear()
-    {
-        DrawClear(&Canvas);
-    }
+    void IDrawPoint(const Point &point, const Color &color);
 
-    inline void IDrawLine(const Point &start, const Point &end, const Color &color)
-    {
-        DrawLine(&Canvas, start.x, start.y, end.x, end.y, color);
-    }
+    void IDrawClear();
 
-    inline void IDrawCircle(const Point &point, const Radius &radius, const Color &color, bool isFilled = true)
-    {
-        if (isFilled)
-        {
-            DrawFillCircle(&Canvas, point.x, point.y, radius.v, color);
-        }
-        else
-        {
-            DrawCircle(&Canvas, point.x, point.y, radius.v, color);
-        }
-    }
+    void IDrawLine(const Point &start, const Point &end, const Color &color);
 
-    inline void IDrawText(const char *text, const Point &point, const Color &color, int textSize = 1)
-    {
-        // DrawText(&can, text, point.x, point.y, color);
-    }
+    void IDrawCircle(const Point &point, const Radius &radius, const Color &color, bool isFilled = true);
 
-    inline void IDrawText(const char *text, const Point &point, const Color &color, const Color &background)
-    {
-        // DrawTextBg(&can,text, point.x, point.y, color, background);
-    }
+    void IDrawText(const char *text, const Point &point, const Color &color, const void* font = Font8x8, uint8_t fontHeight = 8, uint8_t scaleX = 1 , uint8_t scaleY = 1);
 
-    inline void IDrawImage(const sCanvas *source, const Bounds bounds, int ws)
-    {
-        // DrawImg(&can, source,coords.start.x, coords.start.y, coords.width.v, coords.width.v, ws);
-    }
+    void IDrawText(const char *text, const Point &point, const Color &color, const Color &background, const void* font = Font8x8, uint8_t fontHeight = 8, uint8_t scaleX = 1 , uint8_t scaleY = 1);
 
-    inline void ICore1Exec(void (*fnc)())
-    {
-        Core1Exec(fnc);
-    }
+    void IDrawImage(Sprite& source, const Point& point);
 
-    inline void IWaitVSync()
-    {
-        WaitVSync();
-    }
+    void ICore1Exec(void (*fnc)());
 
-#else
+    void IWaitVSync();
 
-    inline void IDrawRectangle(const Point &point, const Width &width, const Height &heigth, const Color &color)
-    {
-        DrawRect(point.x, point.y, width.v, heigth.v, color);
-    }
-
-    inline void IDrawRectangle(const rpgui::common::Bounds &coord, const Color &color)
-    {
-        DrawRect(coord.x, coord.y, coord.w, coord.h, color);
-    }
-
-    inline void IDrawFrame(const rpgui::common::Bounds &coord, const Color &color)
-    {
-        DrawFrame(coord.x, coord.y, coord.w, coord.h, color);
-    }
-
-    inline void IDrawPoint(const Point &point, const Color &color)
-    {
-        DrawPoint(point.x, point.y, color);
-    }
-
-    inline void IDrawClear()
-    {
-        DrawClear();
-    }
-
-    inline void IDrawLine(const rpgui::type::Point &start, const rpgui::type::Point &end, const Color& color)
-    {
-        DrawLine(start.x, start.y, end.x, end.y, color);
-    }
-
-    inline void IDrawCircle(const Point &point, const Radius &radius, const Color &color, bool isFilled = true)
-    {
-        if (isFilled)
-        {
-            DrawFillCircle(point.x, point.y, radius.v, color);
-        }
-        else
-        {
-            DrawCircle(point.x, point.y, radius.v, color);
-        }
-    }
-
-    inline void IDrawText(const char *text, const Point &point, const Color &color, int textSize = 1)
-    {
-        if (textSize > 1)
-        {
-            DrawText2(text, point.x, point.y, color);
-        }
-        else
-        {
-            DrawText(text, point.x, point.y, color);
-        }
-    }
-
-    inline void IDrawText(const char *text, const Point &point, const Color &color, const Color &background)
-    {
-        DrawTextBg(text, point.x, point.y, color, background);
-    }
-
-    inline void IDrawImage(const uint8_t *source, const Bounds bounds, int ws)
-    {
-        DrawImg(source, bounds.x, bounds.y, bounds.w, bounds.h, ws);
-    }
-
-    inline void ICore1Exec(void (*fnc)())
-    {
-        Core1Exec(fnc);
-    }
-
-    inline void IWaitVSync()
-    {
-        WaitVSync();
-    }
-
-#endif
 }
 
 #endif // PICO_KIT_IVGA

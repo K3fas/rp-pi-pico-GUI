@@ -19,6 +19,7 @@
 #include "elements/Switch.hpp"
 
 #include "common/Types.hpp"
+#include "common/Sprite.hpp"
 
 #include "events/MouseEvent.hpp"
 

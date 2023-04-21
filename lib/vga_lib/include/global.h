@@ -244,13 +244,13 @@ extern const ALIGNED u8 FontThin8x8[2048];
 #include "pico/stdio.h"
 #include "pico/stdio_semihosting.h"
 #include "pico/stdio_uart.h"
-#include "pico/stdio_usb.h"
+//  #include "pico/stdio_usb.h"
 #include "pico/stdlib.h"
 #include "pico/sync.h"
 #include "pico/time.h"
 #include "pico/timeout_helper.h"
 #include "pico/types.h"
-#include "pico/unique_id.h"
+// #include "pico/unique_id.h"
 #include "pico/version.h"
 
 #include "pico/binary_info/code.h"
@@ -259,7 +259,7 @@ extern const ALIGNED u8 FontThin8x8[2048];
 
 #include "pico/bootrom/sf_table.h"
 
-#include "pico/fix/rp2040_usb_device_enumeration.h"
+// #include "pico/fix/rp2040_usb_device_enumeration.h"
 
 #include "pico/stdio/driver.h"
 

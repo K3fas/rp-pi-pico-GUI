@@ -5,6 +5,7 @@
 #include "rp_core.hpp"
 
 #include "IVGA.hpp"
+#include "settings.hpp"
 #include "Page.hpp"
 #include "MouseDispatcher.hpp"
 #include "Cursor.hpp"
@@ -19,11 +20,16 @@ MainApp::clickState MainApp::_clickState;
 
 extern void hid_app_task(void);
 
+void rpgui::core::init()
+{
+    IVGA::init();
+}
 
 void rpgui::core::MainApp::drawPage()
 {
     _selectedPage->Draw();
 }
+
 
 void rpgui::core::MainApp::AddPage(Page *page)
 {
@@ -42,7 +48,8 @@ void rpgui::core::MainApp::Update()
 {
     tuh_task();
     hid_app_task();
-    IVGA::ICore1Exec(updateOnCore1);
+    //IVGA::ICore1Exec(updateOnCoreX);
+    updateOnCoreX();
 }
 
 void rpgui::core::MainApp::AddListener(MouseEventType type, const Handler &handler)
@@ -50,7 +57,7 @@ void rpgui::core::MainApp::AddListener(MouseEventType type, const Handler &handl
     MainApp::_mouseHandler.Subscribe(type, handler);
 }
 
-void rpgui::core::MainApp::updateOnCore1()
+void rpgui::core::MainApp::updateOnCoreX()
 {
     //IVGA::IDrawClear();
     //MainApp::timers.core1.start = time_us_32();

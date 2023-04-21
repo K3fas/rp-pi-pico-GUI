@@ -21,9 +21,12 @@ namespace rpgui::layout
         uint16_t _currentHeight = 0;
 
     public:
+        StackLayout() = delete;
+        StackLayout(const StackLayout&) = delete;
+        ~StackLayout() = default;
+
         StackLayout(const Point start, const Width width, const Height height)
             : Layout(Bounds{start.x, start.y, width.v, height.v}) {}
-        ~StackLayout();
 
         void Draw() const final;
 
@@ -46,7 +49,7 @@ namespace rpgui::layout
 
             _currentHeight += elementHeigth;
 
-            _children.emplace_back((View*)element);
+            _children.push_back((View*)element);
             return true;
         }
     };

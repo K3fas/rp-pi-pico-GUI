@@ -131,7 +131,12 @@ int main(int argc, char *argv[])
 	fprintf(f, "// image width: %d pixels\n", W);
 	fprintf(f, "// image height: %d lines\n", H);
 	fprintf(f, "// image pitch: %d bytes\n", wb);
-	fprintf(f, "static const uint8_t %s[%d] __attribute__ ((aligned(4))) = {", argv[3], n);
+	fprintf(f, "struct %s%s{\n","s", argv[3]);
+	fprintf(f, "static constexpr uint16_t width = %d;\n",W);
+	fprintf(f, "static constexpr uint16_t height = %d;\n",H);
+	fprintf(f, "static constexpr uint16_t pitch = %d;\n",wb);
+
+	fprintf(f, "static constexpr uint8_t image[%d] __attribute__ ((aligned(4))) = {", n);
 
 	// convert to 2-bits
 	if (B == 2)
@@ -156,7 +161,10 @@ int main(int argc, char *argv[])
 			fprintf(f, "0x%02X, ", D[i]);
 		}
 	}
-	fprintf(f, "\n};\n");
+	fprintf(f, "\n};\n");	// end of array
+	fprintf(f, "\n}%s;\n", argv[3]);	// end of struct
+
+
 
 	fclose(f);
 	free(Img);
