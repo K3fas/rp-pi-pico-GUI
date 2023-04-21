@@ -5,7 +5,7 @@
 #ifndef PICO_KIT_FRAMEWORK_RECTANGLE_HPP
 #define PICO_KIT_FRAMEWORK_RECTANGLE_HPP
 
-#include "../include.hpp"
+#include "include.hpp"
 
 using namespace rpgui::type;
 using namespace rpgui::common;

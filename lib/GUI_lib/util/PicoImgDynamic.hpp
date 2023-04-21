@@ -1,29 +1,15 @@
 #pragma once
 
 #include "Types.hpp"
+#include "Sprite.hpp"
 #include <string>
+
+using namespace rpgui::common;
 
 namespace rpgui::util
 {
-    struct ImageData
-    {
-    public:    
-        uint8_t* Image;
-        uint16_t width, heigth, pitch;;
+}
     
+    Sprite* GenerateSprite(Sprite* sprite, const std::string &fileName, const std::string &path);
 
-    public:
-        ImageData() = delete;
-        ImageData(const ImageData&) = delete;
-        ~ImageData();
-
-        ImageData(const std::string& fileName, const std::string& path);
-
-    private:
-        FATFS prepareSD();
-        void openFile();
-        void loadData();
-    };
-    
-    
 } // namespace rpgui::util

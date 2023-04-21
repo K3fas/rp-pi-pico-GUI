@@ -8,8 +8,15 @@
 
 using namespace rpgui::core;
 
-rpgui::ui::RadioButton::RadioButton(const Point start, const Width &itemWidth, const Height &itemHeight, Color color, Color bgColor)
-    : View(Bounds(start.x, start.y, itemWidth.v, 0), color), _itemHeight(itemHeight.v), _itemWidth(itemWidth.v), backgorundColor(bgColor)
+rpgui::ui::RadioButton::RadioButton(const Width &itemWidth, const Height &itemHeight,
+                                    Color color, Color bgColor,
+                                    const void *font, uint8_t fontSize)
+    : View(Bounds(0, 0, itemWidth.v, 0), color),
+      _itemHeight(itemHeight.v),
+      _itemWidth(itemWidth.v),
+      _fontSize(fontSize),
+      _font(font),
+      backgorundColor(bgColor)
 {
     MainApp::AddListener(MouseEventType::Clicked, rpgui::event::Handler(clickHandler, this));
 }
@@ -35,9 +42,6 @@ void rpgui::ui::RadioButton::SetBounds(const Bounds &bounds)
 
 void rpgui::ui::RadioButton::Draw() const
 {
-#ifdef TRACKING
-    auto start = time_us_32();
-#endif
     auto bounds = GetBounds();
     IVGA::IDrawRectangle(this->GetBounds(), backgorundColor);
     for (uint8_t i = 0; i < _items.size(); i++)
@@ -53,16 +57,10 @@ void rpgui::ui::RadioButton::Draw() const
 
         IVGA::IDrawText(_items.at(i).c_str(), Point(bounds.x + _delimiter, bounds.y + _itemHeight * i + _fontSize / 2), color);
     }
-#ifdef TRACKING
-    printf("RadioButton Draw took %f\n", time_us_32() - start);
-#endif
 }
 
 void rpgui::ui::RadioButton::clickHandler(rpgui::event::MouseEvent<MouseEventType> &event, Clickable *sender)
 {
-#ifdef TRACKING
-    auto start = time_us_32();
-#endif
     auto btn = (RadioButton *)sender;
     auto bounds = btn->GetBounds();
     for (uint8_t i = 0; i < btn->_items.size(); i++)
@@ -75,7 +73,4 @@ void rpgui::ui::RadioButton::clickHandler(rpgui::event::MouseEvent<MouseEventTyp
             return;
         }
     }
-#ifdef TRACKING
-    printf("RadioButton Draw took %f\n", time_us_32() - start);
-#endif
 }

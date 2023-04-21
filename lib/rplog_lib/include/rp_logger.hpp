@@ -35,7 +35,7 @@ namespace rplog
         std::vector<Sink> _sinks;
 
     public:
-        Level logLevel;
+        Level logLevel = Level::DEBUG;
         inline static Level globalLogLevel = Level::DEBUG;
 
     public:

@@ -32,7 +32,6 @@ rpgui::ui::ProgressBar::ProgressBar(const Bounds &bounds, double &progress, uint
 void rpgui::ui::ProgressBar::SetBounds(const Bounds &bounds)
 {
     rpgui::common::VisualElement::SetBounds(bounds);
-    calculateCenter();
 }
 
 void rpgui::ui::ProgressBar::SetBorderSize(const uint8_t size)
@@ -51,22 +50,26 @@ void rpgui::ui::ProgressBar::Draw() const
 
 void rpgui::ui::ProgressBar::calculateCenter()
 {
-#ifdef TRACKING
-    auto start = time_us_32();
-#endif
     // adjusted for border size
     auto width = this->GetBounds().w - _borderSize * 2;
     auto nom = (width* progress.GetValue());
     _center =  nom / (_max - _min) ;
-#ifdef TRACKING
-    printf("ProgressBar Draw took %f\n", time_us_32() - start);
-#endif
 }
 
 uint16_t rpgui::ui::ProgressBar::getNewCenter() const
 {
     // adjusted for border size
     auto width = this->GetBounds().w - _borderSize * 2;
-    auto nom = (width* progress.GetValue());
+    double val = progress.GetValue();
+    if (val > _max)
+    {
+        val = _max;
+    }
+    if(val < _min)
+    {
+        val = _min;
+    }
+    
+    auto nom = (width* val);
     return nom / (_max - _min) ;
 }

@@ -13,22 +13,24 @@ namespace rpgui::ui
     class Label : public rpgui::common::View
     {
     public:
-    rpgui::common::BindableProperty<std::string> text;
-    rpgui::colors::Color textColor;
-        
+        rpgui::common::BindableProperty<std::string> text;
+        rpgui::colors::Color textColor;
+        const void *font;
+        uint8_t fontSize;
+
     public:
-        // TODO: Add font type and size support
         Label() = delete;
-        Label(const Label&) = default;
+        Label(const Label &) = default;
         ~Label() = default;
 
-        Label(std::string& text, const Color backgroundColor = Color::Transparent, const Color textColor = Color::White);
-        Label(const std::string& text, const Color backgroundColor = Color::Transparent, const Color textColor = Color::White);
-        
+        Label(std::string &text, const Color textColor = Color::White, const Color backgroundColor = Color::Transparent, const void *font = nullptr, const uint8_t fontSize = 8);
+        Label(const std::string &text, const Color textColor = Color::White, const Color backgroundColor = Color::Transparent, const void *font = nullptr, const uint8_t fontSize = 8);
+
         void Draw() const final;
+
+        void SetText(const std::string& text);
     };
-    
+
 } // namespace rpgui::ui
 
-
-#endif //PICO_KIT_FRAMEWORK_LABEL_HPP
+#endif // PICO_KIT_FRAMEWORK_LABEL_HPP

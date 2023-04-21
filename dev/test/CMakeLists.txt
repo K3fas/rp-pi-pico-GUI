@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.13)
 add_executable(test)
 
 qvga_generate_img_header(test ${CMAKE_CURRENT_LIST_DIR}/img/blue.bmp Blue8Img)
+qvga_generate_img_header(test ${CMAKE_CURRENT_LIST_DIR}/img/peter8.bmp Peter8Img)
 
 # Example source
 target_sources(test PUBLIC

@@ -35,11 +35,15 @@ void rpgui::util::SDWrapper::Dispose()
 
 std::tuple<FRESULT, FIL *> rpgui::util::SDWrapper::OpenFile(const std::string &name, const std::string &path)
 {
-    FIL *fil = nullptr;
+    FIL *fil = new FIL();
     FRESULT res;
     if (!_sdInit)
     {
-        return std::make_tuple(FRESULT::FR_NO_FILESYSTEM, nullptr);
+        res = Init();
+        if(FR_OK != res)
+        {
+            return std::make_tuple(FRESULT::FR_NO_FILESYSTEM, nullptr);
+        }
     }
 
     if(!path.empty())
@@ -51,14 +55,18 @@ std::tuple<FRESULT, FIL *> rpgui::util::SDWrapper::OpenFile(const std::string &n
         }
     }
 
-    res = f_open(fil, name.c_str(), FA_WRITE | FA_OPEN_APPEND);
+    res = f_open(fil, name.c_str(), FA_WRITE | FA_READ | FA_OPEN_APPEND);
+    if(FR_OK == res)
+    {
+        _openedFiles.push_back(fil);
+    }
     return std::make_tuple(res, fil);
 }
 
 FRESULT rpgui::util::SDWrapper::CloseAllFiles()
 {
     FRESULT ret;
-    for (auto &&file : _openedFiles)
+    for (auto file : _openedFiles)
     {
         auto result = f_close(file);
         if (FR_OK != result)

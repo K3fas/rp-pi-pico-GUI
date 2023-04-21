@@ -11,7 +11,12 @@ using namespace rpgui::util;
 
 rplog::Logger::Logger()
 {
-    SDWrapper::Init();
+    auto res = SDWrapper::Init();
+    if (FR_OK != res)
+    {
+        logError(std::cerr, "Failed to init SD card ! Message:");
+        logError(std::cerr, FRESULT_str(res));
+    }
 }
 
 rplog::Logger::~Logger()
@@ -23,12 +28,19 @@ bool rplog::Logger::AddFile(const std::string &name, const std::string &path)
 {
 
     auto [result, file] = SDWrapper::OpenFile(name, path);
-    if (file)
+    if (FR_OK != result)
+    {
+        logError(std::cerr, "Failed to add file to logger. Message:");
+        logError(std::cerr, FRESULT_str(result));
+        return false;
+    }
+    if(file)
     {
         AddSink(file);
         logDebug(std::cout, "File added to sinks");
         return true;
     }
+
     logError(std::cerr, "Failed to add file to sinks!");
     return false;
 }
@@ -73,10 +85,10 @@ void rplog::Logger::Log(const std::string &message, const Level &severity)
     for (auto &&sink : _sinks)
     {
 
-        auto file = get_if<FIL *const>(&sink);
+        auto file = *(get_if<FIL *const>(&sink));
         if (file)
         {
-            f_printf(*file, toPrint.c_str());
+            f_printf(file, toPrint.c_str());
             continue;
         }
 

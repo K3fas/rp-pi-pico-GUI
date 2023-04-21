@@ -14,34 +14,33 @@ using namespace rpgui::event;
 
 namespace rpgui::ui
 {
+    class Label;
+}
+
+namespace rpgui::ui
+{
     class Button : public View, public Clickable
     {
     private:
-        struct textBounds
-        {
-            BindableProperty<std::string> str;
-            Bounds bounds;
-
-            textBounds(const std::string& text)
-                :str(text){}
-            textBounds(std::string& text)
-                :str(text){}
-        } _text;
+        Label* _text;
 
     public:
-        Color textColor = Color::White;
 
     public:
 
         Button() = delete;
         Button(const Button&) = default;
-        ~Button() = default;
+        ~Button();
         
-        Button(const Width &width, const Height &heigth, const Color &color, std::string& text);
-        Button(const Width &width, const Height &heigth, const Color &color, const std::string& text = "");
+        Button(const Width &width, const Height &heigth, const Color &color, 
+            std::string& text, const Color& textColor = Color::White, uint8_t fontSize = 8, void* font = nullptr);
+        Button(const Width &width, const Height &heigth, const Color &color,
+         const std::string& text = "",const Color& textColor = Color::White, uint8_t fontSize = 8, void* font = nullptr);
 
-        Button(const Bounds &bounds, const Color &color, std::string& text);
-        Button(const Bounds &bounds, const Color &color, const std::string& text = "");
+        Button(const Bounds &bounds, const Color &color, 
+            std::string& text, const Color& textColor = Color::White, uint8_t fontSize = 8, void* font = nullptr);
+        Button(const Bounds &bounds, const Color &color,
+             const std::string& text = "", const Color& textColor = Color::White, uint8_t fontSize = 8, void* font = nullptr);
 
         void SetText(const std::string& text);
 

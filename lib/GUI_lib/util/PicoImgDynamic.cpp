@@ -10,6 +10,7 @@
 #define bmpBI_RLE8	1
 #define bmpBI_RLE4	2
 
+using namespace rpgui::common;
 
 rpgui::util::ImageData::~ImageData()
 {
@@ -135,4 +136,9 @@ void rpgui::util::ImageData::loadData(const FIL& file)
 
     // are we done ?
 
+}
+
+Sprite *rpgui::util::GenerateSprite(Sprite *sprite, const std::string &fileName, const std::string &path)
+{
+    return nullptr;
 }

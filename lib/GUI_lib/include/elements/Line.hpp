@@ -23,7 +23,7 @@ namespace rpgui::ui
         Line(const Line&) = default;
         ~Line() = default;
 
-        Line(const Point& start, const Point& end, Color color);
+        Line(const Point& start, const Point& end, Color color = Color::White);
 
         void Draw() const final;
     };

@@ -56,7 +56,7 @@ void onClicked(MouseEvent<MouseEventType> &event, Clickable *sender)
 }
 
 int main()
-    {
+{
     board_init();
     tusb_init();
 
@@ -65,12 +65,12 @@ int main()
     SetupRP();
 
     // Logger
-   
+
     // GUI
 
     rpgui::core::init();
 
-    auto lay = new layout::StackLayout(type::Point{60, 10}, type::Width{120}, type::Height{200});
+    auto lay = new layout::StackLayout(type::Point{10, 10}, type::Width{300}, type::Height{200});
     auto rect1 = ui::Rectangle(type::Width{20}, type::Height{20}, colors::Color::Green);
     rect1.margin = Margin{5, 5, 5, 5};
 
@@ -80,33 +80,30 @@ int main()
     btn->SetText("Button");
     lay->AddElement(btn);
 
-
-    auto lay1 = new layout::StackLayout(type::Point{240, 10}, type::Width{40}, type::Height{1});
+    auto lay1 = new layout::StackLayout(type::Point{310, 10}, type::Width{80}, type::Height{1});
     lay1->AddElement(new ui::CheckBox(Width(20), Height(20), false, Color::Gray, Color::White));
     std::string binder = "Databinder";
     lay->AddElement(new ui::Label(binder));
     lay->AddElement(new ui::Label("Implicit"));
     lay1->AddElement(new ui::Stepper<uint8_t>(Width{10}, Height{11}, Color::Red, Color::Blue, 2));
 
-    auto radBtn = new ui::RadioButton(Point(0, 0), Width(60), Height(16), Color::Red);
+    auto radBtn = new ui::RadioButton(Width(60), Height(16), Color::Red);
     radBtn->AddItem("Dog");
     radBtn->AddItem("Cat");
     radBtn->AddItem("Camel");
     lay->AddElement(radBtn);
 
-    lay->AddElement(new ui::Switch(Width(10),Height(10),true));
+    lay->AddElement(new ui::Switch(Width(10), Height(20), true));
 
-    lay->AddElement(new ui::Slider(Width(10), Height(12),Color::SemiGray));
+    lay->AddElement(new ui::ProgressBar(Width(10), Height(20), 40.0));
 
     auto page = new page::Page();
     page->AddLayout(lay);
     page->AddLayout(lay1);
 
-
     core::MainApp::AddPage(page);
     while (1)
     {
-        
 
         core::MainApp::Update();
 

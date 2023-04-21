@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 		printf("Incorrect size of %s\n", argv[1]);
 		return 1;
 	}
-
+	printf("Image size %d\n", size);
 	// create buffer
 	Img = (unsigned char*)malloc(size);
 	if (Img == NULL)

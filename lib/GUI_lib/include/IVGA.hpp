@@ -42,9 +42,7 @@ namespace IVGA
 
     void IDrawCircle(const Point &point, const Radius &radius, const Color &color, bool isFilled = true);
 
-    void IDrawText(const char *text, const Point &point, const Color &color, const void* font = Font8x8.image, uint8_t fontHeight = 8, uint8_t scaleX = 1 , uint8_t scaleY = 1);
-
-    void IDrawText(const char *text, const Point &point, const Color &color, const Color &background, const void* font = Font8x8.image, uint8_t fontHeight = 8, uint8_t scaleX = 1 , uint8_t scaleY = 1);
+    void IDrawText(const char *text, const Point &point, const Color &color, const Color &background = Color::Transparent, const void* font = Font8x8.image, uint8_t fontHeight = 8, uint8_t scaleX = 1 , uint8_t scaleY = 1);
 
     void IDrawImage(Sprite& source, const Point& point);
 
