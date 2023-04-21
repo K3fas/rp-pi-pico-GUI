@@ -73,8 +73,10 @@
 #include "hardware/pio.h"
 #include "qvga.pio.h"
 
+#ifdef TIMERS
 #include "timers.hpp"
 extern timers_t timers;
+#endif
 
 // PIO command (jmp=program address, num=loop counter)
 #define QVGACMD(jmp, num) (((uint32_t)((jmp) + QVGAOff) << 27) | (uint32_t)(num))

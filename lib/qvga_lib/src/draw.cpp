@@ -274,7 +274,7 @@ void DrawText(const char *text, int x, int y, uint8_t col)
 			break;
 
 		// prepare pointer to font sample
-		s = &Font8x8[ch];
+		s = &Font8x8.image[ch];
 
 		// loop through lines of one character
 		y = y0;
@@ -321,7 +321,7 @@ void DrawText2(const char *text, int x, int y, uint8_t col)
 			break;
 
 		// prepare pointer to font sample
-		s = &Font8x8[ch];
+		s = &Font8x8.image[ch];
 
 		// loop through lines of one character
 		y = y0;
@@ -373,7 +373,7 @@ void DrawTextBg(const char *text, int x, int y, uint8_t col, uint8_t bgcol)
 			break;
 
 		// prepare pointer to font sample
-		s = &Font8x8[ch];
+		s = &Font8x8.image[ch];
 
 		// loop through lines of one character
 		y = y0;
@@ -424,7 +424,7 @@ void DrawTextBuf(const char *textbuf, uint8_t col, uint8_t bgcol)
 			ch = (uint8_t)*textbuf++;
 
 			// prepare pointer to font sample
-			s = &Font8x8[ch];
+			s = &Font8x8.image[ch];
 
 			// loop through lines of one character
 			for (i = 8; i > 0; i--)
@@ -471,7 +471,7 @@ void DrawFTextBuf(const char *textbuf, uint8_t bgcol)
 			col = (uint8_t)*textbuf++;
 
 			// prepare pointer to font sample
-			s = &Font8x8[ch];
+			s = &Font8x8.image[ch];
 
 			// loop through lines of one character
 			for (i = 8; i > 0; i--)

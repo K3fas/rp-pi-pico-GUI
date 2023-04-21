@@ -20,6 +20,7 @@ target_include_directories(test PUBLIC
 target_link_libraries(test
     PUBLIC
     GUI_lib
+    rplog_lib
     pico_stdlib
     hardware_adc
     )

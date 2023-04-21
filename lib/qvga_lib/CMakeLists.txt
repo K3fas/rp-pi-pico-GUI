@@ -14,4 +14,9 @@ target_sources(qvga_lib INTERFACE
 
 target_include_directories(qvga_lib INTERFACE ${CMAKE_CURRENT_LIST_DIR}/include)
 
-target_link_libraries(qvga_lib INTERFACE pico_stdlib pico_multicore hardware_pwm hardware_dma hardware_pio)
+target_link_libraries(qvga_lib INTERFACE
+                pico_stdlib 
+                pico_multicore
+                hardware_pwm
+                hardware_dma
+                hardware_pio)

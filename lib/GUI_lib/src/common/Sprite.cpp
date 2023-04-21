@@ -27,17 +27,6 @@ sCanvas *rpgui::common::Sprite::GetCanvas()
     return &_image;
 }
 
-#else
-rpgui::common::Sprite::Sprite(uint8_t *image, int width, int height, int pitch)
-{
-}
-
-rpgui::common::Sprite::~Sprite()
-{
-}
-
-#endif
-
 int rpgui::common::Sprite::GetWidth() const
 {
     return _image.w;
@@ -52,3 +41,29 @@ int rpgui::common::Sprite::GetPitch() const
 {
     return _image.wb;
 }
+
+#else
+rpgui::common::Sprite::Sprite(const uint8_t *image, const uint16_t imageSize, int width, int height, int pitch)
+{
+}
+
+rpgui::common::Sprite::~Sprite()
+{
+}
+
+int rpgui::common::Sprite::GetWidth() const
+{
+}
+
+int rpgui::common::Sprite::GetHeight() const
+{
+
+}
+
+int rpgui::common::Sprite::GetPitch() const
+{
+
+}
+
+#endif
+

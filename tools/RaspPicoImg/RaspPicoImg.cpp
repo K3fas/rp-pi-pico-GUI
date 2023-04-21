@@ -126,12 +126,13 @@ int main(int argc, char *argv[])
 	if (B == 4) { n /= 2; wb /= 2; }
 	if (B == 2) { n /= 4; wb /= 4; }
 	if (B == 1) { n /= 8; wb /= 8; }
+	fprintf(f, "#pragma once\n");
 	fprintf(f, "#include <stdint.h>\n\n");
 	fprintf(f, "// format: %d-bit pixel graphics\n", B);
 	fprintf(f, "// image width: %d pixels\n", W);
 	fprintf(f, "// image height: %d lines\n", H);
 	fprintf(f, "// image pitch: %d bytes\n", wb);
-	fprintf(f, "struct %s%s{\n","s", argv[3]);
+	fprintf(f, "static inline struct %s%s{\n","s", argv[3]);
 	fprintf(f, "static constexpr uint16_t width = %d;\n",W);
 	fprintf(f, "static constexpr uint16_t height = %d;\n",H);
 	fprintf(f, "static constexpr uint16_t pitch = %d;\n",wb);

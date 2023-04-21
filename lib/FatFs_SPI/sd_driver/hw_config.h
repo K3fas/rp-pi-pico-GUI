@@ -15,6 +15,9 @@ specific language governing permissions and limitations under the License.
 
 #include "ff.h"
 #include "sd_card.h"    
+
+#define DMA_TX 8
+#define DMA_RX 9
     
 #ifdef __cplusplus
 extern "C" {

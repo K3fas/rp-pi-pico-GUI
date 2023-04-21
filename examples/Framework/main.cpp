@@ -11,7 +11,6 @@
 #include "tusb_data.hpp"
 
 #include "IVGA.hpp"
-#include "RP_GUI.hpp"
 
 #include "timers.hpp"
 

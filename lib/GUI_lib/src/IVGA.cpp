@@ -85,7 +85,7 @@ namespace IVGA
         DrawTextBg(&Canvas, text, point.x, point.y, color, background, font, fontHeight, scaleX, scaleY);
     }
 
-    void IDrawImage(Sprite& source, const Point& point)
+    void IDrawImage(Sprite &source, const Point &point)
     {
         source.SetFormat(Canvas);
         DrawImg(&Canvas, source.GetCanvas(), point.x, point.y, 1, 1, source.GetWidth(), source.GetHeight());
@@ -152,7 +152,7 @@ namespace IVGA
 
     void IDrawText(const char *text, const Point &point, const Color &color, const void *font, uint8_t fontHeight, uint8_t scaleX, uint8_t scaleY)
     {
-        if (textSize > 8)
+        if (fontHeight > 8)
         {
             DrawText2(text, point.x, point.y, color);
         }

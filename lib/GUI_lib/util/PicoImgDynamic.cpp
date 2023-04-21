@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#include "ff.h"
+
 #define bmpBI_RGB	0
 #define bmpBI_RLE8	1
 #define bmpBI_RLE4	2

@@ -4,7 +4,6 @@ set(use_picoqvga false)
 
 target_sources(GUI_lib INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}/util/hid_handler.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/src/RP_GUI.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/IVGA.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/rp_core.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/common/Base.cpp
@@ -38,11 +37,13 @@ ${CMAKE_CURRENT_LIST_DIR}/include/elements
 ${CMAKE_CURRENT_LIST_DIR}/include/events
 ${CMAKE_CURRENT_LIST_DIR}/include/layouts
 ${CMAKE_CURRENT_LIST_DIR}/include/pages
-${CMAKE_CURRENT_LIST_DIR}/include/util
+${CMAKE_CURRENT_LIST_DIR}/util
+${CMAKE_CURRENT_LIST_DIR}/config
                 )
 
 target_link_libraries(GUI_lib INTERFACE 
-                        pico_stdlib 
+                        pico_stdlib
+                        rplog_lib 
                         tinyusb_host
                         tinyusb_board
                         )

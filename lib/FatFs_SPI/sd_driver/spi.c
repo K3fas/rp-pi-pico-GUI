@@ -173,8 +173,12 @@ bool my_spi_init(spi_t *pSPI) {
         gpio_pull_up(pSPI->miso_gpio);
 
         // Grab some unused dma channels
-        pSPI->tx_dma = dma_claim_unused_channel(true);
-        pSPI->rx_dma = dma_claim_unused_channel(true);
+        // pSPI->tx_dma = dma_claim_unused_channel(true);
+        // pSPI->rx_dma = dma_claim_unused_channel(true);
+
+        // Hard configuration cuz we are usin VGA lib
+        pSPI->tx_dma = DMA_TX; 
+        pSPI->rx_dma = DMA_RX; 
 
         pSPI->tx_dma_cfg = dma_channel_get_default_config(pSPI->tx_dma);
         pSPI->rx_dma_cfg = dma_channel_get_default_config(pSPI->rx_dma);

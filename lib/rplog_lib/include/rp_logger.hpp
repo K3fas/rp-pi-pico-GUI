@@ -33,22 +33,21 @@ namespace rplog
 
     private:
         std::vector<Sink> _sinks;
-        inline static bool _sdInit = false;
 
     public:
         Level logLevel;
         inline static Level globalLogLevel = Level::DEBUG;
 
     public:
-        Logger() = default;
+        Logger();
+        Logger(const Logger&) = delete;
         ~Logger();
 
-        static bool InitSD();
-        static void CloseSD();
 
-        FIL* OpenFile(const std::string& path);
-        bool AddFile(const std::string& path);
+
+        bool AddFile(const std::string& name, const std::string& path = "");
         void CloseFiles();
+        static void DisposeSD();
 
         void AddSink(FIL *const file);
         void AddSink(std::ostream &stream);

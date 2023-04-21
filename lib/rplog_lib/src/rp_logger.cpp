@@ -5,64 +5,27 @@
 #include "ff.h"
 #include "f_util.h"
 
+#include <SDWrapper.hpp>
+
+using namespace rpgui::util;
+
+rplog::Logger::Logger()
+{
+    SDWrapper::Init();
+}
+
 rplog::Logger::~Logger()
 {
     CloseFiles();
 }
 
-bool rplog::Logger::InitSD()
+bool rplog::Logger::AddFile(const std::string &name, const std::string &path)
 {
-    sd_card_t *pSD = sd_get_by_num(0);
-    FRESULT fr = f_mount(&pSD->fatfs, pSD->pcName, 1);
-    if (FR_OK != fr)
-    {
-        logError(std::cerr, "Failed initialize SD card! Message:");
-        logError(std::cerr, FRESULT_str(fr));
-        _sdInit = false;
-        return false;
-    }
 
-    logDebug(std::cout, "SD Card initialized");
-    _sdInit = true;
-    return true;
-}
-
-void rplog::Logger::CloseSD()
-{
-    if (_sdInit)
-    {
-        sd_card_t *pSD = sd_get_by_num(0);
-        f_unmount(pSD->pcName);
-        logDebug(std::cout, "SD Card closed");
-    }
-}
-
-FIL *rplog::Logger::OpenFile(const std::string &path)
-{
-    if(!_sdInit)
-        return nullptr;
-    
-    auto fil = new FIL;
-    auto fr = f_open(fil, path.c_str(), FA_OPEN_APPEND | FA_WRITE);
-    if (FR_OK != fr && FR_EXIST != fr)
-    {
-        logError(std::cerr, "Failed to open file! Message:");
-        logError(std::cerr, FRESULT_str(fr));
-        return nullptr;
-    }
-    logDebug(std::cout, "Opened file");
-    return fil;
-}
-
-bool rplog::Logger::AddFile(const std::string &path)
-{
-    if(!_sdInit)
-        return false;
-    
-    auto file = OpenFile(path);
+    auto [result, file] = SDWrapper::OpenFile(name, path);
     if (file)
     {
-        _sinks.push_back(file);
+        AddSink(file);
         logDebug(std::cout, "File added to sinks");
         return true;
     }
@@ -77,14 +40,18 @@ void rplog::Logger::CloseFiles()
         auto file = get_if<FIL *const>(&sink);
         if (file)
         {
-            auto fr = f_close(*file);
-            if (FR_OK != fr)
+            auto result = SDWrapper::CloseFile(*file);
+            if (FR_OK != result)
             {
-                logError(std::cerr, "Failed to close file! Message:");
-                logError(std::cerr, FRESULT_str(fr));
+                logError(std::cerr, "Failed to close file! ");
             }
         }
     }
+}
+
+void rplog::Logger::DisposeSD()
+{
+    SDWrapper::Dispose();
 }
 
 void rplog::Logger::AddSink(FIL *file)
@@ -205,7 +172,7 @@ inline const std::string rplog::Logger::levelToString(const Level &level)
 
 inline void rplog::Logger::printToFile(FIL *const file, const std::string &message, const Level severity)
 {
-    if(rplog::Logger::globalLogLevel < severity)
+    if (rplog::Logger::globalLogLevel < severity)
         return;
     auto toPrint = levelToString(severity) + message + "\n";
     f_printf(file, toPrint.c_str());
@@ -213,7 +180,7 @@ inline void rplog::Logger::printToFile(FIL *const file, const std::string &messa
 
 inline void rplog::Logger::printToStream(std::ostream &stream, const std::string &message, const Level severity)
 {
-    if(rplog::Logger::globalLogLevel < severity)
+    if (rplog::Logger::globalLogLevel < severity)
         return;
     auto toPrint = levelToString(severity) + message + "\n";
     stream << toPrint;
