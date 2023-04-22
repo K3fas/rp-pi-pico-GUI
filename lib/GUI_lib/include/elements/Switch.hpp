@@ -21,7 +21,7 @@ namespace rpgui::ui
 
     public:
         Switch() = delete;
-        Switch(const Switch &) = default;
+        Switch(const Switch &) = delete;
         ~Switch() = default;
 
         Switch(const Width &width, const Height &height, const bool &value,

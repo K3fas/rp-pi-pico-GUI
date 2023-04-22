@@ -52,7 +52,7 @@ void rpgui::ui::Switch::Draw() const
     auto bounds = GetBounds();
     IVGA::IDrawRectangle(bounds, color);
 
-    // true -> left pos
+    // true -> right pos
     if (isSwitched.GetValue())
     {
         IVGA::IDrawRectangle(Bounds(bounds.x + bounds.w / 2, bounds.y, bounds.w / 2, bounds.h), switchOnColor);
