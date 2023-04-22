@@ -27,10 +27,10 @@ add_compile_options(-Wall
 
 include(tools/FindRaspPicoImg.cmake)
 include(tools/FindRaspPicoSnd.cmake)
-add_subdirectory(tools)
 
+add_subdirectory(tools)
 add_subdirectory(lib)
-#add_subdirectory(examples)
+add_subdirectory(examples)
 add_subdirectory(dev)
 
 

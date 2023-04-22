@@ -20,7 +20,7 @@ target_include_directories(test PUBLIC
 # for TinyUSB device support and tinyusb_board for the additional board support library used
 target_link_libraries(test
     PUBLIC
-    GUI_lib
+    gui_lib
     rplog_lib
     pico_stdlib
     hardware_adc

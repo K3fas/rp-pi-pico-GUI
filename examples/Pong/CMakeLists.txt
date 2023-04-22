@@ -7,6 +7,7 @@ add_executable(Pong)
 # Example source
 target_sources(Pong PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}/main.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/pong.cpp
         )
 
 
@@ -19,11 +20,8 @@ target_include_directories(Pong PUBLIC
 # for TinyUSB device support and tinyusb_board for the additional board support library used
 target_link_libraries(Pong
     PUBLIC
-    qvga_lib
-    GUI_lib
+    gui_lib
     pico_stdlib
-    tinyusb_host
-    tinyusb_board
     hardware_adc
     )
 

@@ -22,7 +22,8 @@ namespace rpgui::util
         static FRESULT Init();
         static void Dispose();
 
-        static std::tuple<FRESULT, FIL *> OpenFile(const std::string &name, const std::string &path);
+        static std::tuple<FRESULT, FIL *> OpenFile(const std::string &name, const std::string &path,
+                                                   const unsigned char mode = FA_READ | FA_WRITE | FA_OPEN_APPEND);
         static FRESULT CloseAllFiles();
         static FRESULT CloseFile(FIL *file);
     };

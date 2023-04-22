@@ -63,7 +63,6 @@ target_include_directories(vga_lib INTERFACE
 target_link_libraries(vga_lib INTERFACE
                         pico_stdlib 
                         pico_multicore 
-                        pico_stdio_semihosting
                         #pico_stdio_usb
                         pico_mem_ops
                         hardware_pwm 

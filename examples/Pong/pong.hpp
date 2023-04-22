@@ -1,6 +1,12 @@
 #pragma once
-#include "IVGA.hpp"
-#include "RP_GUI.hpp"
+
+#include <rpgui.hpp>
+
+using namespace rpgui::type;
+using namespace rpgui::common;
+using namespace rpgui::colors;
+using namespace rpgui::ui;
+using namespace rpgui::layout;
 
 namespace Pong
 {
@@ -21,7 +27,7 @@ namespace Pong
         Right,
     };
 
-    bool buttons[4] = {};
+    static bool buttons[4] = {};
 
     const int BALL_RADIUS = 6;
     const int PADDLE_WIDTH = 8;
@@ -29,9 +35,6 @@ namespace Pong
     const float PADDLE_SPEED = 1.8;
     const float BALL_SPEED = 1.3;
     const float BALL_ACCEL = 0.1;
-// QVGA display resolution
-#define WINDOW_WIDTH 320  // display width
-#define WINDOW_HEIGHT 240 // display height
 
     template <typename T>
     int sgn(T val)
@@ -82,41 +85,38 @@ namespace Pong
     class PlayerScore
     {
     public:
-        UI::Label *label;
+        Label *label;
 
         PlayerScore() = default;
-        PlayerScore(UI::Label *label, UI::View &view)
+        PlayerScore(Label *label, Vec2 position, AbsoluteLayout &view)
             : label(label)
         {
-            view.AddElement(label);
+            view.AddElement(Point(position.x, position.y), label);
         }
     };
 
     class Ball
     {
-        UI::Circle *circle = new UI::Circle();
+        rpgui::ui::Circle *circle = new rpgui::ui::Circle(Radius(BALL_RADIUS), Color::White);
 
     public:
         Vec2 position;
         Vec2 velocity;
 
         Ball() = default;
-        Ball(Vec2 position, Vec2 velocity, UI::View &view)
+        Ball(Vec2 position, Vec2 velocity, AbsoluteLayout &view)
             : position(position), velocity(velocity)
         {
-            circle->center.x = static_cast<int>(position.x);
-            circle->center.y = static_cast<int>(position.y);
+            circle->SetCenter(Point(position.x, position.y));
             circle->radius.v = BALL_RADIUS;
-            circle->color = VColors::Color::White;
 
-            view.AddElement(circle);
+            view.AddElement(Point(position.x, position.y), circle);
         }
 
         void Update()
         {
             position += velocity;
-            circle->center.x = position.x;
-            circle->center.y = position.y;
+            circle->SetCenter(Point(position.x, position.y));
         }
 
         void CollideWithPaddle(Contact const &contact);
@@ -126,23 +126,18 @@ namespace Pong
 
     class Paddle
     {
-        UI::Rectangle *circle = new UI::Rectangle();
+        Rectangle *paddle = new Rectangle(Bounds(0, 0, 0, 0), Color::White);
 
     public:
         Vec2 position;
         Vec2 velocity;
 
         Paddle() = default;
-        Paddle(Vec2 position, Vec2 velocity, UI::View &view)
+        Paddle(Vec2 position, Vec2 velocity, AbsoluteLayout &view)
             : position(position), velocity(velocity)
         {
-            circle->coords.start.x = static_cast<int>(position.x);
-            circle->coords.start.y = static_cast<int>(position.y);
-            circle->coords.width.v = PADDLE_WIDTH;
-            circle->coords.height.v = PADDLE_HEIGHT;
-            circle->color = VColors::Color::White;
-
-            view.AddElement(circle);
+            paddle->SetBounds(Bounds(position.x, position.y, PADDLE_WIDTH, PADDLE_HEIGHT));
+            view.AddElement(Point(position.x, position.y), paddle);
         }
 
         void Update()
@@ -154,54 +149,56 @@ namespace Pong
                 // Restrict to top of the screen
                 position.y = 0.0f;
             }
-            else if (position.y > (WINDOW_HEIGHT - PADDLE_HEIGHT))
+            else if (position.y > (WIDTH - PADDLE_HEIGHT))
             {
                 // Restrict to bottom of the screen
-                position.y = WINDOW_HEIGHT - PADDLE_HEIGHT;
+                position.y = WIDTH - PADDLE_HEIGHT;
             }
 
-            circle->coords.start.x = position.x;
-            circle->coords.start.y = position.y;
+            auto b = paddle->GetBounds();
+            b.x = position.x;
+            b.y = position.y;
+            paddle->SetBounds(b);
         }
     };
 
     class PongGame
     {
-        UI::View view;
+        AbsoluteLayout view;
 
     public:
-        int playerOneScore = 0, playerTwoScore = 0;
-        PlayerScore playerOneScoreText, playerTwoScoreText;
+        uint8_t playerOneScoreVal = 0, playerTwoScoreVal = 0;
+        PlayerScore playerOneScore, playerTwoScore;
         Ball ball;
         Paddle paddleOne, paddleTwo;
 
         PongGame()
-            : view(UI::View())
+            : view(AbsoluteLayout())
         {
         }
 
-        UI::View &GetView() { return view; }
+        AbsoluteLayout *GetView() { return &view; }
 
         void Init()
         {
             // Create the player score text fields
-            this->playerOneScoreText = PlayerScore(new UI::Label("0", IVGA::Point(WINDOW_WIDTH / 4, 20)), view);
-            this->playerTwoScoreText = PlayerScore(new UI::Label("0", IVGA::Point(3 * WINDOW_WIDTH / 4, 20)), view);
+            this->playerOneScore = PlayerScore(new Label("0"), Vec2(10, 10), view);
+            this->playerTwoScore = PlayerScore(new Label("0"), Vec2(140, 10), view);
 
             // Create the ball
             this->ball = Ball(
-                Vec2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2),
+                Vec2(WIDTH / 2, HEIGHT / 2),
                 Vec2(1.0f, 0.0f),
                 view);
 
             // Create the paddles
             this->paddleOne = Paddle(
-                Vec2(20.0f, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)),
+                Vec2(20.0f, (HEIGHT / 2) - (PADDLE_HEIGHT / 2)),
                 Vec2(),
                 view);
 
             this->paddleTwo = Paddle(
-                Vec2(WINDOW_WIDTH - 20.0f, (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)),
+                Vec2(WIDTH - 20.0f, (HEIGHT / 2) - (PADDLE_HEIGHT / 2)),
                 Vec2(),
                 view);
         }

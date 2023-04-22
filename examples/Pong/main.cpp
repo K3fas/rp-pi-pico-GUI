@@ -10,21 +10,15 @@
 #include "tusb.h"
 #include "tusb_data.hpp"
 
-#include "pong.cpp"
+#include "Timers.hpp"
 
-#include "RP_GUI.hpp"
-
-#include "timers.hpp"
-
-using namespace IVGA;
-using namespace UI;
+#include "pong.hpp"
 
 void LED_blink_task();
 void ProcessButtons(bool *buttons);
 void PrintTimings();
 
 extern void hid_app_task(void);
-timers_t timers;
 
 void SetupRP()
 {
@@ -32,57 +26,46 @@ void SetupRP()
 #ifndef PICO_DEFAULT_LED_PIN
 #warning regular LED pin not found
 #else
-        gpio_init(PICO_DEFAULT_LED_PIN);
-        gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
-        gpio_put(PICO_DEFAULT_LED_PIN, true);
+    gpio_init(PICO_DEFAULT_LED_PIN);
+    gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+    gpio_put(PICO_DEFAULT_LED_PIN, true);
 #endif
 }
 
 int main()
 {
-        board_init();
-        stdio_init_all();
-        tusb_init();
+    board_init();
+    stdio_init_all();
+    tusb_init();
 
-        printf("VGA HID Example\r\n");
-        sleep_ms(2000);
+    rpgui::core::init();
 
-        SetupRP();
+    printf("VGA HID Example\r\n");
+    sleep_ms(2000);
 
-        auto game = Pong::PongGame();
-        game.Init();
+    SetupRP();
 
-        auto mainView = MainView(UI::UpdateSettings::Core0);
-        mainView.SetCurrentView(game.GetView());
+    auto game = Pong::PongGame();
+    game.Init();
 
-        while (1)
-        {
-#ifdef TIMERS
-                timers.core0.start = time_us_64();
-#endif
-                tuh_task();
-                hid_app_task();
+    auto page = new Page();
+    page->AddLayout(game.GetView());
+    rpgui::core::MainApp::AddPage(page);
 
-#ifdef TIMERS
-                timers.core0.tusb = time_us_64() - timers.core0.start;
-#endif
+    auto timer = rpgui::util::Timers();
+    timer.AddStamp("start");
+    timer.AddStamp("game update");
+    timer.AddStamp("UI update");
 
-                game.Update();
-
-#ifdef TIMERS
-                timers.core0.mainLoop = time_us_64() - timers.core0.tusb - timers.core0.start;
-#endif
-
-                mainView.Update();
-#ifdef TIMERS
-                timers.core0.draw = time_us_64() - timers.core0.mainLoop - timers.core0.start;
-#endif
-
-                Core1Wait();
-                WaitVSync();
-#ifdef TIMERS
-                timers.core0.VSync = time_us_64() - timers.core0.draw - timers.core0.start;
-#endif
-                // timers.Print();
-        }
+    
+    while (1)
+    {
+        timer.Stamp("start");
+        game.Update();
+        timer.Stamp("game update");
+        rpgui::core::MainApp::Update();
+        timer.Stamp("UI update");
+        timer.PrintStamps();
+        // timers.Print();
+    }
 }

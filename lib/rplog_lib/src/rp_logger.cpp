@@ -194,6 +194,6 @@ inline void rplog::Logger::printToStream(std::ostream &stream, const std::string
 {
     if (rplog::Logger::globalLogLevel < severity)
         return;
-    auto toPrint = levelToString(severity) + message + "\n";
-    stream << toPrint;
+    auto toPrint = levelToString(severity) + message;
+    stream << toPrint << std::endl;
 }

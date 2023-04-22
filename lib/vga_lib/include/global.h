@@ -242,7 +242,7 @@ extern const ALIGNED u8 FontThin8x8[2048];
 #include "pico/runtime.h"
 #include "pico/sem.h"
 #include "pico/stdio.h"
-#include "pico/stdio_semihosting.h"
+// #include "pico/stdio_semihosting.h"
 #include "pico/stdio_uart.h"
 //  #include "pico/stdio_usb.h"
 #include "pico/stdlib.h"

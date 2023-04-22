@@ -33,7 +33,7 @@ void rpgui::util::SDWrapper::Dispose()
     }
 }
 
-std::tuple<FRESULT, FIL *> rpgui::util::SDWrapper::OpenFile(const std::string &name, const std::string &path)
+std::tuple<FRESULT, FIL *> rpgui::util::SDWrapper::OpenFile(const std::string &name, const std::string &path, const unsigned char mode)
 {
     FIL *fil = new FIL();
     FRESULT res;
@@ -55,7 +55,7 @@ std::tuple<FRESULT, FIL *> rpgui::util::SDWrapper::OpenFile(const std::string &n
         }
     }
 
-    res = f_open(fil, name.c_str(), FA_WRITE | FA_READ | FA_OPEN_APPEND);
+    res = f_open(fil, name.c_str(), mode);
     if(FR_OK == res)
     {
         _openedFiles.push_back(fil);

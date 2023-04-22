@@ -28,15 +28,15 @@ void Ball::CollideWithWall(Contact const &contact)
     }
     else if (contact.type == CollisionType::Left)
     {
-        position.x = WINDOW_WIDTH / 2.0f;
-        position.y = WINDOW_HEIGHT / 2.0f;
+        position.x = WIDTH / 2.0f;
+        position.y = HEIGHT / 2.0f;
         velocity.x = BALL_SPEED;
         velocity.y = 0;
     }
     else if (contact.type == CollisionType::Right)
     {
-        position.x = WINDOW_WIDTH / 2.0f;
-        position.y = WINDOW_HEIGHT / 2.0f;
+        position.x = WIDTH / 2.0f;
+        position.y = HEIGHT / 2.0f;
         velocity.x = -BALL_SPEED;
         velocity.y = 0;
     }
@@ -66,11 +66,11 @@ void PongGame::Update()
         ball.CollideWithWall(contact);
         if (contact.type == CollisionType::Left)
         {
-            playerTwoScoreText.label->text = std::to_string(++playerTwoScore);
+            playerTwoScore.label->SetText(std::to_string(++playerTwoScoreVal));
         }
         else if (contact.type == CollisionType::Right)
         {
-            playerOneScoreText.label->text = std::to_string(++playerOneScore);
+            playerOneScore.label->SetText(std::to_string(++playerOneScoreVal));
         }
     }
 }
@@ -152,7 +152,7 @@ Contact PongGame::CheckWallCollision(Ball const &ball)
     {
         contact.type = CollisionType::Left;
     }
-    else if (ballRight > WINDOW_WIDTH)
+    else if (ballRight > WIDTH)
     {
         contact.type = CollisionType::Right;
     }
@@ -161,10 +161,10 @@ Contact PongGame::CheckWallCollision(Ball const &ball)
         contact.type = CollisionType::Top;
         contact.penetration = -ballTop;
     }
-    else if (ballBottom > WINDOW_HEIGHT)
+    else if (ballBottom > HEIGHT)
     {
         contact.type = CollisionType::Bottom;
-        contact.penetration = WINDOW_HEIGHT - ballBottom;
+        contact.penetration = HEIGHT - ballBottom;
     }
 
     return contact;
@@ -178,19 +178,19 @@ void PongGame::ProcessButtons()
     buttons[3] = false;
     for (size_t i = 0; i < 6; i++)
     {
-        if (KBD.pressedKeys[i] == 'w')
+        if (HID::kbd.pressedKeys[i] == 'w')
         {
             buttons[0] = true;
         }
-        if (KBD.pressedKeys[i] == 's')
+        if (HID::kbd.pressedKeys[i]  == 's')
         {
             buttons[1] = true;
         }
-        if (KBD.pressedKeys[i] == 'i')
+        if (HID::kbd.pressedKeys[i]  == 'i')
         {
             buttons[2] = true;
         }
-        if (KBD.pressedKeys[i] == 'k')
+        if (HID::kbd.pressedKeys[i]  == 'k')
         {
             buttons[3] = true;
         }

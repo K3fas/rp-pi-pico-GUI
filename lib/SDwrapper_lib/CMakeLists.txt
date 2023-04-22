@@ -1,5 +1,7 @@
 add_library(SDwrapper_lib INTERFACE)
 
+add_subdirectory(FatFs_SPI)
+
 target_sources(rplog_lib INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}/src/SDWrapper.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/hw_config.c
