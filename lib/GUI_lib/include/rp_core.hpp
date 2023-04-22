@@ -44,7 +44,6 @@ namespace rpgui::core
     class MainApp
     {
     private:
-        static constexpr float sensitivity = 2.0f;
         static constexpr bool waitVSync = true;
 
         inline static std::vector<Page *> _pages;

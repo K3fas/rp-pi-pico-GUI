@@ -10,10 +10,15 @@ using namespace rpgui::type;
 void rpgui::core::Cursor::Draw() const
 {
     auto bounds = this->GetBounds();
-    IVGA::IDrawLine(Point(bounds.x + size, bounds.y),
-                    Point(bounds.x + size, bounds.y + size * 2),
+
+    // Horizontal
+    IVGA::IDrawRectangle(Point(bounds.x - cursorSize, bounds.y - cursorWidth),
+                    Width(cursorSize * 2 + 1),
+                    Height(cursorWidth * 2 + 1),
                     Color::White);
-    IVGA::IDrawLine(Point(bounds.x, bounds.y + size),
-                    Point(bounds.x + size * 2, bounds.y + size),
+    // Vertical
+    IVGA::IDrawRectangle(Point(bounds.x - cursorWidth, bounds.y - cursorSize),
+                    Width(cursorWidth * 2 + 1),
+                    Height(cursorSize *2 + 1),
                     Color::White);
 }

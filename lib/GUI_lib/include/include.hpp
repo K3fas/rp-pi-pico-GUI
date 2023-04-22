@@ -14,4 +14,5 @@
 #include "Clickable.hpp"
 #include "BindableProperty.hpp"
 #include "Activatable.hpp"
+#include "settings.hpp"
 

@@ -18,7 +18,6 @@ namespace rpgui::core
     {
 
     public:
-        const uint16_t size = 2;
         struct pos_t
         {
             float x = 0, y = 0;

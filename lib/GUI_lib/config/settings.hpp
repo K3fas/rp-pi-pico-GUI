@@ -10,3 +10,7 @@
 #define HEIGHT	240		// display width
 
 #endif
+
+static constexpr float sensitivity = 2.0f;
+static constexpr uint8_t cursorSize = 5;
+static constexpr uint8_t cursorWidth = 3;
