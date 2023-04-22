@@ -34,7 +34,7 @@ namespace rpgui::ui
 
     public:
         std::vector<std::string> _items;
-        uint8_t _checkedItem = 0;
+        uint8_t checkedItem = 0;
         uint8_t circleRadius = 3;
         Color backgorundColor;
 

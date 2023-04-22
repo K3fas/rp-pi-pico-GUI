@@ -46,7 +46,7 @@ void rpgui::ui::RadioButton::Draw() const
     IVGA::IDrawRectangle(this->GetBounds(), backgorundColor);
     for (uint8_t i = 0; i < _items.size(); i++)
     {
-        if (i != _checkedItem)
+        if (i != checkedItem)
         {
             IVGA::IDrawCircle(Point(_circleCenter.x, _circleCenter.y + i * _itemHeight), Radius(circleRadius), color, false);
         }
