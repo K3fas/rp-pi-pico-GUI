@@ -102,12 +102,11 @@ int main()
     rplog::Logger::logCritical(std::cout, "LOGGER COUT CRITICAL MESSAGE");
 
     auto result = logger->AddFile("text.txt");
-    rplog::Logger::InitSD();
     result = logger->AddFile("text.txt");
     std::cout << result;
     logger->Log("FILE TEST !!!", rplog::Level::INFORMATION);
     logger->CloseFiles();
-    rplog::Logger::CloseSD();
+    rplog::Logger::DisposeSD();
 
     // f_unmount(pSD->pcName);
     while (1)

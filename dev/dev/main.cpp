@@ -13,7 +13,6 @@
 
 #include <rp_logger.hpp>
 
-#include "timers.hpp"
 
 using namespace rpgui;
 using namespace rpgui::event;
@@ -27,7 +26,6 @@ void ProcessButtonClicked();
 
 bool led_state;
 bool indicatorState = false;
-timers_t timers;
 
 void SetupRP()
 {

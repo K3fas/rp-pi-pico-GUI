@@ -7,6 +7,9 @@
 
 #include <string>
 #include <functional>
+#include "include.hpp"
+
+using namespace rpgui::type;
 
 namespace rpgui::event
 {
@@ -18,14 +21,13 @@ namespace rpgui::event
         bool _handled = false;
 
     public:
-        // TODO: refactor to use point
-        const int16_t xPos, yPos;
+        const Point pos;
 
     public:
         MouseEvent() = delete;
         MouseEvent(const MouseEvent&) = default;
         virtual ~MouseEvent() = default;
-        MouseEvent(T type, const int16_t xPos, const int16_t yPos) : _type(type), xPos(xPos), yPos(yPos) {}
+        MouseEvent(T type, const Point& position) : _type(type), pos(position)  {}
 
         inline const T Type() const { return _type; }
         virtual bool IsHandled() { return _handled; }

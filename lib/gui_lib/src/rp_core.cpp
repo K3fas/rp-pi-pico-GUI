@@ -107,7 +107,7 @@ void rpgui::core::MainApp::processMouseInput()
         MainApp::_clickState = MainApp::clickState::pressed;
 
         auto pos = _cursor.GetBounds();
-        auto event = MouseEvent<MouseEventType>(MouseEventType::Pressed, pos.x, pos.y);
+        auto event = MouseEvent<MouseEventType>(MouseEventType::Pressed, Point(pos.x, pos.y));
         MainApp::_mouseHandler.Post(event);
     }
 
@@ -117,8 +117,8 @@ void rpgui::core::MainApp::processMouseInput()
         MainApp::_clickState = MainApp::clickState::none;
 
         auto pos = _cursor.GetBounds();
-        auto eReleased = MouseEvent<MouseEventType>(MouseEventType::Released, pos.x, pos.y);
-        auto eClicked = MouseEvent<MouseEventType>(MouseEventType::Clicked, pos.x, pos.y);
+        auto eReleased = MouseEvent<MouseEventType>(MouseEventType::Released, Point(pos.x, pos.y));
+        auto eClicked = MouseEvent<MouseEventType>(MouseEventType::Clicked, Point(pos.x, pos.y)); 
         MainApp::_mouseHandler.Post(eReleased);
         MainApp::_mouseHandler.Post(eClicked);
     }

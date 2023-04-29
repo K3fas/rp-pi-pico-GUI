@@ -66,7 +66,7 @@ void rpgui::ui::RadioButton::clickHandler(rpgui::event::MouseEvent<MouseEventTyp
     for (uint8_t i = 0; i < btn->_items.size(); i++)
     {
         auto itemBounds = Bounds(bounds.x, bounds.y + i * btn->_itemHeight, bounds.w, btn->_itemHeight);
-        if (IsInBounds(itemBounds, Point(event.xPos, event.yPos)))
+        if (IsInBounds(itemBounds, event.pos))
         {
             btn->checkedItem = i;
             event.SetHandled();

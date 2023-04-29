@@ -20,7 +20,7 @@ void rpgui::event::MouseDispatcher::Post(MouseEvent<MouseEventType> &event)
             // with information of sender objs
             auto view = (rpgui::common::View *)handler.sender;
             view->GetBounds();
-            if (view->IsInBounds(Point(event.xPos, event.yPos)))
+            if (view->IsInBounds(event.pos))
             {
                 handler.handler(event, handler.sender);
             }
