@@ -35,8 +35,8 @@ namespace rplog
         std::vector<Sink> _sinks;
 
     public:
-        Level logLevel = Level::DEBUG;
-        inline static Level globalLogLevel = Level::DEBUG;
+        Level logLevel = Level::TRACE;
+        inline static Level globalLogLevel = Level::TRACE;
 
     public:
         Logger();
@@ -54,6 +54,9 @@ namespace rplog
         // Logs message to files, where log level is lower than current log level
         void Log(const std::string &message, const Level &severity);
 
+
+        static void log(FIL* const file, const std::string& message, const Level severity = Level::DEBUG);
+        static void log(std::ostream &stream, const std::string& message, const Level severity = Level::DEBUG);
         static void logTrace(FIL *const file, const std::string &message);
         static void logTrace(std::ostream &stream, const std::string &message);
         static void logDebug(FIL *const file, const std::string &message);

@@ -11,6 +11,7 @@
 #include "tusb_data.hpp"
 
 #include "Timers.hpp"
+#include <iostream>
 
 #include "pong.hpp"
 
@@ -34,11 +35,11 @@ void SetupRP()
 
 int main()
 {
+    rpgui::core::init();
     board_init();
     stdio_init_all();
     tusb_init();
 
-    rpgui::core::init();
 
     printf("VGA HID Example\r\n");
     sleep_ms(2000);
@@ -65,7 +66,7 @@ int main()
         timer.Stamp("game update");
         rpgui::core::MainApp::Update();
         timer.Stamp("UI update");
-        timer.PrintStamps();
-        // timers.Print();
+        //timer.PrintStamps();
+        
     }
 }

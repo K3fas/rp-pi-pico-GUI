@@ -100,6 +100,14 @@ void rplog::Logger::Log(const std::string &message, const Level &severity)
     }
 }
 
+void rplog::Logger::log(FIL *const file, const std::string &message, const Level severity)
+{
+    printToFile(file, message, severity);
+}
+void rplog::Logger::log(std::ostream &stream, const std::string &message, const Level severity)
+{
+    printToStream(stream, message, severity);
+}
 void rplog::Logger::logTrace(FIL *file, const std::string &message)
 {
     printToFile(file, message, Level::TRACE);
@@ -184,7 +192,7 @@ inline const std::string rplog::Logger::levelToString(const Level &level)
 
 inline void rplog::Logger::printToFile(FIL *const file, const std::string &message, const Level severity)
 {
-    if (rplog::Logger::globalLogLevel < severity)
+    if (rplog::Logger::globalLogLevel > severity)
         return;
     auto toPrint = levelToString(severity) + message + "\n";
     f_printf(file, toPrint.c_str());
@@ -192,7 +200,7 @@ inline void rplog::Logger::printToFile(FIL *const file, const std::string &messa
 
 inline void rplog::Logger::printToStream(std::ostream &stream, const std::string &message, const Level severity)
 {
-    if (rplog::Logger::globalLogLevel < severity)
+    if (rplog::Logger::globalLogLevel > severity)
         return;
     auto toPrint = levelToString(severity) + message;
     stream << toPrint << std::endl;

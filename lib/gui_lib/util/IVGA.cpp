@@ -173,9 +173,9 @@ namespace IVGA
         DrawTextBg(text, point.x, point.y, color, background);
     }
 
-    void IDrawImage(Sprite &source, const Point &point)
+    void IDrawImage(const rpgui::ui::Sprite &source, const Point &point)
     {
-        DrawImg(source.GetImage(), point.x, point.y, 1, 1, source.GetWidth(), source.GetHeight());
+        DrawImg(source.GetImage(), point.x, point.y, source.GetWidth(), source.GetHeight(), source.GetPitch());
     }
 
     void ICore1Exec(void (*fnc)())

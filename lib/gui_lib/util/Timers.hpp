@@ -2,7 +2,7 @@
 
 #include <tuple>
 #include <string>
-#include <map>
+#include <unordered_map>
 #include <rp_logger.hpp>
 
 namespace rpgui::util
@@ -10,16 +10,19 @@ namespace rpgui::util
     class Timers
     {
     private:
+
     public:
-        std::map<std::string, uint64_t> stamps;
+        std::vector<std::pair<std::string, uint64_t>> stamps;
+        const rplog::Level logLevel = rplog::Level::TRACE;
 
         Timers() = default;
         Timers(const Timers&) = delete;
         ~Timers() = default;
 
-        void AddStamp(const std::string& name);
+        uint8_t AddStamp(const std::string& name);
         void Stamp(const std::string& name);
-        void PrintStamps();
+        void Stamp(const uint8_t at);
+        void PrintStamps() const;
     };
     
     
