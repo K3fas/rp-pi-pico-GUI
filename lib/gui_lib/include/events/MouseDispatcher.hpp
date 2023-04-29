@@ -44,7 +44,7 @@ namespace rpgui::event
 
         void Post(MouseEvent<MouseEventType> &event);
 
-        void Subscribe(MouseEventType type, const Handler &handler, uint8_t priority = 0);
+        void Subscribe(MouseEventType type, const Handler &handler, const uint8_t priority = 0);
     };
 
 } // namespace rpgui::event

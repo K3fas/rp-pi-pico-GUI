@@ -14,7 +14,7 @@ rpgui::ui::Switch::Switch(const Width &width, const Height &height, const bool &
                           const Color borderColor)
     : View(Bounds(0, 0, width.v, height.v), backgroundColor), isSwitched(value), switchOnColor(switchOnColor), switchOffColor(switchOffColor), borderColor(borderColor)
 {
-    rpgui::core::MainApp::AddListener(MouseEventType::Clicked, rpgui::event::Handler{changeState, this});
+    rpgui::core::MainApp::AddListener(MouseEventType::Clicked, rpgui::event::Handler{changeState, this}, 1);
 }
 
 rpgui::ui::Switch::Switch(const Width &width, const Height &height, bool &value,
@@ -24,7 +24,7 @@ rpgui::ui::Switch::Switch(const Width &width, const Height &height, bool &value,
                           const Color borderColor)
     : View(Bounds(0, 0, width.v, height.v), backgroundColor), isSwitched(value), switchOnColor(switchOnColor), switchOffColor(switchOffColor), borderColor(borderColor)
 {
-    rpgui::core::MainApp::AddListener(MouseEventType::Clicked, rpgui::event::Handler{changeState, this});
+    rpgui::core::MainApp::AddListener(MouseEventType::Clicked, rpgui::event::Handler{changeState, this}, 1);
 }
 
 rpgui::ui::Switch::Switch(const Bounds &bounds, const bool &value,
@@ -34,7 +34,7 @@ rpgui::ui::Switch::Switch(const Bounds &bounds, const bool &value,
                           const Color borderColor)
     : View(bounds, backgroundColor), isSwitched(value), switchOnColor(switchOnColor), switchOffColor(switchOffColor), borderColor(borderColor)
 {
-    rpgui::core::MainApp::AddListener(MouseEventType::Clicked, rpgui::event::Handler{changeState, this});
+    rpgui::core::MainApp::AddListener(MouseEventType::Clicked, rpgui::event::Handler{changeState, this}, 1);
 }
 
 rpgui::ui::Switch::Switch(const Bounds &bounds, bool &value,
@@ -44,7 +44,7 @@ rpgui::ui::Switch::Switch(const Bounds &bounds, bool &value,
                           const Color borderColor)
     : View(bounds, backgroundColor), isSwitched(value), switchOnColor(switchOnColor), switchOffColor(switchOffColor), borderColor(borderColor)
 {
-    rpgui::core::MainApp::AddListener(MouseEventType::Clicked, rpgui::event::Handler{changeState, this});
+    rpgui::core::MainApp::AddListener(MouseEventType::Clicked, rpgui::event::Handler{changeState, this}, 1);
 }
 
 void rpgui::ui::Switch::Draw() const

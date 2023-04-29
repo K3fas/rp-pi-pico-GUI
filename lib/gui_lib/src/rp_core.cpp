@@ -68,9 +68,9 @@ void rpgui::core::MainApp::Update()
     }
 }
 
-void rpgui::core::MainApp::AddListener(MouseEventType type, const Handler &handler)
+void rpgui::core::MainApp::AddListener(MouseEventType type, const Handler &handler, const uint8_t priority)
 {
-    MainApp::_mouseHandler.Subscribe(type, handler);
+    MainApp::_mouseHandler.Subscribe(type, handler, priority);
 }
 
 void rpgui::core::MainApp::updateOnCoreX()

@@ -153,8 +153,8 @@ namespace rpgui::ui
             "-",
             backgroundColor);
 
-        _bAdd->SetOnClickHandler(MouseEventType::Clicked, add);
-        _bSub->SetOnClickHandler(MouseEventType::Clicked, sub);
+        _bAdd->SetOnClickHandler(MouseEventType::Clicked, add, 1);
+        _bSub->SetOnClickHandler(MouseEventType::Clicked, sub, 1);
     }
 
 } // namespace rpgui::ui

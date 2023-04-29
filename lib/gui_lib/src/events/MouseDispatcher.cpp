@@ -30,7 +30,7 @@ void rpgui::event::MouseDispatcher::Post(MouseEvent<MouseEventType> &event)
     
 }
 
-void rpgui::event::MouseDispatcher::Subscribe(MouseEventType type, const Handler &handler, uint8_t priority)
+void rpgui::event::MouseDispatcher::Subscribe(MouseEventType type, const Handler &handler, const uint8_t priority)
 {
     _listeners[priority][type].push_back(handler);
 }

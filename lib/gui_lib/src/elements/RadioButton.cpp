@@ -18,7 +18,7 @@ rpgui::ui::RadioButton::RadioButton(const Width &itemWidth, const Height &itemHe
       _font(font),
       backgorundColor(bgColor)
 {
-    MainApp::AddListener(MouseEventType::Clicked, rpgui::event::Handler(clickHandler, this));
+    MainApp::AddListener(MouseEventType::Clicked, rpgui::event::Handler(clickHandler, this), 1);
 }
 
 void rpgui::ui::RadioButton::AddItem(std::string text)

@@ -25,7 +25,7 @@ rpgui::ui::CheckBox::CheckBox(const Width &width, const Height &height, const bo
 
     SetBounds(bounds);
 
-    rpgui::core::MainApp::AddListener(MouseEventType::Clicked, Handler{changeState, this});
+    rpgui::core::MainApp::AddListener(MouseEventType::Clicked, Handler{changeState, this}, 1);
 }
 
 rpgui::ui::CheckBox::CheckBox(const Width &width, const Height &height, bool &value, const Color backgroundColor, const Color tickColor)

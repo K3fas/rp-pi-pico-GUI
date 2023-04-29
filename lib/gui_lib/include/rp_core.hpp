@@ -68,7 +68,7 @@ namespace rpgui::core
 
         static void Update();
 
-        static void AddListener(MouseEventType type, const Handler &handler);
+        static void AddListener(MouseEventType type, const Handler &handler, const uint8_t priority = 0);
 
     private:
         static void drawPage();
