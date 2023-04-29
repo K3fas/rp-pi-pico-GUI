@@ -18,6 +18,7 @@ namespace rpgui::event
         bool _handled = false;
 
     public:
+        // TODO: refactor to use point
         const int16_t xPos, yPos;
 
     public:
