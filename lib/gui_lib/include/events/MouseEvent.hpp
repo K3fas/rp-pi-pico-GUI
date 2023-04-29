@@ -18,12 +18,14 @@ namespace rpgui::event
         bool _handled = false;
 
     public:
+        // TODO: refactor to use point
         const int16_t xPos, yPos;
 
     public:
         MouseEvent() = delete;
-        MouseEvent(T type, const int16_t xPos, const int16_t yPos) : _type(type), xPos(xPos), yPos(yPos) {}
+        MouseEvent(const MouseEvent&) = default;
         virtual ~MouseEvent() = default;
+        MouseEvent(T type, const int16_t xPos, const int16_t yPos) : _type(type), xPos(xPos), yPos(yPos) {}
 
         inline const T Type() const { return _type; }
         virtual bool IsHandled() { return _handled; }
