@@ -56,8 +56,6 @@ void rpgui::core::MainApp::SelectPage(ID id)
 
 void rpgui::core::MainApp::Update()
 {
-    tuh_task();
-    hid_app_task();
     if (drawOnCore1)
     {
         IVGA::ICore1Exec(updateOnCoreX);
@@ -77,6 +75,8 @@ void rpgui::core::MainApp::updateOnCoreX()
 {
     // IVGA::IDrawClear();
     // MainApp::timers.core1.start = time_us_32();
+    tuh_task();
+    hid_app_task();
     processMouseInput();
     processMouseMovement();
     drawCursor();

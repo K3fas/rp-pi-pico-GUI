@@ -6,9 +6,9 @@
 
 void rpgui::event::MouseDispatcher::Post(MouseEvent<MouseEventType> &event)
 {
-    // No subscribers found
     for (auto const &priority : _listeners)
     {
+        // No listeners
         if (priority.second.find(event.Type()) == priority.second.end())
             continue;
         
@@ -25,9 +25,7 @@ void rpgui::event::MouseDispatcher::Post(MouseEvent<MouseEventType> &event)
                 handler.handler(event, handler.sender);
             }
         }
-    }
-
-    
+    } 
 }
 
 void rpgui::event::MouseDispatcher::Subscribe(MouseEventType type, const Handler &handler, const uint8_t priority)

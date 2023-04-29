@@ -38,7 +38,7 @@ namespace rpgui::common
         Clickable(const Clickable &) = default;
         ~Clickable() = default;
 
-        void SetOnClickHandler(const MouseEventType type, const HandleFunc &function);
+        void SetOnClickHandler(const MouseEventType type, const HandleFunc &function, const uint8_t priority = 0);
     };
 
 } // namespace rpgui::common
