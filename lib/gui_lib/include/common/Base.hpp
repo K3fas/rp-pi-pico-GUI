@@ -68,7 +68,7 @@ namespace rpgui::common
 
     class VisualElement : public Element
     {
-    private:
+    protected:
         Bounds _bounds;
 
     public:

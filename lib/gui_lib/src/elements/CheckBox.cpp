@@ -78,9 +78,9 @@ void rpgui::ui::CheckBox::Draw() const
     }
     else
     {
-        IVGA::IDrawFrame(bounds,this->color);
-        IVGA::IDrawFrame(bounds-1,this->color);
-        IVGA::IDrawRectangle(bounds-2, this->tickColor);
+        IVGA::IDrawFrame(bounds,this->tickColor);
+        IVGA::IDrawFrame(bounds-1,this->tickColor);
+        IVGA::IDrawRectangle(bounds-2, this->color);
     }
 #ifdef TRACKING
     printf("CheckBox Draw took %f\n",time_us_32()-start);

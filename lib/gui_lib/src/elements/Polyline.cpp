@@ -8,6 +8,7 @@
 rpgui::ui::Polyline::Polyline(const std::vector<Point> &points, Color color)
     :View(Bounds(),color)
 {
+    _points = points;
 }
 
 void rpgui::ui::Polyline::AddPoint(const Point &point)

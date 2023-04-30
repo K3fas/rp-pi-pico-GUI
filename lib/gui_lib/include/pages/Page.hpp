@@ -23,6 +23,11 @@ namespace rpgui::page
         Page(const Page &) = default;
         ~Page() = default;
 
+        Page(Layout *layout)
+        {
+            _children.push_back(layout);
+        }
+
         virtual void Draw()
         {
             for (auto &&child : _children)
@@ -31,11 +36,9 @@ namespace rpgui::page
             }
         }
 
-        template <typename T>
-            requires std::is_base_of<Layout, T>::value
-        void AddLayout( T *layout)
+        void AddLayout(Layout *layout)
         {
-            _children.emplace_back((Layout*) layout);
+            _children.push_back(layout);
         }
     };
 

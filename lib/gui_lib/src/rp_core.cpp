@@ -47,18 +47,22 @@ void rpgui::core::MainApp::SelectPage(ID id)
 {
     for (auto &&page : _pages)
     {
-        if(page->GetId() == id)
+        if (page->GetId() == id)
         {
             _selectedPage = page;
-            return ;
+            IVGA::IDrawClear();
+            return;
         }
     }
 }
 
 void rpgui::core::MainApp::SelectPageAt(uint8_t at)
 {
-    if(at < _pages.size())
+    if (at < _pages.size())
+    {
         _selectedPage = _pages.at(at);
+        IVGA::IDrawClear();
+    }
 }
 
 void rpgui::core::MainApp::Update()
@@ -125,7 +129,7 @@ void rpgui::core::MainApp::processMouseInput()
 
         auto pos = _cursor.GetBounds();
         auto eReleased = MouseEvent<MouseEventType>(MouseEventType::Released, Point(pos.x, pos.y));
-        auto eClicked = MouseEvent<MouseEventType>(MouseEventType::Clicked, Point(pos.x, pos.y)); 
+        auto eClicked = MouseEvent<MouseEventType>(MouseEventType::Clicked, Point(pos.x, pos.y));
         MainApp::_mouseHandler.Post(eReleased);
         MainApp::_mouseHandler.Post(eClicked);
     }

@@ -7,14 +7,11 @@
 
 #include "include.hpp"
 
-namespace rpgui::common
-{
-    class VisualElement;
-} // namespace rpgui::common
+using namespace rpgui::common;
 
 namespace rpgui::core
 {
-    class Cursor : public rpgui::common::VisualElement
+    class Cursor : public VisualElement
     {
 
     public:
@@ -26,6 +23,8 @@ namespace rpgui::core
         Cursor() = default;
         Cursor(const Cursor &) = delete;
         ~Cursor() = default;
+
+        void SetBounds(const Bounds& bounds) final;
 
         void Draw() const final;
     };

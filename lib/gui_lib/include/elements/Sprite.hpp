@@ -13,7 +13,7 @@ using namespace rpgui::common;
 
 namespace rpgui::ui
 {
-    class Sprite : public VisualElement
+    class Sprite : public View
     {
     private:
         uint8_t* _image;

@@ -14,7 +14,7 @@ rpgui::ui::Sprite::~Sprite()
 }
 
 rpgui::ui::Sprite::Sprite(const uint8_t *image, const uint16_t imageSize, int width, int height, int pitch)
-    : _image(const_cast<uint8_t *>(image)), _size(imageSize), _width(width), _height(height), _pitch(pitch)
+    : View(Bounds(0, 0, width, height), Color::Transparent), _image(const_cast<uint8_t *>(image)), _size(imageSize), _width(width), _height(height), _pitch(pitch)
 {
 }
 
@@ -27,6 +27,7 @@ rpgui::ui::Sprite::Sprite(const std::string &name, const std::string &path)
     }
 
     loadData(file);
+    this->SetBounds(Bounds(0, 0, _width, _height));
     rpgui::util::SDWrapper::CloseFile(file);
 }
 
