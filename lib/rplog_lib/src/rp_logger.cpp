@@ -66,14 +66,14 @@ void rplog::Logger::DisposeSD()
     SDWrapper::Dispose();
 }
 
-void rplog::Logger::AddSink(FIL *file)
+void rplog::Logger::AddSink(FIL *file, Level logLevel)
 {
-    _sinks.push_back(file);
+    _sinks.push_back(std::make_tuple(file, logLevel));
 }
 
-void rplog::Logger::AddSink(std::ostream &stream)
+void rplog::Logger::AddSink(std::ostream &stream, Level logLevel)
 {
-    _sinks.push_back(&stream);
+    _sinks.push_back(std::make_tuple(&stream, logLevel));
 }
 
 void rplog::Logger::Log(const std::string &message, const Level &severity)
@@ -82,9 +82,11 @@ void rplog::Logger::Log(const std::string &message, const Level &severity)
         return;
 
     auto toPrint = levelToString(severity) + message + "\n";
-    for (auto &&sink : _sinks)
+    for (auto &[sink, level] : _sinks)
     {
-
+        if(level > severity)
+            continue;
+        
         auto file = *(get_if<FIL *const>(&sink));
         if (file)
         {

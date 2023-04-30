@@ -14,6 +14,8 @@
 
 #include <iostream>
 
+using namespace rplog;
+
 void LED_blink_task();
 
 void SetupRP()
@@ -81,32 +83,38 @@ int main()
     // }
 
     std::cout << " COUT TEST MESSAGE" << std::endl;
-    auto logger = new rplog::Logger();
-    logger->logLevel = rplog::Level::INFORMATION;
-    logger->AddSink(std::cout);
-    logger->AddSink(std::cerr);
-    logger->Log(" LOGGER COUT TRACE MESSAGE", rplog::Level::TRACE);
-    logger->Log(" LOGGER COUT DEBUG MESSAGE", rplog::Level::DEBUG);
-    logger->Log(" LOGGER COUT INFORMATION MESSAGE", rplog::Level::INFORMATION);
-    logger->Log(" LOGGER COUT WARNING MESSAGE", rplog::Level::WARNING);
-    logger->Log(" LOGGER COUT ERROR MESSAGE", rplog::Level::ERROR);
-    logger->Log(" LOGGER COUT CRITICAL MESSAGE", rplog::Level::CRITICAL);
 
-    std::cout << std::endl
-              << "Static logger test:" << std::endl;
-    rplog::Logger::logTrace(std::cout, "LOGGER COUT TRACE MESSAGE");
-    rplog::Logger::logDebug(std::cout, "LOGGER COUT DEBUG MESSAGE");
-    rplog::Logger::logInfo(std::cout, "LOGGER COUT INFORMATION MESSAGE");
-    rplog::Logger::logWarning(std::cout, "LOGGER COUT WARNING MESSAGE");
-    rplog::Logger::logError(std::cout, "LOGGER COUT ERROR MESSAGE");
-    rplog::Logger::logCritical(std::cout, "LOGGER COUT CRITICAL MESSAGE");
+    auto logger = new rplog::Logger();
+    logger->logLevel = rplog::Level::TRACE;
+    logger->AddSink(std::cout, Level::DEBUG);
+    logger->AddFile("logs_verbose.txt", Level::TRACE);
+    logger->AddSink(std::cerr, Level::WARNING);
+    logger->AddFile("logs_error.txt", Level::ERROR);
+
+    logger->Log(" LOGGER TRACE MESSAGE", rplog::Level::TRACE);
+    logger->Log(" LOGGER DEBUG MESSAGE", rplog::Level::DEBUG);
+    logger->Log(" LOGGER INFORMATION MESSAGE", rplog::Level::INFORMATION);
+    logger->Log(" LOGGER WARNING MESSAGE", rplog::Level::WARNING);
+    logger->Log(" LOGGER ERROR MESSAGE", rplog::Level::ERROR);
+    logger->Log(" LOGGER CRITICAL MESSAGE", rplog::Level::CRITICAL);
+
+
+    rplog::Logger::globalLogLevel = Level::WARNING;
+    rplog::Logger::logTrace(std::cout, "LOGGER TRACE MESSAGE");
+    rplog::Logger::logDebug(std::cout, "LOGGER DEBUG MESSAGE");
+    rplog::Logger::logInfo(std::cout, "LOGGE INFORMATION MESSAGE");
+    rplog::Logger::logWarning(std::cout, "LOGGER WARNING MESSAGE");
+    rplog::Logger::logError(std::cout, "LOGGER ERROR MESSAGE");
+    rplog::Logger::logCritical(std::cout, "LOGGER CRITICAL MESSAGE");
+
+    rplog::Logger::DisposeSD();
 
     auto result = logger->AddFile("text.txt");
     result = logger->AddFile("text.txt");
     std::cout << result;
     logger->Log("FILE TEST !!!", rplog::Level::INFORMATION);
     logger->CloseFiles();
-    rplog::Logger::DisposeSD();
+    
 
     // f_unmount(pSD->pcName);
     while (1)
