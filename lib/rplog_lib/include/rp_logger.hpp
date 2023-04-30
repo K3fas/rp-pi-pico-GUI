@@ -45,7 +45,7 @@ namespace rplog
 
 
 
-        bool AddFile(const std::string& name, const std::string& path = "");
+        bool AddFile(const std::string& name, const std::string& path = "", Level logLevel = Level::DEBUG);
         void CloseFiles();
         static void DisposeSD();
 

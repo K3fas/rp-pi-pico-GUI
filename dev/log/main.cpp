@@ -16,7 +16,7 @@
 
 using namespace rplog;
 
-void LED_blink_task();
+
 
 void SetupRP()
 {
@@ -87,9 +87,9 @@ int main()
     auto logger = new rplog::Logger();
     logger->logLevel = rplog::Level::TRACE;
     logger->AddSink(std::cout, Level::DEBUG);
-    logger->AddFile("logs_verbose.txt", Level::TRACE);
+    logger->AddFile("logs_verbose.txt","", Level::TRACE);
     logger->AddSink(std::cerr, Level::WARNING);
-    logger->AddFile("logs_error.txt", Level::ERROR);
+    logger->AddFile("logs_error.txt","", Level::ERROR);
 
     logger->Log(" LOGGER TRACE MESSAGE", rplog::Level::TRACE);
     logger->Log(" LOGGER DEBUG MESSAGE", rplog::Level::DEBUG);
@@ -119,29 +119,8 @@ int main()
     // f_unmount(pSD->pcName);
     while (1)
     {
-        LED_blink_task();
+
     }
 }
 
-void LED_blink_task()
-{
-    const uint32_t interval_on_ms = 1000;
-    const uint32_t interval_off_ms = 2000;
-    static uint32_t start_ms = 0;
 
-    // Blink every interval ms
-    if (board_millis() - start_ms < interval_off_ms)
-        return; // not enough time
-
-    if (led_state)
-    {
-        start_ms += interval_off_ms;
-    }
-    else
-    {
-        start_ms += interval_on_ms;
-    }
-
-    gpio_put(PICO_DEFAULT_LED_PIN, !led_state);
-    led_state = 1 - led_state; // toggle
-}

@@ -24,7 +24,7 @@ rplog::Logger::~Logger()
     CloseFiles();
 }
 
-bool rplog::Logger::AddFile(const std::string &name, const std::string &path)
+bool rplog::Logger::AddFile(const std::string &name, const std::string &path, Level logLevel )
 {
 
     auto [result, file] = SDWrapper::OpenFile(name, path);
@@ -47,7 +47,7 @@ bool rplog::Logger::AddFile(const std::string &name, const std::string &path)
 
 void rplog::Logger::CloseFiles()
 {
-    for (auto &&sink : _sinks)
+    for (auto &[sink, level] : _sinks)
     {
         auto file = get_if<FIL *const>(&sink);
         if (file)
