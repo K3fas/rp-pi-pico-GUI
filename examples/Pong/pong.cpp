@@ -178,19 +178,19 @@ void PongGame::ProcessButtons()
     buttons[3] = false;
     for (size_t i = 0; i < 6; i++)
     {
-        if (HID::kbd.pressedKeys[i] == 'w')
+        if (HID::kbd::pressedKeys[i] == 'w')
         {
             buttons[0] = true;
         }
-        if (HID::kbd.pressedKeys[i]  == 's')
+        if (HID::kbd::pressedKeys[i]  == 's')
         {
             buttons[1] = true;
         }
-        if (HID::kbd.pressedKeys[i]  == 'i')
+        if (HID::kbd::pressedKeys[i]  == 'i')
         {
             buttons[2] = true;
         }
-        if (HID::kbd.pressedKeys[i]  == 'k')
+        if (HID::kbd::pressedKeys[i]  == 'k')
         {
             buttons[3] = true;
         }
