@@ -125,5 +125,9 @@ int main()
     while (1)
     {
         MainApp::Update();
+        gpio_put(LED1, leds.led[0]);
+        gpio_put(LED2, leds.led[1]);
+        gpio_put(LED3, leds.led[2]);
+        gpio_put(LED4, leds.led[3]);
     }
 }
