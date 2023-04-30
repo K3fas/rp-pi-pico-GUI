@@ -15,8 +15,6 @@
 
 namespace rplog
 {
-    using Sink = std::variant<std::ostream *const, FIL *const>;
-
     enum Level : uint8_t
     {
         TRACE,
@@ -27,6 +25,8 @@ namespace rplog
         CRITICAL,
         None,
     };
+
+    using Sink = std::tuple<std::variant<std::ostream *const, FIL *const>, Level>;
 
     class Logger
     {
@@ -49,8 +49,8 @@ namespace rplog
         void CloseFiles();
         static void DisposeSD();
 
-        void AddSink(FIL *const file);
-        void AddSink(std::ostream &stream);
+        void AddSink(FIL *const file, Level logLevel = Level::DEBUG);
+        void AddSink(std::ostream &stream, Level logLevel = Level::DEBUG);
         // Logs message to files, where log level is lower than current log level
         void Log(const std::string &message, const Level &severity);
 

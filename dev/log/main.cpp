@@ -14,6 +14,8 @@
 
 #include <iostream>
 
+using namespace rplog;
+
 void LED_blink_task();
 
 void SetupRP()
@@ -81,31 +83,37 @@ int main()
     // }
 
     std::cout << " COUT TEST MESSAGE" << std::endl;
-    auto logger = new rplog::Logger();
-    logger->logLevel = rplog::Level::INFORMATION;
-    logger->AddSink(std::cout);
-    logger->AddSink(std::cerr);
-    logger->Log(" LOGGER COUT TRACE MESSAGE", rplog::Level::TRACE);
-    logger->Log(" LOGGER COUT DEBUG MESSAGE", rplog::Level::DEBUG);
-    logger->Log(" LOGGER COUT INFORMATION MESSAGE", rplog::Level::INFORMATION);
-    logger->Log(" LOGGER COUT WARNING MESSAGE", rplog::Level::WARNING);
-    logger->Log(" LOGGER COUT ERROR MESSAGE", rplog::Level::ERROR);
-    logger->Log(" LOGGER COUT CRITICAL MESSAGE", rplog::Level::CRITICAL);
 
-    std::cout << std::endl
-              << "Static logger test:" << std::endl;
-    rplog::Logger::logTrace(std::cout, "LOGGER COUT TRACE MESSAGE");
-    rplog::Logger::logDebug(std::cout, "LOGGER COUT DEBUG MESSAGE");
-    rplog::Logger::logInfo(std::cout, "LOGGER COUT INFORMATION MESSAGE");
-    rplog::Logger::logWarning(std::cout, "LOGGER COUT WARNING MESSAGE");
-    rplog::Logger::logError(std::cout, "LOGGER COUT ERROR MESSAGE");
-    rplog::Logger::logCritical(std::cout, "LOGGER COUT CRITICAL MESSAGE");
+    auto logger = new rplog::Logger();
+    logger->logLevel = rplog::Level::TRACE;
+    logger->AddSink(std::cout, Level::DEBUG);
+    logger->AddFile("logs_verbose.txt", Level::TRACE);
+    logger->AddSink(std::cerr, Level::WARNING);
+    logger->AddFile("logs_error.txt", Level::ERROR);
+
+    logger->Log(" LOGGER TRACE MESSAGE", rplog::Level::TRACE);
+    logger->Log(" LOGGER DEBUG MESSAGE", rplog::Level::DEBUG);
+    logger->Log(" LOGGER INFORMATION MESSAGE", rplog::Level::INFORMATION);
+    logger->Log(" LOGGER WARNING MESSAGE", rplog::Level::WARNING);
+    logger->Log(" LOGGER ERROR MESSAGE", rplog::Level::ERROR);
+    logger->Log(" LOGGER CRITICAL MESSAGE", rplog::Level::CRITICAL);
+
+
+    rplog::Logger::globalLogLevel = Level::WARNING;
+    rplog::Logger::logTrace(std::cout, "LOGGER TRACE MESSAGE");
+    rplog::Logger::logDebug(std::cout, "LOGGER DEBUG MESSAGE");
+    rplog::Logger::logInfo(std::cout, "LOGGE INFORMATION MESSAGE");
+    rplog::Logger::logWarning(std::cout, "LOGGER WARNING MESSAGE");
+    rplog::Logger::logError(std::cout, "LOGGER ERROR MESSAGE");
+    rplog::Logger::logCritical(std::cout, "LOGGER CRITICAL MESSAGE");
+
 
     auto result = logger->AddFile("text.txt");
     result = logger->AddFile("text.txt");
     std::cout << result;
     logger->Log("FILE TEST !!!", rplog::Level::INFORMATION);
     logger->CloseFiles();
+    
     rplog::Logger::DisposeSD();
 
     // f_unmount(pSD->pcName);
@@ -117,23 +125,23 @@ int main()
 
 void LED_blink_task()
 {
-    // const uint32_t interval_on_ms = 1000;
-    // const uint32_t interval_off_ms = 2000;
-    // static uint32_t start_ms = 0;
+    const uint32_t interval_on_ms = 1000;
+    const uint32_t interval_off_ms = 2000;
+    static uint32_t start_ms = 0;
 
-    // // Blink every interval ms
-    // if (board_millis() - start_ms < interval_off_ms)
-    //     return; // not enough time
+    // Blink every interval ms
+    if (board_millis() - start_ms < interval_off_ms)
+        return; // not enough time
 
-    // if (led_state)
-    // {
-    //     start_ms += interval_off_ms;
-    // }
-    // else
-    // {
-    //     start_ms += interval_on_ms;
-    // }
+    if (led_state)
+    {
+        start_ms += interval_off_ms;
+    }
+    else
+    {
+        start_ms += interval_on_ms;
+    }
 
-    // gpio_put(PICO_DEFAULT_LED_PIN, !led_state);
-    // led_state = 1 - led_state; // toggle
+    gpio_put(PICO_DEFAULT_LED_PIN, !led_state);
+    led_state = 1 - led_state; // toggle
 }
