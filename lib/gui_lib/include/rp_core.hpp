@@ -66,6 +66,8 @@ namespace rpgui::core
 
         static void SelectPage(ID id);
 
+        static void SelectPageAt(uint8_t at);
+
         static void Update();
 
         static void AddListener(MouseEventType type, const Handler &handler, const uint8_t priority = 0);

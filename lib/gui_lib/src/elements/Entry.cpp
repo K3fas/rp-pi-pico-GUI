@@ -22,9 +22,9 @@ rpgui::ui::Entry::Entry(std::string &text, const Color backgroundColor, const Co
 
 void rpgui::ui::Entry::HandleActive()
 {
-    if(lastChar != HID::kbd.pressedKeys[0])
+    if(lastChar != HID::kbd::pressedKeys[0])
     {
-        lastChar = HID::kbd.pressedKeys[0];
+        lastChar = HID::kbd::pressedKeys[0];
         if(lastChar)
         {
             auto old = text.GetValue();

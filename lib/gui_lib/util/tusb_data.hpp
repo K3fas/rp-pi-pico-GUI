@@ -2,19 +2,19 @@
 
 namespace HID
 {
-    inline static struct kbd_t
+    struct kbd
     {
-        uint8_t pressedKeys[6] = {};
-        uint64_t processTime;
-    }kbd;
+        inline static uint8_t pressedKeys[6] = {};
+        inline static uint64_t processTime = 0;
+    };
 
-    inline static struct mouse_t
+    struct mouse
     {
-        int16_t mousePos[2] = {};
-        uint8_t mouseKeys[5] = {};
-        uint64_t processTime;
-        bool moved;
-        bool clicked;
-    }mouse;
+        inline static int16_t mousePos[2] = {};
+        inline static uint8_t mouseKeys[5] = {};
+        inline static uint64_t processTime = 0;
+        inline static bool moved = false;
+        inline static bool clicked = false;
+    };
 
 }

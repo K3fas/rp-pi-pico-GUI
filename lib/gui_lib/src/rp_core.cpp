@@ -21,6 +21,7 @@ extern void hid_app_task(void);
 void rpgui::core::init()
 {
     IVGA::init();
+    tusb_init();
 }
 
 void rpgui::core::MainApp::drawPage()
@@ -54,8 +55,16 @@ void rpgui::core::MainApp::SelectPage(ID id)
     }
 }
 
+void rpgui::core::MainApp::SelectPageAt(uint8_t at)
+{
+    if(at < _pages.size())
+        _selectedPage = _pages.at(at);
+}
+
 void rpgui::core::MainApp::Update()
 {
+    tuh_task();
+    hid_app_task();
     if (drawOnCore1)
     {
         IVGA::ICore1Exec(updateOnCoreX);
@@ -75,8 +84,6 @@ void rpgui::core::MainApp::updateOnCoreX()
 {
     // IVGA::IDrawClear();
     // MainApp::timers.core1.start = time_us_32();
-    tuh_task();
-    hid_app_task();
     processMouseInput();
     processMouseMovement();
     drawCursor();
@@ -102,7 +109,7 @@ void rpgui::core::MainApp::processMouseInput()
 {
     // lmb only
     // handle new pressed key
-    if (HID::mouse.mouseKeys[0] == true && MainApp::_clickState == MainApp::clickState::none)
+    if (HID::mouse::mouseKeys[0] == true && MainApp::_clickState == MainApp::clickState::none)
     {
         MainApp::_clickState = MainApp::clickState::pressed;
 
@@ -112,7 +119,7 @@ void rpgui::core::MainApp::processMouseInput()
     }
 
     // handle released key
-    if (HID::mouse.mouseKeys[0] == false && MainApp::_clickState == MainApp::clickState::pressed)
+    if (HID::mouse::mouseKeys[0] == false && MainApp::_clickState == MainApp::clickState::pressed)
     {
         MainApp::_clickState = MainApp::clickState::none;
 
@@ -126,10 +133,10 @@ void rpgui::core::MainApp::processMouseInput()
 
 void rpgui::core::MainApp::processMouseMovement()
 {
-    if (!HID::mouse.moved)
+    if (!HID::mouse::moved)
         return;
-    MainApp::_cursor.pos.x += HID::mouse.mousePos[0] * sensitivity * 0.020;
-    MainApp::_cursor.pos.y += HID::mouse.mousePos[1] * sensitivity * 0.020;
+    MainApp::_cursor.pos.x += HID::mouse::mousePos[0] * sensitivity * 0.020;
+    MainApp::_cursor.pos.y += HID::mouse::mousePos[1] * sensitivity * 0.020;
 
     if (MainApp::_cursor.pos.x > WIDTH)
         MainApp::_cursor.pos.x = WIDTH;
@@ -142,8 +149,8 @@ void rpgui::core::MainApp::processMouseMovement()
 
     MainApp::_cursor.SetBounds(Bounds(MainApp::_cursor.pos.x, MainApp::_cursor.pos.y, cursorSize * 2 + 1, cursorSize * 2 + 1));
 
-    HID::mouse.mousePos[0] = 0;
-    HID::mouse.mousePos[1] = 0;
+    HID::mouse::mousePos[0] = 0;
+    HID::mouse::mousePos[1] = 0;
 
-    HID::mouse.moved = false;
+    HID::mouse::moved = false;
 }

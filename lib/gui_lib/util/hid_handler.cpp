@@ -164,7 +164,7 @@ static void process_kbd_report(hid_keyboard_report_t const *report)
 				// not existed in previous report means the current key is pressed
 				bool const is_shift = report->modifier & (KEYBOARD_MODIFIER_LEFTSHIFT | KEYBOARD_MODIFIER_RIGHTSHIFT);
 				uint8_t ch = keycode2ascii[report->keycode[i]][is_shift ? 1 : 0];
-				HID::kbd.pressedKeys[i] = ch;
+				HID::kbd::pressedKeys[i] = ch;
 				continue;
 			}
 		}
@@ -180,7 +180,7 @@ static void process_kbd_report(hid_keyboard_report_t const *report)
 					// j == key released pos
 					for (uint8_t k = j; k < 5 - j; k++)
 					{
-						HID::kbd.pressedKeys[i] = HID::kbd.pressedKeys[k + 1];
+						HID::kbd::pressedKeys[i] = HID::kbd::pressedKeys[k + 1];
 					}
 					break;
 				}
@@ -188,7 +188,7 @@ static void process_kbd_report(hid_keyboard_report_t const *report)
 		}
 	}
 
-	HID::kbd.processTime += time_us_64() - startTime;
+	HID::kbd::processTime += time_us_64() - startTime;
 	prev_report = *report;
 }
 
@@ -248,29 +248,29 @@ static void process_mouse_report(hid_mouse_report_t const *report)
 			   report->buttons & MOUSE_BUTTON_MIDDLE ? 'M' : '-',
 			   report->buttons & MOUSE_BUTTON_RIGHT ? 'R' : '-');
 
-		report->buttons &MOUSE_BUTTON_LEFT ? HID::mouse.mouseKeys[0] = 1 : HID::mouse.mouseKeys[0] = 0;
-		report->buttons &MOUSE_BUTTON_MIDDLE ? HID::mouse.mouseKeys[1] = 1 : HID::mouse.mouseKeys[1] = 0;
-		report->buttons &MOUSE_BUTTON_RIGHT ? HID::mouse.mouseKeys[2] = 1 : HID::mouse.mouseKeys[2] = 0;
-		report->buttons &MOUSE_BUTTON_BACKWARD ? HID::mouse.mouseKeys[3] = 1 : HID::mouse.mouseKeys[3] = 0;
-		report->buttons &MOUSE_BUTTON_FORWARD ? HID::mouse.mouseKeys[4] = 1 : HID::mouse.mouseKeys[4] = 0;
-		HID::mouse.clicked = true;
+		report->buttons &MOUSE_BUTTON_LEFT ? HID::mouse::mouseKeys[0] = 1 : HID::mouse::mouseKeys[0] = 0;
+		report->buttons &MOUSE_BUTTON_MIDDLE ? HID::mouse::mouseKeys[1] = 1 : HID::mouse::mouseKeys[1] = 0;
+		report->buttons &MOUSE_BUTTON_RIGHT ? HID::mouse::mouseKeys[2] = 1 : HID::mouse::mouseKeys[2] = 0;
+		report->buttons &MOUSE_BUTTON_BACKWARD ? HID::mouse::mouseKeys[3] = 1 : HID::mouse::mouseKeys[3] = 0;
+		report->buttons &MOUSE_BUTTON_FORWARD ? HID::mouse::mouseKeys[4] = 1 : HID::mouse::mouseKeys[4] = 0;
+		HID::mouse::clicked = true;
 	}
 
 	//------------- cursor movement -------------//
 	cursor_movement(report->x, report->y, report->wheel);
 
 	// Process moving cursor
-	HID::mouse.mousePos[0] += report->x;
-	HID::mouse.mousePos[1] += report->y;
-	HID::mouse.moved = true;
-	HID::mouse.processTime += time_us_64() - startTime;
+	HID::mouse::mousePos[0] += report->x;
+	HID::mouse::mousePos[1] += report->y;
+	HID::mouse::moved = true;
+	HID::mouse::processTime += time_us_64() - startTime;
 
 	prev_report = *report;
 }
 
 //--------------------------------------------------------------------+
 // Generic Report
-//--------------------------------------------------------------------+
+//-------------------------------------------Line-------------------------+
 static void process_generic_report(uint8_t dev_addr, uint8_t instance, uint8_t const *report, uint16_t len)
 {
 	(void)dev_addr;
