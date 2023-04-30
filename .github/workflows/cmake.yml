@@ -1,0 +1,30 @@
+name: Build framework
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install ARM GCC toolchain
+      run: sudo apt-get install -y gcc-arm-none-eabi
+
+    - name: Configure CMake project
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        
+    - name: Build project
+      run: |
+        cd build
+        make
+        
