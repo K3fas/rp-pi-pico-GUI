@@ -125,23 +125,23 @@ int main()
 
 void LED_blink_task()
 {
-    // const uint32_t interval_on_ms = 1000;
-    // const uint32_t interval_off_ms = 2000;
-    // static uint32_t start_ms = 0;
+    const uint32_t interval_on_ms = 1000;
+    const uint32_t interval_off_ms = 2000;
+    static uint32_t start_ms = 0;
 
-    // // Blink every interval ms
-    // if (board_millis() - start_ms < interval_off_ms)
-    //     return; // not enough time
+    // Blink every interval ms
+    if (board_millis() - start_ms < interval_off_ms)
+        return; // not enough time
 
-    // if (led_state)
-    // {
-    //     start_ms += interval_off_ms;
-    // }
-    // else
-    // {
-    //     start_ms += interval_on_ms;
-    // }
+    if (led_state)
+    {
+        start_ms += interval_off_ms;
+    }
+    else
+    {
+        start_ms += interval_on_ms;
+    }
 
-    // gpio_put(PICO_DEFAULT_LED_PIN, !led_state);
-    // led_state = 1 - led_state; // toggle
+    gpio_put(PICO_DEFAULT_LED_PIN, !led_state);
+    led_state = 1 - led_state; // toggle
 }
