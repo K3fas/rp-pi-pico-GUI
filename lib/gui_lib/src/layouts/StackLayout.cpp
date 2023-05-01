@@ -25,9 +25,4 @@ namespace rpgui::layout
         }
     }
 
-    void StackLayout::SetActive(Element *element)
-    {
-        _activeElement = element;
-    }
-
 } // namespace rpgui::layout
