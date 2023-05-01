@@ -13,7 +13,7 @@ using namespace rpgui::colors;
 
 namespace rpgui::ui
 {
-    class Line : public View
+    class Line : public VisualElement
     {
     public:
         Point start,end;

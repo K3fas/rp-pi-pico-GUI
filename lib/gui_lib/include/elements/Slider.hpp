@@ -19,7 +19,7 @@ using namespace rpgui::event;
 
 namespace rpgui::ui
 {
-    class Slider : public View, public Clickable
+    class Slider : public VisualElement, public Clickable
     {
     private:
         uint8_t _pinOffset;

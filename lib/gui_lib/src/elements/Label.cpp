@@ -7,7 +7,7 @@
 #include "font8x8.bmp.h"
 
 rpgui::ui::Label::Label(std::string &text, const Color textColor, const Color backgroundColor, const void *font, const uint8_t fontSize)
-    : rpgui::common::View(rpgui::common::Bounds(0, 0, text.size() * 8, 8), backgroundColor),
+    : rpgui::common::VisualElement(rpgui::common::Bounds(0, 0, text.size() * 8, 8), backgroundColor),
       text(text),
       textColor(textColor),
       fontSize(fontSize)
@@ -23,7 +23,7 @@ rpgui::ui::Label::Label(std::string &text, const Color textColor, const Color ba
 }
 
 rpgui::ui::Label::Label(const std::string &text, const Color textColor, const Color backgroundColor, const void *font, const uint8_t fontSize)
-    : rpgui::common::View(rpgui::common::Bounds(0, 0, text.size() * fontSize, fontSize), backgroundColor),
+    : rpgui::common::VisualElement(rpgui::common::Bounds(0, 0, text.size() * fontSize, fontSize), backgroundColor),
       text(text),
       textColor(textColor),
       fontSize(fontSize)

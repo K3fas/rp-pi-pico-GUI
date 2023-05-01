@@ -13,23 +13,23 @@ rpgui::ui::Button::~Button()
 
 rpgui::ui::Button::Button(const Width &width, const Height &heigth, const Color &color,
                           std::string &text, const Color &textColor, uint8_t fontSize, void *font)
-    : View(Bounds(0, 0, width.v, heigth.v), color), _text(new Label(text, textColor))
+    : VisualElement(Bounds(0, 0, width.v, heigth.v), color), _text(new Label(text, textColor))
 {
 }
 
 rpgui::ui::Button::Button(const Width &width, const Height &heigth, const Color &color,
                           const std::string &text, const Color &textColor, uint8_t fontSize, void *font)
-    : View(Bounds(0, 0, width.v, heigth.v), color), _text(new Label(text, textColor))
+    : VisualElement(Bounds(0, 0, width.v, heigth.v), color), _text(new Label(text, textColor))
 {
 }
 
 rpgui::ui::Button::Button(const Bounds &bounds, const Color &color, std::string &text, const Color &textColor, uint8_t fontSize, void *font)
-    : View(bounds, color), _text(new Label(text, textColor))
+    : VisualElement(bounds, color), _text(new Label(text, textColor))
 {
 }
 
 rpgui::ui::Button::Button(const Bounds &bounds, const Color &color, const std::string &text, const Color &textColor, uint8_t fontSize, void *font)
-    : View(bounds, color), _text(new Label(text, textColor))
+    : VisualElement(bounds, color), _text(new Label(text, textColor))
 {
 }
 
@@ -40,7 +40,7 @@ void rpgui::ui::Button::SetText(const std::string &text)
 
 void rpgui::ui::Button::SetBounds(const Bounds &bounds)
 {
-    this->rpgui::common::View::SetBounds(bounds);
+    this->rpgui::common::VisualElement::SetBounds(bounds);
     // Put text to center of button
     auto textBounds = _text->GetBounds();
     textBounds.x = bounds.x + (bounds.w - textBounds.w) / 2;

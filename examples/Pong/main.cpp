@@ -33,6 +33,17 @@ void SetupRP()
 #endif
 }
 
+void printPeriodicaly(uint16_t ms, const rpgui::util::Timers &timer)
+{
+    static uint32_t prev;
+
+    if (prev + ms > time_us_32())
+    {
+        timer.PrintStamps();
+        prev = time_us_32();
+    }
+}
+
 int main()
 {
     rpgui::core::init();
@@ -40,8 +51,7 @@ int main()
     stdio_init_all();
     tusb_init();
 
-
-    printf("VGA HID Example\r\n");
+    printf("Pong Game\r\n");
     sleep_ms(2000);
 
     SetupRP();
@@ -58,7 +68,6 @@ int main()
     timer.AddStamp("game update");
     timer.AddStamp("UI update");
 
-    
     while (1)
     {
         timer.Stamp("start");
@@ -66,7 +75,6 @@ int main()
         timer.Stamp("game update");
         rpgui::core::MainApp::Update();
         timer.Stamp("UI update");
-        //timer.PrintStamps();
-        
+        printPeriodicaly(1000, timer);
     }
 }

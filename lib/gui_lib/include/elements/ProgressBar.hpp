@@ -13,7 +13,7 @@ using namespace rpgui::colors;
 
 namespace rpgui::ui
 {
-    class ProgressBar : public View
+    class ProgressBar : public VisualElement
     {
     private:
         uint16_t _center;

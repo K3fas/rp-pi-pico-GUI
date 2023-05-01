@@ -149,10 +149,10 @@ namespace Pong
                 // Restrict to top of the screen
                 position.y = 0.0f;
             }
-            else if (position.y > (WIDTH - PADDLE_HEIGHT))
+            else if (position.y > (HEIGHT - PADDLE_HEIGHT))
             {
                 // Restrict to bottom of the screen
-                position.y = WIDTH - PADDLE_HEIGHT;
+                position.y = HEIGHT - PADDLE_HEIGHT;
             }
 
             auto b = paddle->GetBounds();
@@ -182,8 +182,8 @@ namespace Pong
         void Init()
         {
             // Create the player score text fields
-            this->playerOneScore = PlayerScore(new Label("0"), Vec2(10, 10), view);
-            this->playerTwoScore = PlayerScore(new Label("0"), Vec2(140, 10), view);
+            this->playerOneScore = PlayerScore(new Label("0"), Vec2(WIDTH/5, 10), view);
+            this->playerTwoScore = PlayerScore(new Label("0"), Vec2(WIDTH*4/5, 10), view);
 
             // Create the ball
             this->ball = Ball(

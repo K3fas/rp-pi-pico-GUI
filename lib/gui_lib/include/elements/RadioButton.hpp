@@ -21,7 +21,7 @@ namespace rpgui::comon
 
 namespace rpgui::ui
 {
-    class RadioButton : public View, public Clickable
+    class RadioButton : public VisualElement, public Clickable
     {
     private:
         const uint8_t _itemHeight;

@@ -9,33 +9,32 @@
 
 using namespace rpgui::common;
 
-const Bounds View::GetAdjustedBounds(const Bounds &bounds, const Margin &margin)
+rpgui::common::View::~View()
 {
-    return Bounds(
-        bounds.x + margin.l,
-        bounds.y + margin.t,
-        bounds.w - margin.l - margin.r,
-        bounds.h - margin.t - margin.b);
+    for (auto element : _children)
+    {
+        delete element;
+    }
 }
 
-
-bool rpgui::common::View::IsInBounds(const rpgui::type::Point& point)
+const std::vector<VisualElement *> &rpgui::common::View::GetChildren() const
 {
-    auto bounds = this->GetBounds();
-    if (point.x > bounds.x && point.x < bounds.x + bounds.w &&
-        point.y > bounds.y && point.y < bounds.y + bounds.h)
-        return true;
-
-    
-    return false;
+    return _children;
 }
 
-bool rpgui::common::View::IsInBounds(const rpgui::common::Bounds bounds, const rpgui::type::Point &point)
+ID rpgui::common::View::AddChildren(VisualElement *child)
 {
-    if (point.x > bounds.x && point.x < bounds.x + bounds.w &&
-        point.y > bounds.y && point.y < bounds.y + bounds.h)
-        return true;
+    _children.push_back(child);
+    return child->GetId();
+}
 
-    
-    return false;
+ID rpgui::common::View::SetActive(VisualElement *element)
+{
+    _activeElement = element;
+    return element->GetId();
+}
+
+VisualElement *rpgui::common::View::GetActive() const
+{
+    return _activeElement;
 }

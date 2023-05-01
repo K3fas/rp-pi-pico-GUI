@@ -17,7 +17,7 @@ rpgui::ui::Sprite::~Sprite()
 }
 
 rpgui::ui::Sprite::Sprite(const uint8_t *image, const uint16_t imageSize, int width, int height, int pitch)
-    : View(Bounds(0, 0, width, height), Color::Transparent), _sprite(const_cast<uint8_t *>(image), imageSize, width, height, pitch)
+    : VisualElement(Bounds(0, 0, width, height), Color::Transparent), _sprite(const_cast<uint8_t *>(image), imageSize, width, height, pitch)
 {
 }
 
@@ -85,7 +85,7 @@ int rpgui::ui::Sprite::GetPitch() const
     return _sprite.pitch;
 }
 
-sprite_data rpgui::ui::Sprite::loadData(FIL *file)
+SpriteData rpgui::ui::Sprite::loadData(FIL *file)
 {
 
 #pragma pack(push, 1)
@@ -118,7 +118,7 @@ sprite_data rpgui::ui::Sprite::loadData(FIL *file)
     if (fileSize < 40)
     {
         // Handle error
-        return sprite_data();
+        return SpriteData();
     }
 
     // create buffer
@@ -126,7 +126,7 @@ sprite_data rpgui::ui::Sprite::loadData(FIL *file)
     if (Img == NULL)
     {
         // Handle error
-        return sprite_data();
+        return SpriteData();
     }
 
     unsigned int num_read = 0;
@@ -136,7 +136,7 @@ sprite_data rpgui::ui::Sprite::loadData(FIL *file)
     {
         // Handle error
         printf("Error reading");
-        return sprite_data();
+        return SpriteData();
     }
 
     // check BMP header
@@ -183,7 +183,7 @@ sprite_data rpgui::ui::Sprite::loadData(FIL *file)
     {
         printf("Incorrect format of input file\n");
         printf("  must be 8-bit, 4-bit or 1-bit pallette uncompressed.\n");
-        return sprite_data();
+        return SpriteData();
     }
 
     // free bmp headers
@@ -198,7 +198,7 @@ sprite_data rpgui::ui::Sprite::loadData(FIL *file)
 
     std::free(Img);
 
-    return sprite_data(image, size, width, height, pitch);
+    return SpriteData(image, size, width, height, pitch);
 
     // are we done ?
 }

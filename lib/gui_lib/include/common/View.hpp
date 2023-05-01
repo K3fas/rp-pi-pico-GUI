@@ -6,13 +6,9 @@
 #define PICO_KIT_FRAMEWORK_VIEW_HPP
 
 #include <stdint.h>
-#include "Base.hpp"
+#include <vector>
+#include "include.hpp"
 
-namespace rpgui::type
-{
-    struct Point;
-    struct Margin;
-}
 
 using namespace rpgui::type;
 
@@ -37,17 +33,21 @@ namespace rpgui::common
     {
     private:
 
+        std::vector<VisualElement *> _children;
+        VisualElement* _activeElement = nullptr;
+
     public:
 
         View() = default;
         View(const View &) = default;
+        virtual ~View();
         View(const Bounds &coords, const Color color) : VisualElement(coords, color) {}
-        virtual ~View() {}
 
-        static const Bounds GetAdjustedBounds(const Bounds &bounds, const Margin& margin);
+        const std::vector<VisualElement *> &GetChildren() const;
+        ID AddChildren(VisualElement* child);
 
-        bool IsInBounds(const Point &point);
-        static bool IsInBounds(const Bounds bounds,const Point &point);
+        ID SetActive(VisualElement* element);
+        VisualElement* GetActive() const;
     };
 } // namespace rpgui::common
 

@@ -7,14 +7,14 @@
 #include "rp_core.hpp"
 
 rpgui::ui::Entry::Entry(const std::string &text, const Color backgroundColor, const Color textColor)
-: rpgui::common::View(rpgui::common::Bounds(0, 0, text.size()*8, 8), backgroundColor),
+: rpgui::common::VisualElement(rpgui::common::Bounds(0, 0, text.size()*8, 8), backgroundColor),
       text(text),
       textColor(textColor)
 {
 }
 
 rpgui::ui::Entry::Entry(std::string &text, const Color backgroundColor, const Color textColor)
-: rpgui::common::View(rpgui::common::Bounds(0, 0, text.size()*8, 8), backgroundColor),
+: rpgui::common::VisualElement(rpgui::common::Bounds(0, 0, text.size()*8, 8), backgroundColor),
       text(text),
       textColor(textColor)
 {

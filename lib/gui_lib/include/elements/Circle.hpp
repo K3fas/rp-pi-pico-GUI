@@ -7,7 +7,7 @@ using namespace rpgui::type;
 
 namespace rpgui::ui
 {
-    class Circle : public View
+    class Circle : public VisualElement
     {
     private:
 

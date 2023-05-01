@@ -15,14 +15,13 @@ namespace rpgui::layout
         {
             IVGA::IDrawRectangle(GetBounds(), color);
         }
-        for (auto &&element : _children)
+        for (auto &&element : GetChildren())
         {
             element->Draw();
         }
-        if (_activeElement)
+        if (GetActive())
         {
-            auto element = (VisualElement *)_activeElement;
-            element->Draw();
+            GetActive()->Draw();
         }
     }
 

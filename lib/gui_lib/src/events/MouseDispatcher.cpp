@@ -34,7 +34,7 @@ void rpgui::event::MouseDispatcher::Post(MouseEvent<MouseEventType> &event)
                 return;
             // Posts event to handling function of listener,
             // with information of sender objs
-            auto view = (rpgui::common::View *)handler.sender;
+            auto view = (rpgui::common::VisualElement *)handler.sender;
             view->GetBounds();
             if (view->IsInBounds(event.pos))
             {

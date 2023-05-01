@@ -19,7 +19,7 @@ namespace rpgui::ui
 
 namespace rpgui::ui
 {
-    class Button : public View, public Clickable
+    class Button : public VisualElement, public Clickable
     {
     private:
         Label* _text;

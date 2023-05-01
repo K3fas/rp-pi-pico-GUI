@@ -23,7 +23,7 @@ using namespace rpgui::common;
 
 namespace rpgui::ui
 {
-    class CheckBox : public View, public Clickable
+    class CheckBox : public VisualElement, public Clickable
     {
     private:
         const uint8_t _minHeight = 5;

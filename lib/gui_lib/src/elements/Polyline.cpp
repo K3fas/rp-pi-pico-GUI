@@ -6,7 +6,7 @@
 #include "IVGA.hpp"
 
 rpgui::ui::Polyline::Polyline(const std::vector<Point> &points, Color color)
-    :View(Bounds(),color)
+    :VisualElement(Bounds(),color)
 {
     _points = points;
 }

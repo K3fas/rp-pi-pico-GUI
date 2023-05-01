@@ -12,14 +12,14 @@ using namespace rpgui::common;
 
 namespace rpgui::ui
 {
-    class Rectangle : public common::View
+    class Rectangle : public common::VisualElement
     {
     private:
     public:
         Rectangle(const rpgui::type::Width width, const rpgui::type::Height height, const Color color)
-            : View(rpgui::common::Bounds{0, 0, width.v, height.v}, color) {}
+            : VisualElement(rpgui::common::Bounds{0, 0, width.v, height.v}, color) {}
         Rectangle(const Bounds &bounds, const Color color)
-            : View(bounds, color) {}
+            : VisualElement(bounds, color) {}
 
         ~Rectangle() {}
 

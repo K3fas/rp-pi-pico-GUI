@@ -6,42 +6,16 @@
 #define PICO_KIT_FRAMEWORK_BASE_HPP
 
 #include "Types.hpp"
+#include "Bounds.hpp"
 #include "VColors.hpp"
 
 using namespace rpgui::colors;
+using namespace rpgui::type;
 
 namespace rpgui::common
 {
     class Clickable;
     using EventHandler = void (*)(Clickable &sender);
-
-    struct Bounds
-    {
-        int16_t x, y;
-        uint16_t w, h;
-
-        Bounds() : x(0), y(0), w(0), h(0) {}
-        Bounds(int16_t x, int16_t y, uint16_t w, uint32_t h)
-            : x(x), y(y), w(w), h(h) {}
-
-        Bounds(const Bounds &) = default;
-        ~Bounds() = default;
-
-        Bounds operator-(const uint8_t rhs)
-        {
-            return Bounds(x + rhs, y + rhs, w - rhs * 2, h - rhs * 2);
-        }
-
-        Bounds operator+(const Bounds rhs)
-        {
-            return Bounds(x + rhs.x, y + rhs.y, w, h);
-        }
-
-        friend Bounds operator-(const Bounds &lhs, const uint8_t rhs)
-        {
-            return Bounds(lhs.x + rhs, lhs.y + rhs, lhs.w - rhs * 2, lhs.h - rhs * 2);
-        }
-    };
 
     class Element
     {
@@ -58,8 +32,8 @@ namespace rpgui::common
         void SetParrent(Element *parrent) { _parrent = parrent; }
 
         /// @brief Callback function for setting ellement as active on screen
-        /// @param element 
-        virtual void SetActive(Element* element);
+        /// @param element
+        virtual void SetActive(Element *element);
 
         const Element *GetParrent() const { return _parrent; }
         const uint16_t GetId() const { return _id; }
@@ -80,9 +54,12 @@ namespace rpgui::common
         VisualElement(const VisualElement &) = default;
         virtual ~VisualElement();
 
-        const Bounds& GetBounds() const { return _bounds; }
+        const Bounds &GetBounds() const { return _bounds; }
 
         virtual void SetBounds(const Bounds &bounds);
+
+        bool IsInBounds(const Point &point);
+        static bool IsInBounds(const Bounds bounds, const Point &point);
 
         virtual void Draw() const = 0;
     };

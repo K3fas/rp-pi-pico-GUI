@@ -2,7 +2,7 @@
 #include "IVGA.hpp"
 
 rpgui::ui::Circle::Circle(const Radius &radius, Color color)
-    : View(Bounds(0, 0, radius.v * 2, radius.v * 2), color)
+    : VisualElement(Bounds(0, 0, radius.v * 2, radius.v * 2), color)
 {
 }
 

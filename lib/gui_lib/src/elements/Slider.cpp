@@ -6,22 +6,22 @@
 #include "rp_core.hpp"
 
 rpgui::ui::Slider::Slider(const Width &width, const Height &heigth, const Color &color, double &value)
-    : View(Bounds(0, 0, width.v, heigth.v), color), value(value)
+    : VisualElement(Bounds(0, 0, width.v, heigth.v), color), value(value)
 {
 }
 
 rpgui::ui::Slider::Slider(const Width &width, const Height &heigth, const Color &color, const double &value)
-    : View(Bounds(0, 0, width.v, heigth.v), color), value(value)
+    : VisualElement(Bounds(0, 0, width.v, heigth.v), color), value(value)
 {
 }
 
 rpgui::ui::Slider::Slider(const Bounds &bounds, const Color &color, double &value)
-    : View(bounds, color), value(value)
+    : VisualElement(bounds, color), value(value)
 {
 }
 
 rpgui::ui::Slider::Slider(const Bounds &bounds, const Color &color, const double &value)
-    : View(bounds, color), value(value)
+    : VisualElement(bounds, color), value(value)
 {
 }
 

@@ -11,6 +11,8 @@
 #include "Base.hpp"
 #include "View.hpp"
 #include "Types.hpp"
+#include "Bounds.hpp"
+#include "Margin.hpp"
 #include "Clickable.hpp"
 #include "BindableProperty.hpp"
 #include "Activatable.hpp"

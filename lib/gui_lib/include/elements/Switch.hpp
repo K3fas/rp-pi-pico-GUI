@@ -13,7 +13,7 @@ using namespace rpgui::type;
 
 namespace rpgui::ui
 {
-    class Switch : public View, public Clickable
+    class Switch : public VisualElement, public Clickable
     {
     public:
         BindableProperty<bool> isSwitched;

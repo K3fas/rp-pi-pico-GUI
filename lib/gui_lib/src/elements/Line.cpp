@@ -6,7 +6,7 @@
 #include "IVGA.hpp"
 
 rpgui::ui::Line::Line(const Point &start, const Point &end, Color color)
-    : View(Bounds(), color), start(start), end(end)
+    : VisualElement(Bounds(), color), start(start), end(end)
 {
 }
 

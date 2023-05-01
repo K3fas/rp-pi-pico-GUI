@@ -24,11 +24,9 @@ namespace rpgui::layout
 
         void Draw() const final;
 
-        void SetActive(Element* element) final;
-
         template <typename T>
-            requires std::is_base_of<View, T>::value
-        void AddElement(const Point &position, T *element)
+            requires std::is_base_of<VisualElement, T>::value
+        ID AddElement(const Point &position, T *element)
         {
             element->SetParrent(this);
 
@@ -37,7 +35,7 @@ namespace rpgui::layout
             bounds.y = position.y;
             element->SetBounds(bounds);
 
-            _children.push_back((View*) element);
+            return AddChildren(element);
         }
     };
 

@@ -10,7 +10,7 @@
 
 namespace rpgui::ui
 {
-    class Label : public rpgui::common::View
+    class Label : public rpgui::common::VisualElement
     {
     public:
         rpgui::common::BindableProperty<std::string> text;

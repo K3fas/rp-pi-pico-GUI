@@ -7,7 +7,7 @@ add_executable(speedTests)
 # Example source
 target_sources(speedTests PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}/main.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/speedtest.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/SpeedTest.cpp
         )
 
 

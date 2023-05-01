@@ -14,7 +14,7 @@ using namespace rpgui::colors;
 
 namespace rpgui::ui
 {
-    class Polyline : public View
+    class Polyline : public VisualElement
     {
     private:
 

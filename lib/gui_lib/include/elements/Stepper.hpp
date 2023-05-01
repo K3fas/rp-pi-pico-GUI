@@ -40,7 +40,7 @@ namespace rpgui::ui
     };
 
     template <Stepable T>
-    class Stepper : public View, public Clickable
+    class Stepper : public VisualElement, public Clickable
     {
     private:
         Button *_bAdd;
@@ -79,7 +79,7 @@ namespace rpgui::ui
 
     template <StepableAndConstructible T>
     inline Stepper<T>::Stepper(const Width &width, const Height &height, Color color, Color backgroundColor, uint8_t frameWidth)
-        : rpgui::common::View(Bounds(0, 0, width.v, height.v), color),
+        : rpgui::common::VisualElement(Bounds(0, 0, width.v, height.v), color),
          backgroundColor(backgroundColor), 
          frameWidth(frameWidth),
          counter(T())
@@ -89,7 +89,7 @@ namespace rpgui::ui
 
     template<Stepable T>
     inline Stepper<T>::Stepper(const Width &width, const Height &height, T& counter, Color color, Color backgroundColor, uint8_t frameWidth)
-        : rpgui::common::View(Bounds(0, 0, width.v, height.v), color), 
+        : rpgui::common::VisualElement(Bounds(0, 0, width.v, height.v), color), 
         backgroundColor(backgroundColor), 
         frameWidth(frameWidth),
         counter(counter)
@@ -114,7 +114,7 @@ namespace rpgui::ui
     template <Stepable T>
     inline void Stepper<T>::SetBounds(const Bounds &bounds)
     {
-        this->rpgui::common::View::SetBounds(bounds);
+        this->rpgui::common::VisualElement::SetBounds(bounds);
         auto adjBounds = bounds - frameWidth;
         adjBounds.w = adjBounds.w / 2;
         _bAdd->SetBounds(Bounds(adjBounds.x + frameWidth / 2 + adjBounds.w, adjBounds.y, adjBounds.w, adjBounds.h));

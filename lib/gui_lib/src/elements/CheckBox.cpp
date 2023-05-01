@@ -45,12 +45,12 @@ rpgui::ui::CheckBox::CheckBox(const Width &width, const Height &height, bool &va
 }
 
 rpgui::ui::CheckBox::CheckBox(const Bounds &bounds, const Color &backgroundColor, const bool &value, const Color tickColor)
-    :View(bounds,backgroundColor), checked(value), tickColor(tickColor)
+    :VisualElement(bounds,backgroundColor), checked(value), tickColor(tickColor)
 {
 }
 
 rpgui::ui::CheckBox::CheckBox(const Bounds &bounds, const Color &backgroundColor, bool &value, const Color tickColor)
-    :View(bounds,backgroundColor), checked(value), tickColor(tickColor)
+    :VisualElement(bounds,backgroundColor), checked(value), tickColor(tickColor)
 {
 }
 void rpgui::ui::CheckBox::Draw() const

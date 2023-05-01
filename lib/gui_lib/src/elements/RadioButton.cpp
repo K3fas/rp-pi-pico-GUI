@@ -11,7 +11,7 @@ using namespace rpgui::core;
 rpgui::ui::RadioButton::RadioButton(const Width &itemWidth, const Height &itemHeight,
                                     Color color, Color bgColor,
                                     const void *font, uint8_t fontSize)
-    : View(Bounds(0, 0, itemWidth.v, 0), color),
+    : VisualElement(Bounds(0, 0, itemWidth.v, 0), color),
       _itemHeight(itemHeight.v),
       _itemWidth(itemWidth.v),
       _fontSize(fontSize),

@@ -5,20 +5,15 @@
 #include "AbsoluteLayout.hpp"
 #include "IVGA.hpp"
 
-void rpgui::layout::AbsoluteLayout::SetActive(Element *element)
-{
-    _activeElement = element;
-}
 
 void rpgui::layout::AbsoluteLayout::Draw() const
 {
-    for (auto &&element : _children)
+    for (auto &&element : GetChildren())
     {
         element->Draw();
     }
-    if (_activeElement)
+    if (GetActive())
     {
-        auto element = (VisualElement *)_activeElement;
-        element->Draw();
+        GetActive()->Draw();
     }
 }

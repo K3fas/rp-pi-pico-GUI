@@ -13,7 +13,7 @@ using namespace rpgui::common;
 
 namespace rpgui::ui
 {
-    class Entry : public View, virtual Activatable
+    class Entry : public VisualElement, virtual Activatable
     {
         private:
             char lastChar;

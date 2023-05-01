@@ -63,7 +63,7 @@ void switchScreens()
     }
 }
 
-Page *seedPage(View *el[], uint8_t count, const std::string &name)
+Page *seedPage(VisualElement *el[], uint8_t count, const std::string &name)
 {
     auto page = new Page();
     auto lay = new StackLayout(Point(WIDTH / 2 - 64, HEIGHT / 2 - 8), Width(128), Height(120));
@@ -77,7 +77,7 @@ Page *seedPage(View *el[], uint8_t count, const std::string &name)
     return page;
 }
 
-Page *seedPage(View *el, const std::string &name)
+Page *seedPage(VisualElement *el, const std::string &name)
 {
     auto page = new Page();
     auto lay = new StackLayout(Point(WIDTH / 2 - 64, HEIGHT / 2 - 8), Width(128), Height(120));
@@ -94,9 +94,9 @@ int main()
     stdio_init_all();
 
     MainApp::AddPage(seedPage(new Button(Width(64), Height(32), Color::DarkBlue, "Click me !"), "Button"));
-    View *box[] = {new CheckBox(Width(64), Height(64), false, Color::DarkBlue), new CheckBox(Width(64), Height(64), true, Color::DarkBlue)};
+    VisualElement *box[] = {new CheckBox(Width(64), Height(64), false, Color::DarkBlue), new CheckBox(Width(64), Height(64), true, Color::DarkBlue)};
     auto pline = new Polyline(std::vector<Point>{Point(0, 0), Point(15, 20), Point(35, 10), Point(180, 55), Point(WIDTH / 2, HEIGHT / 2)}, Color::Red);
-    View *lines[] = {new Line(Point(10, 10), Point(WIDTH - 10, HEIGHT / 2)), pline};
+    VisualElement *lines[] = {new Line(Point(10, 10), Point(WIDTH - 10, HEIGHT / 2)), pline};
 
     MainApp::AddPage(seedPage(box, 2, "CheckBox"));
     MainApp::AddPage(seedPage(new Label("Label", Color::White, Color::Transparent, nullptr, 16), ""));
@@ -109,10 +109,10 @@ int main()
     rbtn->AddItem("Item 3");
     MainApp::AddPage(seedPage(rbtn, "RadioButton"));
     MainApp::AddPage(seedPage(new Stepper<int>(Width(64), Height(16), Color::DarkBlue), "Stepper"));
-    View *swtchs[] = {new Switch(Width(64), Height(16), false, Color::SemiGray), new Switch(Width(64), Height(16), true, Color::SemiGray)};
+    VisualElement *swtchs[] = {new Switch(Width(64), Height(16), false, Color::SemiGray), new Switch(Width(64), Height(16), true, Color::SemiGray)};
     MainApp::AddPage(seedPage(swtchs, 2, "Switch"));
     auto peter = new Sprite("peter8.bmp");
-    MainApp::AddPage(seedPage((View *)peter, "Sprite"));
+    MainApp::AddPage(seedPage((VisualElement *)peter, "Sprite"));
 
     while (1)
     {

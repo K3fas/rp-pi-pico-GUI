@@ -17,17 +17,16 @@ namespace rpgui::layout
     class Layout : public View
     {
     protected:
-        std::vector<View *> _children;
-        Element* _activeElement = nullptr;
+
 
     public:
         Layout() = default;
         Layout(const Layout&) = delete; 
-        virtual ~Layout();
+        virtual ~Layout() = default;
 
         Layout(const Bounds coords, Color bgColor = colors::Color::Transparent);
        
-        const std::vector<View *> &GetChildren() const;
+        
     };
 
 } // namespace rpgui::layout

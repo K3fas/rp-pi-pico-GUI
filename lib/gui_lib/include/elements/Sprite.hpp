@@ -1,5 +1,6 @@
 #pragma once
 #include "include.hpp"
+#include "SpriteData.hpp"
 #include <string>
 #include <map>
 #include "ff.h"
@@ -14,11 +15,11 @@ using namespace rpgui::type;
 namespace rpgui::ui
 {
 
-    class Sprite : public View
+    class Sprite : public VisualElement
     {
     private:
-        inline static std::map<const std::string, sprite_data> _sprites;
-        sprite_data _sprite;
+        inline static std::map<const std::string, SpriteData> _sprites;
+        SpriteData _sprite;
 
     public:
         Sprite() = delete;
@@ -40,7 +41,7 @@ namespace rpgui::ui
         int GetPitch() const;
 
     private:
-        sprite_data loadData(FIL *file);
+        SpriteData loadData(FIL *file);
     };
 
 } // namespace rpgui::common

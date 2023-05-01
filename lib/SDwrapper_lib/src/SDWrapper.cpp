@@ -42,6 +42,7 @@ std::tuple<FRESULT, FIL *> rpgui::util::SDWrapper::OpenFile(const std::string &n
         res = Init();
         if(FR_OK != res)
         {
+            delete fil;
             return std::make_tuple(FRESULT::FR_NO_FILESYSTEM, nullptr);
         }
     }
