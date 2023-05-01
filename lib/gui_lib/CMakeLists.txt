@@ -8,7 +8,8 @@ target_sources(gui_lib INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}/util/Timers.cpp
         ${CMAKE_CURRENT_LIST_DIR}/util/IVGA.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/rp_core.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/src/common/Base.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/common/Element.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/common/VisualElement.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/common/View.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/common/Clickable.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/elements/Sprite.cpp

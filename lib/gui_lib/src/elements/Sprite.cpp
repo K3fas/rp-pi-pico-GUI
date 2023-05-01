@@ -1,6 +1,6 @@
 #include "Sprite.hpp"
 #include "SDWrapper.hpp"
-#include "Base.hpp"
+#include "VisualElement.hpp"
 #include "IVGA.hpp"
 #include <cstdlib>
 

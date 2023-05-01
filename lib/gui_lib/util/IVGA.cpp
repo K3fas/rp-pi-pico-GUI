@@ -1,7 +1,6 @@
 #include "IVGA.hpp"
 
 #include "Types.hpp"
-#include "Base.hpp"
 #include "Sprite.hpp"
 #include <string>
 

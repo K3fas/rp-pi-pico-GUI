@@ -2,10 +2,8 @@
 // Created by kefas on 26.2.23.
 //
 
-#include "common/View.hpp"
-#include "common/Base.hpp"
-#include "common/Types.hpp"
 #include "View.hpp"
+#include "Types.hpp"
 
 using namespace rpgui::common;
 

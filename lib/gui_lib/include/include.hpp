@@ -8,7 +8,8 @@
 
 #include "stdint.h"
 
-#include "Base.hpp"
+#include "Element.hpp"
+#include "VisualElement.hpp"
 #include "View.hpp"
 #include "Types.hpp"
 #include "Bounds.hpp"
