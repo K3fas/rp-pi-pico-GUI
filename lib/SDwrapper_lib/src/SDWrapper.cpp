@@ -90,3 +90,8 @@ FRESULT rpgui::util::SDWrapper::CloseFile(FIL *file)
     _openedFiles.erase(it);
     return result;
 }
+
+FRESULT rpgui::util::SDWrapper::SyncFile(FIL *file)
+{
+    return f_sync(file);
+}

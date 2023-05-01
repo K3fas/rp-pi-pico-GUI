@@ -54,6 +54,8 @@ namespace rplog
         // Logs message to files, where log level is lower than current log level
         void Log(const std::string &message, const Level &severity);
 
+        void SaveData();
+
 
         static void log(FIL* const file, const std::string& message, const Level severity = Level::DEBUG);
         static void log(std::ostream &stream, const std::string& message, const Level severity = Level::DEBUG);

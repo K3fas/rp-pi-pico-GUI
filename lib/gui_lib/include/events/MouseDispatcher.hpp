@@ -40,7 +40,7 @@ namespace rpgui::event
     public:
         MouseDispatcher() = default;
         MouseDispatcher(const MouseDispatcher &) = default;
-        ~MouseDispatcher() = default;
+        ~MouseDispatcher();
 
         void Post(MouseEvent<MouseEventType> &event);
 

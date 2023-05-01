@@ -84,6 +84,11 @@ void rpgui::core::MainApp::AddListener(MouseEventType type, const Handler &handl
     MainApp::_mouseHandler.Subscribe(type, handler, priority);
 }
 
+void rpgui::core::MainApp::ClearHandlers()
+{
+    _mouseHandler.~MouseDispatcher();
+}
+
 void rpgui::core::MainApp::updateOnCoreX()
 {
     // IVGA::IDrawClear();

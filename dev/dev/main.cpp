@@ -70,7 +70,6 @@ int main()
 
     auto lay = new layout::StackLayout(type::Point{10, 10}, type::Width{300}, type::Height{200});
     auto rect1 = ui::Rectangle(type::Width{20}, type::Height{20}, colors::Color::Green);
-    rect1.margin = Margin{5, 5, 5, 5};
 
     auto btn = new ui::Button{type::Width{30}, type::Height{30}, colors::Color::SemiCyan};
 

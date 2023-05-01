@@ -11,21 +11,13 @@
 namespace rpgui::type
 {
     struct Point;
+    struct Margin;
 }
+
+using namespace rpgui::type;
 
 namespace rpgui::common
 {
-    struct Margin
-    {
-        uint8_t l, t, r, b;
-
-        Margin() : l(0), t(0), r(0), b(0) {}
-        Margin( const Margin&) = default;
-        ~Margin() = default;
-        Margin(uint8_t l, uint8_t t, uint8_t r, uint8_t b)
-            : l(l), t(t), r(r), b(b) {}
-    };
-
     enum class VerticalAlignment
     {
         Top,
@@ -44,21 +36,18 @@ namespace rpgui::common
     class View : public VisualElement
     {
     private:
-        bool _bMargin;
 
     public:
-        Margin margin;
 
         View() = default;
         View(const View &) = default;
         View(const Bounds &coords, const Color color) : VisualElement(coords, color) {}
         virtual ~View() {}
 
-        static const Bounds GetAdjustedBounds(const Bounds &bounds, const Margin &margin);
-        const Bounds GetAdjustedBounds() const;
+        static const Bounds GetAdjustedBounds(const Bounds &bounds, const Margin& margin);
 
-        bool IsInBounds(const rpgui::type::Point &point);
-        static bool IsInBounds(const rpgui::common::Bounds bounds,const rpgui::type::Point &point);
+        bool IsInBounds(const Point &point);
+        static bool IsInBounds(const Bounds bounds,const Point &point);
     };
 } // namespace rpgui::common
 

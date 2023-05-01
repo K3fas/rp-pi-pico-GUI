@@ -26,6 +26,8 @@ namespace rpgui::util
                                                    const unsigned char mode = FA_READ | FA_WRITE | FA_OPEN_APPEND);
         static FRESULT CloseAllFiles();
         static FRESULT CloseFile(FIL *file);
+
+        static FRESULT SyncFile(FIL *file);
     };
 
 } // namespace rpgui::util

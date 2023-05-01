@@ -4,6 +4,22 @@
 #include "MouseDispatcher.hpp"
 #include "Cursor.hpp"
 
+rpgui::event::MouseDispatcher::~MouseDispatcher()
+{
+    for (auto &priority : _listeners)
+    {
+        for (auto &listener : _listeners)
+        {
+            // Clear vector
+            listener.second.clear();
+        }
+        // Clear map
+        priority.second.clear();
+    }
+    // Clears top map
+    _listeners.clear();
+}
+
 void rpgui::event::MouseDispatcher::Post(MouseEvent<MouseEventType> &event)
 {
     for (auto const &priority : _listeners)
@@ -11,7 +27,7 @@ void rpgui::event::MouseDispatcher::Post(MouseEvent<MouseEventType> &event)
         // No listeners
         if (priority.second.find(event.Type()) == priority.second.end())
             continue;
-        
+
         for (auto const &handler : priority.second.at(event.Type()))
         {
             if (event.IsHandled())
@@ -25,7 +41,7 @@ void rpgui::event::MouseDispatcher::Post(MouseEvent<MouseEventType> &event)
                 handler.handler(event, handler.sender);
             }
         }
-    } 
+    }
 }
 
 void rpgui::event::MouseDispatcher::Subscribe(MouseEventType type, const Handler &handler, const uint8_t priority)
@@ -34,6 +50,6 @@ void rpgui::event::MouseDispatcher::Subscribe(MouseEventType type, const Handler
 }
 
 rpgui::event::Handler::Handler(const HandleFunc &func, Clickable *sender)
-    : id(counter++),handler(func), sender(sender)
+    : id(counter++), handler(func), sender(sender)
 {
 }

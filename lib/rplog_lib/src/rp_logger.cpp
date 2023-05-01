@@ -36,8 +36,8 @@ bool rplog::Logger::AddFile(const std::string &name, const std::string &path, Le
     }
     if(file)
     {
-        AddSink(file);
-        logDebug(std::cout, "File added to sinks");
+        AddSink(file, logLevel);
+        logDebug(std::cout, "File " +name+ " added to sinks");
         return true;
     }
 
@@ -47,7 +47,7 @@ bool rplog::Logger::AddFile(const std::string &name, const std::string &path, Le
 
 void rplog::Logger::CloseFiles()
 {
-    for (auto &[sink, level] : _sinks)
+    for (auto &&[sink, level] : _sinks)
     {
         auto file = get_if<FIL *const>(&sink);
         if (file)
@@ -68,11 +68,13 @@ void rplog::Logger::DisposeSD()
 
 void rplog::Logger::AddSink(FIL *file, Level logLevel)
 {
+    Logger::logTrace(std::cout, "Adding stream to sinks, with level: "+levelToString(logLevel));
     _sinks.push_back(std::make_tuple(file, logLevel));
 }
 
 void rplog::Logger::AddSink(std::ostream &stream, Level logLevel)
 {
+    Logger::logTrace(std::cout, "Adding file to sinks, with level: "+levelToString(logLevel));
     _sinks.push_back(std::make_tuple(&stream, logLevel));
 }
 
@@ -82,7 +84,7 @@ void rplog::Logger::Log(const std::string &message, const Level &severity)
         return;
 
     auto toPrint = levelToString(severity) + message + "\n";
-    for (auto &[sink, level] : _sinks)
+    for (auto &&[sink, level] : _sinks)
     {
         if(level > severity)
             continue;
@@ -98,6 +100,18 @@ void rplog::Logger::Log(const std::string &message, const Level &severity)
         if (stream)
         {
             **stream << toPrint;
+        }
+    }
+}
+
+void rplog::Logger::SaveData()
+{
+    for (auto &&[sink, level] : _sinks)
+    {
+        auto file = get_if<FIL *const>(&sink);
+        if (file)
+        {
+            auto result = SDWrapper::SyncFile(*file);
         }
     }
 }

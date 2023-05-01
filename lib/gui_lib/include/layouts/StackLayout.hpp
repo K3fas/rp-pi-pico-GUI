@@ -22,7 +22,7 @@ namespace rpgui::layout
 
     public:
         StackLayout() = delete;
-        StackLayout(const StackLayout&) = delete;
+        StackLayout(const StackLayout &) = delete;
         ~StackLayout() = default;
 
         StackLayout(const Point start, const Width width, const Height height)
@@ -30,27 +30,25 @@ namespace rpgui::layout
 
         void Draw() const final;
 
-        void SetActive(Element* element) final;
+        void SetActive(Element *element) final;
 
-        template <typename T>
-            requires std::is_base_of<View,T>::value
-        bool AddElement(T *element)
+        ID AddElement(View *element, const Margin &margin = Margin())
         {
             auto bounds = this->GetBounds();
             auto elementHeigth = element->GetBounds().h;
             element->SetParrent(this);
-            
+
             bounds.y += _currentHeight;
             bounds.h = elementHeigth;
 
-            auto adjusted = GetAdjustedBounds(bounds, element->margin);
+            auto adjusted = GetAdjustedBounds(bounds, margin);
 
             element->SetBounds(adjusted);
 
             _currentHeight += elementHeigth;
 
-            _children.push_back((View*)element);
-            return true;
+            _children.push_back((View *)element);
+            return element->GetId();
         }
     };
 

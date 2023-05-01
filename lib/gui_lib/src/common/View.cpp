@@ -18,11 +18,6 @@ const Bounds View::GetAdjustedBounds(const Bounds &bounds, const Margin &margin)
         bounds.h - margin.t - margin.b);
 }
 
-const Bounds View::GetAdjustedBounds() const
-{
-
-    return GetAdjustedBounds(this->GetBounds(), this->margin);
-}
 
 bool rpgui::common::View::IsInBounds(const rpgui::type::Point& point)
 {
