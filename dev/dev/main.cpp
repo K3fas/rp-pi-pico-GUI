@@ -66,7 +66,7 @@ int main()
 
     // GUI
 
-    rpgui::core::init();
+    rpgui::core::MainApp::Init();
 
     auto lay = new layout::StackLayout(type::Point{10, 10}, type::Width{300}, type::Height{200});
     auto rect1 = ui::Rectangle(type::Width{20}, type::Height{20}, colors::Color::Green);
@@ -82,7 +82,7 @@ int main()
     std::string binder = "Databinder";
     lay->AddElement(new ui::Label(binder));
     lay->AddElement(new ui::Label("Implicit"));
-    lay1->AddElement(new ui::Stepper<uint8_t>(Width{10}, Height{11}, Color::Red, Color::Blue, 2));
+    lay1->AddElement(new ui::Stepper<int>(Width{10}, Height{11}, Color::Red, Color::Blue, 2));
 
     auto radBtn = new ui::RadioButton(Width(60), Height(16), Color::Red);
     radBtn->AddItem("Dog");

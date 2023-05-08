@@ -18,15 +18,16 @@ MainApp::clickState MainApp::_clickState;
 
 extern void hid_app_task(void);
 
-void rpgui::core::init()
-{
-    IVGA::init();
-    tusb_init();
-}
 
 void rpgui::core::MainApp::drawPage()
 {
     _selectedPage->Draw();
+}
+
+void rpgui::core::MainApp::Init()
+{
+        IVGA::init();
+    tusb_init();
 }
 
 ID rpgui::core::MainApp::AddPage(Page *page)
@@ -65,6 +66,22 @@ void rpgui::core::MainApp::SelectPageAt(uint8_t at)
     }
 }
 
+ID rpgui::core::MainApp::GetSelectedPageId()
+{
+    return _selectedPage->GetId();
+}
+
+ID rpgui::core::MainApp::GetSelectedPageAt()
+{
+    for (size_t i = 0; i < _pages.size(); i++)
+    {
+        if(_selectedPage == _pages.at(i))
+            return _selectedPage->GetId();
+    }
+    
+    return ID();
+}
+
 void rpgui::core::MainApp::Update()
 {
     tuh_task();
@@ -91,22 +108,18 @@ void rpgui::core::MainApp::ClearHandlers()
 
 void rpgui::core::MainApp::updateOnCoreX()
 {
-    // IVGA::IDrawClear();
-    // MainApp::timers.core1.start = time_us_32();
+
     processMouseInput();
     processMouseMovement();
     drawCursor();
-    // MainApp::timers.core1.tusb = time_us_32() -MainApp::timers.core1.start;
     drawPage();
     drawCursor();
 
-    // MainApp::timers.core1.draw = time_us_32() -MainApp::timers.core1.start;
     if (waitVSync)
     {
         IVGA::IWaitVSync();
     }
-    // MainApp::timers.core1.VSync = time_us_32() -MainApp::timers.core1.start;
-    // MainApp::timers.Print();
+
 }
 
 void rpgui::core::MainApp::drawCursor()

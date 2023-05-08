@@ -105,7 +105,7 @@ void onClicked(MouseEvent<MouseEventType> &event, Clickable *sender)
 
 int main()
 {
-    rpgui::core::init();
+    rpgui::core::MainApp::Init();
     stdio_init_all();
     LED_init();
 

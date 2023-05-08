@@ -46,7 +46,7 @@ void printPeriodicaly(uint16_t ms, const rpgui::util::Timers &timer)
 
 int main()
 {
-    rpgui::core::init();
+    rpgui::core::MainApp::Init();
     board_init();
     stdio_init_all();
     tusb_init();

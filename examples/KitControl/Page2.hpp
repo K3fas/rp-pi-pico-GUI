@@ -7,8 +7,8 @@ namespace page2::model
 {
     inline static struct data_s
     {
-        uint16_t encoder = 0;
-        uint16_t counter = 0;
+        int encoder = 0;
+        int counter = 0;
         ui::Label *counter_lbl;
 
         data_s &operator++()
@@ -35,7 +35,7 @@ namespace page2::view
         auto lbl = new ui::Label("0");
         data.counter_lbl = lbl;
         middle->AddElement(lbl), Margin(0, 10, 0, 10);
-        middle->AddElement(new ui::Stepper<uint16_t>(Width(120), Height(32), data.counter), Margin(0, 2, 0, 2));
+        middle->AddElement(new ui::Stepper(Width(120), Height(32), data), Margin(0, 2, 0, 2));
 
         auto page = new Page();
         page->AddLayout(middle);

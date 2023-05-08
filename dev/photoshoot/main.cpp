@@ -90,7 +90,7 @@ Page *seedPage(VisualElement *el, const std::string &name)
 
 int main()
 {
-    rpgui::core::init();
+    rpgui::core::MainApp::Init();
     stdio_init_all();
 
     MainApp::AddPage(seedPage(new Button(Width(64), Height(32), Color::DarkBlue, "Click me !"), "Button"));

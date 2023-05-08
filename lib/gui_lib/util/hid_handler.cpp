@@ -243,10 +243,10 @@ static void process_mouse_report(hid_mouse_report_t const *report)
 	uint8_t button_changed_mask = report->buttons ^ prev_report.buttons;
 	if (button_changed_mask)
 	{
-		printf(" %c%c%c ",
-			   report->buttons & MOUSE_BUTTON_LEFT ? 'L' : '-',
-			   report->buttons & MOUSE_BUTTON_MIDDLE ? 'M' : '-',
-			   report->buttons & MOUSE_BUTTON_RIGHT ? 'R' : '-');
+		// printf(" %c%c%c ",
+			//    report->buttons & MOUSE_BUTTON_LEFT ? 'L' : '-',
+			//    report->buttons & MOUSE_BUTTON_MIDDLE ? 'M' : '-',
+			//    report->buttons & MOUSE_BUTTON_RIGHT ? 'R' : '-');
 
 		report->buttons &MOUSE_BUTTON_LEFT ? HID::mouse::mouseKeys[0] = 1 : HID::mouse::mouseKeys[0] = 0;
 		report->buttons &MOUSE_BUTTON_MIDDLE ? HID::mouse::mouseKeys[1] = 1 : HID::mouse::mouseKeys[1] = 0;
@@ -257,7 +257,7 @@ static void process_mouse_report(hid_mouse_report_t const *report)
 	}
 
 	//------------- cursor movement -------------//
-	cursor_movement(report->x, report->y, report->wheel);
+	// cursor_movement(report->x, report->y, report->wheel);
 
 	// Process moving cursor
 	HID::mouse::mousePos[0] += report->x;

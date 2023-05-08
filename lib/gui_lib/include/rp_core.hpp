@@ -41,7 +41,6 @@ using namespace rpgui::type;
 
 namespace rpgui::core
 {
-    void init();
 
     class MainApp
     {
@@ -62,11 +61,17 @@ namespace rpgui::core
         MainApp(const MainApp&) = delete;
         ~MainApp() = delete;
 
+        static void Init();
+
         static ID AddPage(Page *page);
 
         static void SelectPage(ID id);
 
         static void SelectPageAt(uint8_t at);
+
+        static ID GetSelectedPageId();
+
+        static ID GetSelectedPageAt();
 
         static void Update();
 

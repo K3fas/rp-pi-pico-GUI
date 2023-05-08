@@ -14,7 +14,7 @@ type::ID page2Id;
 int main()
 {
 
-    rpgui::core::MainApp::init();
+    rpgui::core::MainApp::Init();
     stdio_init_all();
 
     page1Id = page1::view::CreatePage();

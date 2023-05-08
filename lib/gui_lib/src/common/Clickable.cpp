@@ -13,7 +13,7 @@ namespace rpgui::common
 {
     void Clickable::SetOnClickHandler(const rpgui::type::MouseEventType type, const rpgui::type::HandleFunc &function, const uint8_t priority)
     {
-        rpgui::core::MainApp::AddListener(type,Handler{function,this}, priority);
+        rpgui::core::MainApp::AddListener(type,Handler(function,this), priority);
     }
 
 } // namespace rpgui::common

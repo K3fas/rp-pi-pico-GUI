@@ -24,6 +24,7 @@ namespace rpgui::common
 
         void SetValue(const T value);
         const T& GetValue() const;
+        T& GetValueRef();
     };
 
     template <typename T>
@@ -53,6 +54,12 @@ namespace rpgui::common
 
     template <typename T>
     inline const T &BindableProperty<T>::GetValue() const
+    {
+        return _value;
+    }
+
+    template <typename T>
+    inline T &BindableProperty<T>::GetValueRef()
     {
         return _value;
     }

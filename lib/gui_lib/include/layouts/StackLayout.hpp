@@ -30,12 +30,11 @@ namespace rpgui::layout
 
         void Draw() const final;
 
-
         ID AddElement(VisualElement *element, const Margin &margin = Margin())
         {
+            element->SetParrent(this);
             auto bounds = this->GetBounds();
             auto elementHeigth = element->GetBounds().h;
-            element->SetParrent(this);
 
             bounds.y += _currentHeight;
             bounds.h = elementHeigth;
@@ -44,7 +43,7 @@ namespace rpgui::layout
 
             element->SetBounds(adjusted);
 
-            _currentHeight += elementHeigth;
+            _currentHeight += elementHeigth + margin.t + margin.b;
 
             return AddChildren(element);
         }

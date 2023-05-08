@@ -22,7 +22,7 @@ void cleanup(common::VisualElement **array)
 int main()
 {
 
-    rpgui::core::init();
+    rpgui::core::MainApp::Init();
     stdio_init_all();
 
     SpeedTester tester("speed_tests.txt");

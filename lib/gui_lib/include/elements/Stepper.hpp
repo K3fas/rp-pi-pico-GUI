@@ -22,21 +22,23 @@ using namespace rpgui::type;
 namespace rpgui::ui
 {
     template <typename T>
-    concept Stepable = requires(T x){
-        {++x} -> std::same_as<T&>;
-        {--x} -> std::same_as<T&>;
+    concept Stepable = requires(T x) {
+        {
+            ++x
+        } -> std::same_as<T &>;
+        {
+            --x
+        } -> std::same_as<T &>;
     };
 
     template <typename T>
-    concept Constructible = requires
-    {
+    concept Constructible = requires {
         typename std::enable_if<std::is_default_constructible_v<T>>::type;
     };
 
     template <typename T>
-    concept StepableAndConstructible = requires
-    {
-        Stepable<T> && Constructible<T>;
+    concept StepableAndConstructible = requires {
+        Stepable<T> &&Constructible<T>;
     };
 
     template <Stepable T>
@@ -48,7 +50,7 @@ namespace rpgui::ui
 
     public:
         Color backgroundColor;
-        uint8_t frameWidth ;
+        uint8_t frameWidth;
         BindableProperty<T> counter;
 
     public:
@@ -57,7 +59,7 @@ namespace rpgui::ui
         ~Stepper();
 
         Stepper(const Width &width, const Height &height, Color color = Color::White, Color backgroundColor = Color::SemiGray, uint8_t frameWidth = 2);
-        Stepper(const Width &width, const Height &height, T& counter, Color color = Color::White, Color backgroundColor = Color::SemiGray, uint8_t frameWidth = 2);
+        Stepper(const Width &width, const Height &height, T &counter, Color color = Color::White, Color backgroundColor = Color::SemiGray, uint8_t frameWidth = 2);
 
         void Draw() const final;
 
@@ -80,19 +82,19 @@ namespace rpgui::ui
     template <StepableAndConstructible T>
     inline Stepper<T>::Stepper(const Width &width, const Height &height, Color color, Color backgroundColor, uint8_t frameWidth)
         : rpgui::common::VisualElement(Bounds(0, 0, width.v, height.v), color),
-         backgroundColor(backgroundColor), 
-         frameWidth(frameWidth),
-         counter(T())
+          backgroundColor(backgroundColor),
+          frameWidth(frameWidth),
+          counter(T())
     {
         prepareButtons();
     }
 
-    template<Stepable T>
-    inline Stepper<T>::Stepper(const Width &width, const Height &height, T& counter, Color color, Color backgroundColor, uint8_t frameWidth)
-        : rpgui::common::VisualElement(Bounds(0, 0, width.v, height.v), color), 
-        backgroundColor(backgroundColor), 
-        frameWidth(frameWidth),
-        counter(counter)
+    template <Stepable T>
+    inline Stepper<T>::Stepper(const Width &width, const Height &height, T &counter, Color color, Color backgroundColor, uint8_t frameWidth)
+        : rpgui::common::VisualElement(Bounds(0, 0, width.v, height.v), color),
+          backgroundColor(backgroundColor),
+          frameWidth(frameWidth),
+          counter(counter)
     {
         prepareButtons();
     }
@@ -110,7 +112,6 @@ namespace rpgui::ui
         _bSub->Draw();
     }
 
-    
     template <Stepable T>
     inline void Stepper<T>::SetBounds(const Bounds &bounds)
     {
@@ -124,17 +125,19 @@ namespace rpgui::ui
     template <Stepable T>
     inline void Stepper<T>::add(rpgui::event::MouseEvent<MouseEventType> &event, Clickable *sender)
     {
-        rpgui::ui::Stepper<T> *sw = (rpgui::ui::Stepper<T> *)sender;
-        auto val = sw->counter.GetValue();
-        sw->counter.SetValue(++val);
+        auto btn = (rpgui::ui::Button *)sender;
+        auto stepper = (ui::Stepper<T> *)btn->GetParrent();
+        T &val = stepper->counter.GetValueRef();
+        ++val;
     }
 
     template <Stepable T>
     void rpgui::ui::Stepper<T>::sub(rpgui::event::MouseEvent<MouseEventType> &event, Clickable *sender)
     {
-        rpgui::ui::Stepper<T> *sw = (rpgui::ui::Stepper<T> *)sender;
-        auto val = sw->counter.GetValue();
-        sw->counter.SetValue(--val);
+        auto btn = (rpgui::ui::Button *)sender;
+        auto stepper = (ui::Stepper<T> *)btn->GetParrent();
+        T &val = stepper->counter.GetValueRef();
+        --val;
     }
 
     template <Stepable T>
@@ -144,15 +147,16 @@ namespace rpgui::ui
         auto adjBounds = bound - frameWidth;
         adjBounds.w = adjBounds.w / 2;
         _bAdd = new Button(Bounds(adjBounds.x + frameWidth / 2 + adjBounds.w, adjBounds.y, adjBounds.w, adjBounds.h),
-            color,
-            "+",
-            backgroundColor);
+                           color,
+                           "+",
+                           backgroundColor);
 
         _bSub = new Button(Bounds(adjBounds.x + frameWidth / 2 + adjBounds.w, adjBounds.y, adjBounds.w, adjBounds.h),
-            color,
-            "-",
-            backgroundColor);
-
+                           color,
+                           "-",
+                           backgroundColor);
+        _bAdd->SetParrent(this);
+        _bSub->SetParrent(this);
         _bAdd->SetOnClickHandler(MouseEventType::Clicked, add, 1);
         _bSub->SetOnClickHandler(MouseEventType::Clicked, sub, 1);
     }
