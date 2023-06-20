@@ -1,0 +1,60 @@
+\hypertarget{_stack_layout_8hpp_source}{}\doxysection{Stack\+Layout.\+hpp}
+\label{_stack_layout_8hpp_source}\index{lib/gui\_lib/include/layouts/StackLayout.hpp@{lib/gui\_lib/include/layouts/StackLayout.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by kefas on 26.2.23.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PICO\_KIT\_FRAMEWORK\_STACKLAYOUT\_HPP}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PICO\_KIT\_FRAMEWORK\_STACKLAYOUT\_HPP}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}include.hpp"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}Layout.hpp"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <type\_traits>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{using namespace }rpgui::type;}
+\DoxyCodeLine{13 \textcolor{keyword}{using namespace }rpgui::common;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }rpgui::layout}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1layout_1_1_stack_layout}{StackLayout}} : \textcolor{keyword}{public} \mbox{\hyperlink{classrpgui_1_1layout_1_1_layout}{Layout}}}
+\DoxyCodeLine{19     \{}
+\DoxyCodeLine{20     \textcolor{keyword}{private}:}
+\DoxyCodeLine{21         uint16\_t \_currentHeight = 0;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keyword}{public}:}
+\DoxyCodeLine{24         \mbox{\hyperlink{classrpgui_1_1layout_1_1_stack_layout}{StackLayout}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{25         \mbox{\hyperlink{classrpgui_1_1layout_1_1_stack_layout}{StackLayout}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1layout_1_1_stack_layout}{StackLayout}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{26         \mbox{\hyperlink{classrpgui_1_1layout_1_1_stack_layout}{\string~StackLayout}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \mbox{\hyperlink{classrpgui_1_1layout_1_1_stack_layout}{StackLayout}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} start, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}} width, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}} height)}
+\DoxyCodeLine{29             : \mbox{\hyperlink{classrpgui_1_1layout_1_1_layout}{Layout}}(\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}\{start.x, start.y, width.v, height.v\}) \{\}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1layout_1_1_stack_layout_a4329462058082d7b39321983dc1f29df}{Draw}}() \textcolor{keyword}{const} \textcolor{keyword}{final};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         ID AddElement(\mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}} *element, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}} \&margin = \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}())}
+\DoxyCodeLine{34         \{}
+\DoxyCodeLine{35             element-\/>SetParrent(\textcolor{keyword}{this});}
+\DoxyCodeLine{36             \textcolor{keyword}{auto} bounds = this-\/>\mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_ad8a190f6bd967680db8b75ca95adc438}{GetBounds}}();}
+\DoxyCodeLine{37             \textcolor{keyword}{auto} elementHeigth = element-\/>\mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_ad8a190f6bd967680db8b75ca95adc438}{GetBounds}}().h;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39             bounds.y += \_currentHeight;}
+\DoxyCodeLine{40             bounds.h = elementHeigth;}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42             \textcolor{keyword}{auto} adjusted = Bounds::GetAdjustedBounds(bounds, margin);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44             element-\/>\mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a4290e9cdd0e89b07ff933d5f1c4ff86f}{SetBounds}}(adjusted);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46             \_currentHeight += elementHeigth + margin.t + margin.b;}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48             \textcolor{keywordflow}{return} AddChildren(element);}
+\DoxyCodeLine{49         \}}
+\DoxyCodeLine{50     \};}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \} \textcolor{comment}{// namespace rpgui::layout}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// PICO\_KIT\_FRAMEWORK\_STACKLAYOUT\_HPP}}
+
+\end{DoxyCode}

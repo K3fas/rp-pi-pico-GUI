@@ -1,0 +1,118 @@
+\hypertarget{dev_2dev_2vga__config_8h_source}{}\doxysection{vga\+\_\+config.\+h}
+\label{dev_2dev_2vga__config_8h_source}\index{dev/dev/vga\_config.h@{dev/dev/vga\_config.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//                            VGA configuration}}
+\DoxyCodeLine{5 \textcolor{comment}{//}}
+\DoxyCodeLine{6 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{comment}{// === Configuration}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define LAYERS 1   }\textcolor{comment}{// total layers 1..4 (1 base layer + 3 overlapped layers)}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define SEGMAX 1   }\textcolor{comment}{// max. number of video segment per video strip (size of 1 sSegm = 28 bytes)}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define STRIPMAX 1 }\textcolor{comment}{// max. number of video strips (size of 1 sStrip = sSegm size*SEGMAX+4 = 228 bytes)}}
+\DoxyCodeLine{12 \textcolor{comment}{// size of sScreen = sStrip size*STRIPMAX+4 = 1828 bytes}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define MAXX 640 }\textcolor{comment}{// max. resolution in X direction (must be power of 4)}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MAXY 480 }\textcolor{comment}{// max. resolution in Y direction}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAXLINE 700 }\textcolor{comment}{// max. number of scanlines (including sync and dark lines)}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{// === Scanline render buffers (800 pixels: default size of buffers = 2*4*(800+8+800+24)+800 = 13856 bytes}}
+\DoxyCodeLine{20 \textcolor{comment}{//    Requirements by format, base layer 0, 1 wrap X segment:}}
+\DoxyCodeLine{21 \textcolor{comment}{//  GF\_GRAPH8 ... control buffer 16 bytes}}
+\DoxyCodeLine{22 \textcolor{comment}{//  GF\_TILE8 ... control buffer "{}width"{}+8 bytes}}
+\DoxyCodeLine{23 \textcolor{comment}{//  GF\_TILE16 ... control buffer "{}width/2"{}+8 bytes}}
+\DoxyCodeLine{24 \textcolor{comment}{//  GF\_TILE32 ... control buffer "{}width/4"{}+8 bytes}}
+\DoxyCodeLine{25 \textcolor{comment}{//  GF\_TILE64 ... control buffer "{}width/8"{}+8 bytes}}
+\DoxyCodeLine{26 \textcolor{comment}{//  GF\_PROGRESS ... control buffer 24 bytes}}
+\DoxyCodeLine{27 \textcolor{comment}{//  other formats: data buffer "{}width"{} bytes, control buffer 16 bytes}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define DBUF0\_MAX (MAXX + 8)        }\textcolor{comment}{// max. size of data buffer of layer 0}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define CBUF0\_MAX ((MAXX + 24) / 4) }\textcolor{comment}{// max. size of control buffer of layer 0}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{comment}{//    Requirements by format, overlapped layer 1..3:}}
+\DoxyCodeLine{32 \textcolor{comment}{//  LAYERMODE\_SPRITE* ... data buffer "{}width"{}+4 bytes, control buffer 24 bytes}}
+\DoxyCodeLine{33 \textcolor{comment}{//  LAYERMODE\_FASTSPRITE* ... data buffer "{}width"{}+4 bytes, control buffer up to "{}width*2"{}+16 bytes}}
+\DoxyCodeLine{34 \textcolor{comment}{//  other formats ... data buffer 4 bytes, control buffer 24 bytes}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define DBUF1\_MAX (MAXX + 8)        }\textcolor{comment}{// max. size of data buffer of layer 1}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define CBUF1\_MAX ((MAXX + 24) / 4) }\textcolor{comment}{// max. size of control buffer of layer 1}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define DBUF2\_MAX (MAXX + 8)        }\textcolor{comment}{// max. size of data buffer of layer 2}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define CBUF2\_MAX ((MAXX + 24) / 4) }\textcolor{comment}{// max. size of control buffer of layer 2}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define DBUF3\_MAX (MAXX + 8)        }\textcolor{comment}{// max. size of data buffer of layer 3}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define CBUF3\_MAX ((MAXX + 24) / 4) }\textcolor{comment}{// max. size of control buffer of layer 3}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#if LAYERS == 1}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define DBUF\_MAX DBUF0\_MAX }\textcolor{comment}{// max. size of data buffer}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define CBUF\_MAX CBUF0\_MAX }\textcolor{comment}{// max. size of control buffer}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#elif LAYERS == 2}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define DBUF\_MAX (DBUF0\_MAX + DBUF1\_MAX) }\textcolor{comment}{// max. size of data buffer}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define CBUF\_MAX (CBUF0\_MAX + CBUF1\_MAX) }\textcolor{comment}{// max. size of control buffer}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#elif LAYERS == 3}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define DBUF\_MAX (DBUF0\_MAX + DBUF1\_MAX + DBUF2\_MAX) }\textcolor{comment}{// max. size of data buffer}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define CBUF\_MAX (CBUF0\_MAX + CBUF1\_MAX + CBUF2\_MAX) }\textcolor{comment}{// max. size of control buffer}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#elif LAYERS == 4}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define DBUF\_MAX (DBUF0\_MAX + DBUF1\_MAX + DBUF2\_MAX + DBUF3\_MAX) }\textcolor{comment}{// max. size of data buffer}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define CBUF\_MAX (CBUF0\_MAX + CBUF1\_MAX + CBUF2\_MAX + CBUF3\_MAX) }\textcolor{comment}{// max. size of control buffer}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#error Unsupported number of layers!}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{comment}{// === VGA port pins}}
+\DoxyCodeLine{61 \textcolor{comment}{//  GP11 ... VGA B0 blue}}
+\DoxyCodeLine{62 \textcolor{comment}{//  GP12 ... VGA B1}}
+\DoxyCodeLine{63 \textcolor{comment}{//  GP13 ... VGA G0 green}}
+\DoxyCodeLine{64 \textcolor{comment}{//  GP14 ... VGA G1}}
+\DoxyCodeLine{65 \textcolor{comment}{//  GP15 ... VGA G2}}
+\DoxyCodeLine{66 \textcolor{comment}{//  GP16 ... VGA R0 red}}
+\DoxyCodeLine{67 \textcolor{comment}{//  GP17 ... VGA R1}}
+\DoxyCodeLine{68 \textcolor{comment}{//  GP18 ... VGA R2}}
+\DoxyCodeLine{69 \textcolor{comment}{//  GP19 ... VGA SYNC synchronization (inverted: negative SYNC=LOW=0x80, BLACK=HIGH=0x00)}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#define VGA\_GPIO\_FIRST 11                                 }\textcolor{comment}{// first VGA GPIO}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#define VGA\_GPIO\_NUM 9                                    }\textcolor{comment}{// number of VGA GPIOs, including HSYNC and VSYNC}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define VGA\_GPIO\_OUTNUM 8                                 }\textcolor{comment}{// number of VGA color GPIOs, without HSYNC and VSYNC}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define VGA\_GPIO\_LAST (VGA\_GPIO\_FIRST + VGA\_GPIO\_NUM -\/ 1) }\textcolor{comment}{// last VGA GPIO}}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#define VGA\_GPIO\_SYNC 19                                  }\textcolor{comment}{// VGA SYNC GPIO}}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{comment}{// VGA PIO and state machines}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#define VGA\_PIO pio0                      }\textcolor{comment}{// VGA PIO}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#define VGA\_SM0 0                         }\textcolor{comment}{// VGA state machine of base layer 0}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#define VGA\_SM1 1                         }\textcolor{comment}{// VGA state machine of overlapped layer 1}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#define VGA\_SM2 2                         }\textcolor{comment}{// VGA state machine of overlapped layer 2}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#define VGA\_SM3 3                         }\textcolor{comment}{// VGA state machine of overlapped layer 3}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#define VGA\_SM(layer) (VGA\_SM0 + (layer)) }\textcolor{comment}{// VGA state machine of the layer}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#if LAYERS == 1}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#define VGA\_SMALL B0 }\textcolor{comment}{// mask of all state machines}}
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#elif LAYERS == 2}}
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#define VGA\_SMALL (B0 + B1) }\textcolor{comment}{// mask of all state machines}}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#elif LAYERS == 3}}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#define VGA\_SMALL (B0 + B1 + B2) }\textcolor{comment}{// mask of all state machines}}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#elif LAYERS == 4}}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#define VGA\_SMALL (B0 + B1 + B2 + B3) }\textcolor{comment}{// mask of all state machines}}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#error Unsupported number of layers!}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{comment}{// VGA DMA}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#define VGA\_DMA 0                  }\textcolor{comment}{// VGA DMA base channel}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#define VGA\_DMA\_CB0 (VGA\_DMA + 0)  }\textcolor{comment}{// VGA DMA channel -\/ control block of base layer}}
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#define VGA\_DMA\_PIO0 (VGA\_DMA + 1) }\textcolor{comment}{// VGA DMA channel -\/ copy data of base layer to PIO (raises IRQ0 on quiet)}}
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#define VGA\_DMA\_CB1 (VGA\_DMA + 2)  }\textcolor{comment}{// VGA DMA channel -\/ control block of overlapped layer 1}}
+\DoxyCodeLine{101 \textcolor{preprocessor}{\#define VGA\_DMA\_PIO1 (VGA\_DMA + 3) }\textcolor{comment}{// VGA DMA channel -\/ copy data of overlapped layer 1 to PIO}}
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#define VGA\_DMA\_CB2 (VGA\_DMA + 4)  }\textcolor{comment}{// VGA DMA channel -\/ control block of overlapped layer 1}}
+\DoxyCodeLine{103 \textcolor{preprocessor}{\#define VGA\_DMA\_PIO2 (VGA\_DMA + 5) }\textcolor{comment}{// VGA DMA channel -\/ copy data of overlapped layer 2 to PIO}}
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#define VGA\_DMA\_CB3 (VGA\_DMA + 6)  }\textcolor{comment}{// VGA DMA channel -\/ control block of overlapped layer 1}}
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#define VGA\_DMA\_PIO3 (VGA\_DMA + 7) }\textcolor{comment}{// VGA DMA channel -\/ copy data of overlapped layer 3 to PIO}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107 \textcolor{preprocessor}{\#define VGA\_DMA\_CB(layer) (VGA\_DMA\_CB0 + (layer)*2)   }\textcolor{comment}{// VGA DMA control channel of the layer}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#define VGA\_DMA\_PIO(layer) (VGA\_DMA\_PIO0 + (layer)*2) }\textcolor{comment}{// VGA DMA data channel of the layer}}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110 \textcolor{preprocessor}{\#define VGA\_DMA\_NUM (LAYERS * 2)                       }\textcolor{comment}{// number of used DMA channels}}
+\DoxyCodeLine{111 \textcolor{preprocessor}{\#define VGA\_DMA\_FIRST VGA\_DMA                          }\textcolor{comment}{// first used DMA}}
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#define VGA\_DMA\_LAST (VGA\_DMA\_FIRST + VGA\_DMA\_NUM -\/ 1) }\textcolor{comment}{// last used DMA}}
+
+\end{DoxyCode}

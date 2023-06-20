@@ -1,0 +1,82 @@
+\hypertarget{classrpgui_1_1ui_1_1_radio_button}{}\doxysection{rpgui\+::ui\+::Radio\+Button Class Reference}
+\label{classrpgui_1_1ui_1_1_radio_button}\index{rpgui::ui::RadioButton@{rpgui::ui::RadioButton}}
+Inheritance diagram for rpgui\+::ui\+::Radio\+Button\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrpgui_1_1ui_1_1_radio_button}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_radio_button_a1b2de30c9d125c2ff7c142d509aa0d8a}\label{classrpgui_1_1ui_1_1_radio_button_a1b2de30c9d125c2ff7c142d509aa0d8a}} 
+{\bfseries Radio\+Button} (const \mbox{\hyperlink{classrpgui_1_1ui_1_1_radio_button}{Radio\+Button}} \&)=default
+\item 
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_radio_button_a048ea427f98b6566a864fa9c357995f5}\label{classrpgui_1_1ui_1_1_radio_button_a048ea427f98b6566a864fa9c357995f5}} 
+{\bfseries Radio\+Button} (const \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}} \&item\+Width, const \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}} \&item\+Height, Color \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}}, Color bg\+Color=Color\+::\+Gray, const void $\ast$font=Font8x8.\+image, uint8\+\_\+t font\+Size=8)
+\item 
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_radio_button_aa142a1594d8cf4c2885680e88483ea7f}\label{classrpgui_1_1ui_1_1_radio_button_aa142a1594d8cf4c2885680e88483ea7f}} 
+void {\bfseries Add\+Item} (std\+::string text)
+\item 
+void \mbox{\hyperlink{classrpgui_1_1ui_1_1_radio_button_a877f6c66a8c011cabc654811a175abe8}{Set\+Bounds}} (const \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&bounds) override
+\begin{DoxyCompactList}\small\item\em Bounds setter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrpgui_1_1ui_1_1_radio_button_a07f2c3b5a76cdc860982fecf4c484687}{Draw}} () const final
+\begin{DoxyCompactList}\small\item\em Pure virtual draw function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_radio_button_a816ceb3b11b7dcd98b02f4478d3477ea}\label{classrpgui_1_1ui_1_1_radio_button_a816ceb3b11b7dcd98b02f4478d3477ea}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries \+\_\+items}
+\item 
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_radio_button_afeb76d0dacb7bd398413c21cbb0b756b}\label{classrpgui_1_1ui_1_1_radio_button_afeb76d0dacb7bd398413c21cbb0b756b}} 
+uint8\+\_\+t {\bfseries checked\+Item} = 0
+\item 
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_radio_button_a4016f9a3de68737889930a1344e9237d}\label{classrpgui_1_1ui_1_1_radio_button_a4016f9a3de68737889930a1344e9237d}} 
+uint8\+\_\+t {\bfseries circle\+Radius} = 3
+\item 
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_radio_button_a3770847cfb647edd79975f951a0200b5}\label{classrpgui_1_1ui_1_1_radio_button_a3770847cfb647edd79975f951a0200b5}} 
+Color {\bfseries backgorund\+Color}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_radio_button_a07f2c3b5a76cdc860982fecf4c484687}\label{classrpgui_1_1ui_1_1_radio_button_a07f2c3b5a76cdc860982fecf4c484687}} 
+\index{rpgui::ui::RadioButton@{rpgui::ui::RadioButton}!Draw@{Draw}}
+\index{Draw@{Draw}!rpgui::ui::RadioButton@{rpgui::ui::RadioButton}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void rpgui\+::ui\+::\+Radio\+Button\+::\+Draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [virtual]}}
+
+
+
+Pure virtual draw function. 
+
+
+
+Implements \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_adb2b5674daaf3fa8f0c98dab649744fe}{rpgui\+::common\+::\+Visual\+Element}}.
+
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_radio_button_a877f6c66a8c011cabc654811a175abe8}\label{classrpgui_1_1ui_1_1_radio_button_a877f6c66a8c011cabc654811a175abe8}} 
+\index{rpgui::ui::RadioButton@{rpgui::ui::RadioButton}!SetBounds@{SetBounds}}
+\index{SetBounds@{SetBounds}!rpgui::ui::RadioButton@{rpgui::ui::RadioButton}}
+\doxysubsubsection{\texorpdfstring{SetBounds()}{SetBounds()}}
+{\footnotesize\ttfamily void rpgui\+::ui\+::\+Radio\+Button\+::\+Set\+Bounds (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&}]{bounds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Bounds setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bounds} & New bounds of element \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a4290e9cdd0e89b07ff933d5f1c4ff86f}{rpgui\+::common\+::\+Visual\+Element}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/gui\+\_\+lib/include/elements/Radio\+Button.\+hpp\item 
+lib/gui\+\_\+lib/src/elements/Radio\+Button.\+cpp\end{DoxyCompactItemize}

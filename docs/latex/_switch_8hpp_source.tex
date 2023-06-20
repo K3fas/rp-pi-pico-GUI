@@ -1,0 +1,65 @@
+\hypertarget{_switch_8hpp_source}{}\doxysection{Switch.\+hpp}
+\label{_switch_8hpp_source}\index{lib/gui\_lib/include/elements/Switch.hpp@{lib/gui\_lib/include/elements/Switch.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by kefas on 26.2.23.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PICO\_KIT\_FRAMEWORK\_SWITCH\_HPP}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PICO\_KIT\_FRAMEWORK\_SWITCH\_HPP}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}include.hpp"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{using namespace }rpgui::common;}
+\DoxyCodeLine{11 \textcolor{keyword}{using namespace }rpgui::colors;}
+\DoxyCodeLine{12 \textcolor{keyword}{using namespace }rpgui::type;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }rpgui::ui}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{Switch}} : \textcolor{keyword}{public} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}, \textcolor{keyword}{public} \mbox{\hyperlink{classrpgui_1_1common_1_1_clickable}{Clickable}}}
+\DoxyCodeLine{17     \{}
+\DoxyCodeLine{18     \textcolor{keyword}{public}:}
+\DoxyCodeLine{19         \mbox{\hyperlink{classrpgui_1_1common_1_1_bindable_property}{BindableProperty<bool>}} isSwitched;}
+\DoxyCodeLine{20         Color switchOnColor, switchOffColor, borderColor;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keyword}{public}:}
+\DoxyCodeLine{23         \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{Switch}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{24         \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{Switch}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{Switch}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{25         \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{\string~Switch}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27         \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{Switch}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}} \&width, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}} \&height, \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&value,}
+\DoxyCodeLine{28                \textcolor{keyword}{const} Color backgroundColor = Color::SemiGray,}
+\DoxyCodeLine{29                \textcolor{keyword}{const} Color switchOnColor = Color::Green,}
+\DoxyCodeLine{30                \textcolor{keyword}{const} Color switchOffColor = Color::Red,}
+\DoxyCodeLine{31                \textcolor{keyword}{const} Color borderColor = Color::Gray);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{Switch}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}} \&width, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}} \&height, \textcolor{keywordtype}{bool} \&value,}
+\DoxyCodeLine{34                \textcolor{keyword}{const} Color backgroundColor = Color::SemiGray,}
+\DoxyCodeLine{35                \textcolor{keyword}{const} Color switchOnColor = Color::Green,}
+\DoxyCodeLine{36                \textcolor{keyword}{const} Color switchOffColor = Color::Red,}
+\DoxyCodeLine{37                \textcolor{keyword}{const} Color borderColor = Color::Gray);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{Switch}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&bounds, \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&value,}
+\DoxyCodeLine{40                \textcolor{keyword}{const} Color backgroundColor = Color::SemiGray,}
+\DoxyCodeLine{41                \textcolor{keyword}{const} Color switchOnColor = Color::Green,}
+\DoxyCodeLine{42                \textcolor{keyword}{const} Color switchOffColor = Color::Red,}
+\DoxyCodeLine{43                \textcolor{keyword}{const} Color borderColor = Color::Gray);}
+\DoxyCodeLine{44                }
+\DoxyCodeLine{45         \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{Switch}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&bounds, \textcolor{keywordtype}{bool} \&value,}
+\DoxyCodeLine{46                \textcolor{keyword}{const} Color backgroundColor = Color::SemiGray,}
+\DoxyCodeLine{47                \textcolor{keyword}{const} Color switchOnColor = Color::Green,}
+\DoxyCodeLine{48                \textcolor{keyword}{const} Color switchOffColor = Color::Red,}
+\DoxyCodeLine{49                \textcolor{keyword}{const} Color borderColor = Color::Gray);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch_a7631c1985b8a0bfb4b252124927ca9fd}{Draw}}() \textcolor{keyword}{const} \textcolor{keyword}{final};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     \textcolor{keyword}{private}:}
+\DoxyCodeLine{54         \textcolor{keyword}{static} \textcolor{keywordtype}{void} changeState(\mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_event}{rpgui::event::MouseEvent<MouseEventType>}} \&event, \mbox{\hyperlink{classrpgui_1_1common_1_1_clickable}{Clickable}} *sender);}
+\DoxyCodeLine{55     \};}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \} \textcolor{comment}{// namespace rpgui::ui}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// PICO\_KIT\_FRAMEWORK\_SWITCH\_HPP}}
+
+\end{DoxyCode}

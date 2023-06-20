@@ -1,0 +1,50 @@
+\hypertarget{_bounds_8hpp_source}{}\doxysection{Bounds.\+hpp}
+\label{_bounds_8hpp_source}\index{lib/gui\_lib/include/common/Bounds.hpp@{lib/gui\_lib/include/common/Bounds.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <cstdint>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Margin.hpp"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{namespace }rpgui::common}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8     \textcolor{keyword}{struct }\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}}
+\DoxyCodeLine{9     \{}
+\DoxyCodeLine{10         int16\_t x, y;}
+\DoxyCodeLine{11         uint16\_t w, h;}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13         \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}() : x(0), y(0), w(0), h(0) \{\}}
+\DoxyCodeLine{14         \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}(int16\_t x, int16\_t y, uint16\_t w, uint32\_t h)}
+\DoxyCodeLine{15             : x(x), y(y), w(w), h(h) \{\}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17         \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{18         \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{\string~Bounds}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20         \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} operator-\/(\textcolor{keyword}{const} uint8\_t rhs)}
+\DoxyCodeLine{21         \{}
+\DoxyCodeLine{22             \textcolor{keywordflow}{return} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}(x + rhs, y + rhs, w -\/ rhs * 2, h -\/ rhs * 2);}
+\DoxyCodeLine{23         \}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} rhs)}
+\DoxyCodeLine{26         \{}
+\DoxyCodeLine{27             \textcolor{keywordflow}{return} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}(x + rhs.x, y + rhs.y, w, h);}
+\DoxyCodeLine{28         \}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \textcolor{keyword}{friend} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} operator-\/(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&lhs, \textcolor{keyword}{const} uint8\_t rhs)}
+\DoxyCodeLine{31         \{}
+\DoxyCodeLine{32             \textcolor{keywordflow}{return} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}(lhs.x + rhs, lhs.y + rhs, lhs.w -\/ rhs * 2, lhs.h -\/ rhs * 2);}
+\DoxyCodeLine{33         \}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \textcolor{keyword}{static} \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} GetAdjustedBounds(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&bounds, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}} \&margin)}
+\DoxyCodeLine{36         \{}
+\DoxyCodeLine{37             \textcolor{keywordflow}{return} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}(}
+\DoxyCodeLine{38                 bounds.x + margin.l,}
+\DoxyCodeLine{39                 bounds.y + margin.t,}
+\DoxyCodeLine{40                 bounds.w -\/ margin.l -\/ margin.r,}
+\DoxyCodeLine{41                 bounds.h -\/ margin.t -\/ margin.b);}
+\DoxyCodeLine{42         \}}
+\DoxyCodeLine{43     \};}
+\DoxyCodeLine{44 \} \textcolor{comment}{// namespace rpgui::type}}
+
+\end{DoxyCode}

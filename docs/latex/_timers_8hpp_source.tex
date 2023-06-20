@@ -1,0 +1,37 @@
+\hypertarget{_timers_8hpp_source}{}\doxysection{Timers.\+hpp}
+\label{_timers_8hpp_source}\index{lib/gui\_lib/util/Timers.hpp@{lib/gui\_lib/util/Timers.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <tuple>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <rp\_logger.hpp>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{namespace }rpgui::util}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1util_1_1_timers}{Timers}}}
+\DoxyCodeLine{11     \{}
+\DoxyCodeLine{12     \textcolor{keyword}{private}:}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keyword}{public}:}
+\DoxyCodeLine{15         std::vector<std::pair<std::string, uint64\_t>> stamps;}
+\DoxyCodeLine{16         \textcolor{keyword}{const} rplog::Level logLevel = rplog::Level::TRACE;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18         \mbox{\hyperlink{classrpgui_1_1util_1_1_timers}{Timers}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{19         \mbox{\hyperlink{classrpgui_1_1util_1_1_timers}{Timers}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1util_1_1_timers}{Timers}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{20         \mbox{\hyperlink{classrpgui_1_1util_1_1_timers}{\string~Timers}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         uint8\_t AddStamp(\textcolor{keyword}{const} std::string\& name);}
+\DoxyCodeLine{23         \textcolor{keywordtype}{void} Stamp(\textcolor{keyword}{const} std::string\& name);}
+\DoxyCodeLine{24         \textcolor{keywordtype}{void} Stamp(\textcolor{keyword}{const} uint8\_t at);}
+\DoxyCodeLine{25         \textcolor{keywordtype}{void} PrintStamps() \textcolor{keyword}{const};}
+\DoxyCodeLine{26     \};}
+\DoxyCodeLine{27     }
+\DoxyCodeLine{28     }
+\DoxyCodeLine{29 \} \textcolor{comment}{// namespace rpgui::util}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 }
+
+\end{DoxyCode}

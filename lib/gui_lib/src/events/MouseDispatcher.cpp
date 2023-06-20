@@ -3,6 +3,7 @@
 //
 #include "MouseDispatcher.hpp"
 #include "Cursor.hpp"
+#include "rp_core.hpp"
 
 rpgui::event::MouseDispatcher::~MouseDispatcher()
 {
@@ -36,10 +37,20 @@ void rpgui::event::MouseDispatcher::Post(MouseEvent<MouseEventType> &event)
             // with information of sender objs
             auto view = (rpgui::common::VisualElement *)handler.sender;
             view->GetBounds();
-            if (view->IsInBounds(event.pos))
+            if (!view->IsInBounds(event.pos))
+                continue;
+            // Go to root
+            // Check if element is in current page
+            auto element = (rpgui::common::Element *)view;
+            while (element->GetParrent() != nullptr)
             {
-                handler.handler(event, handler.sender);
+                element = const_cast<rpgui::common::Element *>(element->GetParrent());
             }
+            if(element->GetId() != rpgui::core::MainApp::GetSelectedPageID())
+                continue;
+                
+            // Post event if cursor is above element and that element is currently beeing drawn
+            handler.handler(event, handler.sender);
         }
     }
 }

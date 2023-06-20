@@ -1,0 +1,47 @@
+\hypertarget{_entry_8hpp_source}{}\doxysection{Entry.\+hpp}
+\label{_entry_8hpp_source}\index{lib/gui\_lib/include/elements/Entry.hpp@{lib/gui\_lib/include/elements/Entry.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by kefas on 26.2.23.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PICO\_KIT\_FRAMEWORK\_ENTRY\_HPP}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PICO\_KIT\_FRAMEWORK\_ENTRY\_HPP}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}include.hpp"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{using namespace }rpgui::type;}
+\DoxyCodeLine{12 \textcolor{keyword}{using namespace }rpgui::common;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }rpgui::ui}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1ui_1_1_entry}{Entry}} : \textcolor{keyword}{public} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}, \textcolor{keyword}{virtual} \mbox{\hyperlink{classrpgui_1_1common_1_1_activatable}{Activatable}}}
+\DoxyCodeLine{17     \{}
+\DoxyCodeLine{18         \textcolor{keyword}{private}:}
+\DoxyCodeLine{19             \textcolor{keywordtype}{char} lastChar;}
+\DoxyCodeLine{20     \textcolor{keyword}{public}:}
+\DoxyCodeLine{21         \mbox{\hyperlink{classrpgui_1_1common_1_1_bindable_property}{BindableProperty<std::string>}} text;}
+\DoxyCodeLine{22         Color textColor;}
+\DoxyCodeLine{23     \textcolor{keyword}{public}:}
+\DoxyCodeLine{24         \mbox{\hyperlink{classrpgui_1_1ui_1_1_entry}{Entry}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{25         \mbox{\hyperlink{classrpgui_1_1ui_1_1_entry}{Entry}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1ui_1_1_entry}{Entry}}\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{26         \mbox{\hyperlink{classrpgui_1_1ui_1_1_entry}{\string~Entry}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \mbox{\hyperlink{classrpgui_1_1ui_1_1_entry}{Entry}}(\textcolor{keyword}{const} std::string\& text, \textcolor{keyword}{const} Color backgroundColor = Color::Transparent, \textcolor{keyword}{const} Color textColor = Color::White);}
+\DoxyCodeLine{29         \mbox{\hyperlink{classrpgui_1_1ui_1_1_entry}{Entry}}(std::string\& text, \textcolor{keyword}{const} Color backgroundColor = Color::Transparent, \textcolor{keyword}{const} Color textColor = Color::White);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \textcolor{keywordtype}{void} HandleActive() \textcolor{keyword}{final};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1ui_1_1_entry_ad14e3a96857791c534ea1c08bcbaf0ec}{Draw}}() \textcolor{keyword}{const} \textcolor{keyword}{final};}
+\DoxyCodeLine{34     \};}
+\DoxyCodeLine{35     }
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     }
+\DoxyCodeLine{38 \} \textcolor{comment}{// namespace rpgui::ui}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PICO\_KIT\_FRAMEWORK\_ENTRY\_HPP}}
+
+\end{DoxyCode}

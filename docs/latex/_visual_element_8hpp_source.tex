@@ -1,0 +1,45 @@
+\hypertarget{_visual_element_8hpp_source}{}\doxysection{Visual\+Element.\+hpp}
+\label{_visual_element_8hpp_source}\index{lib/gui\_lib/include/common/VisualElement.hpp@{lib/gui\_lib/include/common/VisualElement.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}VColors.hpp"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Element.hpp"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Bounds.hpp"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{using namespace }rpgui::colors;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }rpgui::common}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{13     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}} : \textcolor{keyword}{public} \mbox{\hyperlink{classrpgui_1_1common_1_1_element}{Element}}}
+\DoxyCodeLine{14     \{}
+\DoxyCodeLine{15     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{18         \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a5f50be22fcd36dcf920fa24931f67633}{\_bounds}};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{keyword}{public}:}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{23         Color \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keyword}{public}:}
+\DoxyCodeLine{26         \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}();}
+\DoxyCodeLine{27         \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&bounds, \textcolor{keyword}{const} Color \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}}) : \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a5f50be22fcd36dcf920fa24931f67633}{\_bounds}}(bounds), \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}}(\mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}}) \{\}}
+\DoxyCodeLine{28         \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{29         \textcolor{keyword}{virtual} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{\string~VisualElement}}();}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{33         \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&\mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_ad8a190f6bd967680db8b75ca95adc438}{GetBounds}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a5f50be22fcd36dcf920fa24931f67633}{\_bounds}}; \}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{37         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a4290e9cdd0e89b07ff933d5f1c4ff86f}{SetBounds}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&bounds);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{42         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a6fbb18af398e8f654a22d3ed18cb5a5c}{IsInBounds}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} \&point);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 }
+\DoxyCodeLine{49         \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a6fbb18af398e8f654a22d3ed18cb5a5c}{IsInBounds}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} bounds, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} \&point);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{52         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_adb2b5674daaf3fa8f0c98dab649744fe}{Draw}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{53     \};}
+\DoxyCodeLine{54 \} \textcolor{comment}{// namespace rpgui::common}}
+
+\end{DoxyCode}

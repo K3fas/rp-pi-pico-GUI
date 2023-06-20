@@ -1,0 +1,75 @@
+\hypertarget{_v_colors_8hpp_source}{}\doxysection{VColors.\+hpp}
+\label{_v_colors_8hpp_source}\index{lib/gui\_lib/include/common/VColors.hpp@{lib/gui\_lib/include/common/VColors.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}stdint.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{namespace }rpgui::colors}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9     \textcolor{comment}{// 8 Color bits of VGA output}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11     \textcolor{keyword}{namespace }hide}
+\DoxyCodeLine{12     \{}
+\DoxyCodeLine{13         \textcolor{keyword}{constexpr} uint8\_t b0 = 1 << 0;}
+\DoxyCodeLine{14         \textcolor{keyword}{constexpr} uint8\_t b1 = 1 << 1;}
+\DoxyCodeLine{15         \textcolor{keyword}{constexpr} uint8\_t b2 = 1 << 2;}
+\DoxyCodeLine{16         \textcolor{keyword}{constexpr} uint8\_t b3 = 1 << 3;}
+\DoxyCodeLine{17         \textcolor{keyword}{constexpr} uint8\_t b4 = 1 << 4;}
+\DoxyCodeLine{18         \textcolor{keyword}{constexpr} uint8\_t b5 = 1 << 5;}
+\DoxyCodeLine{19         \textcolor{keyword}{constexpr} uint8\_t b6 = 1 << 6;}
+\DoxyCodeLine{20         \textcolor{keyword}{constexpr} uint8\_t b7 = 1 << 7;}
+\DoxyCodeLine{21     \}}
+\DoxyCodeLine{22     }
+\DoxyCodeLine{23     \textcolor{keyword}{using namespace }rpgui::colors::hide;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keyword}{enum} Color}
+\DoxyCodeLine{26     \{}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         DarkBlue = b0,}
+\DoxyCodeLine{29         SemiBlue = b1,}
+\DoxyCodeLine{30         Blue = b0 + b1,}
+\DoxyCodeLine{31         MoreBlue = Blue + b3 + b6,}
+\DoxyCodeLine{32         LightBlue = Blue + b4 + b7,}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34         DarkGreen = b3,}
+\DoxyCodeLine{35         SemiGreen = b4,}
+\DoxyCodeLine{36         Green = b2 + b3 + b4,}
+\DoxyCodeLine{37         MoreGreen = Green + b0 + b6,}
+\DoxyCodeLine{38         LightGreen = Green + b1 + b7,}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40         DarkRed = b6,}
+\DoxyCodeLine{41         SemiRed = b7,}
+\DoxyCodeLine{42         Red = b5 + b6 + b7,}
+\DoxyCodeLine{43         MoreRed = Red + b0 + b3,}
+\DoxyCodeLine{44         LightRed = Red + b1 + b4,}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46         DarkCyan = b0 + b3,}
+\DoxyCodeLine{47         SemiCyan = b1 + b4,}
+\DoxyCodeLine{48         Cyan = b0 + b1 + b2 + b3 + b4,}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50         DarkMagenta = b0 + b6,}
+\DoxyCodeLine{51         SemiMagenta = b1 + b7,}
+\DoxyCodeLine{52         Magenta = b0 + b1 + b5 + b6 + b7,}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54         DarkYellow = b3 + b6,}
+\DoxyCodeLine{55         SemiYellow = b4 + b7,}
+\DoxyCodeLine{56         Yellow = b2 + b3 + b4 + b5 + b6 + b7,}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58         DarkGray = b2 + b5,}
+\DoxyCodeLine{59         SemiGray = b0 + b3 + b6,}
+\DoxyCodeLine{60         Gray = b1 + b4 + b7,}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62         Black = (uint8\_t)0,}
+\DoxyCodeLine{63         White = (uint8\_t)255,}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65         Transparent}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     \};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \}}
+
+\end{DoxyCode}

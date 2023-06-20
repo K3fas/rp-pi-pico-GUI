@@ -1,0 +1,65 @@
+\hypertarget{qvga__lib_2include_2qvga_2rand_8h_source}{}\doxysection{rand.\+h}
+\label{qvga__lib_2include_2qvga_2rand_8h_source}\index{lib/qvga\_lib/include/qvga/rand.h@{lib/qvga\_lib/include/qvga/rand.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//                             Random number generator}}
+\DoxyCodeLine{4 \textcolor{comment}{//}}
+\DoxyCodeLine{5 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef \_RAND\_H}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define \_RAND\_H}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{comment}{// random generator seed}}
+\DoxyCodeLine{14 \textcolor{keyword}{extern} uint32\_t RandSeed;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{// shift random generator seed}}
+\DoxyCodeLine{17 \textcolor{keywordtype}{void} RandShift();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{// randomize random generator from ROSC counter}}
+\DoxyCodeLine{20 \textcolor{keywordtype}{bool} RandInitSeed();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{// generate random number in full range}}
+\DoxyCodeLine{23 uint8\_t RandU8();}
+\DoxyCodeLine{24 uint16\_t RandU16();}
+\DoxyCodeLine{25 uint32\_t RandU32();}
+\DoxyCodeLine{26 \textcolor{keyword}{inline} int8\_t RandS8() \{ \textcolor{keywordflow}{return} (int8\_t)RandU8(); \}}
+\DoxyCodeLine{27 \textcolor{keyword}{inline} int16\_t RandS16() \{ \textcolor{keywordflow}{return} (int16\_t)RandU16(); \}}
+\DoxyCodeLine{28 \textcolor{keyword}{inline} int32\_t RandS32() \{ \textcolor{keywordflow}{return} (int32\_t)RandU32(); \}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{comment}{// generate float random number in range 0 (including) to 1 (excluding)}}
+\DoxyCodeLine{31 \textcolor{keywordtype}{float} RandFloat();}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{comment}{// generate double random number in range 0 (including) to 1 (excluding)}}
+\DoxyCodeLine{34 \textcolor{keywordtype}{double} RandDouble();}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{// generate random number in range 0 to MAX (including)}}
+\DoxyCodeLine{37 uint8\_t RandU8Max(uint8\_t max);}
+\DoxyCodeLine{38 uint16\_t RandU16Max(uint16\_t max);}
+\DoxyCodeLine{39 uint32\_t RandU32Max(uint32\_t max);}
+\DoxyCodeLine{40 int8\_t RandS8Max(int8\_t max);}
+\DoxyCodeLine{41 int16\_t RandS16Max(int16\_t max);}
+\DoxyCodeLine{42 int32\_t RandS32Max(int32\_t max);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{comment}{// generate decimal random number in range 0 (including) to MAX (excluding)}}
+\DoxyCodeLine{45 \textcolor{keywordtype}{float} RandFloatMax(\textcolor{keywordtype}{float} max);}
+\DoxyCodeLine{46 \textcolor{keywordtype}{double} RandDoubleMax(\textcolor{keywordtype}{double} max);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{// generate random number in range MIN to MAX (including)}}
+\DoxyCodeLine{49 \textcolor{comment}{// If MIN > MAX, then number is generated out of interval.}}
+\DoxyCodeLine{50 uint8\_t RandU8MinMax(uint8\_t min, uint8\_t max);}
+\DoxyCodeLine{51 uint16\_t RandU16MinMax(uint16\_t min, uint16\_t max);}
+\DoxyCodeLine{52 uint32\_t RandU32MinMax(uint32\_t min, uint32\_t max);}
+\DoxyCodeLine{53 int8\_t RandS8MinMax(int8\_t min, int8\_t max);}
+\DoxyCodeLine{54 int16\_t RandS16MinMax(int16\_t min, int16\_t max);}
+\DoxyCodeLine{55 int32\_t RandS32MinMax(int32\_t min, int32\_t max);}
+\DoxyCodeLine{56 \textcolor{keywordtype}{float} RandFloatMinMax(\textcolor{keywordtype}{float} min, \textcolor{keywordtype}{float} max);}
+\DoxyCodeLine{57 \textcolor{keywordtype}{double} RandDoubleMinMax(\textcolor{keywordtype}{double} min, \textcolor{keywordtype}{double} max);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_RAND\_H}}
+
+\end{DoxyCode}

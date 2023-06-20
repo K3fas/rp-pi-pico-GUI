@@ -1,0 +1,26 @@
+\hypertarget{settings_8hpp_source}{}\doxysection{settings.\+hpp}
+\label{settings_8hpp_source}\index{lib/gui\_lib/config/settings.hpp@{lib/gui\_lib/config/settings.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}stdint.h"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifdef PICOVGA}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define WIDTH   512     }\textcolor{comment}{// display width}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define HEIGHT  400     }\textcolor{comment}{// display width}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define WIDTH   320     }\textcolor{comment}{// display width}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define HEIGHT  240     }\textcolor{comment}{// display width}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{float} sensitivity = 2.0f;}
+\DoxyCodeLine{16 \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t cursorSize = 5;}
+\DoxyCodeLine{17 \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t cursorWidth = 1;}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{bool} drawOnCore1 = \textcolor{keyword}{false};}
+\DoxyCodeLine{20 \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{bool} waitVSync = \textcolor{keyword}{true};}
+
+\end{DoxyCode}

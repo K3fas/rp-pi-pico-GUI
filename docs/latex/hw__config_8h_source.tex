@@ -1,0 +1,42 @@
+\hypertarget{hw__config_8h_source}{}\doxysection{hw\+\_\+config.\+h}
+\label{hw__config_8h_source}\index{lib/SDwrapper\_lib/FatFs\_SPI/sd\_driver/hw\_config.h@{lib/SDwrapper\_lib/FatFs\_SPI/sd\_driver/hw\_config.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/* hw\_config.h}}
+\DoxyCodeLine{2 \textcolor{comment}{Copyright 2021 Carl John Kugler III}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{Licensed under the Apache License, Version 2.0 (the License); you may not use }}
+\DoxyCodeLine{5 \textcolor{comment}{this file except in compliance with the License. You may obtain a copy of the }}
+\DoxyCodeLine{6 \textcolor{comment}{License at}}
+\DoxyCodeLine{7 \textcolor{comment}{}}
+\DoxyCodeLine{8 \textcolor{comment}{   http://www.apache.org/licenses/LICENSE-\/2.0 }}
+\DoxyCodeLine{9 \textcolor{comment}{Unless required by applicable law or agreed to in writing, software distributed }}
+\DoxyCodeLine{10 \textcolor{comment}{under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR }}
+\DoxyCodeLine{11 \textcolor{comment}{CONDITIONS OF ANY KIND, either express or implied. See the License for the }}
+\DoxyCodeLine{12 \textcolor{comment}{specific language governing permissions and limitations under the License.}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}ff.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}sd\_card.h"{}}    }
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define DMA\_TX 8}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define DMA\_RX 9}}
+\DoxyCodeLine{21     }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{23 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{keywordtype}{size\_t} sd\_get\_num();}
+\DoxyCodeLine{27     \mbox{\hyperlink{structsd__card__t}{sd\_card\_t}} *sd\_get\_by\_num(\textcolor{keywordtype}{size\_t} num);}
+\DoxyCodeLine{28     }
+\DoxyCodeLine{29     \textcolor{keywordtype}{size\_t} spi\_get\_num();}
+\DoxyCodeLine{30     \mbox{\hyperlink{structspi__t}{spi\_t}} *spi\_get\_by\_num(\textcolor{keywordtype}{size\_t} num);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{33 \}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{/* [] END OF FILE */}}
+
+\end{DoxyCode}

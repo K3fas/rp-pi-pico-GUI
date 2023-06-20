@@ -1,0 +1,64 @@
+\hypertarget{_i_v_g_a_8hpp_source}{}\doxysection{IVGA.\+hpp}
+\label{_i_v_g_a_8hpp_source}\index{lib/gui\_lib/util/IVGA.hpp@{lib/gui\_lib/util/IVGA.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PICO\_KIT\_IVGA}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PICO\_KIT\_IVGA}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}VColors.hpp"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}font8x8.bmp.h"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{namespace }rpgui::type}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     \textcolor{keyword}{class }\mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}};}
+\DoxyCodeLine{11     \textcolor{keyword}{class }\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}};}
+\DoxyCodeLine{12     \textcolor{keyword}{class }\mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}};}
+\DoxyCodeLine{13     \textcolor{keyword}{class }\mbox{\hyperlink{structrpgui_1_1type_1_1_radius}{Radius}};}
+\DoxyCodeLine{14 \}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }rpgui::common}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \textcolor{keyword}{class }\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}};}
+\DoxyCodeLine{19 \}}
+\DoxyCodeLine{20 \textcolor{keyword}{namespace }rpgui::ui}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22     \textcolor{keyword}{class }Sprite;}
+\DoxyCodeLine{23 \}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keyword}{using namespace }rpgui::type;}
+\DoxyCodeLine{26 \textcolor{keyword}{using namespace }rpgui::common;}
+\DoxyCodeLine{27 \textcolor{keyword}{using namespace }rpgui::colors;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{keyword}{namespace }IVGA}
+\DoxyCodeLine{31 \{}
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} init();}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} IDrawRectangle(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} \&point, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}} \&width, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}} \&heigth, \textcolor{keyword}{const} Color \&color);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{keywordtype}{void} IDrawRectangle(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&coord, \textcolor{keyword}{const} Color \&color);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{keywordtype}{void} IDrawFrame(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&coord, \textcolor{keyword}{const} Color \&color);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{keywordtype}{void} IDrawPoint(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} \&point, \textcolor{keyword}{const} Color \&color);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{keywordtype}{void} IDrawClear();}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} IDrawLine(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} \&start, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} \&end, \textcolor{keyword}{const} Color \&color);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} IDrawCircle(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} \&point, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_radius}{Radius}} \&radius, \textcolor{keyword}{const} Color \&color, \textcolor{keywordtype}{bool} isFilled = \textcolor{keyword}{true});}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} IDrawText(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *text, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} \&point, \textcolor{keyword}{const} Color \&color, \textcolor{keyword}{const} Color \&background = Color::Transparent, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* font = Font8x8.image, uint8\_t fontHeight = 8, uint8\_t scaleX = 1 , uint8\_t scaleY = 1);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{keywordtype}{void} IDrawImage(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1ui_1_1_sprite}{rpgui::ui::Sprite}}\& source, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}}\& point);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{keywordtype}{void} ICore1Exec(\textcolor{keywordtype}{void} (*fnc)());}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} IWaitVSync();}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// PICO\_KIT\_IVGA}}
+
+\end{DoxyCode}

@@ -1,0 +1,143 @@
+\hypertarget{vga_8h_source}{}\doxysection{vga.\+h}
+\label{vga_8h_source}\index{lib/vga\_lib/include/vga/vga.h@{lib/vga\_lib/include/vga/vga.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//                                 VGA output}}
+\DoxyCodeLine{5 \textcolor{comment}{//}}
+\DoxyCodeLine{6 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef \_VGA\_H}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define \_VGA\_H}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}global.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{comment}{// scanline type}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define LINE\_VSYNC 0    }\textcolor{comment}{// long vertical sync}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define LINE\_VVSYNC 1   }\textcolor{comment}{// short vertical + vertical sync}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define LINE\_VHSYNC 2   }\textcolor{comment}{// short vertical + horizontal sync}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define LINE\_HHSYNC 3   }\textcolor{comment}{// short horizontal + horizontal sync}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define LINE\_HVSYNC 4   }\textcolor{comment}{// short horizontal + vertical sync}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define LINE\_DARK 5     }\textcolor{comment}{// dark line}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define LINE\_IMG 6      }\textcolor{comment}{// progressive image 0, 1, 2,...}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define LINE\_IMGEVEN1 7 }\textcolor{comment}{// interlaced image even 0, 2, 4,..., 1st subframe}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define LINE\_IMGEVEN2 8 }\textcolor{comment}{// interlaced image even 0, 2, 4,..., 2nd subframe}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define LINE\_IMGODD1 9  }\textcolor{comment}{// interlaced image odd 1, 3, 5,..., 1st subframe}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define LINE\_IMGODD2 10 }\textcolor{comment}{// interlaced image odd 1, 3, 5,..., 2nd subframe}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{extern} u8 ScanlineType[MAXLINE];}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} DispDev;     \textcolor{comment}{// current display device}}
+\DoxyCodeLine{29 \textcolor{keyword}{extern} \mbox{\hyperlink{structs_vmode}{sVmode}} CurVmode; \textcolor{comment}{// copy of current videomode table}}
+\DoxyCodeLine{30 \textcolor{comment}{// extern int LayerMode;    // current layer mode (LAYERMODE\_*)}}
+\DoxyCodeLine{31 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \textcolor{keywordtype}{int} ScanLine; \textcolor{comment}{// current scan line 1...}}
+\DoxyCodeLine{32 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} u32 Frame;    \textcolor{comment}{// frame counter}}
+\DoxyCodeLine{33 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} \textcolor{keywordtype}{int} BufInx;   \textcolor{comment}{// current buffer set (0..1)}}
+\DoxyCodeLine{34 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} Bool VSync;   \textcolor{comment}{// current scan line is vsync or dark}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{// line buffers}}
+\DoxyCodeLine{37 \textcolor{keyword}{extern} ALIGNED u8 LineBuf1[DBUF\_MAX]; \textcolor{comment}{// scanline 1 image data}}
+\DoxyCodeLine{38 \textcolor{keyword}{extern} ALIGNED u8 LineBuf2[DBUF\_MAX]; \textcolor{comment}{// scanline 2 image data}}
+\DoxyCodeLine{39 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} LineBufSize[LAYERS\_MAX];   \textcolor{comment}{// size of data buffers}}
+\DoxyCodeLine{40 \textcolor{keyword}{extern} u32 LineBufHsBp[4];            \textcolor{comment}{// HSYNC ... back porch-\/1 ... IRQ command ... image command}}
+\DoxyCodeLine{41 \textcolor{keyword}{extern} u32 LineBufFp;                 \textcolor{comment}{// front porch+1}}
+\DoxyCodeLine{42 \textcolor{keyword}{extern} u32 LineBufDark[2];            \textcolor{comment}{// HSYNC ... dark line}}
+\DoxyCodeLine{43 \textcolor{keyword}{extern} u32 LineBufSync[10];           \textcolor{comment}{// vertical synchronization}}
+\DoxyCodeLine{44                                       \textcolor{comment}{//  interlaced (5x half scanlines):}}
+\DoxyCodeLine{45                                       \textcolor{comment}{//    2x half synchronization (HSYNC pulse/2 ... line dark/2)}}
+\DoxyCodeLine{46                                       \textcolor{comment}{//    2x vertical synchronization (invert line dark/2 ... invert HSYNC pulse)}}
+\DoxyCodeLine{47                                       \textcolor{comment}{//    1x half synchronization (HSYNC pulse/2 ... line dark/2)}}
+\DoxyCodeLine{48                                       \textcolor{comment}{// progressive: 1x scanline with vertical synchronization (invert line dark ... invert HSYNC pulse)}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{keyword}{extern} ALIGNED u8 LineBuf0[BLACK\_MAX]; \textcolor{comment}{// line buffer with black color (used to clear rest of scanline)}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{comment}{// control buffers}}
+\DoxyCodeLine{53 \textcolor{keyword}{extern} u32 CtrlBuf1[CBUF\_MAX]; \textcolor{comment}{// control pairs: u32 count, read address (must be terminated with [0,0])}}
+\DoxyCodeLine{54 \textcolor{keyword}{extern} u32 CtrlBuf2[CBUF\_MAX]; \textcolor{comment}{// control pairs: u32 count, read address (must be terminated with [0,0])}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} CtrlBufSize[LAYERS\_MAX]; \textcolor{comment}{// size of control buffers}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{comment}{// render font pixel mask}}
+\DoxyCodeLine{59 \textcolor{keyword}{extern} u32 RenderTextMask[512];}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{comment}{// fill memory buffer with u32 words}}
+\DoxyCodeLine{62 \textcolor{comment}{//  buf ... data buffer, must be 32-\/bit aligned}}
+\DoxyCodeLine{63 \textcolor{comment}{//  data ... data word to store}}
+\DoxyCodeLine{64 \textcolor{comment}{//  num ... number of 32-\/bit words (= number of bytes/4)}}
+\DoxyCodeLine{65 \textcolor{comment}{// Returns new destination address.}}
+\DoxyCodeLine{66 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} u32 *MemSet4(u32 *buf, u32 data, \textcolor{keywordtype}{int} num);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{comment}{// blit scanline using key color}}
+\DoxyCodeLine{69 \textcolor{comment}{//  dst ... destination buffer}}
+\DoxyCodeLine{70 \textcolor{comment}{//  src ... source buffer}}
+\DoxyCodeLine{71 \textcolor{comment}{//  w ... width}}
+\DoxyCodeLine{72 \textcolor{comment}{//  key ... key color}}
+\DoxyCodeLine{73 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \textcolor{keywordtype}{void} BlitKey(u8 *dst, u8 *src, \textcolor{keywordtype}{int} w, u8 key);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{comment}{// render layers with sprites LAYERMODE\_SPRITE*}}
+\DoxyCodeLine{76 \textcolor{comment}{//  dbuf ... pointer to data buffer}}
+\DoxyCodeLine{77 \textcolor{comment}{//  y ... coordinate of scanline}}
+\DoxyCodeLine{78 \textcolor{comment}{//  scr ... pointer to layer screen structure sLayer}}
+\DoxyCodeLine{79 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \textcolor{keywordtype}{void} RenderSprite(u8 *dbuf, \textcolor{keywordtype}{int} y, \mbox{\hyperlink{structs_layer}{sLayer}} *scr);}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{comment}{// render layers with fast sprites LAYERMODE\_FASTSPRITE*}}
+\DoxyCodeLine{82 \textcolor{comment}{//  cbuf ... pointer to control buffer}}
+\DoxyCodeLine{83 \textcolor{comment}{//  y ... coordinate of scanline}}
+\DoxyCodeLine{84 \textcolor{comment}{//  scr ... pointer to layer screen structure sLayer}}
+\DoxyCodeLine{85 \textcolor{comment}{//  buf ... pointer to destination data buffer with transparent color}}
+\DoxyCodeLine{86 \textcolor{comment}{// Output new pointer to control buffer.}}
+\DoxyCodeLine{87 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} u32 *RenderFastSprite(u32 *cbuf, \textcolor{keywordtype}{int} y, \mbox{\hyperlink{structs_layer}{sLayer}} *scr, u8 *buf);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{comment}{// render layers with transformation matrix LAYERMODE\_PERSP*}}
+\DoxyCodeLine{90 \textcolor{comment}{//  R0 ... dbuf pointer to data buffer}}
+\DoxyCodeLine{91 \textcolor{comment}{//  R1 ... y coordinate of scanline (relative in destination image)}}
+\DoxyCodeLine{92 \textcolor{comment}{//  R2 ... scr pointer to layer screen structure sLayer}}
+\DoxyCodeLine{93 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \textcolor{keywordtype}{void} RenderPersp(u8 *dbuf, \textcolor{keywordtype}{int} y, \mbox{\hyperlink{structs_layer}{sLayer}} *scr);}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{comment}{// render layers double pixel with transformation matrix LAYERMODE\_PERSP2*}}
+\DoxyCodeLine{96 \textcolor{comment}{//  R0 ... dbuf pointer to data buffer}}
+\DoxyCodeLine{97 \textcolor{comment}{//  R1 ... y coordinate of scanline (relative in destination image)}}
+\DoxyCodeLine{98 \textcolor{comment}{//  R2 ... scr pointer to layer screen structure sLayer}}
+\DoxyCodeLine{99 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \textcolor{keywordtype}{void} RenderPersp2(u8 *dbuf, \textcolor{keywordtype}{int} y, \mbox{\hyperlink{structs_layer}{sLayer}} *scr);}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 \textcolor{comment}{// render scanline}}
+\DoxyCodeLine{102 \textcolor{comment}{//  cbuf ... control buffer}}
+\DoxyCodeLine{103 \textcolor{comment}{//  dbuf ... data buffer (pixel data)}}
+\DoxyCodeLine{104 \textcolor{comment}{//  line ... current line 0..}}
+\DoxyCodeLine{105 \textcolor{comment}{//  pixnum ... total pixels (must be multiple of 4)}}
+\DoxyCodeLine{106 \textcolor{comment}{// Returns new pointer to control buffer}}
+\DoxyCodeLine{107 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} u32 *Render(u32 *cbuf, u8 *dbuf, \textcolor{keywordtype}{int} line, \textcolor{keywordtype}{int} pixnum);}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{comment}{// initialize scanline type table}}
+\DoxyCodeLine{110 \textcolor{keywordtype}{void} ScanlineTypeInit(\textcolor{keyword}{const} \mbox{\hyperlink{structs_vmode}{sVmode}} *v);}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \textcolor{comment}{// print table if scanline types}}
+\DoxyCodeLine{113 \textcolor{keywordtype}{void} ScanlineTypePrint(\textcolor{keyword}{const} u8 *scan, \textcolor{keywordtype}{int} lines);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115 \textcolor{comment}{// initialize videomode (returns False on bad configuration)}}
+\DoxyCodeLine{116 \textcolor{comment}{// -\/ All layer modes must use same layer program (LAYERMODE\_BASE = overlapped layers are OFF)}}
+\DoxyCodeLine{117 \textcolor{keywordtype}{void} VgaInit(\textcolor{keyword}{const} \mbox{\hyperlink{structs_vmode}{sVmode}} *vmode); \textcolor{comment}{//, u8 layer1mode=LAYERMODE\_BASE, u8 layer2mode=LAYERMODE\_BASE, u8 layer3mode=LAYERMODE\_BASE);}}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \textcolor{comment}{// VGA core}}
+\DoxyCodeLine{120 \textcolor{keywordtype}{void} VgaCore();}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{comment}{// request to initialize VGA videomode, NULL=only stop driver (wait to initialization completes)}}
+\DoxyCodeLine{123 \textcolor{keywordtype}{void} VgaInitReq(\textcolor{keyword}{const} \mbox{\hyperlink{structs_vmode}{sVmode}} *vmode);}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125 \textcolor{comment}{// execute core 1 remote function}}
+\DoxyCodeLine{126 \textcolor{keywordtype}{void} Core1Exec(\textcolor{keywordtype}{void} (*fnc)());}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128 \textcolor{comment}{// check if core 1 is busy (executing remote function)}}
+\DoxyCodeLine{129 Bool Core1Busy();}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131 \textcolor{comment}{// wait if core 1 is busy (executing remote function)}}
+\DoxyCodeLine{132 \textcolor{keywordtype}{void} Core1Wait();}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134 \textcolor{comment}{// wait for VSync scanline}}
+\DoxyCodeLine{135 \textcolor{keywordtype}{void} WaitVSync();}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_VGA\_H}}
+
+\end{DoxyCode}

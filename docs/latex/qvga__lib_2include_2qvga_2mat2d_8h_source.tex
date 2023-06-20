@@ -1,0 +1,235 @@
+\hypertarget{qvga__lib_2include_2qvga_2mat2d_8h_source}{}\doxysection{mat2d.\+h}
+\label{qvga__lib_2include_2qvga_2mat2d_8h_source}\index{lib/qvga\_lib/include/qvga/mat2d.h@{lib/qvga\_lib/include/qvga/mat2d.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//                          2D Transformation Matrix}}
+\DoxyCodeLine{4 \textcolor{comment}{//}}
+\DoxyCodeLine{5 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef \_MAT2D\_H}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define \_MAT2D\_H}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}pico/float.h"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{comment}{// transformation matrix}}
+\DoxyCodeLine{13 \textcolor{keyword}{template} <\textcolor{keyword}{typename} m2type> \textcolor{keyword}{class }\mbox{\hyperlink{classc_mat2_d}{cMat2D}} }
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \textcolor{comment}{// transformation matrix}}
+\DoxyCodeLine{18     m2type m11, m12, m13;}
+\DoxyCodeLine{19     m2type m21, m22, m23;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{comment}{// trasform X}}
+\DoxyCodeLine{22     \textcolor{keyword}{inline} m2type GetX(m2type x, m2type y)\textcolor{keyword}{ const}}
+\DoxyCodeLine{23 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{24         \textcolor{keywordflow}{return} x*m11 + y*m12 + m13;}
+\DoxyCodeLine{25     \}   }
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{comment}{// trasform Y}}
+\DoxyCodeLine{28     \textcolor{keyword}{inline} m2type GetY(m2type x, m2type y)\textcolor{keyword}{ const}}
+\DoxyCodeLine{29 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{30         \textcolor{keywordflow}{return} x*m21 + y*m22 + m23;}
+\DoxyCodeLine{31     \}   }
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{comment}{// set unit matrix}}
+\DoxyCodeLine{34     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} Unit()}
+\DoxyCodeLine{35     \{}
+\DoxyCodeLine{36         m11 = 1; m12 = 0; m13 = 0;}
+\DoxyCodeLine{37         m21 = 0; m22 = 1; m23 = 0;}
+\DoxyCodeLine{38     \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{comment}{// copy matrix}}
+\DoxyCodeLine{41     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} Copy(\textcolor{keyword}{const} \mbox{\hyperlink{classc_mat2_d}{cMat2D}} *m)}
+\DoxyCodeLine{42     \{}
+\DoxyCodeLine{43         m11 = m-\/>m11; m12 = m-\/>m12; m13 = m-\/>m13;}
+\DoxyCodeLine{44         m21 = m-\/>m21; m22 = m-\/>m22; m23 = m-\/>m23;}
+\DoxyCodeLine{45     \}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \textcolor{comment}{// translate in X direction}}
+\DoxyCodeLine{48     \textcolor{comment}{//  1  0 tx   m11 m12 m13   m11 m12 m13+tx}}
+\DoxyCodeLine{49     \textcolor{comment}{//  0  1  0 * m21 m22 m23 = m21 m22 m23}}
+\DoxyCodeLine{50     \textcolor{comment}{//  0  0  1     0   0   1    0   0   1}}
+\DoxyCodeLine{51     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} TransX(m2type tx)}
+\DoxyCodeLine{52     \{}
+\DoxyCodeLine{53         m13 += tx;}
+\DoxyCodeLine{54     \}}
+\DoxyCodeLine{55     }
+\DoxyCodeLine{56     \textcolor{comment}{// translate in Y direction}}
+\DoxyCodeLine{57     \textcolor{comment}{//  1  0  0   m11 m12 m13   m11 m12 m13}}
+\DoxyCodeLine{58     \textcolor{comment}{//  0  1 ty * m21 m22 m23 = m21 m22 m23+ty}}
+\DoxyCodeLine{59     \textcolor{comment}{//  0  0  1     0   0   1    0   0   1}}
+\DoxyCodeLine{60     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} TransY(m2type ty)}
+\DoxyCodeLine{61     \{}
+\DoxyCodeLine{62         m23 += ty;}
+\DoxyCodeLine{63     \}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{comment}{// scale in X direction}}
+\DoxyCodeLine{66     \textcolor{comment}{//  sx 0  0   m11 m12 m13    m11*sx m12*sx m13*sx}}
+\DoxyCodeLine{67     \textcolor{comment}{//  0  1  0 * m21 m22 m23  = m21    m22    m23}}
+\DoxyCodeLine{68     \textcolor{comment}{//  0  0  1     0   0   1      0      0      1}}
+\DoxyCodeLine{69     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} ScaleX(m2type sx)}
+\DoxyCodeLine{70     \{}
+\DoxyCodeLine{71         m11 *= sx;}
+\DoxyCodeLine{72         m12 *= sx;}
+\DoxyCodeLine{73         m13 *= sx;}
+\DoxyCodeLine{74     \}   }
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76     \textcolor{comment}{// scale in Y direction}}
+\DoxyCodeLine{77     \textcolor{comment}{//  1  0  0   m11 m12 m13    m11    m12    m13}}
+\DoxyCodeLine{78     \textcolor{comment}{//  0  sy 0 * m21 m22 m23  = m21*sy m22*sy m23*sy}}
+\DoxyCodeLine{79     \textcolor{comment}{//  0  0  1     0   0   1      0      0      1}}
+\DoxyCodeLine{80     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} ScaleY(m2type sy)}
+\DoxyCodeLine{81     \{}
+\DoxyCodeLine{82         m21 *= sy;}
+\DoxyCodeLine{83         m22 *= sy;}
+\DoxyCodeLine{84         m23 *= sy;}
+\DoxyCodeLine{85     \}   }
+\DoxyCodeLine{86     }
+\DoxyCodeLine{87     \textcolor{comment}{// rotate, using sin and cos}}
+\DoxyCodeLine{88     \textcolor{comment}{//  cosa -\/sina  0   m11 m12 m13   m11*cosa-\/m21*sina  m12*cosa-\/m22*sina  m13*cosa-\/m23*sina}}
+\DoxyCodeLine{89     \textcolor{comment}{//  sina  cosa  0 * m21 m22 m23 = m11*sina+m21*cosa  m12*sina+m22*cosa  m13*sina+m23*cosa}}
+\DoxyCodeLine{90     \textcolor{comment}{//   0      0   1     0   0   1           0                    0                 1}}
+\DoxyCodeLine{91     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} RotSC(m2type sina, m2type cosa)}
+\DoxyCodeLine{92     \{}
+\DoxyCodeLine{93         m2type t1 = m11;}
+\DoxyCodeLine{94         m2type t2 = m21;}
+\DoxyCodeLine{95         m11 = t1*cosa -\/ t2*sina;}
+\DoxyCodeLine{96         m21 = t1*sina + t2*cosa;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98         t1 = m12;}
+\DoxyCodeLine{99         t2 = m22;}
+\DoxyCodeLine{100         m12 = t1*cosa -\/ t2*sina;}
+\DoxyCodeLine{101         m22 = t1*sina + t2*cosa;}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103         t1 = m13;}
+\DoxyCodeLine{104         t2 = m23;}
+\DoxyCodeLine{105         m13 = t1*cosa -\/ t2*sina;}
+\DoxyCodeLine{106         m23 = t1*sina + t2*cosa;}
+\DoxyCodeLine{107     \}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109     \textcolor{comment}{// rotate, using angle}}
+\DoxyCodeLine{110     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} Rot(m2type a)}
+\DoxyCodeLine{111     \{}
+\DoxyCodeLine{112         this-\/>RotSC(sin(a), cos(a));}
+\DoxyCodeLine{113     \}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     \textcolor{comment}{// rotate by 90 deg (sina=1, cosa=0)}}
+\DoxyCodeLine{116     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} Rot90()}
+\DoxyCodeLine{117     \{}
+\DoxyCodeLine{118         m2type t = m11;}
+\DoxyCodeLine{119         m11 = -\/m21;}
+\DoxyCodeLine{120         m21 = t;}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122         t = m12;}
+\DoxyCodeLine{123         m12 = -\/m22;}
+\DoxyCodeLine{124         m22 = t;}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126         t = m13;}
+\DoxyCodeLine{127         m13 = -\/m23;}
+\DoxyCodeLine{128         m23 = t;}
+\DoxyCodeLine{129     \}}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131     \textcolor{comment}{// rotate by 180 deg (=flipX and flipY) (sina=0, cosa=-\/1)}}
+\DoxyCodeLine{132     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} Rot180()}
+\DoxyCodeLine{133     \{}
+\DoxyCodeLine{134         m11 = -\/m11;}
+\DoxyCodeLine{135         m21 = -\/m21;}
+\DoxyCodeLine{136         m12 = -\/m12;}
+\DoxyCodeLine{137         m22 = -\/m22;}
+\DoxyCodeLine{138         m13 = -\/m13;}
+\DoxyCodeLine{139         m23 = -\/m23;}
+\DoxyCodeLine{140     \}}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142     \textcolor{comment}{// rotate by 270 deg (sina=-\/1, cosa=0)}}
+\DoxyCodeLine{143     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} Rot270()}
+\DoxyCodeLine{144     \{}
+\DoxyCodeLine{145         m2type t = m11;}
+\DoxyCodeLine{146         m11 = m21;}
+\DoxyCodeLine{147         m21 = -\/t;}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149         t = m12;}
+\DoxyCodeLine{150         m12 = m22;}
+\DoxyCodeLine{151         m22 = -\/t;}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153         t = m13;}
+\DoxyCodeLine{154         m13 = m23;}
+\DoxyCodeLine{155         m23 = -\/t;}
+\DoxyCodeLine{156     \}}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158     \textcolor{comment}{// Shear in X direction}}
+\DoxyCodeLine{159     \textcolor{comment}{//  1  dx 0   m11 m12 m13   m11+m21*dx m12+m22*dx m13+m23*dx}}
+\DoxyCodeLine{160     \textcolor{comment}{//  0  1  0 * m21 m22 m23 = m21        m22        m23}}
+\DoxyCodeLine{161     \textcolor{comment}{//  0  0  1     0   0   1     0          0          1}}
+\DoxyCodeLine{162     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} ShearX(m2type dx)}
+\DoxyCodeLine{163     \{}
+\DoxyCodeLine{164         m11 += m21*dx;}
+\DoxyCodeLine{165         m12 += m22*dx;}
+\DoxyCodeLine{166         m13 += m23*dx;}
+\DoxyCodeLine{167     \}}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169     \textcolor{comment}{// Shear in Y direction}}
+\DoxyCodeLine{170     \textcolor{comment}{//  1  0  0   m11 m12 m13   m11        m12        m13}}
+\DoxyCodeLine{171     \textcolor{comment}{//  dy 1  0 * m21 m22 m23 = m21+m11*dy m22+m12*dy m23+m13*dy}}
+\DoxyCodeLine{172     \textcolor{comment}{//  0  0  1     0   0   1     0          0          1}}
+\DoxyCodeLine{173     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} ShearY(m2type dy)}
+\DoxyCodeLine{174     \{}
+\DoxyCodeLine{175         m21 += m11*dy;}
+\DoxyCodeLine{176         m22 += m12*dy;}
+\DoxyCodeLine{177         m23 += m13*dy;}
+\DoxyCodeLine{178     \}}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180     \textcolor{comment}{// flip in Y direction}}
+\DoxyCodeLine{181     \textcolor{comment}{//  1  0  0   m11 m12 m13     m11   m12    m13}}
+\DoxyCodeLine{182     \textcolor{comment}{//  0 -\/1  0 * m21 m22 m23  = -\/m21  -\/m22   -\/m23}}
+\DoxyCodeLine{183     \textcolor{comment}{//  0  0  1     0   0   1      0     0      1}}
+\DoxyCodeLine{184     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} FlipY()}
+\DoxyCodeLine{185     \{}
+\DoxyCodeLine{186         m21 = -\/m21;}
+\DoxyCodeLine{187         m22 = -\/m22;}
+\DoxyCodeLine{188         m23 = -\/m23;}
+\DoxyCodeLine{189     \}   }
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191     \textcolor{comment}{// flip in X direction}}
+\DoxyCodeLine{192     \textcolor{comment}{//  -\/1 0  0   m11 m12 m13    -\/m11  -\/m12   -\/m13}}
+\DoxyCodeLine{193     \textcolor{comment}{//  0  1  0 * m21 m22 m23  = m21    m22    m23}}
+\DoxyCodeLine{194     \textcolor{comment}{//  0  0  1     0   0   1      0      0      1}}
+\DoxyCodeLine{195     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} FlipX()}
+\DoxyCodeLine{196     \{}
+\DoxyCodeLine{197         m11 = -\/m11;}
+\DoxyCodeLine{198         m12 = -\/m12;}
+\DoxyCodeLine{199         m13 = -\/m13;}
+\DoxyCodeLine{200     \}}
+\DoxyCodeLine{201 \};}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203 \textcolor{preprocessor}{\#define FRACT       12  }\textcolor{comment}{// number of bits of fractional part of fractint number (use max. 13, min. 8)}}
+\DoxyCodeLine{204 \textcolor{preprocessor}{\#define FRACTMUL (1<<FRACT)}}
+\DoxyCodeLine{205 \textcolor{preprocessor}{\#define TOFRACT(f) ((int)((f)*FRACTMUL + (((f) < 0) ? -\/0.5f : 0.5f)))}}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207 \textcolor{keyword}{class }\mbox{\hyperlink{classc_mat2_df}{cMat2Df}} : \textcolor{keyword}{public} \mbox{\hyperlink{classc_mat2_d}{cMat2D}}<float>}
+\DoxyCodeLine{208 \{}
+\DoxyCodeLine{209 \textcolor{keyword}{public}:}
+\DoxyCodeLine{210     \textcolor{comment}{// prepare transformation matrix (for DrawImgMat function)}}
+\DoxyCodeLine{211     \textcolor{comment}{//  ws ... source image width}}
+\DoxyCodeLine{212     \textcolor{comment}{//  hs ... source image height}}
+\DoxyCodeLine{213     \textcolor{comment}{//  x0 ... reference point X on source image}}
+\DoxyCodeLine{214     \textcolor{comment}{//  y0 ... reference point Y on source image}}
+\DoxyCodeLine{215     \textcolor{comment}{//  wd ... destination image width (negative = flip image in X direction)}}
+\DoxyCodeLine{216     \textcolor{comment}{//  hd ... destination image height (negative = flip image in Y direction)}}
+\DoxyCodeLine{217     \textcolor{comment}{//  shearx ... shear image in X direction}}
+\DoxyCodeLine{218     \textcolor{comment}{//  sheary ... shear image in Y direction}}
+\DoxyCodeLine{219     \textcolor{comment}{//  r ... rotate image (angle in radians)}}
+\DoxyCodeLine{220     \textcolor{comment}{//  tx ... shift in X direction (ws = whole image width)}}
+\DoxyCodeLine{221     \textcolor{comment}{//  ty ... shift in Y direction (hs = whole image height)}}
+\DoxyCodeLine{222     \textcolor{keywordtype}{void} PrepDrawImg(\textcolor{keywordtype}{int} ws, \textcolor{keywordtype}{int} hs, \textcolor{keywordtype}{int} x0, \textcolor{keywordtype}{int} y0, \textcolor{keywordtype}{int} wd, \textcolor{keywordtype}{int} hd,}
+\DoxyCodeLine{223         \textcolor{keywordtype}{float} shearx, \textcolor{keywordtype}{float} sheary, \textcolor{keywordtype}{float} r, \textcolor{keywordtype}{float} tx, \textcolor{keywordtype}{float} ty);}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225     \textcolor{comment}{// export matrix to int array[6]}}
+\DoxyCodeLine{226     \textcolor{keywordtype}{void} ExportInt(\textcolor{keywordtype}{int} *mat) \textcolor{keyword}{const};}
+\DoxyCodeLine{227 \};}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_MAT2D\_H}}
+
+\end{DoxyCode}

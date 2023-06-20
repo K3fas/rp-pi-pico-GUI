@@ -1,0 +1,167 @@
+\hypertarget{classrpgui_1_1core_1_1_main_app}{}\doxysection{rpgui\+::core\+::Main\+App Class Reference}
+\label{classrpgui_1_1core_1_1_main_app}\index{rpgui::core::MainApp@{rpgui::core::MainApp}}
+
+
+Core class responsible for drawing, event handling, cursor adjusting and page selecting.  
+
+
+
+
+{\ttfamily \#include $<$rp\+\_\+core.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrpgui_1_1core_1_1_main_app_aa4442fdd517a248d84cfb16cf126e3bf}\label{classrpgui_1_1core_1_1_main_app_aa4442fdd517a248d84cfb16cf126e3bf}} 
+{\bfseries Main\+App} (const \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app}{Main\+App}} \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_a2e13d579a245dc5722183afd6a1755e3}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes VGA libraries. \end{DoxyCompactList}\item 
+static ID \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_aa954115ebfefb7ba23de27ce67d9986c}{Add\+Page}} (\mbox{\hyperlink{classrpgui_1_1page_1_1_page}{Page}} $\ast$page)
+\begin{DoxyCompactList}\small\item\em Adds Page to core. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_a001f5585529fd76f783b4616e2604e22}{Select\+Page}} (ID id)
+\begin{DoxyCompactList}\small\item\em Select page to be drawn on the display. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_a60da9670c668de5fd14ba6f0fc1fb2a7}{Select\+Page\+At}} (uint8\+\_\+t at)
+\begin{DoxyCompactList}\small\item\em Select page to be drawn on the display. \end{DoxyCompactList}\item 
+static ID \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_a11b5f48eb761d7c5f7cb449d270463cc}{Get\+Selected\+Page\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Gets ID of currently drawn page. \end{DoxyCompactList}\item 
+static uint8\+\_\+t \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_a98a8090793e042f949a77d050f7c8e25}{Get\+Selected\+Page\+At}} ()
+\begin{DoxyCompactList}\small\item\em Gets position of currently drawn page in list of pages. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_a0db32ea0f6811bcbd2ab798dbe57a9ce}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Draws selected page, updates cursor pos, handles clicks. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_ae0d256052429408cd24f4544d4abf636}{Add\+Listener}} (Mouse\+Event\+Type type, const \mbox{\hyperlink{structrpgui_1_1event_1_1_handler}{Handler}} \&handler, const uint8\+\_\+t priority=0)
+\begin{DoxyCompactList}\small\item\em Adds event listener to core. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrpgui_1_1core_1_1_main_app_a69ac9241ff3eeca2388608bd80c08325}\label{classrpgui_1_1core_1_1_main_app_a69ac9241ff3eeca2388608bd80c08325}} 
+static void {\bfseries Clear\+Handlers} ()
+\begin{DoxyCompactList}\small\item\em Used for testing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core class responsible for drawing, event handling, cursor adjusting and page selecting. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classrpgui_1_1core_1_1_main_app_ae0d256052429408cd24f4544d4abf636}\label{classrpgui_1_1core_1_1_main_app_ae0d256052429408cd24f4544d4abf636}} 
+\index{rpgui::core::MainApp@{rpgui::core::MainApp}!AddListener@{AddListener}}
+\index{AddListener@{AddListener}!rpgui::core::MainApp@{rpgui::core::MainApp}}
+\doxysubsubsection{\texorpdfstring{AddListener()}{AddListener()}}
+{\footnotesize\ttfamily void rpgui\+::core\+::\+Main\+App\+::\+Add\+Listener (\begin{DoxyParamCaption}\item[{Mouse\+Event\+Type}]{type,  }\item[{const \mbox{\hyperlink{structrpgui_1_1event_1_1_handler}{Handler}} \&}]{handler,  }\item[{const uint8\+\_\+t}]{priority = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Adds event listener to core. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Type of mouse event to trigger listener \\
+\hline
+{\em handler} & Handler function and element reference \\
+\hline
+{\em priority} & Priority of processing event \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classrpgui_1_1core_1_1_main_app_aa954115ebfefb7ba23de27ce67d9986c}\label{classrpgui_1_1core_1_1_main_app_aa954115ebfefb7ba23de27ce67d9986c}} 
+\index{rpgui::core::MainApp@{rpgui::core::MainApp}!AddPage@{AddPage}}
+\index{AddPage@{AddPage}!rpgui::core::MainApp@{rpgui::core::MainApp}}
+\doxysubsubsection{\texorpdfstring{AddPage()}{AddPage()}}
+{\footnotesize\ttfamily ID rpgui\+::core\+::\+Main\+App\+::\+Add\+Page (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classrpgui_1_1page_1_1_page}{Page}} $\ast$}]{page }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Adds Page to core. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em page} & -\/ to be added \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ID of added page 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classrpgui_1_1core_1_1_main_app_a98a8090793e042f949a77d050f7c8e25}\label{classrpgui_1_1core_1_1_main_app_a98a8090793e042f949a77d050f7c8e25}} 
+\index{rpgui::core::MainApp@{rpgui::core::MainApp}!GetSelectedPageAt@{GetSelectedPageAt}}
+\index{GetSelectedPageAt@{GetSelectedPageAt}!rpgui::core::MainApp@{rpgui::core::MainApp}}
+\doxysubsubsection{\texorpdfstring{GetSelectedPageAt()}{GetSelectedPageAt()}}
+{\footnotesize\ttfamily uint8\+\_\+t rpgui\+::core\+::\+Main\+App\+::\+Get\+Selected\+Page\+At (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets position of currently drawn page in list of pages. 
+
+\begin{DoxyReturn}{Returns}
+Index of selected page 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classrpgui_1_1core_1_1_main_app_a11b5f48eb761d7c5f7cb449d270463cc}\label{classrpgui_1_1core_1_1_main_app_a11b5f48eb761d7c5f7cb449d270463cc}} 
+\index{rpgui::core::MainApp@{rpgui::core::MainApp}!GetSelectedPageId@{GetSelectedPageId}}
+\index{GetSelectedPageId@{GetSelectedPageId}!rpgui::core::MainApp@{rpgui::core::MainApp}}
+\doxysubsubsection{\texorpdfstring{GetSelectedPageId()}{GetSelectedPageId()}}
+{\footnotesize\ttfamily ID rpgui\+::core\+::\+Main\+App\+::\+Get\+Selected\+Page\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets ID of currently drawn page. 
+
+\begin{DoxyReturn}{Returns}
+ID of selected page 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classrpgui_1_1core_1_1_main_app_a2e13d579a245dc5722183afd6a1755e3}\label{classrpgui_1_1core_1_1_main_app_a2e13d579a245dc5722183afd6a1755e3}} 
+\index{rpgui::core::MainApp@{rpgui::core::MainApp}!Init@{Init}}
+\index{Init@{Init}!rpgui::core::MainApp@{rpgui::core::MainApp}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void rpgui\+::core\+::\+Main\+App\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Initializes VGA libraries. 
+
+\begin{DoxyWarning}{Warning}
+May change base core clock speed! Init before other IO. 
+\end{DoxyWarning}
+\mbox{\Hypertarget{classrpgui_1_1core_1_1_main_app_a001f5585529fd76f783b4616e2604e22}\label{classrpgui_1_1core_1_1_main_app_a001f5585529fd76f783b4616e2604e22}} 
+\index{rpgui::core::MainApp@{rpgui::core::MainApp}!SelectPage@{SelectPage}}
+\index{SelectPage@{SelectPage}!rpgui::core::MainApp@{rpgui::core::MainApp}}
+\doxysubsubsection{\texorpdfstring{SelectPage()}{SelectPage()}}
+{\footnotesize\ttfamily void rpgui\+::core\+::\+Main\+App\+::\+Select\+Page (\begin{DoxyParamCaption}\item[{ID}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Select page to be drawn on the display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID of page to be selected \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classrpgui_1_1core_1_1_main_app_a60da9670c668de5fd14ba6f0fc1fb2a7}\label{classrpgui_1_1core_1_1_main_app_a60da9670c668de5fd14ba6f0fc1fb2a7}} 
+\index{rpgui::core::MainApp@{rpgui::core::MainApp}!SelectPageAt@{SelectPageAt}}
+\index{SelectPageAt@{SelectPageAt}!rpgui::core::MainApp@{rpgui::core::MainApp}}
+\doxysubsubsection{\texorpdfstring{SelectPageAt()}{SelectPageAt()}}
+{\footnotesize\ttfamily void rpgui\+::core\+::\+Main\+App\+::\+Select\+Page\+At (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{at }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Select page to be drawn on the display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em at} & Index of page in list of stored pages \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classrpgui_1_1core_1_1_main_app_a0db32ea0f6811bcbd2ab798dbe57a9ce}\label{classrpgui_1_1core_1_1_main_app_a0db32ea0f6811bcbd2ab798dbe57a9ce}} 
+\index{rpgui::core::MainApp@{rpgui::core::MainApp}!Update@{Update}}
+\index{Update@{Update}!rpgui::core::MainApp@{rpgui::core::MainApp}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void rpgui\+::core\+::\+Main\+App\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Draws selected page, updates cursor pos, handles clicks. 
+
+Draws cursor then page. Handles data from mouse generated by user, fires and handles events associated with left mouse click 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/gui\+\_\+lib/include/rp\+\_\+core.\+hpp\item 
+lib/gui\+\_\+lib/src/rp\+\_\+core.\+cpp\end{DoxyCompactItemize}

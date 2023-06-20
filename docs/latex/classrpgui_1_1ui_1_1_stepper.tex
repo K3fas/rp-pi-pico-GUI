@@ -1,0 +1,80 @@
+\hypertarget{classrpgui_1_1ui_1_1_stepper}{}\doxysection{rpgui\+::ui\+::Stepper\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classrpgui_1_1ui_1_1_stepper}\index{rpgui::ui::Stepper$<$ T $>$@{rpgui::ui::Stepper$<$ T $>$}}
+Inheritance diagram for rpgui\+::ui\+::Stepper\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrpgui_1_1ui_1_1_stepper}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_stepper_a8fb8664fd520111c3af45bff12175fc8}\label{classrpgui_1_1ui_1_1_stepper_a8fb8664fd520111c3af45bff12175fc8}} 
+{\bfseries Stepper} (const \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{Stepper}} \&)=default
+\item 
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_stepper_a806be0f97150b15a9057354cf6d5a35d}\label{classrpgui_1_1ui_1_1_stepper_a806be0f97150b15a9057354cf6d5a35d}} 
+{\bfseries Stepper} (const \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}} \&width, const \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}} \&height, Color \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}}=Color\+::\+White, Color background\+Color=Color\+::\+Semi\+Gray, uint8\+\_\+t frame\+Width=2)
+\item 
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_stepper_ab57b115ace9aef3871fa3bab1b093a45}\label{classrpgui_1_1ui_1_1_stepper_ab57b115ace9aef3871fa3bab1b093a45}} 
+{\bfseries Stepper} (const \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}} \&width, const \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}} \&height, T \&counter, Color \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}}=Color\+::\+White, Color background\+Color=Color\+::\+Semi\+Gray, uint8\+\_\+t frame\+Width=2)
+\item 
+void \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper_a620b2fc530a6b816e4278d3bc5fe3966}{Draw}} () const final
+\begin{DoxyCompactList}\small\item\em Pure virtual draw function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper_a94e836c418f5c76dda1ead552fd52be2}{Set\+Bounds}} (const \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&bounds) override
+\begin{DoxyCompactList}\small\item\em Bounds setter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_stepper_ad9ac3f0924943c4e09691b3235863b06}\label{classrpgui_1_1ui_1_1_stepper_ad9ac3f0924943c4e09691b3235863b06}} 
+Color {\bfseries background\+Color}
+\item 
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_stepper_ad08ca057129716b31c14497cc6a6fade}\label{classrpgui_1_1ui_1_1_stepper_ad08ca057129716b31c14497cc6a6fade}} 
+uint8\+\_\+t {\bfseries frame\+Width}
+\item 
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_stepper_a21a611ff6c1a24b7568e12157c191186}\label{classrpgui_1_1ui_1_1_stepper_a21a611ff6c1a24b7568e12157c191186}} 
+\mbox{\hyperlink{classrpgui_1_1common_1_1_bindable_property}{Bindable\+Property}}$<$ T $>$ {\bfseries counter}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_stepper_a620b2fc530a6b816e4278d3bc5fe3966}\label{classrpgui_1_1ui_1_1_stepper_a620b2fc530a6b816e4278d3bc5fe3966}} 
+\index{rpgui::ui::Stepper$<$ T $>$@{rpgui::ui::Stepper$<$ T $>$}!Draw@{Draw}}
+\index{Draw@{Draw}!rpgui::ui::Stepper$<$ T $>$@{rpgui::ui::Stepper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily template$<$Stepable T$>$ \\
+void \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{rpgui\+::ui\+::\+Stepper}}$<$ T $>$\+::\+Draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [virtual]}}
+
+
+
+Pure virtual draw function. 
+
+
+
+Implements \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_adb2b5674daaf3fa8f0c98dab649744fe}{rpgui\+::common\+::\+Visual\+Element}}.
+
+\mbox{\Hypertarget{classrpgui_1_1ui_1_1_stepper_a94e836c418f5c76dda1ead552fd52be2}\label{classrpgui_1_1ui_1_1_stepper_a94e836c418f5c76dda1ead552fd52be2}} 
+\index{rpgui::ui::Stepper$<$ T $>$@{rpgui::ui::Stepper$<$ T $>$}!SetBounds@{SetBounds}}
+\index{SetBounds@{SetBounds}!rpgui::ui::Stepper$<$ T $>$@{rpgui::ui::Stepper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{SetBounds()}{SetBounds()}}
+{\footnotesize\ttfamily template$<$Stepable T$>$ \\
+void \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{rpgui\+::ui\+::\+Stepper}}$<$ T $>$\+::\+Set\+Bounds (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&}]{bounds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Bounds setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bounds} & New bounds of element \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a4290e9cdd0e89b07ff933d5f1c4ff86f}{rpgui\+::common\+::\+Visual\+Element}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/gui\+\_\+lib/include/elements/Stepper.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,39 @@
+\hypertarget{_s_d_wrapper_8hpp_source}{}\doxysection{SDWrapper.\+hpp}
+\label{_s_d_wrapper_8hpp_source}\index{lib/SDwrapper\_lib/include/SDWrapper.hpp@{lib/SDwrapper\_lib/include/SDWrapper.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}ff.h"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}f\_util.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <tuple>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }rpgui::util}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1util_1_1_s_d_wrapper}{SDWrapper}}}
+\DoxyCodeLine{12     \{}
+\DoxyCodeLine{13     \textcolor{keyword}{private}:}
+\DoxyCodeLine{14         \textcolor{keyword}{inline} \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \_sdInit = \textcolor{keyword}{false};}
+\DoxyCodeLine{15         \textcolor{keyword}{inline} \textcolor{keyword}{static} std::vector<FIL *> \_openedFiles;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \textcolor{keyword}{public}:}
+\DoxyCodeLine{18         \mbox{\hyperlink{classrpgui_1_1util_1_1_s_d_wrapper}{SDWrapper}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{19         \mbox{\hyperlink{classrpgui_1_1util_1_1_s_d_wrapper}{SDWrapper}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1util_1_1_s_d_wrapper}{SDWrapper}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{20         \mbox{\hyperlink{classrpgui_1_1util_1_1_s_d_wrapper}{\string~SDWrapper}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \textcolor{keyword}{static} FRESULT Init();}
+\DoxyCodeLine{23         \textcolor{keyword}{static} \textcolor{keywordtype}{void} Dispose();}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         \textcolor{keyword}{static} std::tuple<FRESULT, FIL *> OpenFile(\textcolor{keyword}{const} std::string \&name, \textcolor{keyword}{const} std::string \&path,}
+\DoxyCodeLine{26                                                    \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} mode = FA\_READ | FA\_WRITE | FA\_OPEN\_APPEND);}
+\DoxyCodeLine{27         \textcolor{keyword}{static} FRESULT CloseAllFiles();}
+\DoxyCodeLine{28         \textcolor{keyword}{static} FRESULT CloseFile(\mbox{\hyperlink{struct_f_i_l}{FIL}} *file);}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \textcolor{keyword}{static} FRESULT SyncFile(\mbox{\hyperlink{struct_f_i_l}{FIL}} *file);}
+\DoxyCodeLine{31     \};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \} \textcolor{comment}{// namespace rpgui::util}}
+
+\end{DoxyCode}

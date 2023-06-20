@@ -1,0 +1,39 @@
+
+\begin{DoxyItemize}
+\item Move IVGA header to xvga\+\_\+lib ... make separated implementations 
+\end{DoxyItemize}\hypertarget{md_lib_gui_lib__t_o_d_o_autotoc_md9}{}\doxysection{RESTRUCTURE Namespaces}\label{md_lib_gui_lib__t_o_d_o_autotoc_md9}
+rpgui\+::ui -\/user accessible API for controls rpgui\+::view rpgui\+::layout rpgui\+::common -\/base classes rpgui\+:\+:??? ~\newline
+
+
+rphid\+::mouse rphid\+::kbd
+
+ivga\+::color\+:\+: -\/colours ivga\+:\+: -\/functions
+
+rplog\+::logger -\/logger class\hypertarget{md_lib_gui_lib__t_o_d_o_autotoc_md10}{}\doxysection{Controls}\label{md_lib_gui_lib__t_o_d_o_autotoc_md10}
+
+\begin{DoxyItemize}
+\item sprites/images
+\item line
+\item polyline
+\item Image\+Button?
+\item Radio\+Button
+\item Check\+Box
+\item Slider
+\item Stepper
+\item Switch
+\item Entry/editor
+\item Progress\+Bar
+\end{DoxyItemize}\hypertarget{md_lib_gui_lib__t_o_d_o_autotoc_md11}{}\doxysection{Views}\label{md_lib_gui_lib__t_o_d_o_autotoc_md11}
+
+\begin{DoxyItemize}
+\item Collerction\+View
+\item Stack\+Layout
+\end{DoxyItemize}\hypertarget{md_lib_gui_lib__t_o_d_o_autotoc_md12}{}\doxysection{To add/implement}\label{md_lib_gui_lib__t_o_d_o_autotoc_md12}
+
+\begin{DoxyItemize}
+\item Element Id, Parrent ?,
+\item Visual element ? ... s
+\end{DoxyItemize}\hypertarget{md_lib_gui_lib__t_o_d_o_autotoc_md13}{}\doxysection{Button xamarin example}\label{md_lib_gui_lib__t_o_d_o_autotoc_md13}
+Inheritance\+: Object -\/\texorpdfstring{$>$}{>} Bindable\+Object-\/\texorpdfstring{$>$}{>} ELement -\/\texorpdfstring{$>$}{>} Navigable\+Element -\/\texorpdfstring{$>$}{>} Visual\+Element -\/\texorpdfstring{$>$}{>} View -\/\texorpdfstring{$>$}{>} Button
+
+Implements\+: IBorder\+Element, IButton\+Controller, IElement\+Configuration, IElement\+Controller, IImage\+Controller, IImage\+Element, IFont\+Element, IView\+Controller, IVisual\+Element\+Controller 

@@ -1,0 +1,124 @@
+\hypertarget{draw_8h_source}{}\doxysection{draw.\+h}
+\label{draw_8h_source}\index{lib/qvga\_lib/include/qvga/draw.h@{lib/qvga\_lib/include/qvga/draw.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//                                   Draw}}
+\DoxyCodeLine{4 \textcolor{comment}{//}}
+\DoxyCodeLine{5 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef \_DRAW\_H}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define \_DRAW\_H}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}mat2d.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define TEXTWIDTH   (WIDTH/8)   }\textcolor{comment}{// width of text buffer (=40)}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define TEXTHEIGHT  (HEIGHT/8)  }\textcolor{comment}{// height of text buffer (=30)}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define TEXTSIZE    (TEXTWIDTH*TEXTHEIGHT) }\textcolor{comment}{// size of mono text buffer (=1200)}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define FTEXTSIZE   (TEXTWIDTH*2*TEXTHEIGHT) }\textcolor{comment}{// size of text buffer with foreground color (=2400)}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{// pointer to draw frame buffer}}
+\DoxyCodeLine{19 \textcolor{keyword}{extern} uint8\_t *pDrawBuf;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{comment}{// Draw rectangle}}
+\DoxyCodeLine{22 \textcolor{keywordtype}{void} DrawRect(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h, uint8\_t col);}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{comment}{// Draw frame}}
+\DoxyCodeLine{25 \textcolor{keywordtype}{void} DrawFrame(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h, uint8\_t col);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{comment}{// clear canvas (fill with black color)}}
+\DoxyCodeLine{28 \textcolor{keywordtype}{void} DrawClear();}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{comment}{// Draw point}}
+\DoxyCodeLine{31 \textcolor{keywordtype}{void} DrawPoint(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, uint8\_t col);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{comment}{// Draw line}}
+\DoxyCodeLine{34 \textcolor{keywordtype}{void} DrawLine(\textcolor{keywordtype}{int} x1, \textcolor{keywordtype}{int} y1, \textcolor{keywordtype}{int} x2, \textcolor{keywordtype}{int} y2, uint8\_t col);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{// Draw filled circle}}
+\DoxyCodeLine{37 \textcolor{keywordtype}{void} DrawFillCircle(\textcolor{keywordtype}{int} x0, \textcolor{keywordtype}{int} y0, \textcolor{keywordtype}{int} r, uint8\_t col);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{comment}{// Draw circle}}
+\DoxyCodeLine{40 \textcolor{keywordtype}{void} DrawCircle(\textcolor{keywordtype}{int} x0, \textcolor{keywordtype}{int} y0, \textcolor{keywordtype}{int} r, uint8\_t col);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{comment}{// Draw text (transparent background)}}
+\DoxyCodeLine{43 \textcolor{keywordtype}{void} DrawText(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *text, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, uint8\_t col);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{comment}{// Draw text double sized (transparent background)}}
+\DoxyCodeLine{46 \textcolor{keywordtype}{void} DrawText2(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *text, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, uint8\_t col);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{// Draw text with background}}
+\DoxyCodeLine{49 \textcolor{keywordtype}{void} DrawTextBg(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *text, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, uint8\_t col, uint8\_t bgcol);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{comment}{// Draw text buffer (size TEXTSIZE)}}
+\DoxyCodeLine{52 \textcolor{keywordtype}{void} DrawTextBuf(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *textbuf, uint8\_t col, uint8\_t bgcol);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{comment}{// Draw text buffer with foreground color (size FTEXTSIZE)}}
+\DoxyCodeLine{55 \textcolor{keywordtype}{void} DrawFTextBuf(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *textbuf, uint8\_t bgcol);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{comment}{// Draw image}}
+\DoxyCodeLine{58 \textcolor{keywordtype}{void} DrawImg(\textcolor{keyword}{const} uint8\_t *src, \textcolor{keywordtype}{int} xd, \textcolor{keywordtype}{int} yd, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} ws);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{comment}{// Draw image with transparency (col = transparency key color)}}
+\DoxyCodeLine{61 \textcolor{keywordtype}{void} DrawBlit(\textcolor{keyword}{const} uint8\_t *src, \textcolor{keywordtype}{int} xd, \textcolor{keywordtype}{int} yd, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} ws, uint8\_t col);}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{comment}{// DrawImgMat mode}}
+\DoxyCodeLine{64 \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{65     DRAWIMG\_WRAP,       \textcolor{comment}{// wrap image}}
+\DoxyCodeLine{66     DRAWIMG\_NOBORDER,   \textcolor{comment}{// no border (transparent border)}}
+\DoxyCodeLine{67     DRAWIMG\_CLAMP,      \textcolor{comment}{// clamp image (use last pixel as border)}}
+\DoxyCodeLine{68     DRAWING\_COLOR,      \textcolor{comment}{// color border}}
+\DoxyCodeLine{69     DRAWIMG\_TRANSP,     \textcolor{comment}{// transparent image with key color}}
+\DoxyCodeLine{70     DRAWIMG\_PERSP,      \textcolor{comment}{// perspective floor}}
+\DoxyCodeLine{71 \};}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \textcolor{comment}{// draw 8-\/bit image with 2D transformation matrix}}
+\DoxyCodeLine{74 \textcolor{comment}{//  src ... source image}}
+\DoxyCodeLine{75 \textcolor{comment}{//  ws ... source image width}}
+\DoxyCodeLine{76 \textcolor{comment}{//  hs ... source image height}}
+\DoxyCodeLine{77 \textcolor{comment}{//  x ... destination coordinate X}}
+\DoxyCodeLine{78 \textcolor{comment}{//  y ... destination coordinate Y}}
+\DoxyCodeLine{79 \textcolor{comment}{//  w ... destination width}}
+\DoxyCodeLine{80 \textcolor{comment}{//  h ... destination height}}
+\DoxyCodeLine{81 \textcolor{comment}{//  m ... transformation matrix (should be prepared using PrepDrawImg or PrepDrawPersp function)}}
+\DoxyCodeLine{82 \textcolor{comment}{//  mode ... draw mode DRAWIMG\_*}}
+\DoxyCodeLine{83 \textcolor{comment}{//  color ... key or border color (DRAWIMG\_PERSP mode: horizon offset)}}
+\DoxyCodeLine{84 \textcolor{comment}{// Note to wrap and perspective mode: Width and height of source image must be power of 2!}}
+\DoxyCodeLine{85 \textcolor{keywordtype}{void} DrawImgMat(\textcolor{keyword}{const} uint8\_t *src, \textcolor{keywordtype}{int} ws, \textcolor{keywordtype}{int} hs, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h, \textcolor{keyword}{const} \mbox{\hyperlink{classc_mat2_df}{cMat2Df}} *m, uint8\_t mode, uint8\_t color);}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{comment}{// draw image line interpolated}}
+\DoxyCodeLine{88 \textcolor{comment}{//  src = source image}}
+\DoxyCodeLine{89 \textcolor{comment}{//  xd,yd = destination coordinates}}
+\DoxyCodeLine{90 \textcolor{comment}{//  wd = destination width}}
+\DoxyCodeLine{91 \textcolor{comment}{//  ws = source width}}
+\DoxyCodeLine{92 \textcolor{comment}{//  wbs = source line pitch in bytes}}
+\DoxyCodeLine{93 \textcolor{keywordtype}{void} DrawImgLine(\textcolor{keyword}{const} uint8\_t *src, \textcolor{keywordtype}{int} xd, \textcolor{keywordtype}{int} yd, \textcolor{keywordtype}{int} wd, \textcolor{keywordtype}{int} ws, \textcolor{keywordtype}{int} wbs);}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{comment}{// generate gradient}}
+\DoxyCodeLine{96 \textcolor{keywordtype}{void} GenGrad(uint8\_t *dst, \textcolor{keywordtype}{int} w);}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \textcolor{comment}{// decode unsigned number into ASCIIZ text buffer (returns number of digits)}}
+\DoxyCodeLine{99 \textcolor{comment}{//  sep = thousand separator, 0=none}}
+\DoxyCodeLine{100 \textcolor{keywordtype}{int} DecUNum(\textcolor{keywordtype}{char} *buf, uint32\_t num, \textcolor{keywordtype}{char} sep = 0);}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{comment}{// decode signed number into ASCIIZ text buffer (returns number of digits)}}
+\DoxyCodeLine{103 \textcolor{comment}{//  sep = thousand separator, 0=none}}
+\DoxyCodeLine{104 \textcolor{keywordtype}{int} DecNum(\textcolor{keywordtype}{char} *buf, int32\_t num, \textcolor{keywordtype}{char} sep = 0);}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{comment}{// decode hex number (dig = number of digits)}}
+\DoxyCodeLine{107 \textcolor{keywordtype}{void} DecHexNum(\textcolor{keywordtype}{char} *buf, uint32\_t num, uint8\_t dig);}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{comment}{// decode 2 digits of number}}
+\DoxyCodeLine{110 \textcolor{keywordtype}{void} Dec2Dig(\textcolor{keywordtype}{char} *buf, uint8\_t num);}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \textcolor{comment}{// decode 2 digits of number with space character}}
+\DoxyCodeLine{113 \textcolor{keywordtype}{void} Dec2DigSpc(\textcolor{keywordtype}{char} *buf, uint8\_t num);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115 \textcolor{comment}{// get ascii text length}}
+\DoxyCodeLine{116 \textcolor{keywordtype}{int} TextLen(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *txt);}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_DRAW\_H}}
+
+\end{DoxyCode}

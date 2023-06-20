@@ -1,0 +1,435 @@
+\hypertarget{ff_8h_source}{}\doxysection{ff.\+h}
+\label{ff_8h_source}\index{lib/SDwrapper\_lib/FatFs\_SPI/ff15/source/ff.h@{lib/SDwrapper\_lib/FatFs\_SPI/ff15/source/ff.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\//}}
+\DoxyCodeLine{2 \textcolor{comment}{/  FatFs -\/ Generic FAT Filesystem module  R0.15                               /}}
+\DoxyCodeLine{3 \textcolor{comment}{/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\//}}
+\DoxyCodeLine{4 \textcolor{comment}{/}}
+\DoxyCodeLine{5 \textcolor{comment}{/ Copyright (C) 2022, ChaN, all right reserved.}}
+\DoxyCodeLine{6 \textcolor{comment}{/}}
+\DoxyCodeLine{7 \textcolor{comment}{/ FatFs module is an open source software. Redistribution and use of FatFs in}}
+\DoxyCodeLine{8 \textcolor{comment}{/ source and binary forms, with or without modification, are permitted provided}}
+\DoxyCodeLine{9 \textcolor{comment}{/ that the following condition is met:}}
+\DoxyCodeLine{10 \textcolor{comment}{}}
+\DoxyCodeLine{11 \textcolor{comment}{/ 1. Redistributions of source code must retain the above copyright notice,}}
+\DoxyCodeLine{12 \textcolor{comment}{/    this condition and the following disclaimer.}}
+\DoxyCodeLine{13 \textcolor{comment}{/}}
+\DoxyCodeLine{14 \textcolor{comment}{/ This software is provided by the copyright holder and contributors "{}AS IS"{}}}
+\DoxyCodeLine{15 \textcolor{comment}{/ and any warranties related to this software are DISCLAIMED.}}
+\DoxyCodeLine{16 \textcolor{comment}{/ The copyright owner or contributors be NOT LIABLE for any damages caused}}
+\DoxyCodeLine{17 \textcolor{comment}{/ by use of this software.}}
+\DoxyCodeLine{18 \textcolor{comment}{/}}
+\DoxyCodeLine{19 \textcolor{comment}{/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#ifndef FF\_DEFINED}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define FF\_DEFINED  80286   }\textcolor{comment}{/* Revision ID */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{26 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include "{}ffconf.h"{}}     \textcolor{comment}{/* FatFs configuration options */}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#if FF\_DEFINED != FFCONF\_DEF}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#error Wrong configuration file (ffconf.h).}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{/* Integer types used for FatFs API */}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#if defined(\_WIN32)     }\textcolor{comment}{/* Windows VC++ (for development only) */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define FF\_INTDEF 2}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include <windows.h>}}
+\DoxyCodeLine{41 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \_\_int64 QWORD;}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <float.h>}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define isnan(v) \_isnan(v)}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define isinf(v) (!\_finite(v))}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#elif (defined(\_\_STDC\_VERSION\_\_) \&\& \_\_STDC\_VERSION\_\_ >= 199901L) || defined(\_\_cplusplus)    }\textcolor{comment}{/* C99 or later */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define FF\_INTDEF 2}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{49 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    UINT;   \textcolor{comment}{/* int must be 16-\/bit or 32-\/bit */}}
+\DoxyCodeLine{50 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}   BYTE;   \textcolor{comment}{/* char must be 8-\/bit */}}
+\DoxyCodeLine{51 \textcolor{keyword}{typedef} uint16\_t        WORD;   \textcolor{comment}{/* 16-\/bit unsigned integer */}}
+\DoxyCodeLine{52 \textcolor{keyword}{typedef} uint32\_t        DWORD;  \textcolor{comment}{/* 32-\/bit unsigned integer */}}
+\DoxyCodeLine{53 \textcolor{keyword}{typedef} uint64\_t        QWORD;  \textcolor{comment}{/* 64-\/bit unsigned integer */}}
+\DoxyCodeLine{54 \textcolor{keyword}{typedef} WORD            WCHAR;  \textcolor{comment}{/* UTF-\/16 character type */}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#else   }\textcolor{comment}{/* Earlier than C99 */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#define FF\_INTDEF 1}}
+\DoxyCodeLine{58 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    UINT;   \textcolor{comment}{/* int must be 16-\/bit or 32-\/bit */}}
+\DoxyCodeLine{59 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}   BYTE;   \textcolor{comment}{/* char must be 8-\/bit */}}
+\DoxyCodeLine{60 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short}  WORD;   \textcolor{comment}{/* 16-\/bit unsigned integer */}}
+\DoxyCodeLine{61 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long}   DWORD;  \textcolor{comment}{/* 32-\/bit unsigned integer */}}
+\DoxyCodeLine{62 \textcolor{keyword}{typedef} WORD            WCHAR;  \textcolor{comment}{/* UTF-\/16 character type */}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{comment}{/* Type of file size and LBA variables */}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#if FF\_FS\_EXFAT}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#if FF\_INTDEF != 2}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#error exFAT feature wants C99 or later}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{72 \textcolor{keyword}{typedef} QWORD FSIZE\_t;}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#if FF\_LBA64}}
+\DoxyCodeLine{74 \textcolor{keyword}{typedef} QWORD LBA\_t;}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{76 \textcolor{keyword}{typedef} DWORD LBA\_t;}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#if FF\_LBA64}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#error exFAT needs to be enabled when enable 64-\/bit LBA}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{82 \textcolor{keyword}{typedef} DWORD FSIZE\_t;}
+\DoxyCodeLine{83 \textcolor{keyword}{typedef} DWORD LBA\_t;}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{comment}{/* Type of path name strings on FatFs API (TCHAR) */}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#if FF\_USE\_LFN \&\& FF\_LFN\_UNICODE == 1   }\textcolor{comment}{/* Unicode in UTF-\/16 encoding */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{91 \textcolor{keyword}{typedef} WCHAR TCHAR;}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#define \_T(x) L \#\# x}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#define \_TEXT(x) L \#\# x}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#elif FF\_USE\_LFN \&\& FF\_LFN\_UNICODE == 2 }\textcolor{comment}{/* Unicode in UTF-\/8 encoding */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{95 \textcolor{keyword}{typedef} \textcolor{keywordtype}{char} TCHAR;}
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#define \_T(x) u8 \#\# x}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#define \_TEXT(x) u8 \#\# x}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#elif FF\_USE\_LFN \&\& FF\_LFN\_UNICODE == 3 }\textcolor{comment}{/* Unicode in UTF-\/32 encoding */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{99 \textcolor{keyword}{typedef} DWORD TCHAR;}
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#define \_T(x) U \#\# x}}
+\DoxyCodeLine{101 \textcolor{preprocessor}{\#define \_TEXT(x) U \#\# x}}
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#elif FF\_USE\_LFN \&\& (FF\_LFN\_UNICODE < 0 || FF\_LFN\_UNICODE > 3)}}
+\DoxyCodeLine{103 \textcolor{preprocessor}{\#error Wrong FF\_LFN\_UNICODE setting}}
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#else                                   }\textcolor{comment}{/* ANSI/OEM code in SBCS/DBCS */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{105 \textcolor{keyword}{typedef} \textcolor{keywordtype}{char} TCHAR;}
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#define \_T(x) x}}
+\DoxyCodeLine{107 \textcolor{preprocessor}{\#define \_TEXT(x) x}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \textcolor{comment}{/* Definitions of volume management */}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#if FF\_MULTI\_PARTITION      }\textcolor{comment}{/* Multiple partition configuration */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{115 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{116     BYTE pd;    \textcolor{comment}{/* Physical drive number */}}
+\DoxyCodeLine{117     BYTE pt;    \textcolor{comment}{/* Partition: 0:Auto detect, 1-\/4:Forced partition) */}}
+\DoxyCodeLine{118 \} PARTITION;}
+\DoxyCodeLine{119 \textcolor{keyword}{extern} PARTITION VolToPart[];   \textcolor{comment}{/* Volume -\/ Partition mapping table */}}
+\DoxyCodeLine{120 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{preprocessor}{\#if FF\_STR\_VOLUME\_ID}}
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#ifndef FF\_VOLUME\_STRS}}
+\DoxyCodeLine{124 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* VolumeStr[FF\_VOLUMES];   \textcolor{comment}{/* User defied volume ID */}}
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{126 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130 \textcolor{comment}{/* Filesystem object structure (FATFS) */}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{133     BYTE    fs\_type;        \textcolor{comment}{/* Filesystem type (0:not mounted) */}}
+\DoxyCodeLine{134     BYTE    pdrv;           \textcolor{comment}{/* Volume hosting physical drive */}}
+\DoxyCodeLine{135     BYTE    ldrv;           \textcolor{comment}{/* Logical drive number (used only when FF\_FS\_REENTRANT) */}}
+\DoxyCodeLine{136     BYTE    n\_fats;         \textcolor{comment}{/* Number of FATs (1 or 2) */}}
+\DoxyCodeLine{137     BYTE    wflag;          \textcolor{comment}{/* win[] status (b0:dirty) */}}
+\DoxyCodeLine{138     BYTE    fsi\_flag;       \textcolor{comment}{/* FSINFO status (b7:disabled, b0:dirty) */}}
+\DoxyCodeLine{139     WORD    id;             \textcolor{comment}{/* Volume mount ID */}}
+\DoxyCodeLine{140     WORD    n\_rootdir;      \textcolor{comment}{/* Number of root directory entries (FAT12/16) */}}
+\DoxyCodeLine{141     WORD    csize;          \textcolor{comment}{/* Cluster size [sectors] */}}
+\DoxyCodeLine{142 \textcolor{preprocessor}{\#if FF\_MAX\_SS != FF\_MIN\_SS}}
+\DoxyCodeLine{143     WORD    ssize;          \textcolor{comment}{/* Sector size (512, 1024, 2048 or 4096) */}}
+\DoxyCodeLine{144 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{145 \textcolor{preprocessor}{\#if FF\_USE\_LFN}}
+\DoxyCodeLine{146     WCHAR*  lfnbuf;         \textcolor{comment}{/* LFN working buffer */}}
+\DoxyCodeLine{147 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{148 \textcolor{preprocessor}{\#if FF\_FS\_EXFAT}}
+\DoxyCodeLine{149     BYTE*   dirbuf;         \textcolor{comment}{/* Directory entry block scratchpad buffer for exFAT */}}
+\DoxyCodeLine{150 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{151 \textcolor{preprocessor}{\#if !FF\_FS\_READONLY}}
+\DoxyCodeLine{152     DWORD   last\_clst;      \textcolor{comment}{/* Last allocated cluster */}}
+\DoxyCodeLine{153     DWORD   free\_clst;      \textcolor{comment}{/* Number of free clusters */}}
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{155 \textcolor{preprocessor}{\#if FF\_FS\_RPATH}}
+\DoxyCodeLine{156     DWORD   cdir;           \textcolor{comment}{/* Current directory start cluster (0:root) */}}
+\DoxyCodeLine{157 \textcolor{preprocessor}{\#if FF\_FS\_EXFAT}}
+\DoxyCodeLine{158     DWORD   cdc\_scl;        \textcolor{comment}{/* Containing directory start cluster (invalid when cdir is 0) */}}
+\DoxyCodeLine{159     DWORD   cdc\_size;       \textcolor{comment}{/* b31-\/b8:Size of containing directory, b7-\/b0: Chain status */}}
+\DoxyCodeLine{160     DWORD   cdc\_ofs;        \textcolor{comment}{/* Offset in the containing directory (invalid when cdir is 0) */}}
+\DoxyCodeLine{161 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{162 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{163     DWORD   n\_fatent;       \textcolor{comment}{/* Number of FAT entries (number of clusters + 2) */}}
+\DoxyCodeLine{164     DWORD   fsize;          \textcolor{comment}{/* Number of sectors per FAT */}}
+\DoxyCodeLine{165     LBA\_t   volbase;        \textcolor{comment}{/* Volume base sector */}}
+\DoxyCodeLine{166     LBA\_t   fatbase;        \textcolor{comment}{/* FAT base sector */}}
+\DoxyCodeLine{167     LBA\_t   dirbase;        \textcolor{comment}{/* Root directory base sector (FAT12/16) or cluster (FAT32/exFAT) */}}
+\DoxyCodeLine{168     LBA\_t   database;       \textcolor{comment}{/* Data base sector */}}
+\DoxyCodeLine{169 \textcolor{preprocessor}{\#if FF\_FS\_EXFAT}}
+\DoxyCodeLine{170     LBA\_t   bitbase;        \textcolor{comment}{/* Allocation bitmap base sector */}}
+\DoxyCodeLine{171 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{172     LBA\_t   winsect;        \textcolor{comment}{/* Current sector appearing in the win[] */}}
+\DoxyCodeLine{173     BYTE    win[FF\_MAX\_SS]; \textcolor{comment}{/* Disk access window for Directory, FAT (and file data at tiny cfg) */}}
+\DoxyCodeLine{174 \} \mbox{\hyperlink{struct_f_a_t_f_s}{FATFS}};}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178 \textcolor{comment}{/* Object ID and allocation information (FFOBJID) */}}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{181     \mbox{\hyperlink{struct_f_a_t_f_s}{FATFS}}* fs;             \textcolor{comment}{/* Pointer to the hosting volume of this object */}}
+\DoxyCodeLine{182     WORD    id;             \textcolor{comment}{/* Hosting volume's mount ID */}}
+\DoxyCodeLine{183     BYTE    attr;           \textcolor{comment}{/* Object attribute */}}
+\DoxyCodeLine{184     BYTE    stat;           \textcolor{comment}{/* Object chain status (b1-\/0: =0:not contiguous, =2:contiguous, =3:fragmented in this session, b2:sub-\/directory stretched) */}}
+\DoxyCodeLine{185     DWORD   sclust;         \textcolor{comment}{/* Object data start cluster (0:no cluster or root directory) */}}
+\DoxyCodeLine{186     FSIZE\_t objsize;        \textcolor{comment}{/* Object size (valid when sclust != 0) */}}
+\DoxyCodeLine{187 \textcolor{preprocessor}{\#if FF\_FS\_EXFAT}}
+\DoxyCodeLine{188     DWORD   n\_cont;         \textcolor{comment}{/* Size of first fragment -\/ 1 (valid when stat == 3) */}}
+\DoxyCodeLine{189     DWORD   n\_frag;         \textcolor{comment}{/* Size of last fragment needs to be written to FAT (valid when not zero) */}}
+\DoxyCodeLine{190     DWORD   c\_scl;          \textcolor{comment}{/* Containing directory start cluster (valid when sclust != 0) */}}
+\DoxyCodeLine{191     DWORD   c\_size;         \textcolor{comment}{/* b31-\/b8:Size of containing directory, b7-\/b0: Chain status (valid when c\_scl != 0) */}}
+\DoxyCodeLine{192     DWORD   c\_ofs;          \textcolor{comment}{/* Offset in the containing directory (valid when file object and sclust != 0) */}}
+\DoxyCodeLine{193 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{194 \textcolor{preprocessor}{\#if FF\_FS\_LOCK}}
+\DoxyCodeLine{195     UINT    lockid;         \textcolor{comment}{/* File lock ID origin from 1 (index of file semaphore table Files[]) */}}
+\DoxyCodeLine{196 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{197 \} \mbox{\hyperlink{struct_f_f_o_b_j_i_d}{FFOBJID}};}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201 \textcolor{comment}{/* File object structure (FIL) */}}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{204     \mbox{\hyperlink{struct_f_f_o_b_j_i_d}{FFOBJID}}  obj;            \textcolor{comment}{/* Object identifier (must be the 1st member to detect invalid object pointer) */}}
+\DoxyCodeLine{205     BYTE    flag;           \textcolor{comment}{/* File status flags */}}
+\DoxyCodeLine{206     BYTE    err;            \textcolor{comment}{/* Abort flag (error code) */}}
+\DoxyCodeLine{207     FSIZE\_t fptr;           \textcolor{comment}{/* File read/write pointer (Zeroed on file open) */}}
+\DoxyCodeLine{208     DWORD   clust;          \textcolor{comment}{/* Current cluster of fpter (invalid when fptr is 0) */}}
+\DoxyCodeLine{209     LBA\_t   sect;           \textcolor{comment}{/* Sector number appearing in buf[] (0:invalid) */}}
+\DoxyCodeLine{210 \textcolor{preprocessor}{\#if !FF\_FS\_READONLY}}
+\DoxyCodeLine{211     LBA\_t   dir\_sect;       \textcolor{comment}{/* Sector number containing the directory entry (not used at exFAT) */}}
+\DoxyCodeLine{212     BYTE*   dir\_ptr;        \textcolor{comment}{/* Pointer to the directory entry in the win[] (not used at exFAT) */}}
+\DoxyCodeLine{213 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{214 \textcolor{preprocessor}{\#if FF\_USE\_FASTSEEK}}
+\DoxyCodeLine{215     DWORD*  cltbl;          \textcolor{comment}{/* Pointer to the cluster link map table (nulled on open, set by application) */}}
+\DoxyCodeLine{216 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{217 \textcolor{preprocessor}{\#if !FF\_FS\_TINY}}
+\DoxyCodeLine{218     BYTE    buf[FF\_MAX\_SS]; \textcolor{comment}{/* File private data read/write window */}}
+\DoxyCodeLine{219 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{220 \} \mbox{\hyperlink{struct_f_i_l}{FIL}};}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224 \textcolor{comment}{/* Directory object structure (DIR) */}}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{227     \mbox{\hyperlink{struct_f_f_o_b_j_i_d}{FFOBJID}}  obj;            \textcolor{comment}{/* Object identifier */}}
+\DoxyCodeLine{228     DWORD   dptr;           \textcolor{comment}{/* Current read/write offset */}}
+\DoxyCodeLine{229     DWORD   clust;          \textcolor{comment}{/* Current cluster */}}
+\DoxyCodeLine{230     LBA\_t   sect;           \textcolor{comment}{/* Current sector (0:Read operation has terminated) */}}
+\DoxyCodeLine{231     BYTE*   dir;            \textcolor{comment}{/* Pointer to the directory item in the win[] */}}
+\DoxyCodeLine{232     BYTE    fn[12];         \textcolor{comment}{/* SFN (in/out) \{body[8],ext[3],status[1]\} */}}
+\DoxyCodeLine{233 \textcolor{preprocessor}{\#if FF\_USE\_LFN}}
+\DoxyCodeLine{234     DWORD   blk\_ofs;        \textcolor{comment}{/* Offset of current entry block being processed (0xFFFFFFFF:Invalid) */}}
+\DoxyCodeLine{235 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{236 \textcolor{preprocessor}{\#if FF\_USE\_FIND}}
+\DoxyCodeLine{237     \textcolor{keyword}{const} TCHAR* pat;       \textcolor{comment}{/* Pointer to the name matching pattern */}}
+\DoxyCodeLine{238 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{239 \} \mbox{\hyperlink{struct_d_i_r}{DIR}};}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241 }
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243 \textcolor{comment}{/* File information structure (FILINFO) */}}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{245 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{246     FSIZE\_t fsize;          \textcolor{comment}{/* File size */}}
+\DoxyCodeLine{247     WORD    fdate;          \textcolor{comment}{/* Modified date */}}
+\DoxyCodeLine{248     WORD    ftime;          \textcolor{comment}{/* Modified time */}}
+\DoxyCodeLine{249     BYTE    fattrib;        \textcolor{comment}{/* File attribute */}}
+\DoxyCodeLine{250 \textcolor{preprocessor}{\#if FF\_USE\_LFN}}
+\DoxyCodeLine{251     TCHAR   altname[FF\_SFN\_BUF + 1];\textcolor{comment}{/* Alternative file name */}}
+\DoxyCodeLine{252     TCHAR   fname[FF\_LFN\_BUF + 1];  \textcolor{comment}{/* Primary file name */}}
+\DoxyCodeLine{253 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{254     TCHAR   fname[12 + 1];  \textcolor{comment}{/* File name */}}
+\DoxyCodeLine{255 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{256 \} \mbox{\hyperlink{struct_f_i_l_i_n_f_o}{FILINFO}};}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258 }
+\DoxyCodeLine{259 }
+\DoxyCodeLine{260 \textcolor{comment}{/* Format parameter structure (MKFS\_PARM) */}}
+\DoxyCodeLine{261 }
+\DoxyCodeLine{262 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{263     BYTE fmt;           \textcolor{comment}{/* Format option (FM\_FAT, FM\_FAT32, FM\_EXFAT and FM\_SFD) */}}
+\DoxyCodeLine{264     BYTE n\_fat;         \textcolor{comment}{/* Number of FATs */}}
+\DoxyCodeLine{265     UINT align;         \textcolor{comment}{/* Data area alignment (sector) */}}
+\DoxyCodeLine{266     UINT n\_root;        \textcolor{comment}{/* Number of root directory entries */}}
+\DoxyCodeLine{267     DWORD au\_size;      \textcolor{comment}{/* Cluster size (byte) */}}
+\DoxyCodeLine{268 \} \mbox{\hyperlink{struct_m_k_f_s___p_a_r_m}{MKFS\_PARM}};}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{270 }
+\DoxyCodeLine{271 }
+\DoxyCodeLine{272 \textcolor{comment}{/* File function return code (FRESULT) */}}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{274 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{275     FR\_OK = 0,              \textcolor{comment}{/* (0) Succeeded */}}
+\DoxyCodeLine{276     FR\_DISK\_ERR,            \textcolor{comment}{/* (1) A hard error occurred in the low level disk I/O layer */}}
+\DoxyCodeLine{277     FR\_INT\_ERR,             \textcolor{comment}{/* (2) Assertion failed */}}
+\DoxyCodeLine{278     FR\_NOT\_READY,           \textcolor{comment}{/* (3) The physical drive cannot work */}}
+\DoxyCodeLine{279     FR\_NO\_FILE,             \textcolor{comment}{/* (4) Could not find the file */}}
+\DoxyCodeLine{280     FR\_NO\_PATH,             \textcolor{comment}{/* (5) Could not find the path */}}
+\DoxyCodeLine{281     FR\_INVALID\_NAME,        \textcolor{comment}{/* (6) The path name format is invalid */}}
+\DoxyCodeLine{282     FR\_DENIED,              \textcolor{comment}{/* (7) Access denied due to prohibited access or directory full */}}
+\DoxyCodeLine{283     FR\_EXIST,               \textcolor{comment}{/* (8) Access denied due to prohibited access */}}
+\DoxyCodeLine{284     FR\_INVALID\_OBJECT,      \textcolor{comment}{/* (9) The file/directory object is invalid */}}
+\DoxyCodeLine{285     FR\_WRITE\_PROTECTED,     \textcolor{comment}{/* (10) The physical drive is write protected */}}
+\DoxyCodeLine{286     FR\_INVALID\_DRIVE,       \textcolor{comment}{/* (11) The logical drive number is invalid */}}
+\DoxyCodeLine{287     FR\_NOT\_ENABLED,         \textcolor{comment}{/* (12) The volume has no work area */}}
+\DoxyCodeLine{288     FR\_NO\_FILESYSTEM,       \textcolor{comment}{/* (13) There is no valid FAT volume */}}
+\DoxyCodeLine{289     FR\_MKFS\_ABORTED,        \textcolor{comment}{/* (14) The f\_mkfs() aborted due to any problem */}}
+\DoxyCodeLine{290     FR\_TIMEOUT,             \textcolor{comment}{/* (15) Could not get a grant to access the volume within defined period */}}
+\DoxyCodeLine{291     FR\_LOCKED,              \textcolor{comment}{/* (16) The operation is rejected according to the file sharing policy */}}
+\DoxyCodeLine{292     FR\_NOT\_ENOUGH\_CORE,     \textcolor{comment}{/* (17) LFN working buffer could not be allocated */}}
+\DoxyCodeLine{293     FR\_TOO\_MANY\_OPEN\_FILES, \textcolor{comment}{/* (18) Number of open files > FF\_FS\_LOCK */}}
+\DoxyCodeLine{294     FR\_INVALID\_PARAMETER    \textcolor{comment}{/* (19) Given parameter is invalid */}}
+\DoxyCodeLine{295 \} FRESULT;}
+\DoxyCodeLine{296 }
+\DoxyCodeLine{297 }
+\DoxyCodeLine{298 }
+\DoxyCodeLine{299 }
+\DoxyCodeLine{300 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{301 \textcolor{comment}{/* FatFs Module Application Interface                           */}}
+\DoxyCodeLine{302 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{303 }
+\DoxyCodeLine{304 FRESULT f\_open (\mbox{\hyperlink{struct_f_i_l}{FIL}}* fp, \textcolor{keyword}{const} TCHAR* path, BYTE mode);              \textcolor{comment}{/* Open or create a file */}}
+\DoxyCodeLine{305 FRESULT f\_close (\mbox{\hyperlink{struct_f_i_l}{FIL}}* fp);                                           \textcolor{comment}{/* Close an open file object */}}
+\DoxyCodeLine{306 FRESULT f\_read (\mbox{\hyperlink{struct_f_i_l}{FIL}}* fp, \textcolor{keywordtype}{void}* buff, UINT btr, UINT* br);            \textcolor{comment}{/* Read data from the file */}}
+\DoxyCodeLine{307 FRESULT f\_write (\mbox{\hyperlink{struct_f_i_l}{FIL}}* fp, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* buff, UINT btw, UINT* bw); \textcolor{comment}{/* Write data to the file */}}
+\DoxyCodeLine{308 FRESULT f\_lseek (\mbox{\hyperlink{struct_f_i_l}{FIL}}* fp, FSIZE\_t ofs);                              \textcolor{comment}{/* Move file pointer of the file object */}}
+\DoxyCodeLine{309 FRESULT f\_truncate (\mbox{\hyperlink{struct_f_i_l}{FIL}}* fp);                                        \textcolor{comment}{/* Truncate the file */}}
+\DoxyCodeLine{310 FRESULT f\_sync (\mbox{\hyperlink{struct_f_i_l}{FIL}}* fp);                                            \textcolor{comment}{/* Flush cached data of the writing file */}}
+\DoxyCodeLine{311 FRESULT f\_opendir (\mbox{\hyperlink{struct_d_i_r}{DIR}}* dp, \textcolor{keyword}{const} TCHAR* path);                      \textcolor{comment}{/* Open a directory */}}
+\DoxyCodeLine{312 FRESULT f\_closedir (\mbox{\hyperlink{struct_d_i_r}{DIR}}* dp);                                        \textcolor{comment}{/* Close an open directory */}}
+\DoxyCodeLine{313 FRESULT f\_readdir (\mbox{\hyperlink{struct_d_i_r}{DIR}}* dp, \mbox{\hyperlink{struct_f_i_l_i_n_f_o}{FILINFO}}* fno);                            \textcolor{comment}{/* Read a directory item */}}
+\DoxyCodeLine{314 FRESULT f\_findfirst (\mbox{\hyperlink{struct_d_i_r}{DIR}}* dp, \mbox{\hyperlink{struct_f_i_l_i_n_f_o}{FILINFO}}* fno, \textcolor{keyword}{const} TCHAR* path, \textcolor{keyword}{const} TCHAR* pattern); \textcolor{comment}{/* Find first file */}}
+\DoxyCodeLine{315 FRESULT f\_findnext (\mbox{\hyperlink{struct_d_i_r}{DIR}}* dp, \mbox{\hyperlink{struct_f_i_l_i_n_f_o}{FILINFO}}* fno);                           \textcolor{comment}{/* Find next file */}}
+\DoxyCodeLine{316 FRESULT f\_mkdir (\textcolor{keyword}{const} TCHAR* path);                                \textcolor{comment}{/* Create a sub directory */}}
+\DoxyCodeLine{317 FRESULT f\_unlink (\textcolor{keyword}{const} TCHAR* path);                               \textcolor{comment}{/* Delete an existing file or directory */}}
+\DoxyCodeLine{318 FRESULT f\_rename (\textcolor{keyword}{const} TCHAR* path\_old, \textcolor{keyword}{const} TCHAR* path\_new);    \textcolor{comment}{/* Rename/Move a file or directory */}}
+\DoxyCodeLine{319 FRESULT f\_stat (\textcolor{keyword}{const} TCHAR* path, \mbox{\hyperlink{struct_f_i_l_i_n_f_o}{FILINFO}}* fno);                    \textcolor{comment}{/* Get file status */}}
+\DoxyCodeLine{320 FRESULT f\_chmod (\textcolor{keyword}{const} TCHAR* path, BYTE attr, BYTE mask);          \textcolor{comment}{/* Change attribute of a file/dir */}}
+\DoxyCodeLine{321 FRESULT f\_utime (\textcolor{keyword}{const} TCHAR* path, \textcolor{keyword}{const} \mbox{\hyperlink{struct_f_i_l_i_n_f_o}{FILINFO}}* fno);         \textcolor{comment}{/* Change timestamp of a file/dir */}}
+\DoxyCodeLine{322 FRESULT f\_chdir (\textcolor{keyword}{const} TCHAR* path);                                \textcolor{comment}{/* Change current directory */}}
+\DoxyCodeLine{323 FRESULT f\_chdrive (\textcolor{keyword}{const} TCHAR* path);                              \textcolor{comment}{/* Change current drive */}}
+\DoxyCodeLine{324 FRESULT f\_getcwd (TCHAR* buff, UINT len);                           \textcolor{comment}{/* Get current directory */}}
+\DoxyCodeLine{325 FRESULT f\_getfree (\textcolor{keyword}{const} TCHAR* path, DWORD* nclst, \mbox{\hyperlink{struct_f_a_t_f_s}{FATFS}}** fatfs);    \textcolor{comment}{/* Get number of free clusters on the drive */}}
+\DoxyCodeLine{326 FRESULT f\_getlabel (\textcolor{keyword}{const} TCHAR* path, TCHAR* label, DWORD* vsn);   \textcolor{comment}{/* Get volume label */}}
+\DoxyCodeLine{327 FRESULT f\_setlabel (\textcolor{keyword}{const} TCHAR* label);                            \textcolor{comment}{/* Set volume label */}}
+\DoxyCodeLine{328 FRESULT f\_forward (\mbox{\hyperlink{struct_f_i_l}{FIL}}* fp, UINT(*func)(\textcolor{keyword}{const} BYTE*,UINT), UINT btf, UINT* bf);  \textcolor{comment}{/* Forward data to the stream */}}
+\DoxyCodeLine{329 FRESULT f\_expand (\mbox{\hyperlink{struct_f_i_l}{FIL}}* fp, FSIZE\_t fsz, BYTE opt);                   \textcolor{comment}{/* Allocate a contiguous block to the file */}}
+\DoxyCodeLine{330 FRESULT f\_mount (\mbox{\hyperlink{struct_f_a_t_f_s}{FATFS}}* fs, \textcolor{keyword}{const} TCHAR* path, BYTE opt);          \textcolor{comment}{/* Mount/Unmount a logical drive */}}
+\DoxyCodeLine{331 FRESULT f\_mkfs (\textcolor{keyword}{const} TCHAR* path, \textcolor{keyword}{const} \mbox{\hyperlink{struct_m_k_f_s___p_a_r_m}{MKFS\_PARM}}* opt, \textcolor{keywordtype}{void}* work, UINT len);    \textcolor{comment}{/* Create a FAT volume */}}
+\DoxyCodeLine{332 FRESULT f\_fdisk (BYTE pdrv, \textcolor{keyword}{const} LBA\_t ptbl[], \textcolor{keywordtype}{void}* work);        \textcolor{comment}{/* Divide a physical drive into some partitions */}}
+\DoxyCodeLine{333 FRESULT f\_setcp (WORD cp);                                          \textcolor{comment}{/* Set current code page */}}
+\DoxyCodeLine{334 \textcolor{keywordtype}{int} f\_putc (TCHAR c, \mbox{\hyperlink{struct_f_i_l}{FIL}}* fp);                                       \textcolor{comment}{/* Put a character to the file */}}
+\DoxyCodeLine{335 \textcolor{keywordtype}{int} f\_puts (\textcolor{keyword}{const} TCHAR* str, \mbox{\hyperlink{struct_f_i_l}{FIL}}* cp);                              \textcolor{comment}{/* Put a string to the file */}}
+\DoxyCodeLine{336 \textcolor{keywordtype}{int} f\_printf (\mbox{\hyperlink{struct_f_i_l}{FIL}}* fp, \textcolor{keyword}{const} TCHAR* str, ...);                       \textcolor{comment}{/* Put a formatted string to the file */}}
+\DoxyCodeLine{337 TCHAR* f\_gets (TCHAR* buff, \textcolor{keywordtype}{int} len, \mbox{\hyperlink{struct_f_i_l}{FIL}}* fp);                       \textcolor{comment}{/* Get a string from the file */}}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339 \textcolor{comment}{/* Some API fucntions are implemented as macro */}}
+\DoxyCodeLine{340 }
+\DoxyCodeLine{341 \textcolor{preprocessor}{\#define f\_eof(fp) ((int)((fp)-\/>fptr == (fp)-\/>obj.objsize))}}
+\DoxyCodeLine{342 \textcolor{preprocessor}{\#define f\_error(fp) ((fp)-\/>err)}}
+\DoxyCodeLine{343 \textcolor{preprocessor}{\#define f\_tell(fp) ((fp)-\/>fptr)}}
+\DoxyCodeLine{344 \textcolor{preprocessor}{\#define f\_size(fp) ((fp)-\/>obj.objsize)}}
+\DoxyCodeLine{345 \textcolor{preprocessor}{\#define f\_rewind(fp) f\_lseek((fp), 0)}}
+\DoxyCodeLine{346 \textcolor{preprocessor}{\#define f\_rewinddir(dp) f\_readdir((dp), 0)}}
+\DoxyCodeLine{347 \textcolor{preprocessor}{\#define f\_rmdir(path) f\_unlink(path)}}
+\DoxyCodeLine{348 \textcolor{preprocessor}{\#define f\_unmount(path) f\_mount(0, path, 0)}}
+\DoxyCodeLine{349 }
+\DoxyCodeLine{350 }
+\DoxyCodeLine{351 }
+\DoxyCodeLine{352 }
+\DoxyCodeLine{353 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{354 \textcolor{comment}{/* Additional Functions                                         */}}
+\DoxyCodeLine{355 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{356 }
+\DoxyCodeLine{357 \textcolor{comment}{/* RTC function (provided by user) */}}
+\DoxyCodeLine{358 \textcolor{preprocessor}{\#if !FF\_FS\_READONLY \&\& !FF\_FS\_NORTC}}
+\DoxyCodeLine{359 DWORD get\_fattime (\textcolor{keywordtype}{void});   \textcolor{comment}{/* Get current time */}}
+\DoxyCodeLine{360 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{361 }
+\DoxyCodeLine{362 }
+\DoxyCodeLine{363 \textcolor{comment}{/* LFN support functions (defined in ffunicode.c) */}}
+\DoxyCodeLine{364 }
+\DoxyCodeLine{365 \textcolor{preprocessor}{\#if FF\_USE\_LFN >= 1}}
+\DoxyCodeLine{366 WCHAR ff\_oem2uni (WCHAR oem, WORD cp);  \textcolor{comment}{/* OEM code to Unicode conversion */}}
+\DoxyCodeLine{367 WCHAR ff\_uni2oem (DWORD uni, WORD cp);  \textcolor{comment}{/* Unicode to OEM code conversion */}}
+\DoxyCodeLine{368 DWORD ff\_wtoupper (DWORD uni);          \textcolor{comment}{/* Unicode upper-\/case conversion */}}
+\DoxyCodeLine{369 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{370 }
+\DoxyCodeLine{371 }
+\DoxyCodeLine{372 \textcolor{comment}{/* O/S dependent functions (samples available in ffsystem.c) */}}
+\DoxyCodeLine{373 }
+\DoxyCodeLine{374 \textcolor{preprocessor}{\#if FF\_USE\_LFN == 3     }\textcolor{comment}{/* Dynamic memory allocation */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{375 \textcolor{keywordtype}{void}* ff\_memalloc (UINT msize);     \textcolor{comment}{/* Allocate memory block */}}
+\DoxyCodeLine{376 \textcolor{keywordtype}{void} ff\_memfree (\textcolor{keywordtype}{void}* mblock);     \textcolor{comment}{/* Free memory block */}}
+\DoxyCodeLine{377 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{378 \textcolor{preprocessor}{\#if FF\_FS\_REENTRANT }\textcolor{comment}{/* Sync functions */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{379 \textcolor{keywordtype}{int} ff\_mutex\_create (\textcolor{keywordtype}{int} vol);      \textcolor{comment}{/* Create a sync object */}}
+\DoxyCodeLine{380 \textcolor{keywordtype}{void} ff\_mutex\_delete (\textcolor{keywordtype}{int} vol);     \textcolor{comment}{/* Delete a sync object */}}
+\DoxyCodeLine{381 \textcolor{keywordtype}{int} ff\_mutex\_take (\textcolor{keywordtype}{int} vol);        \textcolor{comment}{/* Lock sync object */}}
+\DoxyCodeLine{382 \textcolor{keywordtype}{void} ff\_mutex\_give (\textcolor{keywordtype}{int} vol);       \textcolor{comment}{/* Unlock sync object */}}
+\DoxyCodeLine{383 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{384 }
+\DoxyCodeLine{385 }
+\DoxyCodeLine{386 }
+\DoxyCodeLine{387 }
+\DoxyCodeLine{388 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{389 \textcolor{comment}{/* Flags and Offset Address                                     */}}
+\DoxyCodeLine{390 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{391 }
+\DoxyCodeLine{392 \textcolor{comment}{/* File access mode and open method flags (3rd argument of f\_open) */}}
+\DoxyCodeLine{393 \textcolor{preprocessor}{\#define FA\_READ             0x01}}
+\DoxyCodeLine{394 \textcolor{preprocessor}{\#define FA\_WRITE            0x02}}
+\DoxyCodeLine{395 \textcolor{preprocessor}{\#define FA\_OPEN\_EXISTING    0x00}}
+\DoxyCodeLine{396 \textcolor{preprocessor}{\#define FA\_CREATE\_NEW       0x04}}
+\DoxyCodeLine{397 \textcolor{preprocessor}{\#define FA\_CREATE\_ALWAYS    0x08}}
+\DoxyCodeLine{398 \textcolor{preprocessor}{\#define FA\_OPEN\_ALWAYS      0x10}}
+\DoxyCodeLine{399 \textcolor{preprocessor}{\#define FA\_OPEN\_APPEND      0x30}}
+\DoxyCodeLine{400 }
+\DoxyCodeLine{401 \textcolor{comment}{/* Fast seek controls (2nd argument of f\_lseek) */}}
+\DoxyCodeLine{402 \textcolor{preprocessor}{\#define CREATE\_LINKMAP  ((FSIZE\_t)0 -\/ 1)}}
+\DoxyCodeLine{403 }
+\DoxyCodeLine{404 \textcolor{comment}{/* Format options (2nd argument of f\_mkfs) */}}
+\DoxyCodeLine{405 \textcolor{preprocessor}{\#define FM\_FAT      0x01}}
+\DoxyCodeLine{406 \textcolor{preprocessor}{\#define FM\_FAT32    0x02}}
+\DoxyCodeLine{407 \textcolor{preprocessor}{\#define FM\_EXFAT    0x04}}
+\DoxyCodeLine{408 \textcolor{preprocessor}{\#define FM\_ANY      0x07}}
+\DoxyCodeLine{409 \textcolor{preprocessor}{\#define FM\_SFD      0x08}}
+\DoxyCodeLine{410 }
+\DoxyCodeLine{411 \textcolor{comment}{/* Filesystem type (FATFS.fs\_type) */}}
+\DoxyCodeLine{412 \textcolor{preprocessor}{\#define FS\_FAT12    1}}
+\DoxyCodeLine{413 \textcolor{preprocessor}{\#define FS\_FAT16    2}}
+\DoxyCodeLine{414 \textcolor{preprocessor}{\#define FS\_FAT32    3}}
+\DoxyCodeLine{415 \textcolor{preprocessor}{\#define FS\_EXFAT    4}}
+\DoxyCodeLine{416 }
+\DoxyCodeLine{417 \textcolor{comment}{/* File attribute bits for directory entry (FILINFO.fattrib) */}}
+\DoxyCodeLine{418 \textcolor{preprocessor}{\#define AM\_RDO  0x01    }\textcolor{comment}{/* Read only */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{419 \textcolor{preprocessor}{\#define AM\_HID  0x02    }\textcolor{comment}{/* Hidden */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{420 \textcolor{preprocessor}{\#define AM\_SYS  0x04    }\textcolor{comment}{/* System */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{421 \textcolor{preprocessor}{\#define AM\_DIR  0x10    }\textcolor{comment}{/* Directory */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{422 \textcolor{preprocessor}{\#define AM\_ARC  0x20    }\textcolor{comment}{/* Archive */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{423 }
+\DoxyCodeLine{424 }
+\DoxyCodeLine{425 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{426 \}}
+\DoxyCodeLine{427 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{428 }
+\DoxyCodeLine{429 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* FF\_DEFINED */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

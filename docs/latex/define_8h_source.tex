@@ -1,0 +1,203 @@
+\hypertarget{define_8h_source}{}\doxysection{define.\+h}
+\label{define_8h_source}\index{lib/vga\_lib/include/vga/define.h@{lib/vga\_lib/include/vga/define.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//                     VGA common definitions of C and ASM}}
+\DoxyCodeLine{5 \textcolor{comment}{//}}
+\DoxyCodeLine{6 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}vga/vga\_config.h"{}} \textcolor{comment}{// VGA configuration}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define LAYERS\_MAX 4 }\textcolor{comment}{// max. number of layers (should be 4)}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define BLACK\_MAX MAXX }\textcolor{comment}{// size of buffer with black color (used to clear rest of unused line)}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{// VGA PIO program}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define BASE\_OFFSET 17 }\textcolor{comment}{// offset of base layer program}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define LAYER\_OFFSET 0 }\textcolor{comment}{// offset of overlapped layer program}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{// layer program}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define LAYERPROG\_BASE 0  }\textcolor{comment}{// program of base layer (overlapped layers are OFF)}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define LAYERPROG\_KEY 1   }\textcolor{comment}{// layer with key color}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define LAYERPROG\_BLACK 2 }\textcolor{comment}{// layer with black key color}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define LAYERPROG\_WHITE 3 }\textcolor{comment}{// layer with white key color}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define LAYERPROG\_MONO 4  }\textcolor{comment}{// layer with mono pattern or simple color}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define LAYERPROG\_RLE 5   }\textcolor{comment}{// layer with RLE compression}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define LAYERPROG\_NUM 6 }\textcolor{comment}{// number of layer programs}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{comment}{// layer mode (CPP = clock cycles per pixel)}}
+\DoxyCodeLine{29 \textcolor{comment}{//  Control buffer: 16 bytes}}
+\DoxyCodeLine{30 \textcolor{comment}{//  Data buffer: 4 bytes}}
+\DoxyCodeLine{31 \textcolor{comment}{// fast sprites can be up Control buffer: width*2 bytes}}
+\DoxyCodeLine{32 \textcolor{comment}{// sprites Data buffer: width bytes}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define LAYERMODE\_BASE 0             }\textcolor{comment}{// base layer}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define LAYERMODE\_KEY 1              }\textcolor{comment}{// layer with key color}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define LAYERMODE\_BLACK 2            }\textcolor{comment}{// layer with black key color}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define LAYERMODE\_WHITE 3            }\textcolor{comment}{// layer with white key color}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define LAYERMODE\_MONO 4             }\textcolor{comment}{// layer with mono pattern}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define LAYERMODE\_COLOR 5            }\textcolor{comment}{// layer with simple color}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define LAYERMODE\_RLE 6              }\textcolor{comment}{// layer with RLE compression}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define LAYERMODE\_SPRITEKEY 7        }\textcolor{comment}{// layer with sprites with key color}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define LAYERMODE\_SPRITEBLACK 8      }\textcolor{comment}{// layer with sprites with black key color}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define LAYERMODE\_SPRITEWHITE 9      }\textcolor{comment}{// layer with sprites with white key color}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define LAYERMODE\_FASTSPRITEKEY 10   }\textcolor{comment}{// layer with fast sprites with key color}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define LAYERMODE\_FASTSPRITEBLACK 11 }\textcolor{comment}{// layer with fast sprites with black key color}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define LAYERMODE\_FASTSPRITEWHITE 12 }\textcolor{comment}{// layer with fast sprites with white key color}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define LAYERMODE\_PERSPKEY 13        }\textcolor{comment}{// layer with key color and image with transformation matrix}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define LAYERMODE\_PERSPBLACK 14      }\textcolor{comment}{// layer with black key color and image with transformation matrix}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define LAYERMODE\_PERSPWHITE 15      }\textcolor{comment}{// layer with white key color and image with transformation matrix}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define LAYERMODE\_PERSP2KEY 16       }\textcolor{comment}{// layer with key color and double-\/pixel image with transformation matrix}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define LAYERMODE\_PERSP2BLACK 17     }\textcolor{comment}{// layer with black key color and double-\/pixel image with transformation matrix}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define LAYERMODE\_PERSP2WHITE 18     }\textcolor{comment}{// layer with white key color and double-\/pixel image with transformation matrix}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define LAYERMODE\_NUM 19 }\textcolor{comment}{// number of overlapped layer modes}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{comment}{// Structure of sprite sSprite (on change update structure sSprite in vga\_layer.h)}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#define SSPRITE\_IMG 0     }\textcolor{comment}{// u8*    img;    // pointer to image data}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#define SSPRITE\_X0 4      }\textcolor{comment}{// u8*    x0; // pointer to pixel offset of start of lines/4 (used with fast sprites)}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#define SSPRITE\_W0 8      }\textcolor{comment}{// u8*    w0; // pointer to pixel length of length of lines/4 (used with fast sprites)}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#define SSPRITE\_KEYCOL 12 }\textcolor{comment}{// u32    keycol; // key color}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#define SSPRITE\_X 16      }\textcolor{comment}{// s16    x;  // sprite X-\/coordinate on the screen}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define SSPRITE\_Y 18      }\textcolor{comment}{// s16    y;  // sprite Y-\/coordinate on the screen}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define SSPRITE\_W 20      }\textcolor{comment}{// u16    w;  // sprite width}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define SSPRITE\_H 22      }\textcolor{comment}{// u16    h;  // sprite height}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define SSPRITE\_WB 24     }\textcolor{comment}{// u16    wb; // sprite pitch (number of bytes between lines)}}
+\DoxyCodeLine{65 \textcolor{comment}{// u16  res;    // ...reserved, structure align}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define SSPRITE\_SIZE 28 }\textcolor{comment}{// size of sSprite structure}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{comment}{// Structure of layer screen sLayer (on change update structure sLayer in vga\_layer.h)}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define SLAYER\_IMG 0        }\textcolor{comment}{// const u8*    img;    // pointer to image in current layer format, or sprite list}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#define SLAYER\_PAR 4        }\textcolor{comment}{// const void* par; // additional parameter (RLE index table, transformation matrix)}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#define SLAYER\_INIT 8       }\textcolor{comment}{// u32  init;   // init word sent on start of scanline}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define SLAYER\_KEYCOL 12    }\textcolor{comment}{// u32  keycol; // key color}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define SLAYER\_TRANS 16     }\textcolor{comment}{// u16  trans;  // trans count}}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#define SLAYER\_X 18         }\textcolor{comment}{// s16  x;  // start X coordinate}}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#define SLAYER\_Y 20         }\textcolor{comment}{// s16  y;  // start Y coordinate}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#define SLAYER\_W 22         }\textcolor{comment}{// u16  w;  // width in pixels}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#define SLAYER\_H 24         }\textcolor{comment}{// u16  h;  // height}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#define SLAYER\_WB 26        }\textcolor{comment}{// u16  wb; // image width in bytes (pitch of lines)}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#define SLAYER\_MODE 28      }\textcolor{comment}{// u8   mode;   // layer mode}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#define SLAYER\_HORIZ 29     }\textcolor{comment}{// s8   horiz;  // horizon of perspective projection/4 (only with LAYERMODE\_PERSP* modes, 0=no perspecitve, <0 ceilling)}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#define SLAYER\_XBITS 30     }\textcolor{comment}{// u8   xbits;  // number of bits of width of source image (only with LAYERMODE\_PERSP* modes)}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#define SLAYER\_YBITS 31     }\textcolor{comment}{// u8   ybits;  // number of bits of height of source image (only with LAYERMODE\_PERSP* modes)}}
+\DoxyCodeLine{83 \textcolor{preprocessor}{\#define SLAYER\_SPRITENUM 32 }\textcolor{comment}{// u16  spritenum; // number of sprites}}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#define SLAYER\_ON 34        }\textcolor{comment}{// Bool on; // layer is ON}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#define SLAYER\_CPP 35       }\textcolor{comment}{// u8   cpp;    // current clock pulses per pixel (used to calculate X coordinate)}}
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#define SLAYER\_SIZE 36      }\textcolor{comment}{// size of sLayer structure}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{comment}{// Structure of video segment sSegm (on change update structure sSegm in vga\_screen.h)}}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#define SSEGM\_WIDTH 0 }\textcolor{comment}{// u16    width;  // width of this video segment in pixels (must be multiple of 4, 0=inactive segment)}}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#define SSEGM\_WB 2    }\textcolor{comment}{// u16    wb; // pitch -\/ number of bytes between lines}}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#define SSEGM\_OFFX 4  }\textcolor{comment}{// s16    offx;   // display offset at X direction (must be multiple of 4)}}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#define SSEGM\_OFFY 6  }\textcolor{comment}{// s16    offy;   // display offset at Y direction}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#define SSEGM\_WRAPX 8 }\textcolor{comment}{// u16    wrapx;  // wrap width in X direction (number of pixels, must be multiply of 4 and > 0)}}
+\DoxyCodeLine{94 \textcolor{comment}{//  text modes: wrapx must be multiply of 8}}
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#define SSEGM\_WRAPY 10 }\textcolor{comment}{// u16   wrapy;  // wrap width in Y direction (number of lines, cannot be 0)}}
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#define SSEGM\_DATA 12  }\textcolor{comment}{// const void* data; // pointer to video buffer with image data}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#define SSEGM\_FORM 16  }\textcolor{comment}{// u8    form;   // graphics format GF\_*}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#define SSEGM\_DBLY 17  }\textcolor{comment}{// bool dbly;    // double Y (2 scanlines per 1 image line)}}
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#define SSEGM\_PAR3 18  }\textcolor{comment}{// u16   par3;   // SSEGM\_PAR3 parameter 3}}
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#define SSEGM\_PAR 20   }\textcolor{comment}{// u32   par;    // parameter 1: color, pointer to palettes, tile source, font}}
+\DoxyCodeLine{101 \textcolor{preprocessor}{\#define SSEGM\_PAR2 24  }\textcolor{comment}{// u32   par2;   // parameter 2}}
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#define SSEGM\_SIZE 28  }\textcolor{comment}{// size of sSegm structure}}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \textcolor{comment}{// Structure of video strip sStrip (on change update structure sStrip in vga\_screen.h)}}
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#define SSTRIP\_HEIGHT 0                       }\textcolor{comment}{// u16    height;     // height of this strip in number of scanlines}}
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#define SSTRIP\_NUM 2                          }\textcolor{comment}{// u16    num;        // number of video segments}}
+\DoxyCodeLine{107 \textcolor{preprocessor}{\#define SSTRIP\_SEG 4                          }\textcolor{comment}{// sSegm  seg[SEGMAX];}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#define SSTRIP\_SIZE (4 + SSEGM\_SIZE * SEGMAX) }\textcolor{comment}{// size of sStrip structure (= 4 + 28*8 = 228 bytes)}}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110 \textcolor{comment}{// Structure of video screen sScreen (on change update structure sScreen in vga\_screen.h)}}
+\DoxyCodeLine{111 \textcolor{preprocessor}{\#define SSCREEN\_NUM 0                             }\textcolor{comment}{// u16    num;        // number of video strips}}
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#define SSCREEN\_BACKUP 2                          }\textcolor{comment}{// u16    num\_backup; // backup number of video strips during display OFF}}
+\DoxyCodeLine{113 \textcolor{preprocessor}{\#define SSCREEN\_STRIP 4                           }\textcolor{comment}{// sStrip strip[STRIPMAX]; // list of video strips}}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#define SSCREEN\_SIZE (4 + SSTRIP\_SIZE * STRIPMAX) }\textcolor{comment}{// size of sScreen structure (= 4 + 228*8 = 1828 bytes)}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116 \textcolor{comment}{// -\/-\/-\/ graphics formats}}
+\DoxyCodeLine{117 \textcolor{comment}{// There are 3 groups of formats -\/ separated due internal reasons, do not mix them.}}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \textcolor{comment}{// 1st group of formats -\/ rendered specially}}
+\DoxyCodeLine{120 \textcolor{preprocessor}{\#define GF\_COLOR 0 }\textcolor{comment}{// simple color (par=color pattern 4-\/pixels even line, par2=color pattern 4-\/pixels odd line)}}
+\DoxyCodeLine{121 \textcolor{comment}{//  Data buffer: width bytes (320 pixels: 320 bytes)}}
+\DoxyCodeLine{122 \textcolor{comment}{//  Control buffer: 8 bytes}}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124 \textcolor{comment}{// 2nd group of formats -\/ rendering into control buffer cbuf}}
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#define GF\_GRAPH8 1 }\textcolor{comment}{// native 8-\/bit graphics (X1Y1R2G2B2) -\/ fast, transfers "{}as is"{} to PIO}}
+\DoxyCodeLine{126 \textcolor{comment}{//  (num = number of pixels/4 = number of bytes/4)}}
+\DoxyCodeLine{127 \textcolor{comment}{//  Control buffer: 8 bytes (320 pixels: 8 bytes)}}
+\DoxyCodeLine{128 \textcolor{preprocessor}{\#define GF\_TILE 2 }\textcolor{comment}{// tiles (par = tile table with one column of tiles,}}
+\DoxyCodeLine{129 \textcolor{comment}{//  par2 = tile height, par3 = tile width as multiple of 4)}}
+\DoxyCodeLine{130 \textcolor{comment}{//  Control buffer: width/tile width*8 bytes (320 pixels of 32x32: 80 bytes)}}
+\DoxyCodeLine{131 \textcolor{preprocessor}{\#define GF\_TILE2 3 }\textcolor{comment}{// alternate tiles (par = tile table with one row of tiles,}}
+\DoxyCodeLine{132 \textcolor{comment}{//  par2 = LOW tile height, HIGH tile width bytes,}}
+\DoxyCodeLine{133 \textcolor{comment}{//  par3 = tile width as multiple of 4)}}
+\DoxyCodeLine{134 \textcolor{comment}{//  Control buffer: width/tile width*8 bytes (320 pixels of 32x32: 80 bytes)}}
+\DoxyCodeLine{135 \textcolor{preprocessor}{\#define GF\_PROGRESS 4 }\textcolor{comment}{// horizontal progress indicator (data = values 0..255 of 4-\/pixels in rows,}}
+\DoxyCodeLine{136 \textcolor{comment}{//    par = scanline gradient < data, par2 = scanline gradient >= data)}}
+\DoxyCodeLine{137 \textcolor{comment}{//  Control buffer: 16 bytes}}
+\DoxyCodeLine{138 \textcolor{preprocessor}{\#define GF\_GRAD1 5 }\textcolor{comment}{// gradient with 1 line}}
+\DoxyCodeLine{139 \textcolor{comment}{//  Control buffer: 8 bytes (320 pixels: 8 bytes)}}
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#define GF\_GRAD2 6 }\textcolor{comment}{// gradient with 2 lines}}
+\DoxyCodeLine{141 \textcolor{comment}{//  Control buffer: 8 bytes (320 pixels: 8 bytes)}}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143 \textcolor{preprocessor}{\#define GF\_GRP2MIN GF\_GRAPH8 }\textcolor{comment}{// 2nd group minimal format}}
+\DoxyCodeLine{144 \textcolor{preprocessor}{\#define GF\_GRP2MAX GF\_GRAD2  }\textcolor{comment}{// 2nd group maximal format}}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146 \textcolor{comment}{// 3rd group of formats -\/ rendering into data buffer dbuf}}
+\DoxyCodeLine{147 \textcolor{comment}{//  Control buffer: 8 bytes}}
+\DoxyCodeLine{148 \textcolor{comment}{//  Data buffer: width bytes}}
+\DoxyCodeLine{149 \textcolor{preprocessor}{\#define GF\_GRAPH4 7 }\textcolor{comment}{// 4-\/bit graphics (num = number of pixels/4 = number of bytes/2;}}
+\DoxyCodeLine{150 \textcolor{comment}{//  par = pointer to 16-\/color palette translation table)}}
+\DoxyCodeLine{151 \textcolor{preprocessor}{\#define GF\_GRAPH2 8 }\textcolor{comment}{// 2-\/bit graphics (num = number of pixels/4 = number of bytes,}}
+\DoxyCodeLine{152 \textcolor{comment}{//  par = pointer to 4-\/color palette translation table)}}
+\DoxyCodeLine{153 \textcolor{preprocessor}{\#define GF\_GRAPH1 9 }\textcolor{comment}{// 1-\/bit graphics (num = number of pixels/8 = number of bytes,}}
+\DoxyCodeLine{154 \textcolor{comment}{//  par = 2 colors of palettes)}}
+\DoxyCodeLine{155 \textcolor{preprocessor}{\#define GF\_MTEXT 10 }\textcolor{comment}{// 8-\/pixel mono text (num = number of characters, font is 8-\/bit width,}}
+\DoxyCodeLine{156 \textcolor{comment}{//  par = pointer to 1-\/bit font, par2 = 2 colors of palettes)}}
+\DoxyCodeLine{157 \textcolor{preprocessor}{\#define GF\_ATEXT 11 }\textcolor{comment}{// 8-\/pixel attribute text, character + 2x4 bit attributes}}
+\DoxyCodeLine{158 \textcolor{comment}{//      (num = number of characters, font is 8-\/bit width,}}
+\DoxyCodeLine{159 \textcolor{comment}{//  par = pointer to 1-\/bit font, par2 = pointer to 16 colors of palettes)}}
+\DoxyCodeLine{160 \textcolor{preprocessor}{\#define GF\_FTEXT 12 }\textcolor{comment}{// 8-\/pixel foreground color text, character + foreground color}}
+\DoxyCodeLine{161 \textcolor{comment}{//      (num = number of characters, font is 8-\/bit width,}}
+\DoxyCodeLine{162 \textcolor{comment}{//  par = pointer to 1-\/bit font, par2 = background color)}}
+\DoxyCodeLine{163 \textcolor{preprocessor}{\#define GF\_CTEXT 13 }\textcolor{comment}{// 8-\/pixel color text, character + background color + foreground color}}
+\DoxyCodeLine{164 \textcolor{comment}{//      (num = number of characters, font is 8-\/bit width,}}
+\DoxyCodeLine{165 \textcolor{comment}{//  par = pointer to 1-\/bit font)}}
+\DoxyCodeLine{166 \textcolor{preprocessor}{\#define GF\_GTEXT 14     }\textcolor{comment}{// 8-\/pixel gradient text (par = pointer to 1-\/bit font, par2 = pointer to color array)}}
+\DoxyCodeLine{167 \textcolor{preprocessor}{\#define GF\_DTEXT 15     }\textcolor{comment}{// 8-\/pixel double gradient text (par = pointer to 1-\/bit font, par2 = pointer to color array)}}
+\DoxyCodeLine{168 \textcolor{preprocessor}{\#define GF\_LEVEL 16     }\textcolor{comment}{// level graph (data=samples 0..255, par = 2 colors of palettes, par2 = Y zero level 0..255)}}
+\DoxyCodeLine{169 \textcolor{preprocessor}{\#define GF\_LEVELGRAD 17 }\textcolor{comment}{// level gradient graph (data = samples 0..255, par = scanline gradient < data, par2 = scanline gradient >= data)}}
+\DoxyCodeLine{170 \textcolor{preprocessor}{\#define GF\_OSCIL 18     }\textcolor{comment}{// oscilloscope pixel graph (data=samples 0..255, par = 2 colors of palettes, par2 = height of pixels -\/ 1)}}
+\DoxyCodeLine{171 \textcolor{preprocessor}{\#define GF\_OSCLINE 19   }\textcolor{comment}{// oscilloscope line graph (data=samples 0..255, par = 2 colors of palettes)}}
+\DoxyCodeLine{172 \textcolor{preprocessor}{\#define GF\_PLANE2 20    }\textcolor{comment}{// 4 colors on 2 graphic planes (data=graphic, par=offset of 2nd graphic plane,}}
+\DoxyCodeLine{173 \textcolor{comment}{//  par2 = pointer to 4-\/color palette translation table)}}
+\DoxyCodeLine{174 \textcolor{preprocessor}{\#define GF\_ATTRIB8 21 }\textcolor{comment}{// 2x4 bit color attribute per 8x8 pixel sample (data=mono graphic, par=offset of color attributes,}}
+\DoxyCodeLine{175 \textcolor{comment}{//  par2 = pointer to 16-\/color palette table)}}
+\DoxyCodeLine{176 \textcolor{preprocessor}{\#define GF\_GRAPH8MAT 22 }\textcolor{comment}{// 8-\/bit graphics with 2D matrix transformation, using hardware interpolator inter1 (inter1 state is not saved during interrup)}}
+\DoxyCodeLine{177 \textcolor{comment}{//  (data=image, par=pointer to 6 matrix integer parameters m11,m12..m23 ((int)(m*FRACTMUL)),}}
+\DoxyCodeLine{178 \textcolor{comment}{//  par2 LOW=number of bits of image width, par2 HIGH=number of bits of image height)}}
+\DoxyCodeLine{179 \textcolor{preprocessor}{\#define GF\_GRAPH8PERSP 23 }\textcolor{comment}{// 8-\/bit graphics with perspective, using hardware interpolator inter1 (inter1 state is not saved during interrup)}}
+\DoxyCodeLine{180 \textcolor{comment}{//  (data=image, par=pointer to 6 matrix integer parameters m11,m12..m23 ((int)(m*FRACTMUL)),}}
+\DoxyCodeLine{181 \textcolor{comment}{//  par2 LOW=number of bits of image width, par2 HIGH=number of bits of image height,}}
+\DoxyCodeLine{182 \textcolor{comment}{//  par3=horizon offset)}}
+\DoxyCodeLine{183 \textcolor{preprocessor}{\#define GF\_TILEPERSP 24 }\textcolor{comment}{// tiles with perspective, using hardware interpolators inter0 and inter1 (their state is not saved during interrup)}}
+\DoxyCodeLine{184 \textcolor{comment}{//  (data=tile map, par=one column of tiles, par2=pointer to integer matrix,}}
+\DoxyCodeLine{185 \textcolor{comment}{//  wb LOW=number of bits of map width, wb HIGH=number of bits of map height,}}
+\DoxyCodeLine{186 \textcolor{comment}{//  par3 LOW=number of bits of tile size, par3 HIGH=horizon offset/4 or 0=no perspective or <0=ceilling,}}
+\DoxyCodeLine{187 \textcolor{comment}{//  wrapy=segment height)}}
+\DoxyCodeLine{188 \textcolor{preprocessor}{\#define GF\_TILEPERSP15 25 }\textcolor{comment}{// tiles with perspective, 1.5 pixels (parameters as GF\_TILEPERSP)}}
+\DoxyCodeLine{189 \textcolor{preprocessor}{\#define GF\_TILEPERSP2 26  }\textcolor{comment}{// tiles with perspective, double pixels (parameters as GF\_TILEPERSP)}}
+\DoxyCodeLine{190 \textcolor{preprocessor}{\#define GF\_TILEPERSP3 27  }\textcolor{comment}{// tiles with perspective, triple pixels (parameters as GF\_TILEPERSP)}}
+\DoxyCodeLine{191 \textcolor{preprocessor}{\#define GF\_TILEPERSP4 28  }\textcolor{comment}{// tiles with perspective, quadruple pixels (parameters as GF\_TILEPERSP)}}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193 \textcolor{preprocessor}{\#define GF\_GRP3MIN GF\_GRAPH4     }\textcolor{comment}{// 3rd group minimal format}}
+\DoxyCodeLine{194 \textcolor{preprocessor}{\#define GF\_GRP3MAX GF\_TILEPERSP4 }\textcolor{comment}{// 3rd group maximal format}}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196 \textcolor{preprocessor}{\#define FRACT 12 }\textcolor{comment}{// number of bits of fractional part of fractint number (use max. 13, min. 8)}}
+\DoxyCodeLine{197 \textcolor{preprocessor}{\#define FRACTMUL (1 << FRACT)}}
+
+\end{DoxyCode}

@@ -1,0 +1,104 @@
+\hypertarget{qvga_8h_source}{}\doxysection{qvga.\+h}
+\label{qvga_8h_source}\index{lib/qvga\_lib/include/qvga/qvga.h@{lib/qvga\_lib/include/qvga/qvga.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//                                  QVGA}}
+\DoxyCodeLine{4 \textcolor{comment}{//}}
+\DoxyCodeLine{5 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef \_QVGA\_H}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define \_QVGA\_H}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}global.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}config.h"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// QVGA Colors}}
+\DoxyCodeLine{16 \textcolor{comment}{//  B0 ... VGA B0 blue}}
+\DoxyCodeLine{17 \textcolor{comment}{//  B1 ... VGA B1}}
+\DoxyCodeLine{18 \textcolor{comment}{//  B2 ... VGA G0 green}}
+\DoxyCodeLine{19 \textcolor{comment}{//  B3 ... VGA G1}}
+\DoxyCodeLine{20 \textcolor{comment}{//  B4 ... VGA G2}}
+\DoxyCodeLine{21 \textcolor{comment}{//  B5 ... VGA R0 red}}
+\DoxyCodeLine{22 \textcolor{comment}{//  B6 ... VGA R1}}
+\DoxyCodeLine{23 \textcolor{comment}{//  B7 ... VGA R2}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define COL\_BLACK   0}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define COL\_DARKBLUE    B0}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define COL\_SEMIBLUE    B1}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define COL\_BLUE    (B0+B1)}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define COL\_MOREBLUE    (COL\_BLUE+B3+B6)}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define COL\_LIGHTBLUE   (COL\_BLUE+B4+B7)}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define COL\_DARKGREEN   B3}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define COL\_SEMIGREEN   B4}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define COL\_GREEN   (B2+B3+B4)}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define COL\_MOREGREEN   (COL\_GREEN+B0+B6)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define COL\_LIGHTGREEN  (COL\_GREEN+B1+B7)}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define COL\_DARKRED B6}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define COL\_SEMIRED B7}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define COL\_RED     (B5+B6+B7)}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define COL\_MORERED (COL\_RED+B0+B3)}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define COL\_LIGHTRED    (COL\_RED+B1+B4)}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define COL\_DARKCYAN    (B0+B3)}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define COL\_SEMICYAN    (B1+B4)}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define COL\_CYAN    (B0+B1+B2+B3+B4)}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define COL\_DARKMAGENTA (B0+B6)}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define COL\_SEMIMAGENTA (B1+B7)}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define COL\_MAGENTA (B0+B1+B5+B6+B7)}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define COL\_DARKYELLOW  (B3+B6)}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define COL\_SEMIYELLOW  (B4+B7)}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define COL\_YELLOW  (B2+B3+B4+B5+B6+B7)}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#define COL\_GRAY0   0}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#define COL\_GRAY1   (B2+B5)}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#define COL\_GRAY2   (B0+B3+B6)}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#define COL\_GRAY3   (B0+B2+B3+B5+B6)}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define COL\_GRAY4   (B1+B4+B7)}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define COL\_GRAY5   (B1+B2+B4+B5+B7)}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define COL\_GRAY6   (B0+B1+B3+B4+B6+B7)}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define COL\_GRAY7   (B0+B1+B2+B3+B4+B5+B6+B7)}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define COL\_WHITE   COL\_GRAY7}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{comment}{// compose color from RGB}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define COLRGB(r,g,b) ((uint8\_t)(((r)\&0xe0)|(((g)\&0xe0)>>3)|((b)>>6)))}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{comment}{// display frame buffers}}
+\DoxyCodeLine{72 \textcolor{keyword}{extern} ALIGNED uint8\_t FrameBuf[FRAMESIZE];}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{comment}{// pointer to current frame buffer}}
+\DoxyCodeLine{75 \textcolor{keyword}{extern} uint8\_t *pFrameBuf;}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{comment}{// initialize QVGA (can change system clock)}}
+\DoxyCodeLine{78 \textcolor{keywordtype}{void} QVgaInit();}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 \textcolor{comment}{// QVGA core}}
+\DoxyCodeLine{81 \textcolor{keywordtype}{void} QVgaCore();}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 \textcolor{comment}{// execute core 1 remote function}}
+\DoxyCodeLine{84 \textcolor{keywordtype}{void} Core1Exec(\textcolor{keywordtype}{void} (*fnc)());}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{comment}{// check if core 1 is busy (executing remote function)}}
+\DoxyCodeLine{87 \textcolor{keywordtype}{bool} Core1Busy();}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{comment}{// wait if core 1 is busy (executing remote function)}}
+\DoxyCodeLine{90 \textcolor{keywordtype}{void} Core1Wait();}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \textcolor{comment}{// check VSYNC}}
+\DoxyCodeLine{93 \textcolor{keywordtype}{bool} IsVSync();}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{comment}{// wait for VSync scanline}}
+\DoxyCodeLine{96 \textcolor{keywordtype}{void} WaitVSync();}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_QVGA\_H}}
+
+\end{DoxyCode}

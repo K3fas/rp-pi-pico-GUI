@@ -1,0 +1,45 @@
+\hypertarget{my__debug_8h_source}{}\doxysection{my\+\_\+debug.\+h}
+\label{my__debug_8h_source}\index{lib/SDwrapper\_lib/FatFs\_SPI/include/my\_debug.h@{lib/SDwrapper\_lib/FatFs\_SPI/include/my\_debug.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/* my\_debug.h}}
+\DoxyCodeLine{2 \textcolor{comment}{Copyright 2021 Carl John Kugler III}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{Licensed under the Apache License, Version 2.0 (the License); you may not use }}
+\DoxyCodeLine{5 \textcolor{comment}{this file except in compliance with the License. You may obtain a copy of the }}
+\DoxyCodeLine{6 \textcolor{comment}{License at}}
+\DoxyCodeLine{7 \textcolor{comment}{}}
+\DoxyCodeLine{8 \textcolor{comment}{   http://www.apache.org/licenses/LICENSE-\/2.0 }}
+\DoxyCodeLine{9 \textcolor{comment}{Unless required by applicable law or agreed to in writing, software distributed }}
+\DoxyCodeLine{10 \textcolor{comment}{under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR }}
+\DoxyCodeLine{11 \textcolor{comment}{CONDITIONS OF ANY KIND, either express or implied. See the License for the }}
+\DoxyCodeLine{12 \textcolor{comment}{specific language governing permissions and limitations under the License.}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{19 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} my\_printf(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pcFormat, ...) \_\_attribute\_\_((format(\_\_printf\_\_, 1, 2)));}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} my\_assert\_func(const \textcolor{keywordtype}{char} *file, \textcolor{keywordtype}{int} line, const \textcolor{keywordtype}{char} *func,}
+\DoxyCodeLine{25                         const \textcolor{keywordtype}{char} *pred);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{28 \}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{comment}{//\#if defined(DEBUG) \&\& !defined(NDEBUG)}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define DBG\_PRINTF my\_printf}}
+\DoxyCodeLine{34 \textcolor{comment}{//\#else}}
+\DoxyCodeLine{35 \textcolor{comment}{//\#define DBG\_PRINTF(fmt, args...) /* Don't do anything in release builds*/}}
+\DoxyCodeLine{36 \textcolor{comment}{//\#endif}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define myASSERT(\_\_e) \(\backslash\)}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{    ((\_\_e) ? (void)0 : my\_assert\_func(\_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_, \#\_\_e))}}
+
+\end{DoxyCode}

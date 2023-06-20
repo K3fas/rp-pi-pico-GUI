@@ -1,0 +1,84 @@
+\hypertarget{qvga__lib_2include_2qvga_2global_8h_source}{}\doxysection{global.\+h}
+\label{qvga__lib_2include_2qvga_2global_8h_source}\index{lib/qvga\_lib/include/qvga/global.h@{lib/qvga\_lib/include/qvga/global.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_GLOBAL\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_GLOBAL\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{comment}{// I/O port prefix}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#define \_\_IO    volatile}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{comment}{// request to use inline}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define INLINE \_\_attribute\_\_((always\_inline)) inline}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{comment}{// avoid to use inline}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define NOINLINE \_\_attribute\_\_((noinline))}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// weak function}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define WEAK \_\_attribute\_\_((weak))}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{// align array to 4-\/bytes}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define ALIGNED \_\_attribute\_\_((aligned(4)))}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{comment}{// default LED pin}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define LED\_PIN 25}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{comment}{// nop instruction}}
+\DoxyCodeLine{25 INLINE \textcolor{keywordtype}{void} nop()}
+\DoxyCodeLine{26     \{ \_\_asm \textcolor{keyword}{volatile} (\textcolor{stringliteral}{"{} nop\(\backslash\)n"{}}); \}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{comment}{// compiler barrier}}
+\DoxyCodeLine{29 INLINE \textcolor{keywordtype}{void} cb()}
+\DoxyCodeLine{30     \{ \_\_asm \textcolor{keyword}{volatile} (\textcolor{stringliteral}{"{}"{}} ::: \textcolor{stringliteral}{"{}memory"{}}); \}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{33 \textcolor{comment}{//                               Constants}}
+\DoxyCodeLine{34 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define B0 (1<<0)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define B1 (1<<1)}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define B2 (1<<2)}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define B3 (1<<3)}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define B4 (1<<4)}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define B5 (1<<5)}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define B6 (1<<6)}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define B7 (1<<7)}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define B8 (1U<<8)}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define B9 (1U<<9)}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define B10 (1U<<10)}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define B11 (1U<<11)}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define B12 (1U<<12)}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define B13 (1U<<13)}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define B14 (1U<<14)}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define B15 (1U<<15)}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define B16 (1UL<<16)}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define B17 (1UL<<17)}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define B18 (1UL<<18)}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define B19 (1UL<<19)}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#define B20 (1UL<<20)}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#define B21 (1UL<<21)}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#define B22 (1UL<<22)}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#define B23 (1UL<<23)}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#define B24 (1UL<<24)}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define B25 (1UL<<25)}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define B26 (1UL<<26)}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define B27 (1UL<<27)}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define B28 (1UL<<28)}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#define B29 (1UL<<29)}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define B30 (1UL<<30)}}
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#define B31 (1UL<<31)}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define BIT(pos) (1UL<<(pos))}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#define BIGINT  0x40000000 }\textcolor{comment}{// big int value}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define \_T(a) a}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#define PI 3.14159265358979324}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#define PI2 (3.14159265358979324*2)}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_GLOBAL\_H}}
+
+\end{DoxyCode}

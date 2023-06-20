@@ -1,0 +1,261 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}SPI + VGA Problems}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Include hell resolve ???}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}DATABINDING}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}SD example, praca zo zlockami atd example...}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.4}UPDATE SDK}{1}{section.1.4}%
+\contentsline {chapter}{\numberline {2}notes}{3}{chapter.2}%
+\contentsline {chapter}{\numberline {3}notes}{5}{chapter.3}%
+\contentsline {chapter}{\numberline {4}notes}{7}{chapter.4}%
+\contentsline {chapter}{\numberline {5}GUI TODO}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}RESTRUCTURE Namespaces}{9}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Controls}{9}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Views}{10}{section.5.3}%
+\contentsline {section}{\numberline {5.4}To add/implement}{10}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Button xamarin example}{10}{section.5.5}%
+\contentsline {chapter}{\numberline {6}README}{11}{chapter.6}%
+\contentsline {section}{\numberline {6.1}FRAMEWORK}{11}{section.6.1}%
+\contentsline {chapter}{\numberline {7}Hierarchical Index}{13}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Class Hierarchy}{13}{section.7.1}%
+\contentsline {chapter}{\numberline {8}Class Index}{17}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Class List}{17}{section.8.1}%
+\contentsline {chapter}{\numberline {9}File Index}{19}{chapter.9}%
+\contentsline {section}{\numberline {9.1}File List}{19}{section.9.1}%
+\contentsline {chapter}{\numberline {10}Class Documentation}{21}{chapter.10}%
+\contentsline {section}{\numberline {10.1}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}bmp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BITMAPFILEHEADER Struct Reference}{21}{section.10.1}%
+\contentsline {section}{\numberline {10.2}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}bmp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BITMAPINFOHEADER Struct Reference}{21}{section.10.2}%
+\contentsline {section}{\numberline {10.3}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::layout\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Absolute\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Layout Class Reference}{22}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}Member Function Documentation}{22}{subsection.10.3.1}%
+\contentsline {subsubsection}{\numberline {10.3.1.1}Draw()}{22}{subsubsection.10.3.1.1}%
+\contentsline {section}{\numberline {10.4}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::common\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Activatable Class Reference}{23}{section.10.4}%
+\contentsline {section}{\numberline {10.5}Pong\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Ball Class Reference}{23}{section.10.5}%
+\contentsline {section}{\numberline {10.6}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::common\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Bindable\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Property$<$ T $>$ Class Template Reference}{24}{section.10.6}%
+\contentsline {section}{\numberline {10.7}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::common\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Bounds Struct Reference}{24}{section.10.7}%
+\contentsline {section}{\numberline {10.8}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Button Class Reference}{25}{section.10.8}%
+\contentsline {subsection}{\numberline {10.8.1}Member Function Documentation}{25}{subsection.10.8.1}%
+\contentsline {subsubsection}{\numberline {10.8.1.1}Draw()}{25}{subsubsection.10.8.1.1}%
+\contentsline {subsubsection}{\numberline {10.8.1.2}SetBounds()}{25}{subsubsection.10.8.1.2}%
+\contentsline {section}{\numberline {10.9}c\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Gauss\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DRandom Class Reference}{26}{section.10.9}%
+\contentsline {section}{\numberline {10.10}c\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Gauss\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}FRandom Class Reference}{26}{section.10.10}%
+\contentsline {section}{\numberline {10.11}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Check\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Box Class Reference}{26}{section.10.11}%
+\contentsline {subsection}{\numberline {10.11.1}Member Function Documentation}{27}{subsection.10.11.1}%
+\contentsline {subsubsection}{\numberline {10.11.1.1}Draw()}{27}{subsubsection.10.11.1.1}%
+\contentsline {section}{\numberline {10.12}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Circle Class Reference}{27}{section.10.12}%
+\contentsline {subsection}{\numberline {10.12.1}Member Function Documentation}{28}{subsection.10.12.1}%
+\contentsline {subsubsection}{\numberline {10.12.1.1}Draw()}{28}{subsubsection.10.12.1.1}%
+\contentsline {section}{\numberline {10.13}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::common\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Clickable Class Reference}{28}{section.10.13}%
+\contentsline {section}{\numberline {10.14}c\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Mat2D$<$ m2type $>$ Class Template Reference}{29}{section.10.14}%
+\contentsline {section}{\numberline {10.15}c\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Mat2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Df Class Reference}{30}{section.10.15}%
+\contentsline {section}{\numberline {10.16}Pong\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Contact Struct Reference}{30}{section.10.16}%
+\contentsline {section}{\numberline {10.17}c\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Random Class Reference}{31}{section.10.17}%
+\contentsline {section}{\numberline {10.18}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::core\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Cursor Class Reference}{31}{section.10.18}%
+\contentsline {subsection}{\numberline {10.18.1}Member Function Documentation}{32}{subsection.10.18.1}%
+\contentsline {subsubsection}{\numberline {10.18.1.1}Draw()}{32}{subsubsection.10.18.1.1}%
+\contentsline {subsubsection}{\numberline {10.18.1.2}SetBounds()}{32}{subsubsection.10.18.1.2}%
+\contentsline {section}{\numberline {10.19}DIR Struct Reference}{33}{section.10.19}%
+\contentsline {section}{\numberline {10.20}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Dispatcher$<$ T $>$ Class Template Reference}{33}{section.10.20}%
+\contentsline {section}{\numberline {10.21}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::common\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Element Class Reference}{33}{section.10.21}%
+\contentsline {subsection}{\numberline {10.21.1}Member Function Documentation}{34}{subsection.10.21.1}%
+\contentsline {subsubsection}{\numberline {10.21.1.1}SetActive()}{34}{subsubsection.10.21.1.1}%
+\contentsline {section}{\numberline {10.22}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Entry Class Reference}{35}{section.10.22}%
+\contentsline {subsection}{\numberline {10.22.1}Member Function Documentation}{35}{subsection.10.22.1}%
+\contentsline {subsubsection}{\numberline {10.22.1.1}Draw()}{36}{subsubsection.10.22.1.1}%
+\contentsline {subsubsection}{\numberline {10.22.1.2}HandleActive()}{36}{subsubsection.10.22.1.2}%
+\contentsline {section}{\numberline {10.23}FATFS Struct Reference}{36}{section.10.23}%
+\contentsline {section}{\numberline {10.24}FF\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Find\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Data\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t Struct Reference}{37}{section.10.24}%
+\contentsline {section}{\numberline {10.25}FF\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STAT Struct Reference}{37}{section.10.25}%
+\contentsline {section}{\numberline {10.26}FFOBJID Struct Reference}{37}{section.10.26}%
+\contentsline {section}{\numberline {10.27}FIL Struct Reference}{38}{section.10.27}%
+\contentsline {section}{\numberline {10.28}FILESEM Struct Reference}{38}{section.10.28}%
+\contentsline {section}{\numberline {10.29}FILINFO Struct Reference}{38}{section.10.29}%
+\contentsline {section}{\numberline {10.30}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Handler Struct Reference}{39}{section.10.30}%
+\contentsline {section}{\numberline {10.31}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Height Struct Reference}{39}{section.10.31}%
+\contentsline {section}{\numberline {10.32}HID\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::kbd Struct Reference}{39}{section.10.32}%
+\contentsline {section}{\numberline {10.33}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Label Class Reference}{40}{section.10.33}%
+\contentsline {subsection}{\numberline {10.33.1}Member Function Documentation}{40}{subsection.10.33.1}%
+\contentsline {subsubsection}{\numberline {10.33.1.1}Draw()}{40}{subsubsection.10.33.1.1}%
+\contentsline {section}{\numberline {10.34}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::layout\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Layout Class Reference}{41}{section.10.34}%
+\contentsline {section}{\numberline {10.35}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Line Class Reference}{41}{section.10.35}%
+\contentsline {subsection}{\numberline {10.35.1}Member Function Documentation}{42}{subsection.10.35.1}%
+\contentsline {subsubsection}{\numberline {10.35.1.1}Draw()}{42}{subsubsection.10.35.1.1}%
+\contentsline {section}{\numberline {10.36}rplog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Logger Class Reference}{42}{section.10.36}%
+\contentsline {section}{\numberline {10.37}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::core\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}App Class Reference}{43}{section.10.37}%
+\contentsline {subsection}{\numberline {10.37.1}Detailed Description}{43}{subsection.10.37.1}%
+\contentsline {subsection}{\numberline {10.37.2}Member Function Documentation}{44}{subsection.10.37.2}%
+\contentsline {subsubsection}{\numberline {10.37.2.1}AddListener()}{44}{subsubsection.10.37.2.1}%
+\contentsline {subsubsection}{\numberline {10.37.2.2}AddPage()}{44}{subsubsection.10.37.2.2}%
+\contentsline {subsubsection}{\numberline {10.37.2.3}GetSelectedPageAt()}{44}{subsubsection.10.37.2.3}%
+\contentsline {subsubsection}{\numberline {10.37.2.4}GetSelectedPageId()}{45}{subsubsection.10.37.2.4}%
+\contentsline {subsubsection}{\numberline {10.37.2.5}Init()}{45}{subsubsection.10.37.2.5}%
+\contentsline {subsubsection}{\numberline {10.37.2.6}SelectPage()}{45}{subsubsection.10.37.2.6}%
+\contentsline {subsubsection}{\numberline {10.37.2.7}SelectPageAt()}{45}{subsubsection.10.37.2.7}%
+\contentsline {subsubsection}{\numberline {10.37.2.8}Update()}{46}{subsubsection.10.37.2.8}%
+\contentsline {section}{\numberline {10.38}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::common\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Margin Struct Reference}{46}{section.10.38}%
+\contentsline {section}{\numberline {10.39}MKFS\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}PARM Struct Reference}{46}{section.10.39}%
+\contentsline {section}{\numberline {10.40}HID\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::mouse Struct Reference}{47}{section.10.40}%
+\contentsline {section}{\numberline {10.41}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Mouse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dispatcher Class Reference}{47}{section.10.41}%
+\contentsline {section}{\numberline {10.42}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Mouse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event$<$ T $>$ Class Template Reference}{47}{section.10.42}%
+\contentsline {section}{\numberline {10.43}Pong\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Paddle Class Reference}{48}{section.10.43}%
+\contentsline {section}{\numberline {10.44}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::page\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Page Class Reference}{48}{section.10.44}%
+\contentsline {section}{\numberline {10.45}Pong\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Player\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Score Class Reference}{48}{section.10.45}%
+\contentsline {section}{\numberline {10.46}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Point Struct Reference}{49}{section.10.46}%
+\contentsline {section}{\numberline {10.47}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Polyline Class Reference}{49}{section.10.47}%
+\contentsline {subsection}{\numberline {10.47.1}Member Function Documentation}{49}{subsection.10.47.1}%
+\contentsline {subsubsection}{\numberline {10.47.1.1}Draw()}{50}{subsubsection.10.47.1.1}%
+\contentsline {section}{\numberline {10.48}Pong\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pong\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game Class Reference}{50}{section.10.48}%
+\contentsline {section}{\numberline {10.49}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::core\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Cursor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::pos\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t Struct Reference}{50}{section.10.49}%
+\contentsline {section}{\numberline {10.50}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Progress\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bar Class Reference}{51}{section.10.50}%
+\contentsline {subsection}{\numberline {10.50.1}Member Function Documentation}{51}{subsection.10.50.1}%
+\contentsline {subsubsection}{\numberline {10.50.1.1}Draw()}{51}{subsubsection.10.50.1.1}%
+\contentsline {subsubsection}{\numberline {10.50.1.2}SetBounds()}{52}{subsubsection.10.50.1.2}%
+\contentsline {section}{\numberline {10.51}putbuff Struct Reference}{52}{section.10.51}%
+\contentsline {section}{\numberline {10.52}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Radio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Button Class Reference}{52}{section.10.52}%
+\contentsline {subsection}{\numberline {10.52.1}Member Function Documentation}{53}{subsection.10.52.1}%
+\contentsline {subsubsection}{\numberline {10.52.1.1}Draw()}{53}{subsubsection.10.52.1.1}%
+\contentsline {subsubsection}{\numberline {10.52.1.2}SetBounds()}{53}{subsubsection.10.52.1.2}%
+\contentsline {section}{\numberline {10.53}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Radius Struct Reference}{54}{section.10.53}%
+\contentsline {section}{\numberline {10.54}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Rect Struct Reference}{54}{section.10.54}%
+\contentsline {section}{\numberline {10.55}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Rectangle Class Reference}{54}{section.10.55}%
+\contentsline {subsection}{\numberline {10.55.1}Member Function Documentation}{55}{subsection.10.55.1}%
+\contentsline {subsubsection}{\numberline {10.55.1.1}Draw()}{55}{subsubsection.10.55.1.1}%
+\contentsline {section}{\numberline {10.56}rtc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}save Struct Reference}{55}{section.10.56}%
+\contentsline {section}{\numberline {10.57}s\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Canvas Struct Reference}{55}{section.10.57}%
+\contentsline {section}{\numberline {10.58}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::s\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Circle Struct Reference}{56}{section.10.58}%
+\contentsline {section}{\numberline {10.59}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t Struct Reference}{56}{section.10.59}%
+\contentsline {section}{\numberline {10.60}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::util\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::SDWrapper Class Reference}{56}{section.10.60}%
+\contentsline {section}{\numberline {10.61}s\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Layer Struct Reference}{57}{section.10.61}%
+\contentsline {section}{\numberline {10.62}s\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Layer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Mode Struct Reference}{57}{section.10.62}%
+\contentsline {section}{\numberline {10.63}s\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Layer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Prog Struct Reference}{58}{section.10.63}%
+\contentsline {section}{\numberline {10.64}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Slider Class Reference}{58}{section.10.64}%
+\contentsline {subsection}{\numberline {10.64.1}Member Function Documentation}{59}{subsection.10.64.1}%
+\contentsline {subsubsection}{\numberline {10.64.1.1}Draw()}{59}{subsubsection.10.64.1.1}%
+\contentsline {section}{\numberline {10.65}Speed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tester\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::speed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Results Struct Reference}{59}{section.10.65}%
+\contentsline {section}{\numberline {10.66}Speed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tester Class Reference}{59}{section.10.66}%
+\contentsline {section}{\numberline {10.67}spi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t Struct Reference}{60}{section.10.67}%
+\contentsline {section}{\numberline {10.68}s\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}PLL Struct Reference}{60}{section.10.68}%
+\contentsline {section}{\numberline {10.69}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Sprite Class Reference}{61}{section.10.69}%
+\contentsline {subsection}{\numberline {10.69.1}Member Function Documentation}{61}{subsection.10.69.1}%
+\contentsline {subsubsection}{\numberline {10.69.1.1}Draw()}{61}{subsubsection.10.69.1.1}%
+\contentsline {section}{\numberline {10.70}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::common\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Sprite\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Data Struct Reference}{62}{section.10.70}%
+\contentsline {section}{\numberline {10.71}s\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Screen Struct Reference}{62}{section.10.71}%
+\contentsline {section}{\numberline {10.72}s\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Segm Struct Reference}{62}{section.10.72}%
+\contentsline {section}{\numberline {10.73}s\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sprite Struct Reference}{63}{section.10.73}%
+\contentsline {section}{\numberline {10.74}s\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Strip Struct Reference}{63}{section.10.74}%
+\contentsline {section}{\numberline {10.75}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::layout\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Stack\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Layout Class Reference}{63}{section.10.75}%
+\contentsline {subsection}{\numberline {10.75.1}Member Function Documentation}{64}{subsection.10.75.1}%
+\contentsline {subsubsection}{\numberline {10.75.1.1}Draw()}{64}{subsubsection.10.75.1.1}%
+\contentsline {section}{\numberline {10.76}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Stepper$<$ T $>$ Class Template Reference}{64}{section.10.76}%
+\contentsline {subsection}{\numberline {10.76.1}Member Function Documentation}{65}{subsection.10.76.1}%
+\contentsline {subsubsection}{\numberline {10.76.1.1}Draw()}{65}{subsubsection.10.76.1.1}%
+\contentsline {subsubsection}{\numberline {10.76.1.2}SetBounds()}{65}{subsubsection.10.76.1.2}%
+\contentsline {section}{\numberline {10.77}s\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vga\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cfg Struct Reference}{65}{section.10.77}%
+\contentsline {section}{\numberline {10.78}s\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Video Struct Reference}{66}{section.10.78}%
+\contentsline {section}{\numberline {10.79}s\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vmode Struct Reference}{67}{section.10.79}%
+\contentsline {section}{\numberline {10.80}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Switch Class Reference}{68}{section.10.80}%
+\contentsline {subsection}{\numberline {10.80.1}Member Function Documentation}{68}{subsection.10.80.1}%
+\contentsline {subsubsection}{\numberline {10.80.1.1}Draw()}{68}{subsubsection.10.80.1.1}%
+\contentsline {section}{\numberline {10.81}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::util\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Timers Class Reference}{69}{section.10.81}%
+\contentsline {section}{\numberline {10.82}Pong\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Vec2 Class Reference}{69}{section.10.82}%
+\contentsline {section}{\numberline {10.83}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::common\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::View Class Reference}{70}{section.10.83}%
+\contentsline {section}{\numberline {10.84}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::common\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Visual\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Element Class Reference}{70}{section.10.84}%
+\contentsline {subsection}{\numberline {10.84.1}Detailed Description}{72}{subsection.10.84.1}%
+\contentsline {subsection}{\numberline {10.84.2}Member Function Documentation}{72}{subsection.10.84.2}%
+\contentsline {subsubsection}{\numberline {10.84.2.1}Draw()}{72}{subsubsection.10.84.2.1}%
+\contentsline {subsubsection}{\numberline {10.84.2.2}GetBounds()}{72}{subsubsection.10.84.2.2}%
+\contentsline {subsubsection}{\numberline {10.84.2.3}IsInBounds()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{72}{subsubsection.10.84.2.3}%
+\contentsline {subsubsection}{\numberline {10.84.2.4}IsInBounds()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{73}{subsubsection.10.84.2.4}%
+\contentsline {subsubsection}{\numberline {10.84.2.5}SetBounds()}{73}{subsubsection.10.84.2.5}%
+\contentsline {section}{\numberline {10.85}WAVDATA\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{} Struct Reference}{74}{section.10.85}%
+\contentsline {section}{\numberline {10.86}WAVFORMAT\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{} Struct Reference}{74}{section.10.86}%
+\contentsline {section}{\numberline {10.87}WAVHEAD\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{} Struct Reference}{74}{section.10.87}%
+\contentsline {section}{\numberline {10.88}rpgui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Width Struct Reference}{74}{section.10.88}%
+\contentsline {chapter}{\numberline {11}File Documentation}{75}{chapter.11}%
+\contentsline {section}{\numberline {11.1}tusb\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{75}{section.11.1}%
+\contentsline {section}{\numberline {11.2}tusb\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{76}{section.11.2}%
+\contentsline {section}{\numberline {11.3}tusb\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{77}{section.11.3}%
+\contentsline {section}{\numberline {11.4}tusb\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{78}{section.11.4}%
+\contentsline {section}{\numberline {11.5}vga\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{80}{section.11.5}%
+\contentsline {section}{\numberline {11.6}vga\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{81}{section.11.6}%
+\contentsline {section}{\numberline {11.7}vga\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{82}{section.11.7}%
+\contentsline {section}{\numberline {11.8}Page1.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{84}{section.11.8}%
+\contentsline {section}{\numberline {11.9}Page2.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{85}{section.11.9}%
+\contentsline {section}{\numberline {11.10}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{86}{section.11.10}%
+\contentsline {section}{\numberline {11.11}Speed\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{89}{section.11.11}%
+\contentsline {section}{\numberline {11.12}settings.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{89}{section.11.12}%
+\contentsline {section}{\numberline {11.13}Activatable.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{90}{section.11.13}%
+\contentsline {section}{\numberline {11.14}Bindable\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Property.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{90}{section.11.14}%
+\contentsline {section}{\numberline {11.15}Bounds.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{91}{section.11.15}%
+\contentsline {section}{\numberline {11.16}Clickable.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{91}{section.11.16}%
+\contentsline {section}{\numberline {11.17}Element.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{92}{section.11.17}%
+\contentsline {section}{\numberline {11.18}Margin.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{93}{section.11.18}%
+\contentsline {section}{\numberline {11.19}Sprite\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Data.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{93}{section.11.19}%
+\contentsline {section}{\numberline {11.20}Types.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{94}{section.11.20}%
+\contentsline {section}{\numberline {11.21}VColors.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{94}{section.11.21}%
+\contentsline {section}{\numberline {11.22}View.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{95}{section.11.22}%
+\contentsline {section}{\numberline {11.23}Visual\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Element.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{96}{section.11.23}%
+\contentsline {section}{\numberline {11.24}Button.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{97}{section.11.24}%
+\contentsline {section}{\numberline {11.25}Check\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Box.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{97}{section.11.25}%
+\contentsline {section}{\numberline {11.26}Circle.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{98}{section.11.26}%
+\contentsline {section}{\numberline {11.27}Cursor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{98}{section.11.27}%
+\contentsline {section}{\numberline {11.28}Entry.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{99}{section.11.28}%
+\contentsline {section}{\numberline {11.29}Label.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{100}{section.11.29}%
+\contentsline {section}{\numberline {11.30}Line.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{100}{section.11.30}%
+\contentsline {section}{\numberline {11.31}Polyline.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{101}{section.11.31}%
+\contentsline {section}{\numberline {11.32}Progress\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{101}{section.11.32}%
+\contentsline {section}{\numberline {11.33}Radio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Button.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{102}{section.11.33}%
+\contentsline {section}{\numberline {11.34}Rectangle.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{103}{section.11.34}%
+\contentsline {section}{\numberline {11.35}Slider.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{103}{section.11.35}%
+\contentsline {section}{\numberline {11.36}Sprite.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{104}{section.11.36}%
+\contentsline {section}{\numberline {11.37}Stepper.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{104}{section.11.37}%
+\contentsline {section}{\numberline {11.38}Switch.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{106}{section.11.38}%
+\contentsline {section}{\numberline {11.39}Dispatcher.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{107}{section.11.39}%
+\contentsline {section}{\numberline {11.40}Mouse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dispatcher.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{108}{section.11.40}%
+\contentsline {section}{\numberline {11.41}Mouse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{109}{section.11.41}%
+\contentsline {section}{\numberline {11.42}include.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{109}{section.11.42}%
+\contentsline {section}{\numberline {11.43}Absolute\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Layout.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{109}{section.11.43}%
+\contentsline {section}{\numberline {11.44}Layout.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{110}{section.11.44}%
+\contentsline {section}{\numberline {11.45}Stack\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Layout.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{110}{section.11.45}%
+\contentsline {section}{\numberline {11.46}Page.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{111}{section.11.46}%
+\contentsline {section}{\numberline {11.47}rp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}core.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{112}{section.11.47}%
+\contentsline {section}{\numberline {11.48}rpgui.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{113}{section.11.48}%
+\contentsline {section}{\numberline {11.49}IVGA.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{113}{section.11.49}%
+\contentsline {section}{\numberline {11.50}Timers.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{114}{section.11.50}%
+\contentsline {section}{\numberline {11.51}tusb\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}data.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{115}{section.11.51}%
+\contentsline {section}{\numberline {11.52}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{115}{section.11.52}%
+\contentsline {section}{\numberline {11.53}draw.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{116}{section.11.53}%
+\contentsline {section}{\numberline {11.54}global.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{117}{section.11.54}%
+\contentsline {section}{\numberline {11.55}global.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{118}{section.11.55}%
+\contentsline {section}{\numberline {11.56}mat2d.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{122}{section.11.56}%
+\contentsline {section}{\numberline {11.57}mat2d.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{125}{section.11.57}%
+\contentsline {section}{\numberline {11.58}pwmsnd.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{127}{section.11.58}%
+\contentsline {section}{\numberline {11.59}pwmsnd.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{128}{section.11.59}%
+\contentsline {section}{\numberline {11.60}qvga.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{129}{section.11.60}%
+\contentsline {section}{\numberline {11.61}rand.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{130}{section.11.61}%
+\contentsline {section}{\numberline {11.62}rand.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{131}{section.11.62}%
+\contentsline {section}{\numberline {11.63}rp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logger.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{133}{section.11.63}%
+\contentsline {section}{\numberline {11.64}diskio.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{134}{section.11.64}%
+\contentsline {section}{\numberline {11.65}ff.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{135}{section.11.65}%
+\contentsline {section}{\numberline {11.66}ffconf.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{141}{section.11.66}%
+\contentsline {section}{\numberline {11.67}f\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}util.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{144}{section.11.67}%
+\contentsline {section}{\numberline {11.68}ff\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}stdio.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{144}{section.11.68}%
+\contentsline {section}{\numberline {11.69}my\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}debug.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{145}{section.11.69}%
+\contentsline {section}{\numberline {11.70}rtc.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{146}{section.11.70}%
+\contentsline {section}{\numberline {11.71}util.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{146}{section.11.71}%
+\contentsline {section}{\numberline {11.72}crc.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{147}{section.11.72}%
+\contentsline {section}{\numberline {11.73}hw\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{148}{section.11.73}%
+\contentsline {section}{\numberline {11.74}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{148}{section.11.74}%
+\contentsline {section}{\numberline {11.75}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}spi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{149}{section.11.75}%
+\contentsline {section}{\numberline {11.76}spi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{150}{section.11.76}%
+\contentsline {section}{\numberline {11.77}SDWrapper.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{151}{section.11.77}%
+\contentsline {section}{\numberline {11.78}canvas.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{151}{section.11.78}%
+\contentsline {section}{\numberline {11.79}overclock.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{153}{section.11.79}%
+\contentsline {section}{\numberline {11.80}print.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{154}{section.11.80}%
+\contentsline {section}{\numberline {11.81}define.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{155}{section.11.81}%
+\contentsline {section}{\numberline {11.82}vga.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{158}{section.11.82}%
+\contentsline {section}{\numberline {11.83}vga.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pio.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{160}{section.11.83}%
+\contentsline {section}{\numberline {11.84}vga\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}layer.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{163}{section.11.84}%
+\contentsline {section}{\numberline {11.85}vga\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pal.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{165}{section.11.85}%
+\contentsline {section}{\numberline {11.86}vga\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{167}{section.11.86}%
+\contentsline {section}{\numberline {11.87}vga\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}util.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{171}{section.11.87}%
+\contentsline {section}{\numberline {11.88}vga\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}vmode.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{171}{section.11.88}%
+\contentsline {chapter}{Index}{175}{section*.173}%

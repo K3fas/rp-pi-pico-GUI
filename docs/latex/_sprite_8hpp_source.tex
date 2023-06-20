@@ -1,0 +1,53 @@
+\hypertarget{_sprite_8hpp_source}{}\doxysection{Sprite.\+hpp}
+\label{_sprite_8hpp_source}\index{lib/gui\_lib/include/elements/Sprite.hpp@{lib/gui\_lib/include/elements/Sprite.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}include.hpp"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}SpriteData.hpp"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}ff.h"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifdef PICOVGA}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}global.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{using namespace }rpgui::common;}
+\DoxyCodeLine{13 \textcolor{keyword}{using namespace }rpgui::type;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }rpgui::ui}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1ui_1_1_sprite}{Sprite}} : \textcolor{keyword}{public} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}}
+\DoxyCodeLine{19     \{}
+\DoxyCodeLine{20     \textcolor{keyword}{private}:}
+\DoxyCodeLine{21         \textcolor{keyword}{inline} \textcolor{keyword}{static} std::map<const std::string, SpriteData> \_sprites;}
+\DoxyCodeLine{22         \mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{SpriteData}} \_sprite;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keyword}{public}:}
+\DoxyCodeLine{25         \mbox{\hyperlink{classrpgui_1_1ui_1_1_sprite}{Sprite}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{26         \mbox{\hyperlink{classrpgui_1_1ui_1_1_sprite}{Sprite}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1ui_1_1_sprite}{Sprite}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{27         \mbox{\hyperlink{classrpgui_1_1ui_1_1_sprite}{\string~Sprite}}();}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         \mbox{\hyperlink{classrpgui_1_1ui_1_1_sprite}{Sprite}}(\textcolor{keyword}{const} uint8\_t *image, \textcolor{keyword}{const} uint16\_t imageSize, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} pitch);}
+\DoxyCodeLine{30         \mbox{\hyperlink{classrpgui_1_1ui_1_1_sprite}{Sprite}}(\textcolor{keyword}{const} std::string \&name, \textcolor{keyword}{const} std::string \&path = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1ui_1_1_sprite_a092d084d9e1e287d660c284f2f6c953b}{Draw}}() \textcolor{keyword}{const} \textcolor{keyword}{final};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#ifdef PICOVGA}}
+\DoxyCodeLine{35         \mbox{\hyperlink{structs_canvas}{sCanvas}} GetCanvas(\textcolor{keyword}{const} \mbox{\hyperlink{structs_canvas}{sCanvas}} \&toMatch) \textcolor{keyword}{const};}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38         \textcolor{keyword}{const} uint8\_t *GetImage() \textcolor{keyword}{const};}
+\DoxyCodeLine{39         \textcolor{keywordtype}{int} GetWidth() \textcolor{keyword}{const};}
+\DoxyCodeLine{40         \textcolor{keywordtype}{int} GetHeight() \textcolor{keyword}{const};}
+\DoxyCodeLine{41         \textcolor{keywordtype}{int} GetPitch() \textcolor{keyword}{const};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{keyword}{private}:}
+\DoxyCodeLine{44         \mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{SpriteData}} loadData(\mbox{\hyperlink{struct_f_i_l}{FIL}} *file);}
+\DoxyCodeLine{45     \};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \} \textcolor{comment}{// namespace rpgui::common}}
+
+\end{DoxyCode}

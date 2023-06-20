@@ -1,0 +1,205 @@
+\hypertarget{vga__layer_8h_source}{}\doxysection{vga\+\_\+layer.\+h}
+\label{vga__layer_8h_source}\index{lib/vga\_lib/include/vga/vga\_layer.h@{lib/vga\_lib/include/vga/vga\_layer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//                                 VGA layers}}
+\DoxyCodeLine{5 \textcolor{comment}{//}}
+\DoxyCodeLine{6 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef \_VGA\_LAYER\_H}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define \_VGA\_LAYER\_H}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// base layer commands}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define VGADARK(num, col) (((u32)(vga\_offset\_dark + BASE\_OFFSET) << 27) | ((u32)(num) << 8) | (u32)(col)) }\textcolor{comment}{// assemble control word of "{}dark"{} command}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define VGACMD(jmp, num) (((u32)(jmp) << 27) | (u32)(num))                                                }\textcolor{comment}{// assemble control word}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// -\/-\/-\/ overlapped layer init word (delay: use number of offset pixels * Vmode.cpp, num: number of pixels)}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{// init word of key color layer LAYERPROG\_KEY}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define VGAKEY(delay, num, col) (((u32)((delay) + 1) << 19) | ((u32)(col) << 11) | (u32)((num)-\/1))}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{// init word of mono layer LAYERPROG\_MONO}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define VGAMONO(delay, num, col) (((u32)((delay) + 0) << 20) | ((u32)(col) << 12) | ((u32)((num)-\/1) << 1) | B0)}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{comment}{// init word of color layer LAYERPROG\_MONO}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define VGACOLOR(delay, num) (((u32)((delay) + 2) << 20) | ((u32)0xff << 12) | ((u32)((num)-\/1) << 1) | 0)}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{comment}{// init word of black color layer LAYERPROG\_BLACK}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define VGABLACK(delay, num) (((u32)((delay) + 3) << 16) | (u32)((num)-\/1))}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{comment}{// init word of white color layer LAYERPROG\_WHITE}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define VGAWHITE(delay, num) (((u32)((delay) + 3) << 16) | (u32)((num)-\/1))}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{comment}{// init word of RLE layer LAYERPROG\_RLE}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define VGARLE(delay) ((delay) + 1)}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{// swap bytes of command}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define BYTESWAP(n) ((((n)\&0xff) << 24) | (((n)\&0xff00) << 8) | (((n)\&0xff0000) >> 8) | (((n)\&0xff000000) >> 24))}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{comment}{// align to multiple of 4}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define ALIGN4(x) ((x) \& \string~3)}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{comment}{// layer program descriptor}}
+\DoxyCodeLine{42 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{43 \{}
+\DoxyCodeLine{44     \textcolor{keyword}{const} u16 *ins;                \textcolor{comment}{// pointer to program instructions (NULL=layers is OFF)}}
+\DoxyCodeLine{45     \textcolor{keyword}{const} \textcolor{keyword}{struct }pio\_program *prg; \textcolor{comment}{// pointer to program descriptor}}
+\DoxyCodeLine{46     u8 length;                     \textcolor{comment}{// program length (number of instructions)}}
+\DoxyCodeLine{47     u8 wrap\_target;                \textcolor{comment}{// offset of wrap target}}
+\DoxyCodeLine{48     u8 wrap;                       \textcolor{comment}{// offset of wrap end}}
+\DoxyCodeLine{49     u8 idle;                       \textcolor{comment}{// offset of idle}}
+\DoxyCodeLine{50     u8 entry;                      \textcolor{comment}{// offset of entry}}
+\DoxyCodeLine{51     u8 maxidle;                    \textcolor{comment}{// max. offset of idle to detect end of job}}
+\DoxyCodeLine{52     u8 extranum;                   \textcolor{comment}{// number of extra offsets}}
+\DoxyCodeLine{53     u8 extra[2 * 16];              \textcolor{comment}{// extra offsets, pairs: offset, CPP-\/correction}}
+\DoxyCodeLine{54 \} \mbox{\hyperlink{structs_layer_prog}{sLayerProg}};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{comment}{// layer program descriptors}}
+\DoxyCodeLine{57 \textcolor{keyword}{extern} \textcolor{keyword}{const} \mbox{\hyperlink{structs_layer_prog}{sLayerProg}} LayerProg[LAYERPROG\_NUM];}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{comment}{// current layer program of overlapped layers}}
+\DoxyCodeLine{60 \textcolor{keyword}{extern} u8 LayerProgInx;         \textcolor{comment}{// index of current layer program (LAYERPROG\_*, LAYERPROG\_BASE = overlapped layers are OFF)}}
+\DoxyCodeLine{61 \textcolor{keyword}{extern} \mbox{\hyperlink{structs_layer_prog}{sLayerProg}} CurLayerProg; \textcolor{comment}{// copy of current layer program}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{comment}{// layer mode descriptor}}
+\DoxyCodeLine{64 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66     u8 prog;   \textcolor{comment}{// layer program (LAYERPROG\_*)}}
+\DoxyCodeLine{67     u8 mincpp; \textcolor{comment}{// minimal clock cycles per pixel}}
+\DoxyCodeLine{68     u8 maxcpp; \textcolor{comment}{// maximal clock cycles per pixel}}
+\DoxyCodeLine{69 \} \mbox{\hyperlink{structs_layer_mode}{sLayerMode}};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{comment}{// layer mode descriptors}}
+\DoxyCodeLine{72 \textcolor{keyword}{extern} \textcolor{keyword}{const} \mbox{\hyperlink{structs_layer_mode}{sLayerMode}} LayerMode[LAYERMODE\_NUM];}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{comment}{// current layer mode of layers}}
+\DoxyCodeLine{75 \textcolor{keyword}{extern} u8 LayerModeInx[LAYERS];         \textcolor{comment}{// index of current layer mode (LAYERMODE\_*)}}
+\DoxyCodeLine{76 \textcolor{keyword}{extern} \mbox{\hyperlink{structs_layer_mode}{sLayerMode}} CurLayerMode[LAYERS]; \textcolor{comment}{// copy of current layer mode}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{comment}{// layer screen descriptor (on change update SLAYER\_* in define.h)}}
+\DoxyCodeLine{79 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{80 \{}
+\DoxyCodeLine{81     \textcolor{keyword}{const} u8 *img;   \textcolor{comment}{// pointer to image in current layer format, or sprite list}}
+\DoxyCodeLine{82     \textcolor{keyword}{const} \textcolor{keywordtype}{void} *par; \textcolor{comment}{// additional parameter (RLE index table, integer transformation matrix)}}
+\DoxyCodeLine{83     u32 init;        \textcolor{comment}{// init word sent on start of scanline (start X coordinate)}}
+\DoxyCodeLine{84     u32 keycol;      \textcolor{comment}{// key color}}
+\DoxyCodeLine{85     u16 trans;       \textcolor{comment}{// trans count}}
+\DoxyCodeLine{86     s16 x;           \textcolor{comment}{// start X coordinate}}
+\DoxyCodeLine{87     s16 y;           \textcolor{comment}{// start Y coordinate}}
+\DoxyCodeLine{88     u16 w;           \textcolor{comment}{// width in pixels}}
+\DoxyCodeLine{89     u16 h;           \textcolor{comment}{// height}}
+\DoxyCodeLine{90     u16 wb;          \textcolor{comment}{// image width in bytes (pitch of lines)}}
+\DoxyCodeLine{91     u8 mode;         \textcolor{comment}{// layer mode}}
+\DoxyCodeLine{92     s8 horiz;        \textcolor{comment}{// horizon of perspective projection/4 (only with LAYERMODE\_PERSP* modes, 0=no perspecitve, <0 ceilling)}}
+\DoxyCodeLine{93     u8 xbits;        \textcolor{comment}{// number of bits of width of source image (only with LAYERMODE\_PERSP* modes)}}
+\DoxyCodeLine{94     u8 ybits;        \textcolor{comment}{// number of bits of height of source image (only with LAYERMODE\_PERSP* modes)}}
+\DoxyCodeLine{95     u16 spritenum;   \textcolor{comment}{// number of sprites}}
+\DoxyCodeLine{96     Bool on;         \textcolor{comment}{// layer is ON}}
+\DoxyCodeLine{97     u8 cpp;          \textcolor{comment}{// current clock pulses per pixel (used to calculate X coordinate)}}
+\DoxyCodeLine{98 \} \mbox{\hyperlink{structs_layer}{sLayer}};}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \textcolor{comment}{// sprite (on change update SSPRITE\_* in define.h)}}
+\DoxyCodeLine{101 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{102 \{}
+\DoxyCodeLine{103     u8 *img;    \textcolor{comment}{// SSPRITE\_IMG pointer to image data}}
+\DoxyCodeLine{104     u8 *x0;     \textcolor{comment}{// SSPRITE\_X0 pointer to array of start of lines, or fast sprite start of lines/4}}
+\DoxyCodeLine{105     u8 *w0;     \textcolor{comment}{// SSPRITE\_W0 pointer to array of length of lines, or fast sprite length of lines/4}}
+\DoxyCodeLine{106     u32 keycol; \textcolor{comment}{// SSPRITE\_KEYCOL key color}}
+\DoxyCodeLine{107     s16 x;      \textcolor{comment}{// SSPRITE\_X sprite X-\/coordinate on the screen}}
+\DoxyCodeLine{108     s16 y;      \textcolor{comment}{// SSPRITE\_Y sprite Y-\/coordinate on the screen}}
+\DoxyCodeLine{109     u16 w;      \textcolor{comment}{// SSPRITE\_W sprite width (slow sprite: max. width 255)}}
+\DoxyCodeLine{110     u16 h;      \textcolor{comment}{// SSPRITE\_H sprite height}}
+\DoxyCodeLine{111     u16 wb;     \textcolor{comment}{// SSPRITE\_WB sprite pitch (number of bytes between lines)}}
+\DoxyCodeLine{112     u16 res;    \textcolor{comment}{// ...reserved, structure align}}
+\DoxyCodeLine{113 \} \mbox{\hyperlink{structs_sprite}{sSprite}};}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115 \textcolor{comment}{// current layer screens}}
+\DoxyCodeLine{116 \textcolor{keyword}{extern} \mbox{\hyperlink{structs_layer}{sLayer}} LayerScreen[LAYERS]; \textcolor{comment}{// layer screens}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118 \textcolor{keyword}{extern} u8 LayerMask; \textcolor{comment}{// mask of active layers}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120 \textcolor{comment}{// index of first pin of layer (base layer should stay VGA\_GPIO\_FIRST)}}
+\DoxyCodeLine{121 \textcolor{keyword}{extern} u8 LayerFirstPin[LAYERS\_MAX];}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 \textcolor{comment}{// number of pins of overlapped layer (base layer should stay VGA\_GPIO\_OUTNUM)}}
+\DoxyCodeLine{124 \textcolor{keyword}{extern} u8 LayerNumPin[LAYERS\_MAX];}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126 \textcolor{comment}{// set overlapped layer 1..3 ON}}
+\DoxyCodeLine{127 \textcolor{keywordtype}{void} LayerOn(u8 inx);}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129 \textcolor{comment}{// set overlapped layer 1..3 OFF}}
+\DoxyCodeLine{130 \textcolor{keywordtype}{void} LayerOff(u8 inx);}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132 \textcolor{comment}{// set coordinate X of overlapped layer}}
+\DoxyCodeLine{133 \textcolor{keywordtype}{void} LayerSetX(u8 inx, s16 x);}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135 \textcolor{comment}{// set coordinate Y of overlapped layer}}
+\DoxyCodeLine{136 \textcolor{keywordtype}{void} LayerSetY(u8 inx, s16 y);}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138 \textcolor{comment}{// set width of image of overlapped layer}}
+\DoxyCodeLine{139 \textcolor{comment}{//   Uses auto pitch wb (full line). Set custom wb after calling this function.}}
+\DoxyCodeLine{140 \textcolor{keywordtype}{void} LayerSetW(u8 inx, u16 w);}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142 \textcolor{comment}{// set height of image of overlapped layer}}
+\DoxyCodeLine{143 \textcolor{keywordtype}{void} LayerSetH(u8 inx, u16 h);}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145 \textcolor{comment}{// setup overlapped layer 1..3 (not for sprites and not for perspective mode)}}
+\DoxyCodeLine{146 \textcolor{comment}{//  inx ... layer index 1..3}}
+\DoxyCodeLine{147 \textcolor{comment}{//  img ... pointer to image data}}
+\DoxyCodeLine{148 \textcolor{comment}{//  vmode ... pointer to initialized video configuration}}
+\DoxyCodeLine{149 \textcolor{comment}{//  w ... image width in pixels (must be multiple of 4)}}
+\DoxyCodeLine{150 \textcolor{comment}{//  h ... image height}}
+\DoxyCodeLine{151 \textcolor{comment}{//  col ... key color (needed for LAYERMODE\_KEY and LAYERMODE\_MONO layer mode)}}
+\DoxyCodeLine{152 \textcolor{comment}{//  par ... additional data (RLE index table, integer transformation matrix)}}
+\DoxyCodeLine{153 \textcolor{comment}{// Use these functions after layer setup: LayerSetX, LayerSetY, LayerOn}}
+\DoxyCodeLine{154 \textcolor{keywordtype}{void} LayerSetup(u8 inx, \textcolor{keyword}{const} u8 *img, \textcolor{keyword}{const} \mbox{\hyperlink{structs_vmode}{sVmode}} *vmode, u16 w, u16 h, u8 col = 0, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *par = NULL);}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156 \textcolor{comment}{// setup overlapped layer 1..3 for LAYERMODE\_PERSP* modes}}
+\DoxyCodeLine{157 \textcolor{comment}{//  inx ... layer index 1..3}}
+\DoxyCodeLine{158 \textcolor{comment}{//  img ... pointer to source image data (image width and height must be power of 2)}}
+\DoxyCodeLine{159 \textcolor{comment}{//  vmode ... pointer to initialized video configuration}}
+\DoxyCodeLine{160 \textcolor{comment}{//  w ... destination image width in pixels (must be multiple of 4)}}
+\DoxyCodeLine{161 \textcolor{comment}{//  h ... destination image height}}
+\DoxyCodeLine{162 \textcolor{comment}{//  xbits ... number of bits of width of source image}}
+\DoxyCodeLine{163 \textcolor{comment}{//  ybits ... number of bits of height of source image}}
+\DoxyCodeLine{164 \textcolor{comment}{//  horiz ... horizon of perspective projection/4 (0=no perspecitve, <0 ceilling)}}
+\DoxyCodeLine{165 \textcolor{comment}{//  mat ... integer transformation matrix}}
+\DoxyCodeLine{166 \textcolor{comment}{//  col ... key color (needed for LAYERMODE\_PERSPKEY layer mode)}}
+\DoxyCodeLine{167 \textcolor{comment}{// Use these functions after layer setup: LayerSetX, LayerSetY, LayerOn}}
+\DoxyCodeLine{168 \textcolor{keywordtype}{void} LayerPerspSetup(u8 inx, \textcolor{keyword}{const} u8 *img, \textcolor{keyword}{const} \mbox{\hyperlink{structs_vmode}{sVmode}} *vmode, u16 w, u16 h, u8 xbits, u8 ybits,}
+\DoxyCodeLine{169                      s8 horiz, \textcolor{keyword}{const} \textcolor{keywordtype}{int} *mat, u8 col = 0);}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171 \textcolor{comment}{// setup overlapped layer 1..3 for LAYERMODE\_SPRITE* and LAYERMODE\_FASTSPRITE* modes}}
+\DoxyCodeLine{172 \textcolor{comment}{//  inx ... layer index 1..3}}
+\DoxyCodeLine{173 \textcolor{comment}{//  sprite ... pointer to list of sprites (array of pointers to sprites; sorted by X on LAYERMODE\_FASTSPRITE* modes)}}
+\DoxyCodeLine{174 \textcolor{comment}{//  spritenum ... number of sprites in the list (to turn sprite off, you can set its coordinate Y out of the screen)}}
+\DoxyCodeLine{175 \textcolor{comment}{//  vmode ... pointer to initialized video configuration}}
+\DoxyCodeLine{176 \textcolor{comment}{//  x ... start coordinate X of area with sprites}}
+\DoxyCodeLine{177 \textcolor{comment}{//  y ... start coordinate Y of area with sprites}}
+\DoxyCodeLine{178 \textcolor{comment}{//  w ... width of area with sprites (must be multiple of 4)}}
+\DoxyCodeLine{179 \textcolor{comment}{//  h ... height of area with sprites}}
+\DoxyCodeLine{180 \textcolor{comment}{//  col ... key color (needed for LAYERMODE\_SPRITEKEY and LAYERMODE\_FASTSPRITEKEY layer mode)}}
+\DoxyCodeLine{181 \textcolor{comment}{// Use functions LayerOn after layer setup.}}
+\DoxyCodeLine{182 \textcolor{keywordtype}{void} LayerSpriteSetup(u8 inx, \mbox{\hyperlink{structs_sprite}{sSprite}} **sprite, u16 spritenum, \textcolor{keyword}{const} \mbox{\hyperlink{structs_vmode}{sVmode}} *vmode,}
+\DoxyCodeLine{183                       s16 x, s16 y, u16 w, u16 h, u8 col = 0);}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185 \textcolor{comment}{// prepare array of start and length of lines (detects transparent pixels)}}
+\DoxyCodeLine{186 \textcolor{comment}{//  img ... image}}
+\DoxyCodeLine{187 \textcolor{comment}{//  x0 ... array of start of lines}}
+\DoxyCodeLine{188 \textcolor{comment}{//  w0 ... array of length of lines}}
+\DoxyCodeLine{189 \textcolor{comment}{//  w ... sprite width (slow sprite: max. width 255)}}
+\DoxyCodeLine{190 \textcolor{comment}{//  h ... sprite height}}
+\DoxyCodeLine{191 \textcolor{comment}{//  wb ... sprite pitch (bytes between lines)}}
+\DoxyCodeLine{192 \textcolor{comment}{//  col ... key color}}
+\DoxyCodeLine{193 \textcolor{comment}{//  fast ... fast sprite, divide start and length of line by 4}}
+\DoxyCodeLine{194 \textcolor{keywordtype}{void} SpritePrepLines(\textcolor{keyword}{const} u8 *img, u8 *x0, u8 *w0, u16 w, u16 h, u16 wb, u8 col, Bool fast);}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196 \textcolor{comment}{// sort fast sprite list by X coordinate}}
+\DoxyCodeLine{197 \textcolor{keywordtype}{void} SortSprite(\mbox{\hyperlink{structs_sprite}{sSprite}} **list, \textcolor{keywordtype}{int} num);}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_VGA\_LAYER\_H}}
+
+\end{DoxyCode}

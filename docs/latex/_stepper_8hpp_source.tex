@@ -1,0 +1,172 @@
+\hypertarget{_stepper_8hpp_source}{}\doxysection{Stepper.\+hpp}
+\label{_stepper_8hpp_source}\index{lib/gui\_lib/include/elements/Stepper.hpp@{lib/gui\_lib/include/elements/Stepper.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by kefas on 26.2.23.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PICO\_KIT\_FRAMEWORK\_STEPPER\_HPP}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PICO\_KIT\_FRAMEWORK\_STEPPER\_HPP}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}include.hpp"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}Button.hpp"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}IVGA.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}MouseDispatcher.hpp"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}BindableProperty.hpp"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }rpgui::ui}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     \textcolor{keyword}{class }Button;}
+\DoxyCodeLine{17 \}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{using namespace }rpgui::common;}
+\DoxyCodeLine{20 \textcolor{keyword}{using namespace }rpgui::type;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{namespace }rpgui::ui}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{25     \textcolor{keyword}{concept }Stepable = \textcolor{keyword}{requires}(T x) \{}
+\DoxyCodeLine{26         \{}
+\DoxyCodeLine{27             ++x}
+\DoxyCodeLine{28         \} -\/> std::same\_as<T \&>;}
+\DoxyCodeLine{29         \{}
+\DoxyCodeLine{30             -\/-\/x}
+\DoxyCodeLine{31         \} -\/> std::same\_as<T \&>;}
+\DoxyCodeLine{32     \};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{35     \textcolor{keyword}{concept }Constructible = \textcolor{keyword}{requires} \{}
+\DoxyCodeLine{36         \textcolor{keyword}{typename} std::enable\_if<std::is\_default\_constructible\_v<T>>::type;}
+\DoxyCodeLine{37     \};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{40     \textcolor{keyword}{concept }StepableAndConstructible = \textcolor{keyword}{requires} \{}
+\DoxyCodeLine{41         Stepable<T> \&\&Constructible<T>;}
+\DoxyCodeLine{42     \};}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{keyword}{template} <Stepable T>}
+\DoxyCodeLine{45     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{Stepper}} : \textcolor{keyword}{public} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}, \textcolor{keyword}{public} \mbox{\hyperlink{classrpgui_1_1common_1_1_clickable}{Clickable}}}
+\DoxyCodeLine{46     \{}
+\DoxyCodeLine{47     \textcolor{keyword}{private}:}
+\DoxyCodeLine{48         \mbox{\hyperlink{classrpgui_1_1ui_1_1_button}{Button}} *\_bAdd;}
+\DoxyCodeLine{49         \mbox{\hyperlink{classrpgui_1_1ui_1_1_button}{Button}} *\_bSub;}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     \textcolor{keyword}{public}:}
+\DoxyCodeLine{52         Color backgroundColor;}
+\DoxyCodeLine{53         uint8\_t frameWidth;}
+\DoxyCodeLine{54         \mbox{\hyperlink{classrpgui_1_1common_1_1_bindable_property}{BindableProperty<T>}} counter;}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     \textcolor{keyword}{public}:}
+\DoxyCodeLine{57         \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{Stepper}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{58         \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{Stepper}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{Stepper}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{59         \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{\string~Stepper}}();}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61         \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{Stepper}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}} \&width, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}} \&height, Color \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}} = Color::White, Color backgroundColor = Color::SemiGray, uint8\_t frameWidth = 2);}
+\DoxyCodeLine{62         \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{Stepper}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}} \&width, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}} \&height, T \&counter, Color \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}} = Color::White, Color backgroundColor = Color::SemiGray, uint8\_t frameWidth = 2);}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper_a620b2fc530a6b816e4278d3bc5fe3966}{Draw}}() \textcolor{keyword}{const} \textcolor{keyword}{final};}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper_a94e836c418f5c76dda1ead552fd52be2}{SetBounds}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&bounds) \textcolor{keyword}{override};}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     \textcolor{keyword}{private}:}
+\DoxyCodeLine{69         \textcolor{keyword}{static} \textcolor{keywordtype}{void} add(\mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_event}{rpgui::event::MouseEvent<MouseEventType>}} \&event, \mbox{\hyperlink{classrpgui_1_1common_1_1_clickable}{Clickable}} *sender);}
+\DoxyCodeLine{70         \textcolor{keyword}{static} \textcolor{keywordtype}{void} sub(\mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_event}{rpgui::event::MouseEvent<MouseEventType>}} \&event, \mbox{\hyperlink{classrpgui_1_1common_1_1_clickable}{Clickable}} *sender);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72         \textcolor{keywordtype}{void} prepareButtons();}
+\DoxyCodeLine{73     \};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     \textcolor{keyword}{template} <Stepable T>}
+\DoxyCodeLine{76     \textcolor{keyword}{inline} \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{Stepper<T>::\string~Stepper}}()}
+\DoxyCodeLine{77     \{}
+\DoxyCodeLine{78         \textcolor{keyword}{delete} \_bAdd;}
+\DoxyCodeLine{79         \textcolor{keyword}{delete} \_bSub;}
+\DoxyCodeLine{80     \}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     \textcolor{keyword}{template} <StepableAndConstructible T>}
+\DoxyCodeLine{83     \textcolor{keyword}{inline} Stepper<T>::Stepper(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}} \&width, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}} \&height, Color color, Color backgroundColor, uint8\_t frameWidth)}
+\DoxyCodeLine{84         : rpgui::common::\mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}(\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}(0, 0, width.v, height.v), color),}
+\DoxyCodeLine{85           backgroundColor(backgroundColor),}
+\DoxyCodeLine{86           frameWidth(frameWidth),}
+\DoxyCodeLine{87           counter(T())}
+\DoxyCodeLine{88     \{}
+\DoxyCodeLine{89         prepareButtons();}
+\DoxyCodeLine{90     \}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \textcolor{keyword}{template} <Stepable T>}
+\DoxyCodeLine{93     \textcolor{keyword}{inline} Stepper<T>::Stepper(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}} \&width, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}} \&height, T \&counter, Color color, Color backgroundColor, uint8\_t frameWidth)}
+\DoxyCodeLine{94         : rpgui::common::\mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}(\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}(0, 0, width.v, height.v), color),}
+\DoxyCodeLine{95           backgroundColor(backgroundColor),}
+\DoxyCodeLine{96           frameWidth(frameWidth),}
+\DoxyCodeLine{97           counter(counter)}
+\DoxyCodeLine{98     \{}
+\DoxyCodeLine{99         prepareButtons();}
+\DoxyCodeLine{100     \}}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102     \textcolor{keyword}{template} <Stepable T>}
+\DoxyCodeLine{103     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper_a620b2fc530a6b816e4278d3bc5fe3966}{Stepper<T>::Draw}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{104 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{105         \textcolor{keywordflow}{for} (uint8\_t i = 0; i < frameWidth; i++)}
+\DoxyCodeLine{106         \{}
+\DoxyCodeLine{107             IVGA::IDrawFrame(this-\/>GetBounds() -\/ i, this-\/>backgroundColor);}
+\DoxyCodeLine{108         \}}
+\DoxyCodeLine{109         \textcolor{keyword}{auto} b = \_bSub-\/>GetBounds();}
+\DoxyCodeLine{110         IVGA::IDrawRectangle(\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}(b.x + b.w, b.y, frameWidth, b.h), backgroundColor);}
+\DoxyCodeLine{111         \_bAdd-\/>Draw();}
+\DoxyCodeLine{112         \_bSub-\/>Draw();}
+\DoxyCodeLine{113     \}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     \textcolor{keyword}{template} <Stepable T>}
+\DoxyCodeLine{116     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper_a94e836c418f5c76dda1ead552fd52be2}{Stepper<T>::SetBounds}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&bounds)}
+\DoxyCodeLine{117     \{}
+\DoxyCodeLine{118         this-\/>\mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a4290e9cdd0e89b07ff933d5f1c4ff86f}{rpgui::common::VisualElement::SetBounds}}(bounds);}
+\DoxyCodeLine{119         \textcolor{keyword}{auto} adjBounds = bounds -\/ frameWidth;}
+\DoxyCodeLine{120         adjBounds.w = adjBounds.w / 2;}
+\DoxyCodeLine{121         \_bAdd-\/>SetBounds(\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}(adjBounds.x + frameWidth / 2 + adjBounds.w, adjBounds.y, adjBounds.w, adjBounds.h));}
+\DoxyCodeLine{122         \_bSub-\/>SetBounds(\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}(adjBounds.x, adjBounds.y, adjBounds.w -\/ frameWidth / 2, adjBounds.h));}
+\DoxyCodeLine{123     \}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125     \textcolor{keyword}{template} <Stepable T>}
+\DoxyCodeLine{126     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{Stepper<T>::add}}(\mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_event}{rpgui::event::MouseEvent<MouseEventType>}} \&event, \mbox{\hyperlink{classrpgui_1_1common_1_1_clickable}{Clickable}} *sender)}
+\DoxyCodeLine{127     \{}
+\DoxyCodeLine{128         \textcolor{keyword}{auto} btn = (\mbox{\hyperlink{classrpgui_1_1ui_1_1_button}{rpgui::ui::Button}} *)sender;}
+\DoxyCodeLine{129         \textcolor{keyword}{auto} stepper = (\mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{ui::Stepper<T>}} *)btn-\/>GetParrent();}
+\DoxyCodeLine{130         T \&val = stepper-\/>counter.GetValueRef();}
+\DoxyCodeLine{131         ++val;}
+\DoxyCodeLine{132     \}}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{keyword}{template} <Stepable T>}
+\DoxyCodeLine{135     \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{rpgui::ui::Stepper<T>::sub}}(\mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_event}{rpgui::event::MouseEvent<MouseEventType>}} \&event, \mbox{\hyperlink{classrpgui_1_1common_1_1_clickable}{Clickable}} *sender)}
+\DoxyCodeLine{136     \{}
+\DoxyCodeLine{137         \textcolor{keyword}{auto} btn = (\mbox{\hyperlink{classrpgui_1_1ui_1_1_button}{rpgui::ui::Button}} *)sender;}
+\DoxyCodeLine{138         \textcolor{keyword}{auto} stepper = (\mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper}{ui::Stepper<T>}} *)btn-\/>GetParrent();}
+\DoxyCodeLine{139         T \&val = stepper-\/>counter.GetValueRef();}
+\DoxyCodeLine{140         -\/-\/val;}
+\DoxyCodeLine{141     \}}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143     \textcolor{keyword}{template} <Stepable T>}
+\DoxyCodeLine{144     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} Stepper<T>::prepareButtons()}
+\DoxyCodeLine{145     \{}
+\DoxyCodeLine{146         \textcolor{keyword}{auto} bound = this-\/>GetBounds();}
+\DoxyCodeLine{147         \textcolor{keyword}{auto} adjBounds = bound -\/ frameWidth;}
+\DoxyCodeLine{148         adjBounds.w = adjBounds.w / 2;}
+\DoxyCodeLine{149         \_bAdd = \textcolor{keyword}{new} Button(\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}(adjBounds.x + frameWidth / 2 + adjBounds.w, adjBounds.y, adjBounds.w, adjBounds.h),}
+\DoxyCodeLine{150                            color,}
+\DoxyCodeLine{151                            \textcolor{stringliteral}{"{}+"{}},}
+\DoxyCodeLine{152                            backgroundColor);}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154         \_bSub = \textcolor{keyword}{new} Button(\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}(adjBounds.x + frameWidth / 2 + adjBounds.w, adjBounds.y, adjBounds.w, adjBounds.h),}
+\DoxyCodeLine{155                            color,}
+\DoxyCodeLine{156                            \textcolor{stringliteral}{"{}-\/"{}},}
+\DoxyCodeLine{157                            backgroundColor);}
+\DoxyCodeLine{158         \_bAdd-\/>SetParrent(\textcolor{keyword}{this});}
+\DoxyCodeLine{159         \_bSub-\/>SetParrent(\textcolor{keyword}{this});}
+\DoxyCodeLine{160         \_bAdd-\/>SetOnClickHandler(MouseEventType::Clicked, add, 1);}
+\DoxyCodeLine{161         \_bSub-\/>SetOnClickHandler(MouseEventType::Clicked, sub, 1);}
+\DoxyCodeLine{162     \}}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164 \} \textcolor{comment}{// namespace rpgui::ui}}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// PICO\_KIT\_FRAMEWORK\_STEPPER\_HPP}}
+
+\end{DoxyCode}

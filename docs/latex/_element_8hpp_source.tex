@@ -1,0 +1,51 @@
+\hypertarget{_element_8hpp_source}{}\doxysection{Element.\+hpp}
+\label{_element_8hpp_source}\index{lib/gui\_lib/include/common/Element.hpp@{lib/gui\_lib/include/common/Element.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by kefas on 26.2.23.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PICO\_KIT\_FRAMEWORK\_BASE\_HPP}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PICO\_KIT\_FRAMEWORK\_BASE\_HPP}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Types.hpp"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}Bounds.hpp"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}VColors.hpp"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{using namespace }rpgui::colors;}
+\DoxyCodeLine{13 \textcolor{keyword}{using namespace }rpgui::type;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }rpgui::common}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keyword}{class }Clickable;}
+\DoxyCodeLine{18     \textcolor{keyword}{using }EventHandler = void (*)(Clickable \&sender);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1common_1_1_element}{Element}}}
+\DoxyCodeLine{21     \{}
+\DoxyCodeLine{22     \textcolor{keyword}{private}:}
+\DoxyCodeLine{23         \textcolor{keyword}{inline} \textcolor{keyword}{static} uint16\_t \_count = 0;}
+\DoxyCodeLine{24         rpgui::type::ID \_id;}
+\DoxyCodeLine{25         \mbox{\hyperlink{classrpgui_1_1common_1_1_element}{Element}} *\_parrent;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keyword}{public}:}
+\DoxyCodeLine{28         \mbox{\hyperlink{classrpgui_1_1common_1_1_element}{Element}}();}
+\DoxyCodeLine{29         \mbox{\hyperlink{classrpgui_1_1common_1_1_element}{Element}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1common_1_1_element}{Element}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{30         \textcolor{keyword}{virtual} \mbox{\hyperlink{classrpgui_1_1common_1_1_element}{\string~Element}}();}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         \textcolor{keywordtype}{void} SetParrent(\mbox{\hyperlink{classrpgui_1_1common_1_1_element}{Element}} *parrent) \{ \_parrent = parrent; \}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{36         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1common_1_1_element_a0d5c17aa7ca2197f37e2305a38a317b6}{SetActive}}(\mbox{\hyperlink{classrpgui_1_1common_1_1_element}{Element}} *element);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38         \textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1common_1_1_element}{Element}} *GetParrent()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \_parrent; \}}
+\DoxyCodeLine{39         \textcolor{keyword}{const} uint16\_t GetId()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \_id; \}}
+\DoxyCodeLine{40         \textcolor{keyword}{static} uint16\_t GetElementCount() \{ \textcolor{keywordflow}{return} \_count; \}}
+\DoxyCodeLine{41     \};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \} \textcolor{comment}{// namespace rpgui::common}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// PICO\_KIT\_FRAMEWORK\_BASE\_HPP}}
+
+\end{DoxyCode}

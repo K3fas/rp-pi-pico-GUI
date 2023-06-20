@@ -1,0 +1,101 @@
+\hypertarget{dev_2log_2tusb__config_8h_source}{}\doxysection{tusb\+\_\+config.\+h}
+\label{dev_2log_2tusb__config_8h_source}\index{dev/log/tusb\_config.h@{dev/log/tusb\_config.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * The MIT License (MIT)}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ * Copyright (c) 2019 Ha Thach (tinyusb.org)}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{7 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{8 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{9 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{10 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{11 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{12 \textcolor{comment}{ *}}
+\DoxyCodeLine{13 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in}}
+\DoxyCodeLine{14 \textcolor{comment}{ * all copies or substantial portions of the Software.}}
+\DoxyCodeLine{15 \textcolor{comment}{ *}}
+\DoxyCodeLine{16 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{17 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{18 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{19 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{20 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{21 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN}}
+\DoxyCodeLine{22 \textcolor{comment}{ * THE SOFTWARE.}}
+\DoxyCodeLine{23 \textcolor{comment}{ *}}
+\DoxyCodeLine{24 \textcolor{comment}{ */}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#ifndef \_TUSB\_CONFIG\_H\_}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define \_TUSB\_CONFIG\_H\_}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{30 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{31 \{}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{35 \textcolor{comment}{// COMMON CONFIGURATION}}
+\DoxyCodeLine{36 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{comment}{// defined by compiler flags for flexibility}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef CFG\_TUSB\_MCU}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#error CFG\_TUSB\_MCU must be defined}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#if CFG\_TUSB\_MCU == OPT\_MCU\_LPC43XX || CFG\_TUSB\_MCU == OPT\_MCU\_LPC18XX || CFG\_TUSB\_MCU == OPT\_MCU\_MIMXRT10XX}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define CFG\_TUSB\_RHPORT0\_MODE (OPT\_MODE\_HOST | OPT\_MODE\_HIGH\_SPEED)}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define CFG\_TUSB\_RHPORT0\_MODE OPT\_MODE\_HOST}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#ifndef CFG\_TUSB\_OS}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define CFG\_TUSB\_OS OPT\_OS\_NONE}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{comment}{// CFG\_TUSB\_DEBUG is defined by compiler in DEBUG build}}
+\DoxyCodeLine{54 \textcolor{comment}{// \#define CFG\_TUSB\_DEBUG           0}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{comment}{/* USB DMA on some MCUs can only access a specific SRAM region with restriction on alignment.}}
+\DoxyCodeLine{57 \textcolor{comment}{ * Tinyusb use follows macros to declare transferring memory so that they can be put}}
+\DoxyCodeLine{58 \textcolor{comment}{ * into those specific section.}}
+\DoxyCodeLine{59 \textcolor{comment}{ * e.g}}
+\DoxyCodeLine{60 \textcolor{comment}{ * -\/ CFG\_TUSB\_MEM SECTION : \_\_attribute\_\_ (( section("{}.usb\_ram"{}) ))}}
+\DoxyCodeLine{61 \textcolor{comment}{ * -\/ CFG\_TUSB\_MEM\_ALIGN   : \_\_attribute\_\_ ((aligned(4)))}}
+\DoxyCodeLine{62 \textcolor{comment}{ */}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#ifndef CFG\_TUSB\_MEM\_SECTION}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define CFG\_TUSB\_MEM\_SECTION}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#ifndef CFG\_TUSB\_MEM\_ALIGN}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#define CFG\_TUSB\_MEM\_ALIGN \_\_attribute\_\_((aligned(4)))}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{72 \textcolor{comment}{// CONFIGURATION}}
+\DoxyCodeLine{73 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{comment}{// Size of buffer to hold descriptors and other data used for enumeration}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#define CFG\_TUH\_ENUMERATION\_BUFSIZE 256}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#define CFG\_TUH\_HUB 1}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#define CFG\_TUH\_CDC 0}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#define CFG\_TUH\_HID 4 }\textcolor{comment}{// typical keyboard + mouse device can have 3-\/4 HID interfaces}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#define CFG\_TUH\_MSC 0}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#define CFG\_TUH\_VENDOR 0}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{comment}{// max device support (excluding hub device)}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#define CFG\_TUH\_DEVICE\_MAX (CFG\_TUH\_HUB ? 4 : 1) }\textcolor{comment}{// hub typically has 4 ports}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ HID -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\///}}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#define CFG\_TUH\_HID\_EPIN\_BUFSIZE 64}}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#define CFG\_TUH\_HID\_EPOUT\_BUFSIZE 64}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{92 \}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* \_TUSB\_CONFIG\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

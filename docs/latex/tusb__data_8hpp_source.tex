@@ -1,0 +1,26 @@
+\hypertarget{tusb__data_8hpp_source}{}\doxysection{tusb\+\_\+data.\+hpp}
+\label{tusb__data_8hpp_source}\index{lib/gui\_lib/util/tusb\_data.hpp@{lib/gui\_lib/util/tusb\_data.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{keyword}{namespace }HID}
+\DoxyCodeLine{4 \{}
+\DoxyCodeLine{5     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_h_i_d_1_1kbd}{kbd}}}
+\DoxyCodeLine{6     \{}
+\DoxyCodeLine{7         \textcolor{keyword}{inline} \textcolor{keyword}{static} uint8\_t pressedKeys[6] = \{\};}
+\DoxyCodeLine{8         \textcolor{keyword}{inline} \textcolor{keyword}{static} uint64\_t processTime = 0;}
+\DoxyCodeLine{9     \};}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_h_i_d_1_1mouse}{mouse}}}
+\DoxyCodeLine{12     \{}
+\DoxyCodeLine{13         \textcolor{keyword}{inline} \textcolor{keyword}{static} int16\_t mousePos[2] = \{\};}
+\DoxyCodeLine{14         \textcolor{keyword}{inline} \textcolor{keyword}{static} uint8\_t mouseKeys[5] = \{\};}
+\DoxyCodeLine{15         \textcolor{keyword}{inline} \textcolor{keyword}{static} uint64\_t processTime = 0;}
+\DoxyCodeLine{16         \textcolor{keyword}{inline} \textcolor{keyword}{static} \textcolor{keywordtype}{bool} moved = \textcolor{keyword}{false};}
+\DoxyCodeLine{17         \textcolor{keyword}{inline} \textcolor{keyword}{static} \textcolor{keywordtype}{bool} clicked = \textcolor{keyword}{false};}
+\DoxyCodeLine{18     \};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \}}
+
+\end{DoxyCode}

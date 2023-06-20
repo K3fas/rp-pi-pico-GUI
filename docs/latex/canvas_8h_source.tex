@@ -1,0 +1,153 @@
+\hypertarget{canvas_8h_source}{}\doxysection{canvas.\+h}
+\label{canvas_8h_source}\index{lib/vga\_lib/include/util/canvas.h@{lib/vga\_lib/include/util/canvas.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//                                   Canvas}}
+\DoxyCodeLine{5 \textcolor{comment}{//}}
+\DoxyCodeLine{6 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef \_CANVAS\_H}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define \_CANVAS\_H}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}global.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define DRAW\_HWINTER 1 }\textcolor{comment}{// 1=use hardware interpolator to draw images}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// canvas format}}
+\DoxyCodeLine{16 \textcolor{comment}{//   Note: do not use enum, symbols could not be used by the preprocessor}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define CANVAS\_8 0       }\textcolor{comment}{// 8-\/bit pixels}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define CANVAS\_4 1       }\textcolor{comment}{// 4-\/bit pixels}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define CANVAS\_2 2       }\textcolor{comment}{// 2-\/bit pixels}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define CANVAS\_1 3       }\textcolor{comment}{// 1-\/bit pixels}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define CANVAS\_PLANE2 4  }\textcolor{comment}{// 4 colors on 2 planes}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define CANVAS\_ATTRIB8 5 }\textcolor{comment}{// 2x4 bit color attributes per 8x8 pixel sample}}
+\DoxyCodeLine{23 \textcolor{comment}{//  draw functions: bit 0..3 = draw color}}
+\DoxyCodeLine{24 \textcolor{comment}{//          bit 4 = draw color is background color}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{comment}{// canvas descriptor}}
+\DoxyCodeLine{27 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{28 \{}
+\DoxyCodeLine{29     u8 *img;   \textcolor{comment}{// image data}}
+\DoxyCodeLine{30     u8 *img2;  \textcolor{comment}{// image data 2 (2nd plane of CANVAS\_PLANE2, attributes of CANVAS\_ATTRIB8)}}
+\DoxyCodeLine{31     \textcolor{keywordtype}{int} w;     \textcolor{comment}{// width}}
+\DoxyCodeLine{32     \textcolor{keywordtype}{int} h;     \textcolor{comment}{// height}}
+\DoxyCodeLine{33     \textcolor{keywordtype}{int} wb;    \textcolor{comment}{// pitch (bytes between lines)}}
+\DoxyCodeLine{34     u8 format; \textcolor{comment}{// canvas format CANVAS\_*}}
+\DoxyCodeLine{35 \} \mbox{\hyperlink{structs_canvas}{sCanvas}};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{comment}{// Draw rectangle}}
+\DoxyCodeLine{39 \textcolor{keywordtype}{void} DrawRect(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h, u8 col);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{comment}{// Draw frame}}
+\DoxyCodeLine{42 \textcolor{keywordtype}{void} DrawFrame(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h, u8 col);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{comment}{// clear canvas (fill with black color)}}
+\DoxyCodeLine{45 \textcolor{keywordtype}{void} DrawClear(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{// Draw point}}
+\DoxyCodeLine{48 \textcolor{keywordtype}{void} DrawPoint(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, u8 col);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{comment}{// Draw line}}
+\DoxyCodeLine{51 \textcolor{keywordtype}{void} DrawLine(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas, \textcolor{keywordtype}{int} x1, \textcolor{keywordtype}{int} y1, \textcolor{keywordtype}{int} x2, \textcolor{keywordtype}{int} y2, u8 col);}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{comment}{// Draw filled circle}}
+\DoxyCodeLine{54 \textcolor{comment}{//  x0, y0 ... coordinate of center}}
+\DoxyCodeLine{55 \textcolor{comment}{//  r ... radius}}
+\DoxyCodeLine{56 \textcolor{comment}{//  col ... color}}
+\DoxyCodeLine{57 \textcolor{comment}{//     col with CANVAS\_ATTRIB8 format: bit 0..3 = draw color, bit 4 = draw color is background color}}
+\DoxyCodeLine{58 \textcolor{comment}{//  mask ... mask of used octants (0xff = 255 = draw whole circle)}}
+\DoxyCodeLine{59 \textcolor{comment}{//         . B2|B1 .}}
+\DoxyCodeLine{60 \textcolor{comment}{//       B3 .  |  . B0}}
+\DoxyCodeLine{61 \textcolor{comment}{//       -\/-\/-\/-\/-\/-\/o-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{62 \textcolor{comment}{//       B4 .  |  . B7}}
+\DoxyCodeLine{63 \textcolor{comment}{//         . B5|B6 .}}
+\DoxyCodeLine{64 \textcolor{keywordtype}{void} DrawFillCircle(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas, \textcolor{keywordtype}{int} x0, \textcolor{keywordtype}{int} y0, \textcolor{keywordtype}{int} r, u8 col, u8 mask = 0xff);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{comment}{// Draw circle}}
+\DoxyCodeLine{67 \textcolor{comment}{//  x0, y0 ... coordinate of center}}
+\DoxyCodeLine{68 \textcolor{comment}{//  r ... radius}}
+\DoxyCodeLine{69 \textcolor{comment}{//  col ... color}}
+\DoxyCodeLine{70 \textcolor{comment}{//     col with CANVAS\_ATTRIB8 format: bit 0..3 = draw color, bit 4 = draw color is background color}}
+\DoxyCodeLine{71 \textcolor{comment}{//  mask ... mask of used octants (0xff = 255 = draw whole circle)}}
+\DoxyCodeLine{72 \textcolor{comment}{//         . B2|B1 .}}
+\DoxyCodeLine{73 \textcolor{comment}{//       B3 .  |  . B0}}
+\DoxyCodeLine{74 \textcolor{comment}{//       -\/-\/-\/-\/-\/-\/o-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{75 \textcolor{comment}{//       B4 .  |  . B7}}
+\DoxyCodeLine{76 \textcolor{comment}{//         . B5|B6 .}}
+\DoxyCodeLine{77 \textcolor{keywordtype}{void} DrawCircle(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas, \textcolor{keywordtype}{int} x0, \textcolor{keywordtype}{int} y0, \textcolor{keywordtype}{int} r, u8 col, u8 mask = 0xff);}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{comment}{// Draw text (transparent background)}}
+\DoxyCodeLine{80 \textcolor{comment}{//   font = pointer to 1-\/bit font}}
+\DoxyCodeLine{81 \textcolor{keywordtype}{void} DrawText(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *text, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, u8 col,}
+\DoxyCodeLine{82               \textcolor{keyword}{const} \textcolor{keywordtype}{void} *font, \textcolor{keywordtype}{int} fontheight = 8, \textcolor{keywordtype}{int} scalex = 1, \textcolor{keywordtype}{int} scaley = 1);}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{comment}{// Draw text with background}}
+\DoxyCodeLine{85 \textcolor{comment}{//   font = pointer to 1-\/bit font}}
+\DoxyCodeLine{86 \textcolor{keywordtype}{void} DrawTextBg(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *text, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, u8 col, u8 bgcol,}
+\DoxyCodeLine{87                 \textcolor{keyword}{const} \textcolor{keywordtype}{void} *font, \textcolor{keywordtype}{int} fontheight = 8, \textcolor{keywordtype}{int} scalex = 1, \textcolor{keywordtype}{int} scaley = 1);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{comment}{// Draw image}}
+\DoxyCodeLine{90 \textcolor{keywordtype}{void} DrawImg(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas, \mbox{\hyperlink{structs_canvas}{sCanvas}} *src, \textcolor{keywordtype}{int} xd, \textcolor{keywordtype}{int} yd, \textcolor{keywordtype}{int} xs, \textcolor{keywordtype}{int} ys, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h);}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \textcolor{comment}{// Draw image with transparency (source and destination must have same format, col = transparency key color)}}
+\DoxyCodeLine{93 \textcolor{comment}{//  CANVAS\_ATTRIB8 format replaced by DrawImg function}}
+\DoxyCodeLine{94 \textcolor{keywordtype}{void} DrawBlit(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas, \mbox{\hyperlink{structs_canvas}{sCanvas}} *src, \textcolor{keywordtype}{int} xd, \textcolor{keywordtype}{int} yd, \textcolor{keywordtype}{int} xs, \textcolor{keywordtype}{int} ys, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h, u8 col);}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{comment}{// DrawImgMat mode}}
+\DoxyCodeLine{97 \textcolor{keyword}{enum}}
+\DoxyCodeLine{98 \{}
+\DoxyCodeLine{99     DRAWIMG\_WRAP,     \textcolor{comment}{// wrap image}}
+\DoxyCodeLine{100     DRAWIMG\_NOBORDER, \textcolor{comment}{// no border (transparent border)}}
+\DoxyCodeLine{101     DRAWIMG\_CLAMP,    \textcolor{comment}{// clamp image (use last pixel as border)}}
+\DoxyCodeLine{102     DRAWING\_COLOR,    \textcolor{comment}{// color border}}
+\DoxyCodeLine{103     DRAWIMG\_TRANSP,   \textcolor{comment}{// transparent image with key color}}
+\DoxyCodeLine{104     DRAWIMG\_PERSP,    \textcolor{comment}{// perspective floor}}
+\DoxyCodeLine{105 \};}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107 \textcolor{comment}{// draw 8-\/bit image with 2D transformation matrix}}
+\DoxyCodeLine{108 \textcolor{comment}{//  canvas ... destination canvas}}
+\DoxyCodeLine{109 \textcolor{comment}{//  src ... source canvas with image}}
+\DoxyCodeLine{110 \textcolor{comment}{//  x ... destination coordinate X}}
+\DoxyCodeLine{111 \textcolor{comment}{//  y ... destination coordinate Y}}
+\DoxyCodeLine{112 \textcolor{comment}{//  w ... destination width}}
+\DoxyCodeLine{113 \textcolor{comment}{//  h ... destination height}}
+\DoxyCodeLine{114 \textcolor{comment}{//  m ... transformation matrix (should be prepared using PrepDrawImg or PrepDrawPersp function)}}
+\DoxyCodeLine{115 \textcolor{comment}{//  mode ... draw mode DRAWIMG\_*}}
+\DoxyCodeLine{116 \textcolor{comment}{//  color ... key or border color}}
+\DoxyCodeLine{117 \textcolor{comment}{// Note to wrap and perspective mode: Width and height of source image must be power of 2!}}
+\DoxyCodeLine{118 \textcolor{keywordtype}{void} DrawImgMat(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas, \textcolor{keyword}{const} \mbox{\hyperlink{structs_canvas}{sCanvas}} *src, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h,}
+\DoxyCodeLine{119                 \textcolor{keyword}{const} \textcolor{keyword}{class} \mbox{\hyperlink{classc_mat2_df}{cMat2Df}} *m, u8 mode, u8 color);}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121 \textcolor{comment}{// draw tile map using perspective projection}}
+\DoxyCodeLine{122 \textcolor{comment}{//  canvas ... destination canvas}}
+\DoxyCodeLine{123 \textcolor{comment}{//  src ... source canvas with column of 8-\/bit square tiles (width = tile size, must be power of 2)}}
+\DoxyCodeLine{124 \textcolor{comment}{//  map ... byte map of tile indices}}
+\DoxyCodeLine{125 \textcolor{comment}{//  mapwbits ... number of bits of map width (number of tiles; width must be power of 2)}}
+\DoxyCodeLine{126 \textcolor{comment}{//  maphbits ... number of bits of map height (number of tiles; height must be power of 2)}}
+\DoxyCodeLine{127 \textcolor{comment}{//  tilebits ... number of bits of tile size (e.g. 5 = tile 32x32 pixel)}}
+\DoxyCodeLine{128 \textcolor{comment}{//  x ... destination coordinate X}}
+\DoxyCodeLine{129 \textcolor{comment}{//  y ... destination coordinate Y}}
+\DoxyCodeLine{130 \textcolor{comment}{//  w ... destination width}}
+\DoxyCodeLine{131 \textcolor{comment}{//  h ... destination height}}
+\DoxyCodeLine{132 \textcolor{comment}{//  mat ... transformation matrix (should be prepared using PrepDrawPersp function)}}
+\DoxyCodeLine{133 \textcolor{comment}{//  horizon ... horizon offset (0=do not use perspective projection)}}
+\DoxyCodeLine{134 \textcolor{keywordtype}{void} DrawTileMap(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas, \textcolor{keyword}{const} \mbox{\hyperlink{structs_canvas}{sCanvas}} *src, \textcolor{keyword}{const} u8 *map, \textcolor{keywordtype}{int} mapwbits, \textcolor{keywordtype}{int} maphbits,}
+\DoxyCodeLine{135                  \textcolor{keywordtype}{int} tilebits, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h, \textcolor{keyword}{const} \mbox{\hyperlink{classc_mat2_df}{cMat2Df}} *mat, u8 horizon);}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137 \textcolor{comment}{// draw image line interpolated}}
+\DoxyCodeLine{138 \textcolor{comment}{//  canvas = destination canvas (8-\/bit pixel format)}}
+\DoxyCodeLine{139 \textcolor{comment}{//  src = source canvas (source image in 8-\/bit pixel format)}}
+\DoxyCodeLine{140 \textcolor{comment}{//  xd,yd = destination coordinates}}
+\DoxyCodeLine{141 \textcolor{comment}{//  xs,ys = source coordinates}}
+\DoxyCodeLine{142 \textcolor{comment}{//  wd = destination width}}
+\DoxyCodeLine{143 \textcolor{comment}{//  ws = source width}}
+\DoxyCodeLine{144 \textcolor{comment}{// Overflow in X direction is not checked!}}
+\DoxyCodeLine{145 \textcolor{keywordtype}{void} DrawImgLine(\mbox{\hyperlink{structs_canvas}{sCanvas}} *canvas, \mbox{\hyperlink{structs_canvas}{sCanvas}} *src, \textcolor{keywordtype}{int} xd, \textcolor{keywordtype}{int} yd, \textcolor{keywordtype}{int} xs, \textcolor{keywordtype}{int} ys, \textcolor{keywordtype}{int} wd, \textcolor{keywordtype}{int} ws);}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_CANVAS\_H}}
+
+\end{DoxyCode}

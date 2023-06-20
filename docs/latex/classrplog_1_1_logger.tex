@@ -1,0 +1,92 @@
+\hypertarget{classrplog_1_1_logger}{}\doxysection{rplog\+::Logger Class Reference}
+\label{classrplog_1_1_logger}\index{rplog::Logger@{rplog::Logger}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_ac993def51126c7545ac3a111950b206c}\label{classrplog_1_1_logger_ac993def51126c7545ac3a111950b206c}} 
+{\bfseries Logger} (const \mbox{\hyperlink{classrplog_1_1_logger}{Logger}} \&)=delete
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_aef6794303284323de59280d9f70f1f3d}\label{classrplog_1_1_logger_aef6794303284323de59280d9f70f1f3d}} 
+bool {\bfseries Add\+File} (const std\+::string \&name, const std\+::string \&path=\char`\"{}\char`\"{}, Level log\+Level=Level\+::\+DEBUG)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_af0f8ee266e7e9dac4af95985d199e184}\label{classrplog_1_1_logger_af0f8ee266e7e9dac4af95985d199e184}} 
+void {\bfseries Close\+Files} ()
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a6b2635257cb7a37dd76a243066e88196}\label{classrplog_1_1_logger_a6b2635257cb7a37dd76a243066e88196}} 
+void {\bfseries Add\+Sink} (\mbox{\hyperlink{struct_f_i_l}{FIL}} $\ast$const file, Level log\+Level=Level\+::\+DEBUG)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a070761851e729f750d335b2cfa7f9a36}\label{classrplog_1_1_logger_a070761851e729f750d335b2cfa7f9a36}} 
+void {\bfseries Add\+Sink} (std\+::ostream \&stream, Level log\+Level=Level\+::\+DEBUG)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a08c8b169d3d6263ba0d33f929b708c39}\label{classrplog_1_1_logger_a08c8b169d3d6263ba0d33f929b708c39}} 
+void {\bfseries Log} (const std\+::string \&message, const Level \&severity)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_ac60af9d3613d17676f4af2807a687c63}\label{classrplog_1_1_logger_ac60af9d3613d17676f4af2807a687c63}} 
+void {\bfseries Save\+Data} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a7fe34222b832dbe6c7714f708224f5e5}\label{classrplog_1_1_logger_a7fe34222b832dbe6c7714f708224f5e5}} 
+static void {\bfseries Dispose\+SD} ()
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_ab0d5dd7c37244716a8e4fd0ea78d937f}\label{classrplog_1_1_logger_ab0d5dd7c37244716a8e4fd0ea78d937f}} 
+static void {\bfseries log} (\mbox{\hyperlink{struct_f_i_l}{FIL}} $\ast$const file, const std\+::string \&message, const Level severity=Level\+::\+DEBUG)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_affd5de7fc2afb0930e4ad345412423a8}\label{classrplog_1_1_logger_affd5de7fc2afb0930e4ad345412423a8}} 
+static void {\bfseries log} (std\+::ostream \&stream, const std\+::string \&message, const Level severity=Level\+::\+DEBUG)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a7b061ffc09d842ab822055ac755fb74f}\label{classrplog_1_1_logger_a7b061ffc09d842ab822055ac755fb74f}} 
+static void {\bfseries log\+Trace} (\mbox{\hyperlink{struct_f_i_l}{FIL}} $\ast$const file, const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a13d4166d3c148c832dd644f8a7c3f65f}\label{classrplog_1_1_logger_a13d4166d3c148c832dd644f8a7c3f65f}} 
+static void {\bfseries log\+Trace} (std\+::ostream \&stream, const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a8406601ac1ca77d1298356b35cab6a49}\label{classrplog_1_1_logger_a8406601ac1ca77d1298356b35cab6a49}} 
+static void {\bfseries log\+Debug} (\mbox{\hyperlink{struct_f_i_l}{FIL}} $\ast$const file, const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a9d4de72c320736425790d4fd641ada74}\label{classrplog_1_1_logger_a9d4de72c320736425790d4fd641ada74}} 
+static void {\bfseries log\+Debug} (std\+::ostream \&stream, const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a46dfed7dde4b78416d769feef323e22c}\label{classrplog_1_1_logger_a46dfed7dde4b78416d769feef323e22c}} 
+static void {\bfseries log\+Info} (\mbox{\hyperlink{struct_f_i_l}{FIL}} $\ast$const file, const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a753610365f12e5a542f07935a4f6dcb2}\label{classrplog_1_1_logger_a753610365f12e5a542f07935a4f6dcb2}} 
+static void {\bfseries log\+Info} (std\+::ostream \&stream, const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a66112462fa2197e808d9b41da33c3bcb}\label{classrplog_1_1_logger_a66112462fa2197e808d9b41da33c3bcb}} 
+static void {\bfseries log\+Warning} (\mbox{\hyperlink{struct_f_i_l}{FIL}} $\ast$const file, const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_aa3f37c263b13d6b0f1f82d817132107a}\label{classrplog_1_1_logger_aa3f37c263b13d6b0f1f82d817132107a}} 
+static void {\bfseries log\+Warning} (std\+::ostream \&stream, const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_aefcc1086897ef2104fb398163aa2c6e5}\label{classrplog_1_1_logger_aefcc1086897ef2104fb398163aa2c6e5}} 
+static void {\bfseries log\+Error} (\mbox{\hyperlink{struct_f_i_l}{FIL}} $\ast$const file, const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_ac7398874aac8495d6d474229f2f2cbf7}\label{classrplog_1_1_logger_ac7398874aac8495d6d474229f2f2cbf7}} 
+static void {\bfseries log\+Error} (std\+::ostream \&stream, const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_af656a3cda65121c59ce83c8bd34b810d}\label{classrplog_1_1_logger_af656a3cda65121c59ce83c8bd34b810d}} 
+static void {\bfseries log\+Critical} (\mbox{\hyperlink{struct_f_i_l}{FIL}} $\ast$const file, const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a4b095e5a66e68ea6f042be85eb3bd510}\label{classrplog_1_1_logger_a4b095e5a66e68ea6f042be85eb3bd510}} 
+static void {\bfseries log\+Critical} (std\+::ostream \&stream, const std\+::string \&message)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a41fb5f7f8eddf5362d45f429712623d2}\label{classrplog_1_1_logger_a41fb5f7f8eddf5362d45f429712623d2}} 
+Level {\bfseries log\+Level} = Level\+::\+TRACE
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrplog_1_1_logger_a28ba6fdc80950e1317828bc714ed01be}\label{classrplog_1_1_logger_a28ba6fdc80950e1317828bc714ed01be}} 
+static Level {\bfseries global\+Log\+Level} = Level\+::\+TRACE
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/rplog\+\_\+lib/include/rp\+\_\+logger.\+hpp\item 
+lib/rplog\+\_\+lib/src/rp\+\_\+logger.\+cpp\end{DoxyCompactItemize}

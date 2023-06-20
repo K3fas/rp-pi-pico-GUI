@@ -1,0 +1,41 @@
+\hypertarget{_line_8hpp_source}{}\doxysection{Line.\+hpp}
+\label{_line_8hpp_source}\index{lib/gui\_lib/include/elements/Line.hpp@{lib/gui\_lib/include/elements/Line.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by kefas on 26.2.23.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PICO\_KIT\_FRAMEWORK\_LINE\_HPP}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PICO\_KIT\_FRAMEWORK\_LINE\_HPP}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}include.hpp"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{using namespace }rpgui::type;}
+\DoxyCodeLine{11 \textcolor{keyword}{using namespace }rpgui::common;}
+\DoxyCodeLine{12 \textcolor{keyword}{using namespace }rpgui::colors;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }rpgui::ui}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1ui_1_1_line}{Line}} : \textcolor{keyword}{public} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}}
+\DoxyCodeLine{17     \{}
+\DoxyCodeLine{18     \textcolor{keyword}{public}:}
+\DoxyCodeLine{19         \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} start,end;}
+\DoxyCodeLine{20         }
+\DoxyCodeLine{21     \textcolor{keyword}{public}:}
+\DoxyCodeLine{22         \mbox{\hyperlink{classrpgui_1_1ui_1_1_line}{Line}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{23         \mbox{\hyperlink{classrpgui_1_1ui_1_1_line}{Line}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1ui_1_1_line}{Line}}\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{24         \mbox{\hyperlink{classrpgui_1_1ui_1_1_line}{\string~Line}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         \mbox{\hyperlink{classrpgui_1_1ui_1_1_line}{Line}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}}\& start, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}}\& end, Color \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}} = Color::White);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1ui_1_1_line_a8e998c024e738542e153792493b6191d}{Draw}}() \textcolor{keyword}{const} \textcolor{keyword}{final};}
+\DoxyCodeLine{29     \};}
+\DoxyCodeLine{30     }
+\DoxyCodeLine{31     }
+\DoxyCodeLine{32 \} \textcolor{comment}{// namespace rpgui::ui}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PICO\_KIT\_FRAMEWORK\_LINE\_HPP}}
+
+\end{DoxyCode}

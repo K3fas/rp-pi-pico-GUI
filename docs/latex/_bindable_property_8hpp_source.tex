@@ -1,0 +1,76 @@
+\hypertarget{_bindable_property_8hpp_source}{}\doxysection{Bindable\+Property.\+hpp}
+\label{_bindable_property_8hpp_source}\index{lib/gui\_lib/include/common/BindableProperty.hpp@{lib/gui\_lib/include/common/BindableProperty.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by kefas on 26.2.23.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PICO\_KIT\_FRAMEWORK\_BINDABLE\_HPP}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PICO\_KIT\_FRAMEWORK\_BINDABLE\_HPP}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{namespace }rpgui::common}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{11     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1common_1_1_bindable_property}{BindableProperty}}}
+\DoxyCodeLine{12     \{}
+\DoxyCodeLine{13     \textcolor{keyword}{private}:}
+\DoxyCodeLine{14         T* \_implicitValue;}
+\DoxyCodeLine{15         T\& \_value;}
+\DoxyCodeLine{16         }
+\DoxyCodeLine{17     \textcolor{keyword}{public}:}
+\DoxyCodeLine{18         \mbox{\hyperlink{classrpgui_1_1common_1_1_bindable_property}{BindableProperty}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{19         \mbox{\hyperlink{classrpgui_1_1common_1_1_bindable_property}{BindableProperty}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1common_1_1_bindable_property}{BindableProperty}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{20         \mbox{\hyperlink{classrpgui_1_1common_1_1_bindable_property}{\string~BindableProperty}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \mbox{\hyperlink{classrpgui_1_1common_1_1_bindable_property}{BindableProperty}}(T\& value);}
+\DoxyCodeLine{23         \mbox{\hyperlink{classrpgui_1_1common_1_1_bindable_property}{BindableProperty}}(\textcolor{keyword}{const} T\& value);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         \textcolor{keywordtype}{void} SetValue(\textcolor{keyword}{const} T value);}
+\DoxyCodeLine{26         \textcolor{keyword}{const} T\& GetValue() \textcolor{keyword}{const};}
+\DoxyCodeLine{27         T\& GetValueRef();}
+\DoxyCodeLine{28     \};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{31     \textcolor{keyword}{inline} \mbox{\hyperlink{classrpgui_1_1common_1_1_bindable_property}{BindableProperty<T>::\string~BindableProperty}}()}
+\DoxyCodeLine{32     \{}
+\DoxyCodeLine{33         \textcolor{keywordflow}{if}(\_implicitValue)}
+\DoxyCodeLine{34             \textcolor{keyword}{delete} \_implicitValue;}
+\DoxyCodeLine{35     \}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{38     \textcolor{keyword}{inline} BindableProperty<T>::BindableProperty(T \&value)}
+\DoxyCodeLine{39         : \_implicitValue(nullptr),\_value(value)}
+\DoxyCodeLine{40     \{}
+\DoxyCodeLine{41     \}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{44     \textcolor{keyword}{inline} BindableProperty<T>::BindableProperty(\textcolor{keyword}{const} T\&value)}
+\DoxyCodeLine{45         : \_implicitValue(new T(value)),\_value(*\_implicitValue)}
+\DoxyCodeLine{46     \{}
+\DoxyCodeLine{47     \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{50     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} BindableProperty<T>::SetValue(\textcolor{keyword}{const} T value)}
+\DoxyCodeLine{51     \{}
+\DoxyCodeLine{52         \_value = value;}
+\DoxyCodeLine{53     \}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{56     \textcolor{keyword}{inline} \textcolor{keyword}{const} T \&BindableProperty<T>::GetValue()\textcolor{keyword}{ const}}
+\DoxyCodeLine{57 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{58         \textcolor{keywordflow}{return} \_value;}
+\DoxyCodeLine{59     \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{62     \textcolor{keyword}{inline} T \&BindableProperty<T>::GetValueRef()}
+\DoxyCodeLine{63     \{}
+\DoxyCodeLine{64         \textcolor{keywordflow}{return} \_value;}
+\DoxyCodeLine{65     \}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \} \textcolor{comment}{// namespace rpgui::common}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{//PICO\_KIT\_FRAMEWORK\_BINDABLE\_HPP}}
+
+\end{DoxyCode}

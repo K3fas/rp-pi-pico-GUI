@@ -1,0 +1,83 @@
+\hypertarget{ff__stdio_8h_source}{}\doxysection{ff\+\_\+stdio.\+h}
+\label{ff__stdio_8h_source}\index{lib/SDwrapper\_lib/FatFs\_SPI/include/ff\_stdio.h@{lib/SDwrapper\_lib/FatFs\_SPI/include/ff\_stdio.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/* ff\_stdio.h}}
+\DoxyCodeLine{2 \textcolor{comment}{Copyright 2021 Carl John Kugler III}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{Licensed under the Apache License, Version 2.0 (the License); you may not use }}
+\DoxyCodeLine{5 \textcolor{comment}{this file except in compliance with the License. You may obtain a copy of the }}
+\DoxyCodeLine{6 \textcolor{comment}{License at}}
+\DoxyCodeLine{7 \textcolor{comment}{}}
+\DoxyCodeLine{8 \textcolor{comment}{   http://www.apache.org/licenses/LICENSE-\/2.0 }}
+\DoxyCodeLine{9 \textcolor{comment}{Unless required by applicable law or agreed to in writing, software distributed }}
+\DoxyCodeLine{10 \textcolor{comment}{under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR }}
+\DoxyCodeLine{11 \textcolor{comment}{CONDITIONS OF ANY KIND, either express or implied. See the License for the }}
+\DoxyCodeLine{12 \textcolor{comment}{specific language governing permissions and limitations under the License.}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 \textcolor{comment}{// For compatibility with FreeRTOS+FAT API}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <errno.h>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <stddef.h>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{19 \textcolor{comment}{//}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include "{}ff.h"{}}}
+\DoxyCodeLine{21 \textcolor{comment}{//}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include "{}my\_debug.h"{}}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define BaseType\_t int}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define FF\_FILE FIL}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define ff\_rewind f\_rewind}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define pvPortMalloc malloc}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define vPortFree free}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define ffconfigMAX\_FILENAME 250}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define configASSERT myASSERT}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define FF\_PRINTF printf}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define pdFREERTOS\_ERRNO\_NONE 0}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define FF\_EOF (-\/1)}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define FF\_SEEK\_SET 0}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define FF\_SEEK\_CUR 1}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define FF\_SEEK\_END 2}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define pdFALSE 0}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define pdTRUE 1}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define ff\_filelength f\_size}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define ff\_feof f\_eof}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_f_f___s_t_a_t}{FF\_STAT}} \{}
+\DoxyCodeLine{44     uint32\_t st\_size; \textcolor{comment}{/* Size of the object in number of bytes. */}}
+\DoxyCodeLine{45     \textcolor{comment}{// uint16\_t st\_mode;            /* The mode (attribute bits) of this}}
+\DoxyCodeLine{46     \textcolor{comment}{// file or directory. */}}
+\DoxyCodeLine{47 \} \mbox{\hyperlink{struct_f_f___s_t_a_t}{FF\_Stat\_t}};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{50     \mbox{\hyperlink{struct_d_i_r}{DIR}} dir;}
+\DoxyCodeLine{51     \mbox{\hyperlink{struct_f_i_l_i_n_f_o}{FILINFO}} fileinfo;    }
+\DoxyCodeLine{52     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *pcFileName;}
+\DoxyCodeLine{53     uint32\_t ulFileSize;}
+\DoxyCodeLine{54     \textcolor{comment}{//uint8\_t ucAttributes;}}
+\DoxyCodeLine{55 \} \mbox{\hyperlink{struct_f_f___find_data__t}{FF\_FindData\_t}};}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 FF\_FILE *ff\_fopen(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pcFile, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *pcMode);}
+\DoxyCodeLine{58 \textcolor{keywordtype}{int} ff\_fclose(FF\_FILE *pxStream);}
+\DoxyCodeLine{59 \textcolor{keywordtype}{int} ff\_stat(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pcFileName, \mbox{\hyperlink{struct_f_f___s_t_a_t}{FF\_Stat\_t}} *pxStatBuffer);}
+\DoxyCodeLine{60 \textcolor{keywordtype}{size\_t} ff\_fwrite(\textcolor{keyword}{const} \textcolor{keywordtype}{void} *pvBuffer, \textcolor{keywordtype}{size\_t} xSize, \textcolor{keywordtype}{size\_t} xItems,}
+\DoxyCodeLine{61                  FF\_FILE *pxStream);}
+\DoxyCodeLine{62 \textcolor{keywordtype}{size\_t} ff\_fread(\textcolor{keywordtype}{void} *pvBuffer, \textcolor{keywordtype}{size\_t} xSize, \textcolor{keywordtype}{size\_t} xItems, FF\_FILE *pxStream);}
+\DoxyCodeLine{63 \textcolor{keywordtype}{int} ff\_chdir(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pcDirectoryName);}
+\DoxyCodeLine{64 \textcolor{keywordtype}{char} *ff\_getcwd(\textcolor{keywordtype}{char} *pcBuffer, \textcolor{keywordtype}{size\_t} xBufferLength);}
+\DoxyCodeLine{65 \textcolor{keywordtype}{int} ff\_mkdir(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pcPath);}
+\DoxyCodeLine{66 \textcolor{keywordtype}{int} ff\_fputc(\textcolor{keywordtype}{int} iChar, FF\_FILE *pxStream);}
+\DoxyCodeLine{67 \textcolor{keywordtype}{int} ff\_fgetc(FF\_FILE *pxStream);}
+\DoxyCodeLine{68 \textcolor{keywordtype}{int} ff\_rmdir(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pcDirectory);}
+\DoxyCodeLine{69 \textcolor{keywordtype}{int} ff\_remove(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pcPath);}
+\DoxyCodeLine{70 \textcolor{keywordtype}{long} ff\_ftell(FF\_FILE *pxStream);}
+\DoxyCodeLine{71 \textcolor{keywordtype}{int} ff\_fseek(FF\_FILE *pxStream, \textcolor{keywordtype}{int} iOffset, \textcolor{keywordtype}{int} iWhence);}
+\DoxyCodeLine{72 \textcolor{keywordtype}{int} ff\_findfirst(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pcDirectory, \mbox{\hyperlink{struct_f_f___find_data__t}{FF\_FindData\_t}} *pxFindData);}
+\DoxyCodeLine{73 \textcolor{keywordtype}{int} ff\_findnext( \mbox{\hyperlink{struct_f_f___find_data__t}{FF\_FindData\_t}} *pxFindData );}
+\DoxyCodeLine{74 FF\_FILE *ff\_truncate( \textcolor{keyword}{const} \textcolor{keywordtype}{char} * pcFileName, \textcolor{keywordtype}{long} lTruncateSize );}
+\DoxyCodeLine{75 \textcolor{keywordtype}{int} ff\_seteof( FF\_FILE *pxStream );}
+\DoxyCodeLine{76 \textcolor{keywordtype}{int} ff\_rename( \textcolor{keyword}{const} \textcolor{keywordtype}{char} *pcOldName, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *pcNewName, \textcolor{keywordtype}{int} bDeleteIfExists );}
+\DoxyCodeLine{77 \textcolor{keywordtype}{char} *ff\_fgets(\textcolor{keywordtype}{char} *pcBuffer, \textcolor{keywordtype}{size\_t} xCount, FF\_FILE *pxStream);}
+
+\end{DoxyCode}

@@ -1,0 +1,60 @@
+\hypertarget{_view_8hpp_source}{}\doxysection{View.\+hpp}
+\label{_view_8hpp_source}\index{lib/gui\_lib/include/common/View.hpp@{lib/gui\_lib/include/common/View.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by kefas on 26.2.23.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PICO\_KIT\_FRAMEWORK\_VIEW\_HPP}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PICO\_KIT\_FRAMEWORK\_VIEW\_HPP}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}include.hpp"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{using namespace }rpgui::type;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }rpgui::common}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keyword}{enum class} VerticalAlignment}
+\DoxyCodeLine{18     \{}
+\DoxyCodeLine{19         Top,}
+\DoxyCodeLine{20         Center,}
+\DoxyCodeLine{21         Bottom,}
+\DoxyCodeLine{22         Fill}
+\DoxyCodeLine{23     \};}
+\DoxyCodeLine{24     \textcolor{keyword}{enum class} HorizontalAlignment}
+\DoxyCodeLine{25     \{}
+\DoxyCodeLine{26         Left,}
+\DoxyCodeLine{27         Center,}
+\DoxyCodeLine{28         Right,}
+\DoxyCodeLine{29         Fill}
+\DoxyCodeLine{30     \};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1common_1_1_view}{View}} : \textcolor{keyword}{public} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}}
+\DoxyCodeLine{33     \{}
+\DoxyCodeLine{34     \textcolor{keyword}{private}:}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         std::vector<VisualElement *> \_children;}
+\DoxyCodeLine{37         \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}* \_activeElement = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \textcolor{keyword}{public}:}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         \mbox{\hyperlink{classrpgui_1_1common_1_1_view}{View}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{42         \mbox{\hyperlink{classrpgui_1_1common_1_1_view}{View}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1common_1_1_view}{View}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{43         \textcolor{keyword}{virtual} \mbox{\hyperlink{classrpgui_1_1common_1_1_view}{\string~View}}();}
+\DoxyCodeLine{44         \mbox{\hyperlink{classrpgui_1_1common_1_1_view}{View}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&coords, \textcolor{keyword}{const} Color \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}}) : \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}(coords, \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}}) \{\}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46         \textcolor{keyword}{const} std::vector<VisualElement *> \&GetChildren() \textcolor{keyword}{const};}
+\DoxyCodeLine{47         ID AddChildren(\mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}* child);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         ID SetActive(\mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}* element);}
+\DoxyCodeLine{50         \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}* GetActive() \textcolor{keyword}{const};}
+\DoxyCodeLine{51     \};}
+\DoxyCodeLine{52 \} \textcolor{comment}{// namespace rpgui::common}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// PICO\_KIT\_FRAMEWORK\_VIEW\_HPP}}
+
+\end{DoxyCode}

@@ -1,0 +1,88 @@
+\hypertarget{_page2_8hpp_source}{}\doxysection{Page2.\+hpp}
+\label{_page2_8hpp_source}\index{examples/KitControl/Page2.hpp@{examples/KitControl/Page2.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <rpgui.hpp>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}quadrature\_encoder.pio.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{namespace }page2::model}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8     \textcolor{keyword}{inline} \textcolor{keyword}{static} \textcolor{keyword}{struct }data\_s}
+\DoxyCodeLine{9     \{}
+\DoxyCodeLine{10         \textcolor{keywordtype}{int} encoder = 0;}
+\DoxyCodeLine{11         \textcolor{keywordtype}{int} counter = 0;}
+\DoxyCodeLine{12         ui::Label *counter\_lbl;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14         data\_s \&operator++()}
+\DoxyCodeLine{15         \{}
+\DoxyCodeLine{16             ++counter;}
+\DoxyCodeLine{17             \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{18         \}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20         data\_s \&operator-\/-\/()}
+\DoxyCodeLine{21         \{}
+\DoxyCodeLine{22             -\/-\/counter;}
+\DoxyCodeLine{23             \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{24         \}}
+\DoxyCodeLine{25     \} data;}
+\DoxyCodeLine{26 \} \textcolor{comment}{// namespace page2::model}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{namespace }page2::view}
+\DoxyCodeLine{29 \{}
+\DoxyCodeLine{30     \textcolor{keyword}{using namespace }page2::model;}
+\DoxyCodeLine{31     \textcolor{keyword}{static} \textcolor{keyword}{inline} type::ID CreatePage()}
+\DoxyCodeLine{32     \{}
+\DoxyCodeLine{33         \textcolor{keyword}{auto} middle = \textcolor{keyword}{new} layout::StackLayout(\mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}}(180, 60), \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(120), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(400));}
+\DoxyCodeLine{34         middle-\/>AddElement(\textcolor{keyword}{new} ui::Label(\textcolor{stringliteral}{"{}LED Counter"{}}), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 10, 0, 10));}
+\DoxyCodeLine{35         \textcolor{keyword}{auto} lbl = \textcolor{keyword}{new} ui::Label(\textcolor{stringliteral}{"{}0"{}});}
+\DoxyCodeLine{36         data.counter\_lbl = lbl;}
+\DoxyCodeLine{37         middle-\/>AddElement(lbl), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 10, 0, 10);}
+\DoxyCodeLine{38         middle-\/>AddElement(\textcolor{keyword}{new} ui::Stepper(\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(120), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(32), data), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 2, 0, 2));}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40         \textcolor{keyword}{auto} page = \textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1page_1_1_page}{Page}}();}
+\DoxyCodeLine{41         page-\/>AddLayout(middle);}
+\DoxyCodeLine{42         \textcolor{keywordflow}{return} core::MainApp::AddPage(page);}
+\DoxyCodeLine{43     \}}
+\DoxyCodeLine{44 \} \textcolor{comment}{// namespace page2::view}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{keyword}{namespace }page2::controller}
+\DoxyCodeLine{47 \{}
+\DoxyCodeLine{48     \textcolor{keyword}{using namespace }page2::model;}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{keyword}{constexpr} uint LED\_PINS[] = \{6, 7, 8, 9\};}
+\DoxyCodeLine{51     \textcolor{keyword}{constexpr} uint EXPANDER\_CS\_PIN = 26;}
+\DoxyCodeLine{52     \textcolor{keyword}{constexpr} uint PIN\_AB = 21;}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} Init()}
+\DoxyCodeLine{55     \{}
+\DoxyCodeLine{56         stdio\_init\_all();}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58         PIO pio = pio1;}
+\DoxyCodeLine{59         \textcolor{keyword}{const} uint sm = 0;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61         uint offset = pio\_add\_program(pio, \&quadrature\_encoder\_program);}
+\DoxyCodeLine{62         quadrature\_encoder\_program\_init(pio, sm, offset, PIN\_AB, 0);}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < 4; i++)}
+\DoxyCodeLine{65         \{}
+\DoxyCodeLine{66             gpio\_init(LED\_PINS[i]);}
+\DoxyCodeLine{67             gpio\_set\_dir(LED\_PINS[i], GPIO\_OUT);}
+\DoxyCodeLine{68         \}}
+\DoxyCodeLine{69     \}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     \textcolor{keywordtype}{void} Update()}
+\DoxyCodeLine{72     \{}
+\DoxyCodeLine{73         PIO pio = pio1;}
+\DoxyCodeLine{74         \textcolor{keyword}{const} uint sm = 0;}
+\DoxyCodeLine{75         data.encoder = quadrature\_encoder\_get\_count(pio, sm);}
+\DoxyCodeLine{76         data.counter\_lbl-\/>SetText(std::to\_string(data.encoder / 4 + data.counter));}
+\DoxyCodeLine{77         gpio\_put(LED\_PINS[0], ((data.encoder / 4) + data.counter) \& 0b1000);}
+\DoxyCodeLine{78         gpio\_put(LED\_PINS[1], ((data.encoder / 4) + data.counter) \& 0b0100);}
+\DoxyCodeLine{79         gpio\_put(LED\_PINS[2], ((data.encoder / 4) + data.counter) \& 0b0010);}
+\DoxyCodeLine{80         gpio\_put(LED\_PINS[3], ((data.encoder / 4) + data.counter) \& 0b0001);}
+\DoxyCodeLine{81     \}}
+\DoxyCodeLine{82 \} \textcolor{comment}{// namespace page2::controller}}
+
+\end{DoxyCode}

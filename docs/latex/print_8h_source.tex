@@ -1,0 +1,115 @@
+\hypertarget{print_8h_source}{}\doxysection{print.\+h}
+\label{print_8h_source}\index{lib/vga\_lib/include/util/print.h@{lib/vga\_lib/include/util/print.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//         Print to attribute text buffer (format GF\_ATEXT and GF\_MTEXT)}}
+\DoxyCodeLine{5 \textcolor{comment}{//}}
+\DoxyCodeLine{6 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef \_PRINT\_H}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define \_PRINT\_H}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}global.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{comment}{// text colors (if using PC CGA colors)}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define PC\_BLACK 0}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define PC\_BLUE 1}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define PC\_GREEN 2}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define PC\_CYAN 3}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define PC\_RED 4}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define PC\_MAGENTA 5}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define PC\_BROWN 6}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define PC\_LTGRAY 7}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define PC\_GRAY 8}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define PC\_LTBLUE 9}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define PC\_LTGREEN 10}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define PC\_LTCYAN 11}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define PC\_LTRED 12}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define PC\_LTMAGENTA 13}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define PC\_YELLOW 14}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define PC\_WHITE 15}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{comment}{// compose PC color}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define PC\_COLOR(bg, fg) (((bg) << 4) | (fg))}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{comment}{// ASCII characters}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define CHAR\_CR '\(\backslash\)r'}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define CHAR\_LF '\(\backslash\)n'}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define CHAR\_TAB '\(\backslash\)t'}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define CHAR\_FRAME 16 }\textcolor{comment}{// frame base}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define FRAME\_L B0    }\textcolor{comment}{// frame left flag}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define FRAME\_U B1    }\textcolor{comment}{// frame up flag}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define FRAME\_R B2    }\textcolor{comment}{// frame right flag}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define FRAME\_D B3    }\textcolor{comment}{// frame down flag}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define CHAR\_FRAME\_FIRST 17                         }\textcolor{comment}{// first frame character}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define CHAR\_FRAME\_LAST 31                          }\textcolor{comment}{// last frame character}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define CHAR\_VLINE (CHAR\_FRAME | FRAME\_U | FRAME\_D) }\textcolor{comment}{// vertical line}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define CHAR\_HLINE (CHAR\_FRAME | FRAME\_L | FRAME\_R) }\textcolor{comment}{// horizontal line}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{comment}{// current print buffer}}
+\DoxyCodeLine{50 \textcolor{keyword}{extern} u8 *PrintBuf;}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{comment}{// size of print buffer}}
+\DoxyCodeLine{53 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} PrintBufW, PrintBufH, PrintBufWB;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{comment}{// print position}}
+\DoxyCodeLine{56 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} PrintX, PrintY;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{comment}{// print color}}
+\DoxyCodeLine{59 \textcolor{keyword}{extern} u8 PrintCol;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{comment}{// setup print service (if bufwb < 2*bufw, use mono text)}}
+\DoxyCodeLine{62 \textcolor{keywordtype}{void} PrintSetup(u8 *buf, \textcolor{keywordtype}{int} bufw, \textcolor{keywordtype}{int} bufh, \textcolor{keywordtype}{int} bufwb);}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{comment}{// clear text screen, using current color}}
+\DoxyCodeLine{65 \textcolor{keywordtype}{void} PrintClear();}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{comment}{// print home}}
+\DoxyCodeLine{68 \textcolor{keywordtype}{void} PrintHome();}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{comment}{// set print position}}
+\DoxyCodeLine{71 \textcolor{keywordtype}{void} PrintSetPos(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \textcolor{comment}{// shift relative print position}}
+\DoxyCodeLine{74 \textcolor{keywordtype}{void} PrintAddPos(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{comment}{// set print color (2x4 bits of colors, use PC\_COLOR macro)}}
+\DoxyCodeLine{77 \textcolor{keywordtype}{void} PrintSetCol(u8 col);}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{comment}{// print character, not using control characters}}
+\DoxyCodeLine{80 \textcolor{keywordtype}{void} PrintChar0(\textcolor{keywordtype}{char} ch);}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 \textcolor{comment}{// print character, using control characters CR, LF, TAB}}
+\DoxyCodeLine{83 \textcolor{keywordtype}{void} PrintChar(\textcolor{keywordtype}{char} ch);}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{comment}{// print space character}}
+\DoxyCodeLine{86 \textcolor{keywordtype}{void} PrintSpc();}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{comment}{// print space to position}}
+\DoxyCodeLine{89 \textcolor{keywordtype}{void} PrintSpcTo(\textcolor{keywordtype}{int} pos);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{comment}{// print repeated character}}
+\DoxyCodeLine{92 \textcolor{keywordtype}{void} PrintCharRep(\textcolor{keywordtype}{char} ch, \textcolor{keywordtype}{int} num);}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{comment}{// print repeated space}}
+\DoxyCodeLine{95 \textcolor{keywordtype}{void} PrintSpcRep(\textcolor{keywordtype}{int} num);}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97 \textcolor{comment}{// print text}}
+\DoxyCodeLine{98 \textcolor{keywordtype}{void} PrintText(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *text);}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \textcolor{comment}{// print horizontal line into screen, using current color (must not stretch outside valid range!)}}
+\DoxyCodeLine{101 \textcolor{keywordtype}{void} PrintHLine(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} w);}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103 \textcolor{comment}{// print vertical line into screen, using current color (must not stretch outside valid range!)}}
+\DoxyCodeLine{104 \textcolor{keywordtype}{void} PrintVLine(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} h);}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{comment}{// print frame, using current color}}
+\DoxyCodeLine{107 \textcolor{keywordtype}{void} PrintFrame(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h);}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_PRINT\_H}}
+
+\end{DoxyCode}

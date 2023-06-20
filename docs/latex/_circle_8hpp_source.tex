@@ -1,0 +1,39 @@
+\hypertarget{_circle_8hpp_source}{}\doxysection{Circle.\+hpp}
+\label{_circle_8hpp_source}\index{lib/gui\_lib/include/elements/Circle.hpp@{lib/gui\_lib/include/elements/Circle.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}include.hpp"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{using namespace }rpgui::common;}
+\DoxyCodeLine{6 \textcolor{keyword}{using namespace }rpgui::type;}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{namespace }rpgui::ui}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1ui_1_1_circle}{Circle}} : \textcolor{keyword}{public} \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{VisualElement}}}
+\DoxyCodeLine{11     \{}
+\DoxyCodeLine{12     \textcolor{keyword}{private}:}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14         \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} center;}
+\DoxyCodeLine{15     \textcolor{keyword}{public}:}
+\DoxyCodeLine{16         \mbox{\hyperlink{structrpgui_1_1type_1_1_radius}{Radius}} radius;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18         \mbox{\hyperlink{classrpgui_1_1ui_1_1_circle}{Circle}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{19         \mbox{\hyperlink{classrpgui_1_1ui_1_1_circle}{Circle}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1ui_1_1_circle}{Circle}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{20         \mbox{\hyperlink{classrpgui_1_1ui_1_1_circle}{\string~Circle}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \mbox{\hyperlink{classrpgui_1_1ui_1_1_circle}{Circle}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_radius}{Radius}}\& radius, Color \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}});}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1ui_1_1_circle_ab1647f035fbd4976729daeb29a2a6aaa}{Draw}}() \textcolor{keyword}{const} \textcolor{keyword}{final};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         \textcolor{keywordtype}{void} SetCenter(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}}\& center);}
+\DoxyCodeLine{27         \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}}\& GetCenter();}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \};}
+\DoxyCodeLine{30     }
+\DoxyCodeLine{31     }
+\DoxyCodeLine{32     }
+\DoxyCodeLine{33 \} \textcolor{comment}{// namespace rpgui::ui}}
+
+\end{DoxyCode}

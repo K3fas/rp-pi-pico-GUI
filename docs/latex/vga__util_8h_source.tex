@@ -1,0 +1,35 @@
+\hypertarget{vga__util_8h_source}{}\doxysection{vga\+\_\+util.\+h}
+\label{vga__util_8h_source}\index{lib/vga\_lib/include/vga/vga\_util.h@{lib/vga\_lib/include/vga/vga\_util.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//                                 VGA utilities}}
+\DoxyCodeLine{5 \textcolor{comment}{//}}
+\DoxyCodeLine{6 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef \_VGA\_UTIL\_H}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define \_VGA\_UTIL\_H}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// convert image from 16-\/color to 8x8 attribute format}}
+\DoxyCodeLine{12 \textcolor{keywordtype}{void} Attr8Conv(u8* dst, u8* attr, \textcolor{keyword}{const} u8* src, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h, \textcolor{keyword}{const} u8* pal);}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{// convert image from 4-\/color to 2-\/plane format (width must be multiply of 8)}}
+\DoxyCodeLine{15 \textcolor{keywordtype}{void} Plane2Conv(u8* plane0, u8* plane1, \textcolor{keyword}{const} u8* src, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h);}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{// invert image}}
+\DoxyCodeLine{18 \textcolor{keywordtype}{void} ImgInvert(u8* dst, \textcolor{keywordtype}{int} num);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{// decode unsigned number into ASCIIZ text buffer (returns number of digits)}}
+\DoxyCodeLine{21 \textcolor{keywordtype}{int} DecUNum(\textcolor{keywordtype}{char}* buf, u32 num);}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{comment}{// decode signed number into ASCIIZ text buffer (returns number of digits)}}
+\DoxyCodeLine{24 \textcolor{keywordtype}{int} DecNum(\textcolor{keywordtype}{char}* buf, s32 num);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{comment}{// prepare image with white key transparency (copy and increment pixels)}}
+\DoxyCodeLine{27 \textcolor{keywordtype}{void} CopyWhiteImg(u8* dst, \textcolor{keyword}{const} u8* src, \textcolor{keywordtype}{int} num);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_VGA\_UTIL\_H}}
+
+\end{DoxyCode}

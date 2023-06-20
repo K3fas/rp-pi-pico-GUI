@@ -1,0 +1,124 @@
+\hypertarget{_page1_8hpp_source}{}\doxysection{Page1.\+hpp}
+\label{_page1_8hpp_source}\index{examples/KitControl/Page1.hpp@{examples/KitControl/Page1.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <rpgui.hpp>}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{using namespace }rpgui;}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{namespace }page1::model}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8     \textcolor{keyword}{inline} \textcolor{keyword}{static} \textcolor{keyword}{struct }kit\_s}
+\DoxyCodeLine{9     \{}
+\DoxyCodeLine{10         \textcolor{keywordtype}{bool} led[4];}
+\DoxyCodeLine{11         \textcolor{keywordtype}{bool} state[4];}
+\DoxyCodeLine{12         \textcolor{keywordtype}{double} progress[4];}
+\DoxyCodeLine{13     \} data;}
+\DoxyCodeLine{14 \} \textcolor{comment}{// namespace page1::model}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }page1::view}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \textcolor{keyword}{using namespace }page1::model;}
+\DoxyCodeLine{19     \textcolor{keyword}{static} \textcolor{keyword}{inline} type::ID CreatePage()}
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21         \textcolor{keyword}{auto} left = \textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1layout_1_1_stack_layout}{layout::StackLayout}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}}(20, 60), \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(120), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(400));}
+\DoxyCodeLine{22         \textcolor{keyword}{auto} middle = \textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1layout_1_1_stack_layout}{layout::StackLayout}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}}(180, 60), \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(120), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(400));}
+\DoxyCodeLine{23         \textcolor{keyword}{auto} right = \textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1layout_1_1_stack_layout}{layout::StackLayout}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}}(180+120+40, 60), \mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(120), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(400));}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         left-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_label}{ui::Label}}(\textcolor{stringliteral}{"{}LED On/Off"{}}), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 10, 0, 10));}
+\DoxyCodeLine{26         left-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{ui::Switch}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(0), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(32), data.state[0]), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 2, 0, 2));}
+\DoxyCodeLine{27         left-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{ui::Switch}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(0), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(32), data.state[1]), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 2, 0, 2));}
+\DoxyCodeLine{28         left-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{ui::Switch}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(0), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(32), data.state[2]), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 2, 0, 2));}
+\DoxyCodeLine{29         left-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{ui::Switch}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(0), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(32), data.state[3]), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 2, 0, 2));}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         middle-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_label}{ui::Label}}(\textcolor{stringliteral}{"{}LED Control"{}}), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 10, 0, 10));}
+\DoxyCodeLine{32         middle-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{ui::Switch}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(0), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(32), data.led[0]), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 2, 0, 2));}
+\DoxyCodeLine{33         middle-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{ui::Switch}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(0), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(32), data.led[1]), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 2, 0, 2));}
+\DoxyCodeLine{34         middle-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{ui::Switch}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(0), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(32), data.led[2]), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 2, 0, 2));}
+\DoxyCodeLine{35         middle-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch}{ui::Switch}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(0), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(32), data.led[3]), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 2, 0, 2));}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         right-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_label}{ui::Label}}(\textcolor{stringliteral}{"{}Led brightness"{}}), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 10, 0, 10));}
+\DoxyCodeLine{38         right-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_progress_bar}{ui::ProgressBar}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(0), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(32), data.progress[0], 0, 255), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 2, 0, 2));}
+\DoxyCodeLine{39         right-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_progress_bar}{ui::ProgressBar}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(0), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(32), data.progress[1], 0, 255), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 2, 0, 2));}
+\DoxyCodeLine{40         right-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_progress_bar}{ui::ProgressBar}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(0), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(32), data.progress[2], 0, 255), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 2, 0, 2));}
+\DoxyCodeLine{41         right-\/>AddElement(\textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1ui_1_1_progress_bar}{ui::ProgressBar}}(\mbox{\hyperlink{structrpgui_1_1type_1_1_width}{Width}}(0), \mbox{\hyperlink{structrpgui_1_1type_1_1_height}{Height}}(32), data.progress[3], 0, 255), \mbox{\hyperlink{structrpgui_1_1common_1_1_margin}{Margin}}(0, 2, 0, 2));}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         \textcolor{keyword}{auto} page = \textcolor{keyword}{new} \mbox{\hyperlink{classrpgui_1_1page_1_1_page}{Page}}();}
+\DoxyCodeLine{44         page-\/>AddLayout(left);}
+\DoxyCodeLine{45         page-\/>AddLayout(middle);}
+\DoxyCodeLine{46         page-\/>AddLayout(right);}
+\DoxyCodeLine{47         \textcolor{keywordflow}{return} \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_aa954115ebfefb7ba23de27ce67d9986c}{core::MainApp::AddPage}}(page);}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49 \} \textcolor{comment}{// namespace page1::view}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{namespace }page1::controller}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53     \textcolor{keyword}{using namespace }page1::model;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{keyword}{constexpr} uint LED\_PINS[] = \{6, 7, 8, 9\};}
+\DoxyCodeLine{56     \textcolor{keyword}{constexpr} uint POTENTIOMETER = 27;}
+\DoxyCodeLine{57     \textcolor{keyword}{constexpr} uint POTENTIOMETER\_ADC = 1;}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     \textcolor{keywordtype}{void} on\_pwm\_wrap()}
+\DoxyCodeLine{60     \{}
+\DoxyCodeLine{61         \textcolor{comment}{// Clear the interrupt flag that brought us here}}
+\DoxyCodeLine{62         pwm\_clear\_irq(pwm\_gpio\_to\_slice\_num(LED\_PINS[0]));}
+\DoxyCodeLine{63         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < 4; i++)}
+\DoxyCodeLine{64         \{}
+\DoxyCodeLine{65             \textcolor{keywordflow}{if} (data.led[i])}
+\DoxyCodeLine{66             \{}
+\DoxyCodeLine{67                 data.progress[i] = (double)(adc\_read() >> 4); \textcolor{comment}{// read adc value}}
+\DoxyCodeLine{68             \}}
+\DoxyCodeLine{69         \}}
+\DoxyCodeLine{70     \}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     \textcolor{keywordtype}{void} Init()}
+\DoxyCodeLine{73     \{}
+\DoxyCodeLine{74         \textcolor{comment}{// adc initialization}}
+\DoxyCodeLine{75         adc\_init();}
+\DoxyCodeLine{76         \textcolor{comment}{// make sure GPIO is high-\/impedance, no pullups etc}}
+\DoxyCodeLine{77         adc\_gpio\_init(POTENTIOMETER);}
+\DoxyCodeLine{78         \textcolor{comment}{// select ADC input}}
+\DoxyCodeLine{79         adc\_select\_input(POTENTIOMETER\_ADC);}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81         \textcolor{comment}{// Get some sensible defaults for the slice configuration. By default, the}}
+\DoxyCodeLine{82         \textcolor{comment}{// counter is allowed to wrap over its maximum range (0 to 2**16-\/1)}}
+\DoxyCodeLine{83         pwm\_config config = pwm\_get\_default\_config();}
+\DoxyCodeLine{84         \textcolor{comment}{// Set divider, reduces counter clock to sysclock/this value}}
+\DoxyCodeLine{85         pwm\_config\_set\_clkdiv(\&config, 4.f);}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < 4; i++)}
+\DoxyCodeLine{88         \{}
+\DoxyCodeLine{89             gpio\_set\_function(LED\_PINS[i], GPIO\_FUNC\_PWM);}
+\DoxyCodeLine{90             uint slice\_num = pwm\_gpio\_to\_slice\_num(LED\_PINS[i]);}
+\DoxyCodeLine{91             pwm\_set\_gpio\_level(LED\_PINS[i], 0);}
+\DoxyCodeLine{92             pwm\_init(slice\_num, \&config, \textcolor{keyword}{true});}
+\DoxyCodeLine{93         \}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95         \textcolor{comment}{// Mask our slice's IRQ output into the PWM block's single interrupt line,}}
+\DoxyCodeLine{96         \textcolor{comment}{// and register our interrupt handler}}
+\DoxyCodeLine{97         pwm\_clear\_irq(pwm\_gpio\_to\_slice\_num(LED\_PINS[0]));}
+\DoxyCodeLine{98         pwm\_set\_irq\_enabled(pwm\_gpio\_to\_slice\_num(LED\_PINS[0]), \textcolor{keyword}{true});}
+\DoxyCodeLine{99         irq\_set\_exclusive\_handler(PWM\_IRQ\_WRAP, on\_pwm\_wrap);}
+\DoxyCodeLine{100         irq\_set\_enabled(PWM\_IRQ\_WRAP, \textcolor{keyword}{true});}
+\DoxyCodeLine{101     \}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     \textcolor{keywordtype}{void} Update()}
+\DoxyCodeLine{104     \{}
+\DoxyCodeLine{105         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < 4; i++)}
+\DoxyCodeLine{106         \{}
+\DoxyCodeLine{107             \textcolor{keywordflow}{if} (data.state[i])}
+\DoxyCodeLine{108             \{}
+\DoxyCodeLine{109                 pwm\_set\_gpio\_level(LED\_PINS[i], data.progress[i] * data.progress[i]);}
+\DoxyCodeLine{110             \}}
+\DoxyCodeLine{111             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{112             \{}
+\DoxyCodeLine{113                 pwm\_set\_gpio\_level(LED\_PINS[i], 0);}
+\DoxyCodeLine{114             \}}
+\DoxyCodeLine{115         \}}
+\DoxyCodeLine{116     \}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118 \} \textcolor{comment}{// namespace page1::controller}}
+
+\end{DoxyCode}

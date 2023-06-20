@@ -1,0 +1,327 @@
+\begin{theindex}
+
+  \item {\_bmpBITMAPFILEHEADER}, \hyperpage{21}
+  \item {\_bmpBITMAPINFOHEADER}, \hyperpage{21}
+
+  \indexspace
+
+  \item {AddListener}
+    \subitem {rpgui::core::MainApp}, \hyperpage{44}
+  \item {AddPage}
+    \subitem {rpgui::core::MainApp}, \hyperpage{44}
+
+  \indexspace
+
+  \item {cGaussDRandom}, \hyperpage{26}
+  \item {cGaussFRandom}, \hyperpage{26}
+  \item {cMat2D$<$ m2type $>$}, \hyperpage{29}
+  \item {cMat2Df}, \hyperpage{30}
+  \item {cRandom}, \hyperpage{31}
+
+  \indexspace
+
+  \item {dev/dev/tusb\_config.h}, \hyperpage{75}
+  \item {dev/dev/vga\_config.h}, \hyperpage{80}
+  \item {dev/log/tusb\_config.h}, \hyperpage{76}
+  \item {dev/log/vga\_config.h}, \hyperpage{81}
+  \item {DIR}, \hyperpage{33}
+  \item {Draw}
+    \subitem {rpgui::common::VisualElement}, \hyperpage{72}
+    \subitem {rpgui::core::Cursor}, \hyperpage{32}
+    \subitem {rpgui::layout::AbsoluteLayout}, \hyperpage{22}
+    \subitem {rpgui::layout::StackLayout}, \hyperpage{64}
+    \subitem {rpgui::ui::Button}, \hyperpage{25}
+    \subitem {rpgui::ui::CheckBox}, \hyperpage{27}
+    \subitem {rpgui::ui::Circle}, \hyperpage{28}
+    \subitem {rpgui::ui::Entry}, \hyperpage{35}
+    \subitem {rpgui::ui::Label}, \hyperpage{40}
+    \subitem {rpgui::ui::Line}, \hyperpage{42}
+    \subitem {rpgui::ui::Polyline}, \hyperpage{49}
+    \subitem {rpgui::ui::ProgressBar}, \hyperpage{51}
+    \subitem {rpgui::ui::RadioButton}, \hyperpage{53}
+    \subitem {rpgui::ui::Rectangle}, \hyperpage{55}
+    \subitem {rpgui::ui::Slider}, \hyperpage{59}
+    \subitem {rpgui::ui::Sprite}, \hyperpage{61}
+    \subitem {rpgui::ui::Stepper$<$ T $>$}, \hyperpage{65}
+    \subitem {rpgui::ui::Switch}, \hyperpage{68}
+
+  \indexspace
+
+  \item {examples/KitControl/Page1.hpp}, \hyperpage{84}
+  \item {examples/KitControl/Page2.hpp}, \hyperpage{85}
+  \item {examples/Pong/pong.hpp}, \hyperpage{86}
+  \item {examples/Pong/tusb\_config.h}, \hyperpage{77}
+  \item {examples/SpeedTests/SpeedTest.hpp}, \hyperpage{89}
+
+  \indexspace
+
+  \item {FATFS}, \hyperpage{36}
+  \item {FF\_FindData\_t}, \hyperpage{37}
+  \item {FF\_STAT}, \hyperpage{37}
+  \item {FFOBJID}, \hyperpage{37}
+  \item {FIL}, \hyperpage{38}
+  \item {FILESEM}, \hyperpage{38}
+  \item {FILINFO}, \hyperpage{38}
+
+  \indexspace
+
+  \item {GetBounds}
+    \subitem {rpgui::common::VisualElement}, \hyperpage{72}
+  \item {GetSelectedPageAt}
+    \subitem {rpgui::core::MainApp}, \hyperpage{44}
+  \item {GetSelectedPageId}
+    \subitem {rpgui::core::MainApp}, \hyperpage{44}
+
+  \indexspace
+
+  \item {HandleActive}
+    \subitem {rpgui::ui::Entry}, \hyperpage{36}
+  \item {HID::kbd}, \hyperpage{39}
+  \item {HID::mouse}, \hyperpage{47}
+
+  \indexspace
+
+  \item {Init}
+    \subitem {rpgui::core::MainApp}, \hyperpage{45}
+  \item {IsInBounds}
+    \subitem {rpgui::common::VisualElement}, \hyperpage{72, 73}
+
+  \indexspace
+
+  \item {lib/gui\_lib/config/settings.hpp}, \hyperpage{89}
+  \item {lib/gui\_lib/config/tusb\_config.h}, \hyperpage{78}
+  \item {lib/gui\_lib/include/common/Activatable.hpp}, \hyperpage{90}
+  \item {lib/gui\_lib/include/common/BindableProperty.hpp}, 
+		\hyperpage{90}
+  \item {lib/gui\_lib/include/common/Bounds.hpp}, \hyperpage{91}
+  \item {lib/gui\_lib/include/common/Clickable.hpp}, \hyperpage{91}
+  \item {lib/gui\_lib/include/common/Element.hpp}, \hyperpage{92}
+  \item {lib/gui\_lib/include/common/Margin.hpp}, \hyperpage{93}
+  \item {lib/gui\_lib/include/common/SpriteData.hpp}, \hyperpage{93}
+  \item {lib/gui\_lib/include/common/Types.hpp}, \hyperpage{94}
+  \item {lib/gui\_lib/include/common/VColors.hpp}, \hyperpage{94}
+  \item {lib/gui\_lib/include/common/View.hpp}, \hyperpage{95}
+  \item {lib/gui\_lib/include/common/VisualElement.hpp}, \hyperpage{96}
+  \item {lib/gui\_lib/include/elements/Button.hpp}, \hyperpage{97}
+  \item {lib/gui\_lib/include/elements/CheckBox.hpp}, \hyperpage{97}
+  \item {lib/gui\_lib/include/elements/Circle.hpp}, \hyperpage{98}
+  \item {lib/gui\_lib/include/elements/Cursor.hpp}, \hyperpage{98}
+  \item {lib/gui\_lib/include/elements/Entry.hpp}, \hyperpage{99}
+  \item {lib/gui\_lib/include/elements/Label.hpp}, \hyperpage{100}
+  \item {lib/gui\_lib/include/elements/Line.hpp}, \hyperpage{100}
+  \item {lib/gui\_lib/include/elements/Polyline.hpp}, \hyperpage{101}
+  \item {lib/gui\_lib/include/elements/ProgressBar.hpp}, 
+		\hyperpage{101}
+  \item {lib/gui\_lib/include/elements/RadioButton.hpp}, 
+		\hyperpage{102}
+  \item {lib/gui\_lib/include/elements/Rectangle.hpp}, \hyperpage{103}
+  \item {lib/gui\_lib/include/elements/Slider.hpp}, \hyperpage{103}
+  \item {lib/gui\_lib/include/elements/Sprite.hpp}, \hyperpage{104}
+  \item {lib/gui\_lib/include/elements/Stepper.hpp}, \hyperpage{104}
+  \item {lib/gui\_lib/include/elements/Switch.hpp}, \hyperpage{106}
+  \item {lib/gui\_lib/include/events/Dispatcher.hpp}, \hyperpage{107}
+  \item {lib/gui\_lib/include/events/MouseDispatcher.hpp}, 
+		\hyperpage{108}
+  \item {lib/gui\_lib/include/events/MouseEvent.hpp}, \hyperpage{109}
+  \item {lib/gui\_lib/include/include.hpp}, \hyperpage{109}
+  \item {lib/gui\_lib/include/layouts/AbsoluteLayout.hpp}, 
+		\hyperpage{109}
+  \item {lib/gui\_lib/include/layouts/Layout.hpp}, \hyperpage{110}
+  \item {lib/gui\_lib/include/layouts/StackLayout.hpp}, \hyperpage{110}
+  \item {lib/gui\_lib/include/pages/Page.hpp}, \hyperpage{111}
+  \item {lib/gui\_lib/include/rp\_core.hpp}, \hyperpage{112}
+  \item {lib/gui\_lib/include/rpgui.hpp}, \hyperpage{113}
+  \item {lib/gui\_lib/util/IVGA.hpp}, \hyperpage{113}
+  \item {lib/gui\_lib/util/Timers.hpp}, \hyperpage{114}
+  \item {lib/gui\_lib/util/tusb\_data.hpp}, \hyperpage{115}
+  \item {lib/qvga\_lib/include/qvga/config.h}, \hyperpage{115}
+  \item {lib/qvga\_lib/include/qvga/draw.h}, \hyperpage{116}
+  \item {lib/qvga\_lib/include/qvga/global.h}, \hyperpage{117}
+  \item {lib/qvga\_lib/include/qvga/mat2d.h}, \hyperpage{122}
+  \item {lib/qvga\_lib/include/qvga/pwmsnd.h}, \hyperpage{127}
+  \item {lib/qvga\_lib/include/qvga/qvga.h}, \hyperpage{129}
+  \item {lib/qvga\_lib/include/qvga/rand.h}, \hyperpage{130}
+  \item {lib/rplog\_lib/include/rp\_logger.hpp}, \hyperpage{133}
+  \item {lib/SDwrapper\_lib/FatFs\_SPI/ff15/source/diskio.h}, 
+		\hyperpage{134}
+  \item {lib/SDwrapper\_lib/FatFs\_SPI/ff15/source/ff.h}, 
+		\hyperpage{135}
+  \item {lib/SDwrapper\_lib/FatFs\_SPI/ff15/source/ffconf.h}, 
+		\hyperpage{141}
+  \item {lib/SDwrapper\_lib/FatFs\_SPI/include/f\_util.h}, 
+		\hyperpage{144}
+  \item {lib/SDwrapper\_lib/FatFs\_SPI/include/ff\_stdio.h}, 
+		\hyperpage{144}
+  \item {lib/SDwrapper\_lib/FatFs\_SPI/include/my\_debug.h}, 
+		\hyperpage{145}
+  \item {lib/SDwrapper\_lib/FatFs\_SPI/include/rtc.h}, \hyperpage{146}
+  \item {lib/SDwrapper\_lib/FatFs\_SPI/include/util.h}, \hyperpage{146}
+  \item {lib/SDwrapper\_lib/FatFs\_SPI/sd\_driver/crc.h}, 
+		\hyperpage{147}
+  \item {lib/SDwrapper\_lib/FatFs\_SPI/sd\_driver/hw\_config.h}, 
+		\hyperpage{148}
+  \item {lib/SDwrapper\_lib/FatFs\_SPI/sd\_driver/sd\_card.h}, 
+		\hyperpage{148}
+  \item {lib/SDwrapper\_lib/FatFs\_SPI/sd\_driver/sd\_spi.h}, 
+		\hyperpage{149}
+  \item {lib/SDwrapper\_lib/FatFs\_SPI/sd\_driver/spi.h}, 
+		\hyperpage{150}
+  \item {lib/SDwrapper\_lib/include/SDWrapper.hpp}, \hyperpage{151}
+  \item {lib/vga\_lib/include/global.h}, \hyperpage{118}
+  \item {lib/vga\_lib/include/util/canvas.h}, \hyperpage{151}
+  \item {lib/vga\_lib/include/util/mat2d.h}, \hyperpage{125}
+  \item {lib/vga\_lib/include/util/overclock.h}, \hyperpage{153}
+  \item {lib/vga\_lib/include/util/print.h}, \hyperpage{154}
+  \item {lib/vga\_lib/include/util/pwmsnd.h}, \hyperpage{128}
+  \item {lib/vga\_lib/include/util/rand.h}, \hyperpage{131}
+  \item {lib/vga\_lib/include/vga/define.h}, \hyperpage{155}
+  \item {lib/vga\_lib/include/vga/vga.h}, \hyperpage{158}
+  \item {lib/vga\_lib/include/vga/vga.pio.h}, \hyperpage{160}
+  \item {lib/vga\_lib/include/vga/vga\_config.h}, \hyperpage{82}
+  \item {lib/vga\_lib/include/vga/vga\_layer.h}, \hyperpage{163}
+  \item {lib/vga\_lib/include/vga/vga\_pal.h}, \hyperpage{165}
+  \item {lib/vga\_lib/include/vga/vga\_screen.h}, \hyperpage{167}
+  \item {lib/vga\_lib/include/vga/vga\_util.h}, \hyperpage{171}
+  \item {lib/vga\_lib/include/vga/vga\_vmode.h}, \hyperpage{171}
+
+  \indexspace
+
+  \item {MKFS\_PARM}, \hyperpage{46}
+
+  \indexspace
+
+  \item {Pong::Ball}, \hyperpage{23}
+  \item {Pong::Contact}, \hyperpage{30}
+  \item {Pong::Paddle}, \hyperpage{48}
+  \item {Pong::PlayerScore}, \hyperpage{48}
+  \item {Pong::PongGame}, \hyperpage{50}
+  \item {Pong::Vec2}, \hyperpage{69}
+  \item {putbuff}, \hyperpage{52}
+
+  \indexspace
+
+  \item {rpgui::common::Activatable}, \hyperpage{23}
+  \item {rpgui::common::BindableProperty$<$ T $>$}, \hyperpage{24}
+  \item {rpgui::common::Bounds}, \hyperpage{24}
+  \item {rpgui::common::Clickable}, \hyperpage{28}
+  \item {rpgui::common::Element}, \hyperpage{33}
+    \subitem {SetActive}, \hyperpage{34}
+  \item {rpgui::common::Margin}, \hyperpage{46}
+  \item {rpgui::common::SpriteData}, \hyperpage{62}
+  \item {rpgui::common::View}, \hyperpage{70}
+  \item {rpgui::common::VisualElement}, \hyperpage{70}
+    \subitem {Draw}, \hyperpage{72}
+    \subitem {GetBounds}, \hyperpage{72}
+    \subitem {IsInBounds}, \hyperpage{72, 73}
+    \subitem {SetBounds}, \hyperpage{73}
+  \item {rpgui::core::Cursor}, \hyperpage{31}
+    \subitem {Draw}, \hyperpage{32}
+    \subitem {SetBounds}, \hyperpage{32}
+  \item {rpgui::core::Cursor::pos\_t}, \hyperpage{50}
+  \item {rpgui::core::MainApp}, \hyperpage{43}
+    \subitem {AddListener}, \hyperpage{44}
+    \subitem {AddPage}, \hyperpage{44}
+    \subitem {GetSelectedPageAt}, \hyperpage{44}
+    \subitem {GetSelectedPageId}, \hyperpage{44}
+    \subitem {Init}, \hyperpage{45}
+    \subitem {SelectPage}, \hyperpage{45}
+    \subitem {SelectPageAt}, \hyperpage{45}
+    \subitem {Update}, \hyperpage{46}
+  \item {rpgui::event::Dispatcher$<$ T $>$}, \hyperpage{33}
+  \item {rpgui::event::Handler}, \hyperpage{39}
+  \item {rpgui::event::MouseDispatcher}, \hyperpage{47}
+  \item {rpgui::event::MouseEvent$<$ T $>$}, \hyperpage{47}
+  \item {rpgui::layout::AbsoluteLayout}, \hyperpage{22}
+    \subitem {Draw}, \hyperpage{22}
+  \item {rpgui::layout::Layout}, \hyperpage{41}
+  \item {rpgui::layout::StackLayout}, \hyperpage{63}
+    \subitem {Draw}, \hyperpage{64}
+  \item {rpgui::page::Page}, \hyperpage{48}
+  \item {rpgui::type::Height}, \hyperpage{39}
+  \item {rpgui::type::Point}, \hyperpage{49}
+  \item {rpgui::type::Radius}, \hyperpage{54}
+  \item {rpgui::type::Rect}, \hyperpage{54}
+  \item {rpgui::type::sCircle}, \hyperpage{56}
+  \item {rpgui::type::Width}, \hyperpage{74}
+  \item {rpgui::ui::Button}, \hyperpage{25}
+    \subitem {Draw}, \hyperpage{25}
+    \subitem {SetBounds}, \hyperpage{25}
+  \item {rpgui::ui::CheckBox}, \hyperpage{26}
+    \subitem {Draw}, \hyperpage{27}
+  \item {rpgui::ui::Circle}, \hyperpage{27}
+    \subitem {Draw}, \hyperpage{28}
+  \item {rpgui::ui::Entry}, \hyperpage{35}
+    \subitem {Draw}, \hyperpage{35}
+    \subitem {HandleActive}, \hyperpage{36}
+  \item {rpgui::ui::Label}, \hyperpage{40}
+    \subitem {Draw}, \hyperpage{40}
+  \item {rpgui::ui::Line}, \hyperpage{41}
+    \subitem {Draw}, \hyperpage{42}
+  \item {rpgui::ui::Polyline}, \hyperpage{49}
+    \subitem {Draw}, \hyperpage{49}
+  \item {rpgui::ui::ProgressBar}, \hyperpage{51}
+    \subitem {Draw}, \hyperpage{51}
+    \subitem {SetBounds}, \hyperpage{51}
+  \item {rpgui::ui::RadioButton}, \hyperpage{52}
+    \subitem {Draw}, \hyperpage{53}
+    \subitem {SetBounds}, \hyperpage{53}
+  \item {rpgui::ui::Rectangle}, \hyperpage{54}
+    \subitem {Draw}, \hyperpage{55}
+  \item {rpgui::ui::Slider}, \hyperpage{58}
+    \subitem {Draw}, \hyperpage{59}
+  \item {rpgui::ui::Sprite}, \hyperpage{61}
+    \subitem {Draw}, \hyperpage{61}
+  \item {rpgui::ui::Stepper$<$ T $>$}, \hyperpage{64}
+    \subitem {Draw}, \hyperpage{65}
+    \subitem {SetBounds}, \hyperpage{65}
+  \item {rpgui::ui::Switch}, \hyperpage{68}
+    \subitem {Draw}, \hyperpage{68}
+  \item {rpgui::util::SDWrapper}, \hyperpage{56}
+  \item {rpgui::util::Timers}, \hyperpage{69}
+  \item {rplog::Logger}, \hyperpage{42}
+  \item {rtc\_save}, \hyperpage{55}
+
+  \indexspace
+
+  \item {sCanvas}, \hyperpage{55}
+  \item {sd\_card\_t}, \hyperpage{56}
+  \item {SelectPage}
+    \subitem {rpgui::core::MainApp}, \hyperpage{45}
+  \item {SelectPageAt}
+    \subitem {rpgui::core::MainApp}, \hyperpage{45}
+  \item {SetActive}
+    \subitem {rpgui::common::Element}, \hyperpage{34}
+  \item {SetBounds}
+    \subitem {rpgui::common::VisualElement}, \hyperpage{73}
+    \subitem {rpgui::core::Cursor}, \hyperpage{32}
+    \subitem {rpgui::ui::Button}, \hyperpage{25}
+    \subitem {rpgui::ui::ProgressBar}, \hyperpage{51}
+    \subitem {rpgui::ui::RadioButton}, \hyperpage{53}
+    \subitem {rpgui::ui::Stepper$<$ T $>$}, \hyperpage{65}
+  \item {sLayer}, \hyperpage{57}
+  \item {sLayerMode}, \hyperpage{57}
+  \item {sLayerProg}, \hyperpage{58}
+  \item {SpeedTester}, \hyperpage{59}
+  \item {SpeedTester::speedResults}, \hyperpage{59}
+  \item {spi\_t}, \hyperpage{60}
+  \item {sPLL}, \hyperpage{60}
+  \item {sScreen}, \hyperpage{62}
+  \item {sSegm}, \hyperpage{62}
+  \item {sSprite}, \hyperpage{63}
+  \item {sStrip}, \hyperpage{63}
+  \item {sVgaCfg}, \hyperpage{65}
+  \item {sVideo}, \hyperpage{66}
+  \item {sVmode}, \hyperpage{67}
+
+  \indexspace
+
+  \item {Update}
+    \subitem {rpgui::core::MainApp}, \hyperpage{46}
+
+  \indexspace
+
+  \item {WAVDATA\_}, \hyperpage{74}
+  \item {WAVFORMAT\_}, \hyperpage{74}
+  \item {WAVHEAD\_}, \hyperpage{74}
+
+\end{theindex}

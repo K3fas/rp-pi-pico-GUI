@@ -1,0 +1,213 @@
+\hypertarget{vga__lib_2include_2util_2rand_8h_source}{}\doxysection{rand.\+h}
+\label{vga__lib_2include_2util_2rand_8h_source}\index{lib/vga\_lib/include/util/rand.h@{lib/vga\_lib/include/util/rand.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//                             Random number generator}}
+\DoxyCodeLine{5 \textcolor{comment}{//}}
+\DoxyCodeLine{6 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef \_RAND\_H}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define \_RAND\_H}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}global.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{comment}{// Random Generator}}
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{classc_random}{cRandom}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16 \textcolor{keyword}{private}:}
+\DoxyCodeLine{17     \textcolor{comment}{// random generator seed}}
+\DoxyCodeLine{18     u64 m\_Seed;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{21     \textcolor{comment}{// shift random generator seed}}
+\DoxyCodeLine{22     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} Shift()}
+\DoxyCodeLine{23     \{}
+\DoxyCodeLine{24         m\_Seed = m\_Seed * 214013 + 2531011;}
+\DoxyCodeLine{25     \}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{comment}{// get/set random generator seed}}
+\DoxyCodeLine{28     \textcolor{keyword}{inline} u64 Seed()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} m\_Seed; \}}
+\DoxyCodeLine{29     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} SetSeed(u64 seed) \{ m\_Seed = seed; \}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{comment}{// Set random seed from ROSC counter}}
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} InitSeed();}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{comment}{// generate integer random number in full range}}
+\DoxyCodeLine{35     u8 U8();}
+\DoxyCodeLine{36     u16 U16();}
+\DoxyCodeLine{37     u32 U32();}
+\DoxyCodeLine{38     u64 U64();}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{keyword}{inline} s8 S8() \{ \textcolor{keywordflow}{return} (s8)this-\/>U8(); \}}
+\DoxyCodeLine{41     \textcolor{keyword}{inline} s16 S16() \{ \textcolor{keywordflow}{return} (s16)this-\/>U16(); \}}
+\DoxyCodeLine{42     \textcolor{keyword}{inline} s32 S32() \{ \textcolor{keywordflow}{return} (s32)this-\/>U32(); \}}
+\DoxyCodeLine{43     \textcolor{keyword}{inline} s64 S64() \{ \textcolor{keywordflow}{return} (s64)this-\/>U64(); \}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{comment}{// generate float random number in range 0 (including) to 1 (excluding)}}
+\DoxyCodeLine{46     \textcolor{keywordtype}{float} Float();}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{comment}{// generate double random number in range 0 (including) to 1 (excluding)}}
+\DoxyCodeLine{49     \textcolor{keywordtype}{double} Double();}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     \textcolor{comment}{// generate random number in range 0 to MAX (including)}}
+\DoxyCodeLine{52     u8 U8Max(u8 max);}
+\DoxyCodeLine{53     u16 U16Max(u16 max);}
+\DoxyCodeLine{54     u32 U32Max(u32 max);}
+\DoxyCodeLine{55     u64 U64Max(u64 max);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     s8 S8Max(s8 max);}
+\DoxyCodeLine{58     s16 S16Max(s16 max);}
+\DoxyCodeLine{59     s32 S32Max(s32 max);}
+\DoxyCodeLine{60     s64 S64Max(s64 max);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \textcolor{comment}{// generate decimal random number in range 0 (including) to MAX (excluding)}}
+\DoxyCodeLine{63     \textcolor{keywordtype}{float} FloatMax(\textcolor{keywordtype}{float} max);}
+\DoxyCodeLine{64     \textcolor{keywordtype}{double} DoubleMax(\textcolor{keywordtype}{double} max);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \textcolor{comment}{// generate random number in range MIN to MAX (including)}}
+\DoxyCodeLine{67     \textcolor{comment}{// If MIN > MAX, then number is generated out of interval.}}
+\DoxyCodeLine{68     u8 U8MinMax(u8 min, u8 max);}
+\DoxyCodeLine{69     u16 U16MinMax(u16 min, u16 max);}
+\DoxyCodeLine{70     u32 U32MinMax(u32 min, u32 max);}
+\DoxyCodeLine{71     u64 U64MinMax(u64 min, u64 max);}
+\DoxyCodeLine{72     s8 S8MinMax(s8 min, s8 max);}
+\DoxyCodeLine{73     s16 S16MinMax(s16 min, s16 max);}
+\DoxyCodeLine{74     s32 S32MinMax(s32 min, s32 max);}
+\DoxyCodeLine{75     s64 S64MinMax(s64 min, s64 max);}
+\DoxyCodeLine{76     \textcolor{keywordtype}{float} FloatMinMax(\textcolor{keywordtype}{float} min, \textcolor{keywordtype}{float} max);}
+\DoxyCodeLine{77     \textcolor{keywordtype}{double} DoubleMinMax(\textcolor{keywordtype}{double} min, \textcolor{keywordtype}{double} max);}
+\DoxyCodeLine{78 \};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 \textcolor{comment}{// Gaussian random float number generator}}
+\DoxyCodeLine{81 \textcolor{keyword}{class }\mbox{\hyperlink{classc_gauss_f_random}{cGaussFRandom}}}
+\DoxyCodeLine{82 \{}
+\DoxyCodeLine{83 \textcolor{keyword}{private}:}
+\DoxyCodeLine{84     \textcolor{comment}{// linear random number generator}}
+\DoxyCodeLine{85     \mbox{\hyperlink{classc_random}{cRandom}} m\_Rand;}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     \textcolor{comment}{// cached Gaussian number}}
+\DoxyCodeLine{88     \textcolor{keywordtype}{float} m\_Cache;}
+\DoxyCodeLine{89     \textcolor{keywordtype}{bool} m\_CacheOK;}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{keyword}{public}:}
+\DoxyCodeLine{92     \textcolor{comment}{// get/set random generator seed and initialize generator}}
+\DoxyCodeLine{93     \textcolor{keyword}{inline} u64 Seed()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} m\_Rand.Seed(); \}}
+\DoxyCodeLine{94     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} SetSeed(u64 seed)}
+\DoxyCodeLine{95     \{}
+\DoxyCodeLine{96         m\_Rand.SetSeed(seed);}
+\DoxyCodeLine{97         m\_CacheOK = \textcolor{keyword}{false};}
+\DoxyCodeLine{98     \}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     \textcolor{comment}{// generate Gaussian random number (mean = center, sigma = width)}}
+\DoxyCodeLine{101     \textcolor{keywordtype}{float} Gauss(\textcolor{keywordtype}{float} mean = 0, \textcolor{keywordtype}{float} sigma = 1);}
+\DoxyCodeLine{102 \};}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \textcolor{comment}{// Gaussian random double number generator}}
+\DoxyCodeLine{105 \textcolor{keyword}{class }\mbox{\hyperlink{classc_gauss_d_random}{cGaussDRandom}}}
+\DoxyCodeLine{106 \{}
+\DoxyCodeLine{107 \textcolor{keyword}{private}:}
+\DoxyCodeLine{108     \textcolor{comment}{// linear random number generator}}
+\DoxyCodeLine{109     \mbox{\hyperlink{classc_random}{cRandom}} m\_Rand;}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111     \textcolor{comment}{// cached Gaussian number}}
+\DoxyCodeLine{112     \textcolor{keywordtype}{double} m\_Cache;}
+\DoxyCodeLine{113     \textcolor{keywordtype}{bool} m\_CacheOK;}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115 \textcolor{keyword}{public}:}
+\DoxyCodeLine{116     \textcolor{comment}{// get/set random generator seed and initialize generator}}
+\DoxyCodeLine{117     \textcolor{keyword}{inline} u64 Seed()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} m\_Rand.Seed(); \}}
+\DoxyCodeLine{118     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} SetSeed(u64 seed)}
+\DoxyCodeLine{119     \{}
+\DoxyCodeLine{120         m\_Rand.SetSeed(seed);}
+\DoxyCodeLine{121         m\_CacheOK = \textcolor{keyword}{false};}
+\DoxyCodeLine{122     \}}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124     \textcolor{comment}{// generate Gaussian random number (mean = center, sigma = width)}}
+\DoxyCodeLine{125     \textcolor{keywordtype}{double} Gauss(\textcolor{keywordtype}{double} mean = 0, \textcolor{keywordtype}{double} sigma = 1);}
+\DoxyCodeLine{126 \};}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128 \textcolor{comment}{// global random generator}}
+\DoxyCodeLine{129 \textcolor{keyword}{extern} \mbox{\hyperlink{classc_random}{cRandom}} Rand;}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131 \textcolor{comment}{// global Gaussian random float number generator}}
+\DoxyCodeLine{132 \textcolor{keyword}{extern} \mbox{\hyperlink{classc_gauss_f_random}{cGaussFRandom}} GaussFRand;}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134 \textcolor{comment}{// global Gaussian random double number generator}}
+\DoxyCodeLine{135 \textcolor{keyword}{extern} \mbox{\hyperlink{classc_gauss_d_random}{cGaussDRandom}} GaussDRand;}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137 \textcolor{comment}{// random generator seed}}
+\DoxyCodeLine{138 \textcolor{keyword}{inline} u64 RandSeed() \{ \textcolor{keywordflow}{return} Rand.Seed(); \}}
+\DoxyCodeLine{139 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} RandSetSeed(u64 seed) \{ Rand.SetSeed(seed); \}}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141 \textcolor{comment}{// Set random seed from ROSC counter}}
+\DoxyCodeLine{142 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} RandInitSeed() \{ Rand.InitSeed(); \}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144 \textcolor{comment}{// generate integer random number in full range}}
+\DoxyCodeLine{145 \textcolor{keyword}{inline} u8 RandU8() \{ \textcolor{keywordflow}{return} Rand.U8(); \}}
+\DoxyCodeLine{146 \textcolor{keyword}{inline} u16 RandU16() \{ \textcolor{keywordflow}{return} Rand.U16(); \}}
+\DoxyCodeLine{147 \textcolor{keyword}{inline} u32 RandU32() \{ \textcolor{keywordflow}{return} Rand.U32(); \}}
+\DoxyCodeLine{148 \textcolor{keyword}{inline} u64 RandU64() \{ \textcolor{keywordflow}{return} Rand.U64(); \}}
+\DoxyCodeLine{149 \textcolor{keyword}{inline} s8 RandS8() \{ \textcolor{keywordflow}{return} Rand.S8(); \}}
+\DoxyCodeLine{150 \textcolor{keyword}{inline} s16 RandS16() \{ \textcolor{keywordflow}{return} Rand.S16(); \}}
+\DoxyCodeLine{151 \textcolor{keyword}{inline} s32 RandS32() \{ \textcolor{keywordflow}{return} Rand.S32(); \}}
+\DoxyCodeLine{152 \textcolor{keyword}{inline} s64 RandS64() \{ \textcolor{keywordflow}{return} Rand.S64(); \}}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154 \textcolor{comment}{// generate float random number in range 0 (including) to 1 (excluding)}}
+\DoxyCodeLine{155 \textcolor{keyword}{inline} \textcolor{keywordtype}{float} RandFloat() \{ \textcolor{keywordflow}{return} Rand.Float(); \}}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157 \textcolor{comment}{// generate double random number in range 0 (including) to 1 (excluding)}}
+\DoxyCodeLine{158 \textcolor{keyword}{inline} \textcolor{keywordtype}{double} RandDouble() \{ \textcolor{keywordflow}{return} Rand.Double(); \}}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160 \textcolor{comment}{// generate random number in range 0 to MAX (including)}}
+\DoxyCodeLine{161 \textcolor{keyword}{inline} u8 RandU8Max(u8 max) \{ \textcolor{keywordflow}{return} Rand.U8Max(max); \}}
+\DoxyCodeLine{162 \textcolor{keyword}{inline} u16 RandU16Max(u16 max) \{ \textcolor{keywordflow}{return} Rand.U16Max(max); \}}
+\DoxyCodeLine{163 \textcolor{keyword}{inline} u32 RandU32Max(u32 max) \{ \textcolor{keywordflow}{return} Rand.U32Max(max); \}}
+\DoxyCodeLine{164 \textcolor{keyword}{inline} u64 RandU64Max(u64 max) \{ \textcolor{keywordflow}{return} Rand.U64Max(max); \}}
+\DoxyCodeLine{165 \textcolor{keyword}{inline} s8 RandS8Max(s8 max) \{ \textcolor{keywordflow}{return} Rand.S8Max(max); \}}
+\DoxyCodeLine{166 \textcolor{keyword}{inline} s16 RandS16Max(s16 max) \{ \textcolor{keywordflow}{return} Rand.S16Max(max); \}}
+\DoxyCodeLine{167 \textcolor{keyword}{inline} s32 RandS32Max(s32 max) \{ \textcolor{keywordflow}{return} Rand.S32Max(max); \}}
+\DoxyCodeLine{168 \textcolor{keyword}{inline} s64 RandS64Max(s64 max) \{ \textcolor{keywordflow}{return} Rand.S64Max(max); \}}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170 \textcolor{comment}{// generate decimal random number in range 0 (including) to MAX (excluding)}}
+\DoxyCodeLine{171 \textcolor{keyword}{inline} \textcolor{keywordtype}{float} RandFloatMax(\textcolor{keywordtype}{float} max) \{ \textcolor{keywordflow}{return} Rand.FloatMax(max); \}}
+\DoxyCodeLine{172 \textcolor{keyword}{inline} \textcolor{keywordtype}{double} RandDoubleMax(\textcolor{keywordtype}{double} max) \{ \textcolor{keywordflow}{return} Rand.DoubleMax(max); \}}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174 \textcolor{comment}{// generate random number in range MIN to MAX (including)}}
+\DoxyCodeLine{175 \textcolor{comment}{// If MIN > MAX, then number is generated out of interval.}}
+\DoxyCodeLine{176 \textcolor{keyword}{inline} u8 RandU8MinMax(u8 min, u8 max) \{ \textcolor{keywordflow}{return} Rand.U8MinMax(min, max); \}}
+\DoxyCodeLine{177 \textcolor{keyword}{inline} u16 RandU16MinMax(u16 min, u16 max) \{ \textcolor{keywordflow}{return} Rand.U16MinMax(min, max); \}}
+\DoxyCodeLine{178 \textcolor{keyword}{inline} u32 RandU32MinMax(u32 min, u32 max) \{ \textcolor{keywordflow}{return} Rand.U32MinMax(min, max); \}}
+\DoxyCodeLine{179 \textcolor{keyword}{inline} u64 RandU64MinMax(u64 min, u64 max) \{ \textcolor{keywordflow}{return} Rand.U64MinMax(min, max); \}}
+\DoxyCodeLine{180 \textcolor{keyword}{inline} s8 RandS8MinMax(s8 min, s8 max) \{ \textcolor{keywordflow}{return} Rand.S8MinMax(min, max); \}}
+\DoxyCodeLine{181 \textcolor{keyword}{inline} s16 RandS16MinMax(s16 min, s16 max) \{ \textcolor{keywordflow}{return} Rand.S16MinMax(min, max); \}}
+\DoxyCodeLine{182 \textcolor{keyword}{inline} s32 RandS32MinMax(s32 min, s32 max) \{ \textcolor{keywordflow}{return} Rand.S32MinMax(min, max); \}}
+\DoxyCodeLine{183 \textcolor{keyword}{inline} s64 RandS64MinMax(s64 min, s64 max) \{ \textcolor{keywordflow}{return} Rand.S64MinMax(min, max); \}}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185 \textcolor{keyword}{inline} \textcolor{keywordtype}{float} RandFloatMinMax(\textcolor{keywordtype}{float} min, \textcolor{keywordtype}{float} max) \{ \textcolor{keywordflow}{return} Rand.FloatMinMax(min, max); \}}
+\DoxyCodeLine{186 \textcolor{keyword}{inline} \textcolor{keywordtype}{double} RandDoubleMinMax(\textcolor{keywordtype}{double} min, \textcolor{keywordtype}{double} max) \{ \textcolor{keywordflow}{return} Rand.DoubleMinMax(min, max); \}}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188 \textcolor{comment}{// generate Gaussian random number (mean = center, sigma = width)}}
+\DoxyCodeLine{189 \textcolor{keyword}{inline} \textcolor{keywordtype}{float} RandGaussF(\textcolor{keywordtype}{float} mean = 0, \textcolor{keywordtype}{float} sigma = 1) \{ \textcolor{keywordflow}{return} GaussFRand.Gauss(mean, sigma); \}}
+\DoxyCodeLine{190 \textcolor{keyword}{inline} \textcolor{keywordtype}{double} RandGaussD(\textcolor{keywordtype}{double} mean = 0, \textcolor{keywordtype}{double} sigma = 1) \{ \textcolor{keywordflow}{return} GaussDRand.Gauss(mean, sigma); \}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192 \textcolor{comment}{// 1D coordinate noise generator (output -\/1..+1)}}
+\DoxyCodeLine{193 \textcolor{keywordtype}{float} Noise1D(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} seed);}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195 \textcolor{comment}{// 2D coordinate noise generator (output -\/1..+1)}}
+\DoxyCodeLine{196 \textcolor{keywordtype}{float} Noise2D(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} seed);}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{198 \textcolor{comment}{// 3D coordinate noise generator (output -\/1..+1)}}
+\DoxyCodeLine{199 \textcolor{keywordtype}{float} Noise3D(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{int} seed);}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201 \textcolor{comment}{// interpolated 1D noise (output -\/1..+1, scale = 1...)}}
+\DoxyCodeLine{202 \textcolor{keywordtype}{float} SmoothNoise1D(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{int} scale, \textcolor{keywordtype}{int} seed);}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204 \textcolor{comment}{// interpolated 2D noise (output -\/1..+1, scale = 1...)}}
+\DoxyCodeLine{205 \textcolor{keywordtype}{float} SmoothNoise2D(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{int} scale, \textcolor{keywordtype}{int} seed);}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_RAND\_H}}
+
+\end{DoxyCode}

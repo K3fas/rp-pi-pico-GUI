@@ -25,7 +25,9 @@ namespace rpgui::page
 
         Page(Layout *layout)
         {
+            this->SetParrent(nullptr);
             _children.push_back(layout);
+            layout->SetParrent(this);
         }
 
         virtual void Draw()
@@ -39,6 +41,7 @@ namespace rpgui::page
         void AddLayout(Layout *layout)
         {
             _children.push_back(layout);
+            layout->SetParrent(this);
         }
     };
 

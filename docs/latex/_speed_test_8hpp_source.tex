@@ -1,0 +1,39 @@
+\hypertarget{_speed_test_8hpp_source}{}\doxysection{Speed\+Test.\+hpp}
+\label{_speed_test_8hpp_source}\index{examples/SpeedTests/SpeedTest.hpp@{examples/SpeedTests/SpeedTest.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <rp\_logger.hpp>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Timers.hpp"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{using namespace }rplog;}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{namespace }rpgui::common}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     \textcolor{keyword}{class }VisualElement;}
+\DoxyCodeLine{11 \}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_speed_tester}{SpeedTester}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15 \textcolor{keyword}{private}:}
+\DoxyCodeLine{16     \mbox{\hyperlink{classrplog_1_1_logger}{Logger}} logger;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_speed_tester_1_1speed_results}{speedResults}}}
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21         uint64\_t total, average, averageElement, midrange, max = 0, min = -\/1;}
+\DoxyCodeLine{22     \};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \mbox{\hyperlink{class_speed_tester}{SpeedTester}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{25     \mbox{\hyperlink{class_speed_tester}{SpeedTester}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_speed_tester}{SpeedTester}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{26     \mbox{\hyperlink{class_speed_tester}{\string~SpeedTester}}();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \mbox{\hyperlink{class_speed_tester}{SpeedTester}}(std::string logFile);}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \mbox{\hyperlink{struct_speed_tester_1_1speed_results}{speedResults}} PerformTest(\mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{rpgui::common::VisualElement}} *elements[], uint16\_t count, uint16\_t runs, \textcolor{keyword}{const} std::string \&elementName);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} LogResults(\textcolor{keyword}{const} \mbox{\hyperlink{struct_speed_tester_1_1speed_results}{speedResults}} \&results, \textcolor{keyword}{const} std::string \&elementName);}
+\DoxyCodeLine{33 \};}
+
+\end{DoxyCode}

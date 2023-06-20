@@ -1,0 +1,104 @@
+\hypertarget{rp__core_8hpp_source}{}\doxysection{rp\+\_\+core.\+hpp}
+\label{rp__core_8hpp_source}\index{lib/gui\_lib/include/rp\_core.hpp@{lib/gui\_lib/include/rp\_core.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by kefas on 26.2.23.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PICO\_KIT\_FRAMEWORK\_CORE\_HPP}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PICO\_KIT\_FRAMEWORK\_CORE\_HPP}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}tusb.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}tusb\_data.hpp"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}Types.hpp"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Timers.hpp"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }rpgui::core}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \textcolor{keyword}{class }Cursor;}
+\DoxyCodeLine{19 \}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{namespace }rpgui::event}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_dispatcher}{MouseDispatcher}};}
+\DoxyCodeLine{24     \textcolor{keyword}{class }\mbox{\hyperlink{structrpgui_1_1event_1_1_handler}{Handler}};}
+\DoxyCodeLine{25 \}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{namespace }rpgui::page}
+\DoxyCodeLine{28 \{}
+\DoxyCodeLine{29     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1page_1_1_page}{Page}};}
+\DoxyCodeLine{30 \}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{keyword}{namespace }rpgui::type}
+\DoxyCodeLine{33 \{}
+\DoxyCodeLine{34     \textcolor{keyword}{enum class} MouseEventType;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{using namespace }rpgui::page;}
+\DoxyCodeLine{39 \textcolor{keyword}{using namespace }rpgui::event;}
+\DoxyCodeLine{40 \textcolor{keyword}{using namespace }rpgui::type;}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{keyword}{namespace }rpgui::core}
+\DoxyCodeLine{43 \{}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{46     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1core_1_1_main_app}{MainApp}}}
+\DoxyCodeLine{47     \{}
+\DoxyCodeLine{48     \textcolor{keyword}{private}:}
+\DoxyCodeLine{49         \textcolor{keyword}{inline} \textcolor{keyword}{static} std::vector<Page *> \_pages;}
+\DoxyCodeLine{50         \textcolor{keyword}{inline} \textcolor{keyword}{static} \mbox{\hyperlink{classrpgui_1_1page_1_1_page}{Page}} *\_selectedPage;}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52         \textcolor{keyword}{static} \textcolor{keyword}{enum class} clickState \{}
+\DoxyCodeLine{53             none,}
+\DoxyCodeLine{54             pressed,}
+\DoxyCodeLine{55         \} \_clickState;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57         \textcolor{keyword}{static} \mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_dispatcher}{MouseDispatcher}} \_mouseHandler;}
+\DoxyCodeLine{58         \textcolor{keyword}{static} \mbox{\hyperlink{classrpgui_1_1core_1_1_cursor}{Cursor}} \_cursor;}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \textcolor{keyword}{public}:}
+\DoxyCodeLine{61         \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app}{MainApp}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{62         \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app}{MainApp}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app}{MainApp}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{63         \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app}{\string~MainApp}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{67         \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_a2e13d579a245dc5722183afd6a1755e3}{Init}}();}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{72         \textcolor{keyword}{static} ID \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_aa954115ebfefb7ba23de27ce67d9986c}{AddPage}}(\mbox{\hyperlink{classrpgui_1_1page_1_1_page}{Page}} *page);}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{76         \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_a001f5585529fd76f783b4616e2604e22}{SelectPage}}(ID \textcolor{keywordtype}{id});}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{80         \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_a60da9670c668de5fd14ba6f0fc1fb2a7}{SelectPageAt}}(uint8\_t at);}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 }
+\DoxyCodeLine{85         \textcolor{keyword}{static} ID \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_a11b5f48eb761d7c5f7cb449d270463cc}{GetSelectedPageId}}();}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{89         \textcolor{keyword}{static} uint8\_t \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_a98a8090793e042f949a77d050f7c8e25}{GetSelectedPageAt}}();}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{93         \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_a0db32ea0f6811bcbd2ab798dbe57a9ce}{Update}}();}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 }
+\DoxyCodeLine{100         \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_ae0d256052429408cd24f4544d4abf636}{AddListener}}(MouseEventType type, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1event_1_1_handler}{Handler}} \&handler, \textcolor{keyword}{const} uint8\_t priority = 0);}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{103         \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1core_1_1_main_app_a69ac9241ff3eeca2388608bd80c08325}{ClearHandlers}}();}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     \textcolor{keyword}{private}:}
+\DoxyCodeLine{106         \textcolor{keyword}{static} \textcolor{keywordtype}{void} drawPage();}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108         \textcolor{keyword}{static} \textcolor{keywordtype}{void} processMouseInput();}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110         \textcolor{keyword}{static} \textcolor{keywordtype}{void} processMouseMovement();}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112         \textcolor{keyword}{static} \textcolor{keywordtype}{void} updateOnCoreX();}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114         \textcolor{keyword}{static} \textcolor{keywordtype}{void} drawCursor();}
+\DoxyCodeLine{115     \};}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 \} \textcolor{comment}{// namespace rpgui::core}}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// PICO\_KIT\_FRAMEWORK\_CORE\_HPP}}
+
+\end{DoxyCode}

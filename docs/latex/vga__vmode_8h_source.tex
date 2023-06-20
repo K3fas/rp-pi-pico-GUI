@@ -1,0 +1,251 @@
+\hypertarget{vga__vmode_8h_source}{}\doxysection{vga\+\_\+vmode.\+h}
+\label{vga__vmode_8h_source}\index{lib/vga\_lib/include/vga/vga\_vmode.h@{lib/vga\_lib/include/vga/vga\_vmode.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//                                 VGA videomodes}}
+\DoxyCodeLine{5 \textcolor{comment}{//}}
+\DoxyCodeLine{6 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef \_VGA\_VMODE\_H}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define \_VGA\_VMODE\_H}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}global.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define VIDEO\_NAME\_LEN 5 }\textcolor{comment}{// length of video timing name}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// video timings}}
+\DoxyCodeLine{16 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \textcolor{comment}{// horizontal}}
+\DoxyCodeLine{19     \textcolor{keywordtype}{float} htot;   \textcolor{comment}{// total scanline in [us]}}
+\DoxyCodeLine{20     \textcolor{keywordtype}{float} hfront; \textcolor{comment}{// H front porch (after image, before HSYNC) in [us]}}
+\DoxyCodeLine{21     \textcolor{keywordtype}{float} hsync;  \textcolor{comment}{// H sync pulse in [us]}}
+\DoxyCodeLine{22     \textcolor{keywordtype}{float} hback;  \textcolor{comment}{// H back porch (after HSYNC, before image) in [us]}}
+\DoxyCodeLine{23     \textcolor{keywordtype}{float} hfull;  \textcolor{comment}{// H full visible in [us] (corresponding to 'wfull' pixels)}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{comment}{// vertical}}
+\DoxyCodeLine{26     u16 vtot; \textcolor{comment}{// total scanlines (both subframes)}}
+\DoxyCodeLine{27     u16 vmax; \textcolor{comment}{// maximal height}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{comment}{// subframe 1}}
+\DoxyCodeLine{30     u16 vsync1;  \textcolor{comment}{// V sync (half-\/)pulses on subframe 1}}
+\DoxyCodeLine{31     u16 vpost1;  \textcolor{comment}{// V sync post half-\/pulses on subframe 1}}
+\DoxyCodeLine{32     u16 vback1;  \textcolor{comment}{// V back porch (after VSYNC, before image) on subframe 1}}
+\DoxyCodeLine{33     u16 vact1;   \textcolor{comment}{// active visible scanlines, subframe 1}}
+\DoxyCodeLine{34     u16 vfront1; \textcolor{comment}{// V front porch (after image, before VSYNC) on subframe 1}}
+\DoxyCodeLine{35     u16 vpre1;   \textcolor{comment}{// V sync pre half-\/pulses on subframe 1}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{comment}{// subframe 2 (ignored if not interlaced)}}
+\DoxyCodeLine{38     u16 vsync2;  \textcolor{comment}{// V sync half-\/pulses on subframe 2}}
+\DoxyCodeLine{39     u16 vpost2;  \textcolor{comment}{// V sync post half-\/pulses on subframe 2}}
+\DoxyCodeLine{40     u16 vback2;  \textcolor{comment}{// V back porch (after VSYNC, before image) on subframe 2}}
+\DoxyCodeLine{41     u16 vact2;   \textcolor{comment}{// active visible scanlines, subframe 2}}
+\DoxyCodeLine{42     u16 vfront2; \textcolor{comment}{// V front porch (after image, before VSYNC) on subframe 2}}
+\DoxyCodeLine{43     u16 vpre2;   \textcolor{comment}{// V sync pre half-\/pulses on subframe 2}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{comment}{// name}}
+\DoxyCodeLine{46     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name; \textcolor{comment}{// video timing name (VIDEO\_NAME\_LEN characters + terminating 0)}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{comment}{// flags}}
+\DoxyCodeLine{49     \textcolor{keywordtype}{bool} inter; \textcolor{comment}{// interlaced (use subframes)}}
+\DoxyCodeLine{50     \textcolor{keywordtype}{bool} psync; \textcolor{comment}{// positive synchronization}}
+\DoxyCodeLine{51     \textcolor{keywordtype}{bool} odd;   \textcolor{comment}{// first sub-\/frame is odd lines 1, 3, 5,... (PAL)}}
+\DoxyCodeLine{52 \} \mbox{\hyperlink{structs_video}{sVideo}};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{comment}{// === TV videomodes}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{comment}{// TV PAL interlaced 5:4 720x576 (4:3 768x576, 16:9 1024x576)}}
+\DoxyCodeLine{57 \textcolor{keyword}{extern} \textcolor{keyword}{const} \mbox{\hyperlink{structs_video}{sVideo}} VideoPAL;}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{comment}{// TV PAL progressive 5:4 360x288 (4:3 384x288, 16:9 512x288)}}
+\DoxyCodeLine{60 \textcolor{keyword}{extern} \textcolor{keyword}{const} \mbox{\hyperlink{structs_video}{sVideo}} VideoPALp;}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{comment}{// TV NTSC interlaced 4:3 640x480 (5:4 600x480, 16:9 848x480)}}
+\DoxyCodeLine{63 \textcolor{keyword}{extern} \textcolor{keyword}{const} \mbox{\hyperlink{structs_video}{sVideo}} VideoNTSC;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{comment}{// TV NTSC progressive 4:3 320x240 (5:4 300x240, 16:9 424x240)}}
+\DoxyCodeLine{66 \textcolor{keyword}{extern} \textcolor{keyword}{const} \mbox{\hyperlink{structs_video}{sVideo}} VideoNTSCp;}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{comment}{// === Monitor videomodes}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{comment}{// EGA 8:5 640x400 (5:4 500x400, 4:3 528x400, 16:9 704x400), vert. 70 Hz, hor. 31.4685 kHz, pixel clock 25.175 MHz}}
+\DoxyCodeLine{71 \textcolor{keyword}{extern} \textcolor{keyword}{const} \mbox{\hyperlink{structs_video}{sVideo}} VideoEGA;}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \textcolor{comment}{// VGA 4:3 640x480 (16:9 848x480), vert. 60 Hz, hor. 31.4685 kHz, pixel clock 25.175 MHz}}
+\DoxyCodeLine{74 \textcolor{keyword}{extern} \textcolor{keyword}{const} \mbox{\hyperlink{structs_video}{sVideo}} VideoVGA;}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{comment}{// SVGA 4:3 800x600 (16:9 1064x600), vert. 60 Hz, hor. 37.897 kHz, pixel clock 40 MHz}}
+\DoxyCodeLine{77 \textcolor{keyword}{extern} \textcolor{keyword}{const} \mbox{\hyperlink{structs_video}{sVideo}} VideoSVGA;}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{comment}{// XGA 4:3 1024x768 (16:9 1360x768), vert. 60 Hz, hor. 48.36310 kHz, pixel clock 65 MHz}}
+\DoxyCodeLine{80 \textcolor{keyword}{extern} \textcolor{keyword}{const} \mbox{\hyperlink{structs_video}{sVideo}} VideoXGA;}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 \textcolor{comment}{// VESA 4:3 1152x864, vert. 60 Hz, hor. 53.697 kHz, pixel clock 81.62 MHz}}
+\DoxyCodeLine{83 \textcolor{keyword}{extern} \textcolor{keyword}{const} \mbox{\hyperlink{structs_video}{sVideo}} VideoVESA;}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{comment}{// HD 4:3 1280x960, vert. 53 Hz, hor. 51.858 kHz, pixel clock 102.1 MHz}}
+\DoxyCodeLine{86 \textcolor{keyword}{extern} \textcolor{keyword}{const} \mbox{\hyperlink{structs_video}{sVideo}} VideoHD;}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{comment}{// required configuration to initialize VGA output}}
+\DoxyCodeLine{89 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{90 \{}
+\DoxyCodeLine{91     u16 width;           \textcolor{comment}{// width in pixels}}
+\DoxyCodeLine{92     u16 height;          \textcolor{comment}{// height in lines}}
+\DoxyCodeLine{93     u16 wfull;           \textcolor{comment}{// width of full screen, corresponding to 'hfull' time (0=use 'width' parameter)}}
+\DoxyCodeLine{94     \textcolor{keyword}{const} \mbox{\hyperlink{structs_video}{sVideo}} *video; \textcolor{comment}{// used video timings}}
+\DoxyCodeLine{95     u32 freq;            \textcolor{comment}{// required minimal system frequency in kHz (real frequency can be higher)}}
+\DoxyCodeLine{96     u32 fmax;            \textcolor{comment}{// maximal system frequency in kHz (limit resolution if needed)}}
+\DoxyCodeLine{97     u8 mode[LAYERS\_MAX]; \textcolor{comment}{// modes of overlapped layers 0..3 LAYERMODE\_* (LAYERMODE\_BASE = layer is off)}}
+\DoxyCodeLine{98                          \textcolor{comment}{//  -\/ mode of layer 0 is ignored (always use LAYERMODE\_BASE)}}
+\DoxyCodeLine{99                          \textcolor{comment}{//  -\/ all overlapped layers must use same layer program}}
+\DoxyCodeLine{100     \textcolor{keywordtype}{bool} dbly;     \textcolor{comment}{// double in Y direction}}
+\DoxyCodeLine{101     \textcolor{keywordtype}{bool} lockfreq; \textcolor{comment}{// lock required frequency, do not change it}}
+\DoxyCodeLine{102 \} \mbox{\hyperlink{structs_vga_cfg}{sVgaCfg}};}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \textcolor{comment}{// videomode table -\/ used to setup video driver}}
+\DoxyCodeLine{105 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{106 \{}
+\DoxyCodeLine{107     \textcolor{comment}{// screen resolution}}
+\DoxyCodeLine{108     u16 width;  \textcolor{comment}{// width in pixels}}
+\DoxyCodeLine{109     u16 height; \textcolor{comment}{// height in lines}}
+\DoxyCodeLine{110     u16 wfull;  \textcolor{comment}{// width of full screen (corresponding to 'hfull' time)}}
+\DoxyCodeLine{111     u16 wmax;   \textcolor{comment}{// maximal width (corresponding to 'hmax' time)}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113     \textcolor{comment}{// setup PLL system clock}}
+\DoxyCodeLine{114     u32 freq;  \textcolor{comment}{// system clock frequency in kHz}}
+\DoxyCodeLine{115     u32 vco;   \textcolor{comment}{// VCO frequency in kHz}}
+\DoxyCodeLine{116     u16 fbdiv; \textcolor{comment}{// fbdiv PLL divider}}
+\DoxyCodeLine{117     u8 pd1;    \textcolor{comment}{// postdiv1}}
+\DoxyCodeLine{118     u8 pd2;    \textcolor{comment}{// postdiv2}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     \textcolor{comment}{// setup PIO state machine}}
+\DoxyCodeLine{121     u16 div;             \textcolor{comment}{// divide base state machine clock}}
+\DoxyCodeLine{122     u16 cpp;             \textcolor{comment}{// state machine clocks per pixel}}
+\DoxyCodeLine{123     u8 prog;             \textcolor{comment}{// layer program LAYERPROG\_*}}
+\DoxyCodeLine{124     u8 mode[LAYERS\_MAX]; \textcolor{comment}{// mode of layer 0..3 LAYERMODE\_* (LAYERMODE\_BASE = layer is off or base layer)}}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126     \textcolor{comment}{// horizontal timings}}
+\DoxyCodeLine{127     u16 htot;    \textcolor{comment}{// total state machine clocks per line}}
+\DoxyCodeLine{128     u16 hfront;  \textcolor{comment}{// H front porch in state machine clocks (min. 2)}}
+\DoxyCodeLine{129     u16 hsync;   \textcolor{comment}{// H sync pulse in state machine clocks (min. 4)}}
+\DoxyCodeLine{130     u16 hback;   \textcolor{comment}{// H back porch in state machine clocks (min. 13)}}
+\DoxyCodeLine{131     \textcolor{keywordtype}{float} hfreq; \textcolor{comment}{// horizontal frequency in [Hz]}}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133     \textcolor{comment}{// vertical timings}}
+\DoxyCodeLine{134     u16 vtot;    \textcolor{comment}{// total scanlines (both sub-\/frames)}}
+\DoxyCodeLine{135     u16 vmax;    \textcolor{comment}{// maximal height}}
+\DoxyCodeLine{136     \textcolor{keywordtype}{float} vfreq; \textcolor{comment}{// vertical frequency in [Hz]}}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138     \textcolor{comment}{// subframe 1}}
+\DoxyCodeLine{139     u16 vsync1;  \textcolor{comment}{// V sync (half-\/)pulses on subframe 1}}
+\DoxyCodeLine{140     u16 vpost1;  \textcolor{comment}{// V sync post (half-\/)pulses on subframe 1}}
+\DoxyCodeLine{141     u16 vback1;  \textcolor{comment}{// V back porch (after VSYNC, before image) on subframe 1}}
+\DoxyCodeLine{142     u16 vact1;   \textcolor{comment}{// active visible scanlines, subframe 1}}
+\DoxyCodeLine{143     u16 vfront1; \textcolor{comment}{// V front porch (after image, before VSYNC) on subframe 1}}
+\DoxyCodeLine{144     u16 vpre1;   \textcolor{comment}{// V sync pre (half-\/)pulses on subframe 1}}
+\DoxyCodeLine{145     u16 vfirst1; \textcolor{comment}{// first active scanline, subframe 1}}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147     \textcolor{comment}{// subframe 2 (ignored if not interlaced)}}
+\DoxyCodeLine{148     u16 vsync2;  \textcolor{comment}{// V sync half-\/pulses on subframe 2}}
+\DoxyCodeLine{149     u16 vpost2;  \textcolor{comment}{// V sync post half-\/pulses on subframe 2}}
+\DoxyCodeLine{150     u16 vback2;  \textcolor{comment}{// V back porch (after VSYNC, before image) on subframe 2}}
+\DoxyCodeLine{151     u16 vact2;   \textcolor{comment}{// active visible scanlines, subframe 2}}
+\DoxyCodeLine{152     u16 vfront2; \textcolor{comment}{// V front porch (after image, before VSYNC) on subframe 2}}
+\DoxyCodeLine{153     u16 vpre2;   \textcolor{comment}{// V sync pre half-\/pulses on subframe 2}}
+\DoxyCodeLine{154     u16 vfirst2; \textcolor{comment}{// first active scanline, subframe 2}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156     \textcolor{comment}{// name}}
+\DoxyCodeLine{157     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name; \textcolor{comment}{// video timing name (VIDEO\_NAME\_LEN characters + terminating 0)}}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159     \textcolor{comment}{// flags}}
+\DoxyCodeLine{160     \textcolor{keywordtype}{bool} lockfreq; \textcolor{comment}{// lock current frequency, do not change it}}
+\DoxyCodeLine{161     \textcolor{keywordtype}{bool} dbly;     \textcolor{comment}{// double scanlines}}
+\DoxyCodeLine{162     \textcolor{keywordtype}{bool} inter;    \textcolor{comment}{// interlaced (use sub-\/frames)}}
+\DoxyCodeLine{163     \textcolor{keywordtype}{bool} psync;    \textcolor{comment}{// positive synchronization}}
+\DoxyCodeLine{164     \textcolor{keywordtype}{bool} odd;      \textcolor{comment}{// first sub-\/frame is odd lines 1, 3, 5,... (PAL)}}
+\DoxyCodeLine{165 \} \mbox{\hyperlink{structs_vmode}{sVmode}};}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167 \textcolor{comment}{// output device}}
+\DoxyCodeLine{168 \textcolor{keyword}{enum}}
+\DoxyCodeLine{169 \{}
+\DoxyCodeLine{170     DEV\_PAL = 0, \textcolor{comment}{// PAL TV}}
+\DoxyCodeLine{171     DEV\_NTSC,    \textcolor{comment}{// NTSC TV}}
+\DoxyCodeLine{172     DEV\_VGA,     \textcolor{comment}{// VGA monitor}}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174     DEV\_MAX}
+\DoxyCodeLine{175 \};}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 \textcolor{comment}{// preset videomode resolution}}
+\DoxyCodeLine{178 \textcolor{keyword}{enum}}
+\DoxyCodeLine{179 \{}
+\DoxyCodeLine{180     RES\_ZX = 0, \textcolor{comment}{// 256x192}}
+\DoxyCodeLine{181     RES\_CGA,    \textcolor{comment}{// 320x200}}
+\DoxyCodeLine{182     RES\_QVGA,   \textcolor{comment}{// 320x240}}
+\DoxyCodeLine{183     RES\_EGA,    \textcolor{comment}{// 512x400}}
+\DoxyCodeLine{184     RES\_VGA,    \textcolor{comment}{// 640x480}}
+\DoxyCodeLine{185     RES\_SVGA,   \textcolor{comment}{// 800x600 (not for TV device)}}
+\DoxyCodeLine{186     RES\_XGA,    \textcolor{comment}{// 1024x768 (not for TV device)}}
+\DoxyCodeLine{187     RES\_HD,     \textcolor{comment}{// 1280x960 (not for TV device)}}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189     RES\_MAX}
+\DoxyCodeLine{190 \};}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192 \textcolor{comment}{// graphics formats}}
+\DoxyCodeLine{193 \textcolor{keyword}{enum}}
+\DoxyCodeLine{194 \{}
+\DoxyCodeLine{195     FORM\_8BIT = 0, \textcolor{comment}{// 8-\/bit pixel graphics (up to EGA resolution)}}
+\DoxyCodeLine{196     FORM\_4BIT,     \textcolor{comment}{// 4-\/bit pixel graphics (up to SVGA graphics)}}
+\DoxyCodeLine{197     FORM\_MONO,     \textcolor{comment}{// 1-\/bit pixel graphics}}
+\DoxyCodeLine{198     FORM\_TILE8,    \textcolor{comment}{// 8x8 tiles}}
+\DoxyCodeLine{199     FORM\_TILE12,   \textcolor{comment}{// 12x12 tiles}}
+\DoxyCodeLine{200     FORM\_TILE16,   \textcolor{comment}{// 16x16 tiles}}
+\DoxyCodeLine{201     FORM\_TILE24,   \textcolor{comment}{// 24x24 tiles}}
+\DoxyCodeLine{202     FORM\_TILE32,   \textcolor{comment}{// 32x32 tiles}}
+\DoxyCodeLine{203     FORM\_TILE48,   \textcolor{comment}{// 48x48 tiles}}
+\DoxyCodeLine{204     FORM\_TILE64,   \textcolor{comment}{// 64x64 tiles}}
+\DoxyCodeLine{205     FORM\_MTEXT8,   \textcolor{comment}{// mono text with font 8x8}}
+\DoxyCodeLine{206     FORM\_MTEXT16,  \textcolor{comment}{// mono text with font 8x16}}
+\DoxyCodeLine{207     FORM\_TEXT8,    \textcolor{comment}{// attribute text with font 8x8}}
+\DoxyCodeLine{208     FORM\_TEXT16,   \textcolor{comment}{// attribute text with font 8x16}}
+\DoxyCodeLine{209     FORM\_RLE,      \textcolor{comment}{// images with RLE compression (on overlapped layer 1)}}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211     FORM\_MAX}
+\DoxyCodeLine{212 \};}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214 \textcolor{keyword}{extern} \mbox{\hyperlink{structs_vmode}{sVmode}} Vmode;   \textcolor{comment}{// videomode setup}}
+\DoxyCodeLine{215 \textcolor{keyword}{extern} \mbox{\hyperlink{structs_vga_cfg}{sVgaCfg}} Cfg;     \textcolor{comment}{// required configuration}}
+\DoxyCodeLine{216 \textcolor{keyword}{extern} \mbox{\hyperlink{structs_canvas}{sCanvas}} Canvas; \textcolor{comment}{// canvas of draw box}}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218 \textcolor{comment}{// 16-\/color palette translation table}}
+\DoxyCodeLine{219 \textcolor{keyword}{extern} u16 Pal16Trans[256];}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221 \textcolor{comment}{// initialize default VGA configuration}}
+\DoxyCodeLine{222 \textcolor{keywordtype}{void} VgaCfgDef(\mbox{\hyperlink{structs_vga_cfg}{sVgaCfg}} *cfg);}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224 \textcolor{comment}{// debug print videomode setup}}
+\DoxyCodeLine{225 \textcolor{keywordtype}{void} VgaPrintCfg(\textcolor{keyword}{const} \mbox{\hyperlink{structs_vmode}{sVmode}} *vmode);}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227 \textcolor{comment}{// calculate videomode setup}}
+\DoxyCodeLine{228 \textcolor{comment}{//   cfg ... required configuration}}
+\DoxyCodeLine{229 \textcolor{comment}{//   vmode ... destination videomode setup for driver}}
+\DoxyCodeLine{230 \textcolor{keywordtype}{void} VgaCfg(\textcolor{keyword}{const} \mbox{\hyperlink{structs_vga_cfg}{sVgaCfg}} *cfg, \mbox{\hyperlink{structs_vmode}{sVmode}} *vmode);}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{232 \textcolor{comment}{// initialize videomode}}
+\DoxyCodeLine{233 \textcolor{comment}{//  dev ... device DEV\_*}}
+\DoxyCodeLine{234 \textcolor{comment}{//  res ... resolution RES\_*}}
+\DoxyCodeLine{235 \textcolor{comment}{//  form ... format FORM\_*}}
+\DoxyCodeLine{236 \textcolor{comment}{//  buf ... pointer to frame buffer (must be aligned to 4-\/bites, use ALIGNED attribute)}}
+\DoxyCodeLine{237 \textcolor{comment}{//  buf2 ...pointer to additional buffer:}}
+\DoxyCodeLine{238 \textcolor{comment}{//  FORM\_TILE*: pointer to column of tiles 32x32 in 8-\/bit graphics}}
+\DoxyCodeLine{239 \textcolor{comment}{//  FORM\_TEXT: pointer to font 8x16 or 8x8 (size 4 KB or 2 KB, ALIGNED attribute, should be in RAM)}}
+\DoxyCodeLine{240 \textcolor{comment}{//      -\/ copy font to 4KB or 2 KB RAM buffer with ALIGNED attribute}}
+\DoxyCodeLine{241 \textcolor{comment}{//      -\/ text uses color attributes PC\_*}}
+\DoxyCodeLine{242 \textcolor{comment}{//  FORM\_RLE: pointer to image rows (ALIGNED attribute, should be in RAM)}}
+\DoxyCodeLine{243 \textcolor{keywordtype}{void} Video(u8 dev, u8 res, u8 form, u8 *buf, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *buf2 = FontBoldB8x16);}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{245 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_VGA\_VMODE\_H}}
+
+\end{DoxyCode}

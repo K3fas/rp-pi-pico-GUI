@@ -1,0 +1,58 @@
+\hypertarget{_mouse_dispatcher_8hpp_source}{}\doxysection{Mouse\+Dispatcher.\+hpp}
+\label{_mouse_dispatcher_8hpp_source}\index{lib/gui\_lib/include/events/MouseDispatcher.hpp@{lib/gui\_lib/include/events/MouseDispatcher.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by kefas on 27.2.23.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PICO\_KIT\_FRAMEWORK\_MOUSEDISPATCHER\_HPP}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PICO\_KIT\_FRAMEWORK\_MOUSEDISPATCHER\_HPP}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}include.hpp"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}MouseEvent.hpp"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{using namespace }rpgui::type;}
+\DoxyCodeLine{17 \textcolor{keyword}{using namespace }rpgui::common;}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{namespace }rpgui::event}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keyword}{struct }\mbox{\hyperlink{structrpgui_1_1event_1_1_handler}{Handler}}}
+\DoxyCodeLine{23     \{}
+\DoxyCodeLine{24         \textcolor{keyword}{inline} \textcolor{keyword}{static} uint16\_t counter = 0;}
+\DoxyCodeLine{25         \textcolor{keyword}{const} uint16\_t id;}
+\DoxyCodeLine{26         HandleFunc handler;}
+\DoxyCodeLine{27         \mbox{\hyperlink{classrpgui_1_1common_1_1_clickable}{Clickable}} *sender;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         \mbox{\hyperlink{structrpgui_1_1event_1_1_handler}{Handler}}(\textcolor{keyword}{const} HandleFunc\& func, \mbox{\hyperlink{classrpgui_1_1common_1_1_clickable}{Clickable}}* sender);}
+\DoxyCodeLine{30     \};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_dispatcher}{MouseDispatcher}}}
+\DoxyCodeLine{33     \{}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keyword}{private}:}
+\DoxyCodeLine{36         \textcolor{keyword}{using }PriorityListener = std::map<uint8\_t,std::map<MouseEventType, std::vector<Handler>>>;}
+\DoxyCodeLine{37         PriorityListener \_listeners;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{keyword}{public}:}
+\DoxyCodeLine{41         \mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_dispatcher}{MouseDispatcher}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{42         \mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_dispatcher}{MouseDispatcher}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_dispatcher}{MouseDispatcher}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{43         \mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_dispatcher}{\string~MouseDispatcher}}();}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \textcolor{keywordtype}{void} Post(\mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_event}{MouseEvent<MouseEventType>}} \&event);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47         \textcolor{keywordtype}{void} Subscribe(MouseEventType type, \textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1event_1_1_handler}{Handler}} \&handler, \textcolor{keyword}{const} uint8\_t priority = 0);}
+\DoxyCodeLine{48     \};}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \} \textcolor{comment}{// namespace rpgui::event}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// PICO\_KIT\_FRAMEWORK\_MOUSEDISPATCHER\_HPP}}
+
+\end{DoxyCode}

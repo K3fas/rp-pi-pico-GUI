@@ -1,0 +1,96 @@
+\hypertarget{spi_8h_source}{}\doxysection{spi.\+h}
+\label{spi_8h_source}\index{lib/SDwrapper\_lib/FatFs\_SPI/sd\_driver/spi.h@{lib/SDwrapper\_lib/FatFs\_SPI/sd\_driver/spi.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/* spi.h}}
+\DoxyCodeLine{2 \textcolor{comment}{Copyright 2021 Carl John Kugler III}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{Licensed under the Apache License, Version 2.0 (the License); you may not use}}
+\DoxyCodeLine{5 \textcolor{comment}{this file except in compliance with the License. You may obtain a copy of the}}
+\DoxyCodeLine{6 \textcolor{comment}{License at}}
+\DoxyCodeLine{7 \textcolor{comment}{}}
+\DoxyCodeLine{8 \textcolor{comment}{   http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{9 \textcolor{comment}{Unless required by applicable law or agreed to in writing, software distributed}}
+\DoxyCodeLine{10 \textcolor{comment}{under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR}}
+\DoxyCodeLine{11 \textcolor{comment}{CONDITIONS OF ANY KIND, either express or implied. See the License for the}}
+\DoxyCodeLine{12 \textcolor{comment}{specific language governing permissions and limitations under the License.}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{18 \textcolor{comment}{//}}
+\DoxyCodeLine{19 \textcolor{comment}{// Pico includes}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include "{}hardware/dma.h"{}}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include "{}hardware/gpio.h"{}}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include "{}hardware/irq.h"{}}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include "{}hardware/spi.h"{}}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include "{}pico/mutex.h"{}}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include "{}pico/sem.h"{}}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}pico/types.h"{}}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define SPI\_FILL\_CHAR (0xFF)}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{comment}{// "{}Class"{} representing SPIs}}
+\DoxyCodeLine{31 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{32     \textcolor{comment}{// SPI HW}}
+\DoxyCodeLine{33     spi\_inst\_t *hw\_inst;}
+\DoxyCodeLine{34     uint miso\_gpio;  \textcolor{comment}{// SPI MISO GPIO number (not pin number)}}
+\DoxyCodeLine{35     uint mosi\_gpio;}
+\DoxyCodeLine{36     uint sck\_gpio;}
+\DoxyCodeLine{37     uint baud\_rate;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \textcolor{comment}{// Drive strength levels for GPIO outputs.}}
+\DoxyCodeLine{40     \textcolor{comment}{// enum gpio\_drive\_strength \{ GPIO\_DRIVE\_STRENGTH\_2MA = 0, GPIO\_DRIVE\_STRENGTH\_4MA = 1, GPIO\_DRIVE\_STRENGTH\_8MA = 2,}}
+\DoxyCodeLine{41     \textcolor{comment}{// GPIO\_DRIVE\_STRENGTH\_12MA = 3 \}}}
+\DoxyCodeLine{42     \textcolor{keywordtype}{bool} set\_drive\_strength;}
+\DoxyCodeLine{43     \textcolor{keyword}{enum} gpio\_drive\_strength mosi\_gpio\_drive\_strength;}
+\DoxyCodeLine{44     \textcolor{keyword}{enum} gpio\_drive\_strength sck\_gpio\_drive\_strength;}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{comment}{// State variables:}}
+\DoxyCodeLine{47     uint tx\_dma;}
+\DoxyCodeLine{48     uint rx\_dma;}
+\DoxyCodeLine{49     dma\_channel\_config tx\_dma\_cfg;}
+\DoxyCodeLine{50     dma\_channel\_config rx\_dma\_cfg;}
+\DoxyCodeLine{51     irq\_handler\_t dma\_isr; \textcolor{comment}{// Ignored: no longer used}}
+\DoxyCodeLine{52     \textcolor{keywordtype}{bool} initialized;  }
+\DoxyCodeLine{53     semaphore\_t sem;}
+\DoxyCodeLine{54     mutex\_t mutex;    }
+\DoxyCodeLine{55 \} \mbox{\hyperlink{structspi__t}{spi\_t}};}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{58 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{60   }
+\DoxyCodeLine{61 \textcolor{keywordtype}{bool} \_\_not\_in\_flash\_func(spi\_transfer)(\mbox{\hyperlink{structspi__t}{spi\_t}} *pSPI, \textcolor{keyword}{const} uint8\_t *tx, uint8\_t *rx, \textcolor{keywordtype}{size\_t} length);  }
+\DoxyCodeLine{62 \textcolor{keywordtype}{void} spi\_lock(\mbox{\hyperlink{structspi__t}{spi\_t}} *pSPI);}
+\DoxyCodeLine{63 \textcolor{keywordtype}{void} spi\_unlock(\mbox{\hyperlink{structspi__t}{spi\_t}} *pSPI);}
+\DoxyCodeLine{64 \textcolor{keywordtype}{bool} my\_spi\_init(\mbox{\hyperlink{structspi__t}{spi\_t}} *pSPI);}
+\DoxyCodeLine{65 \textcolor{keywordtype}{void} set\_spi\_dma\_irq\_channel(\textcolor{keywordtype}{bool} useChannel1, \textcolor{keywordtype}{bool} shared);}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{68 \}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#ifndef NO\_PICO\_LED}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#  define USE\_LED 1}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#if USE\_LED}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#  define LED\_PIN 25}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#  define LED\_INIT()                     \(\backslash\)}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{    \{                                    \(\backslash\)}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{        gpio\_init(LED\_PIN);              \(\backslash\)}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{        gpio\_set\_dir(LED\_PIN, GPIO\_OUT); \(\backslash\)}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#  define LED\_ON() gpio\_put(LED\_PIN, 1)}}
+\DoxyCodeLine{83 \textcolor{preprocessor}{\#  define LED\_OFF() gpio\_put(LED\_PIN, 0)}}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#  define LED\_ON()}}
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#  define LED\_OFF()}}
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#  define LED\_INIT()}}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \textcolor{comment}{/* [] END OF FILE */}}
+
+\end{DoxyCode}

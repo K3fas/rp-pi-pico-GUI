@@ -1,0 +1,313 @@
+\hypertarget{vga__screen_8h_source}{}\doxysection{vga\+\_\+screen.\+h}
+\label{vga__screen_8h_source}\index{lib/vga\_lib/include/vga/vga\_screen.h@{lib/vga\_lib/include/vga/vga\_screen.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//                               VGA screen layout}}
+\DoxyCodeLine{5 \textcolor{comment}{//}}
+\DoxyCodeLine{6 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef \_VGA\_SCREEN\_H}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define \_VGA\_SCREEN\_H}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// video segment (on change update SSEGM\_* in define.h)}}
+\DoxyCodeLine{12 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{13     u16 width;  \textcolor{comment}{// SSEGM\_WIDTH width of this video segment in pixels (must be multiple of 4, 0=inactive segment)}}
+\DoxyCodeLine{14     u16 wb; \textcolor{comment}{// SSEGM\_WB pitch -\/ number of bytes between lines}}
+\DoxyCodeLine{15     s16 offx;   \textcolor{comment}{// SSEGM\_OFFX display offset at X direction (must be multiple of 4)}}
+\DoxyCodeLine{16     s16 offy;   \textcolor{comment}{// SSEGM\_OFFY display offset at Y direction}}
+\DoxyCodeLine{17     u16 wrapx;  \textcolor{comment}{// SSEGM\_WRAPX wrap width in X direction (number of pixels, must be multiply of 4 and > 0)}}
+\DoxyCodeLine{18             \textcolor{comment}{//  text modes: wrapx must be multiply of 8}}
+\DoxyCodeLine{19     u16 wrapy;  \textcolor{comment}{// SSEGM\_WRAPY wrap width in Y direction (number of lines, cannot be 0)}}
+\DoxyCodeLine{20     \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data; \textcolor{comment}{// SSEGM\_DATA pointer to video buffer with image data}}
+\DoxyCodeLine{21     u8  form;   \textcolor{comment}{// SSEGM\_FORM graphics format GF\_*}}
+\DoxyCodeLine{22     \textcolor{keywordtype}{bool}    dbly;   \textcolor{comment}{// SSEGM\_DBLY double Y (2 scanlines per 1 image line)}}
+\DoxyCodeLine{23     u16 par3;   \textcolor{comment}{// SSEGM\_PAR3 parameter 3}}
+\DoxyCodeLine{24     u32 par;    \textcolor{comment}{// SSEGM\_PAR parameter 1}}
+\DoxyCodeLine{25     u32 par2;   \textcolor{comment}{// SSEGM\_PAR2 parameter 2}}
+\DoxyCodeLine{26 \} \mbox{\hyperlink{structs_segm}{sSegm}};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{comment}{// video strip (on change update SSTRIP\_* in define.h)}}
+\DoxyCodeLine{29 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{30     u16 height;     \textcolor{comment}{// SSTRIP\_HEIGHT height of this strip in number of scanlines}}
+\DoxyCodeLine{31     u16 num;        \textcolor{comment}{// SSTRIP\_NUM number of video segments}}
+\DoxyCodeLine{32     \mbox{\hyperlink{structs_segm}{sSegm}}  seg[SEGMAX];    \textcolor{comment}{// SSTRIP\_SEG list of video segments}}
+\DoxyCodeLine{33 \} \mbox{\hyperlink{structs_strip}{sStrip}};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{// video screen (on change update SSCREEN\_* in define.h)}}
+\DoxyCodeLine{36 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{37     u16 num;        \textcolor{comment}{// SSCREEN\_NUM number of video strips}}
+\DoxyCodeLine{38     u16 backup;     \textcolor{comment}{// SSCREEN\_BACKUP backup number of video strips during display OFF}}
+\DoxyCodeLine{39     \mbox{\hyperlink{structs_strip}{sStrip}}    strip[STRIPMAX]; \textcolor{comment}{// SSCREEN\_STRIP list of video strips}}
+\DoxyCodeLine{40 \} \mbox{\hyperlink{structs_screen}{sScreen}};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{comment}{// current video screen}}
+\DoxyCodeLine{43 \textcolor{keyword}{extern} \mbox{\hyperlink{structs_screen}{sScreen}} Screen;       \textcolor{comment}{// default video screen}}
+\DoxyCodeLine{44 \textcolor{keyword}{extern} \mbox{\hyperlink{structs_screen}{sScreen}}* pScreen; \textcolor{comment}{// pointer to current video screen}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{comment}{// clear screen (set 0 strips, does not modify sprites)}}
+\DoxyCodeLine{47 \textcolor{keywordtype}{void} ScreenClear(\mbox{\hyperlink{structs_screen}{sScreen}}* s);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{comment}{// add empty strip to the screen (returns pointer to the strip)}}
+\DoxyCodeLine{50 \mbox{\hyperlink{structs_strip}{sStrip}}* ScreenAddStrip(\mbox{\hyperlink{structs_screen}{sScreen}}* s, \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{comment}{// add empty segment to video strip (returns pointer to the segment and initialises is to defaults)}}
+\DoxyCodeLine{53 \mbox{\hyperlink{structs_segm}{sSegm}}* ScreenAddSegm(\mbox{\hyperlink{structs_strip}{sStrip}}* strip, \textcolor{keywordtype}{int} width);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{comment}{// set video segment to simple color format GF\_COLOR}}
+\DoxyCodeLine{56 \textcolor{comment}{//  col1 = color pattern 4-\/pixels even line (use macro MULTICOL)}}
+\DoxyCodeLine{57 \textcolor{comment}{//  col2 = color pattern 4-\/pixels odd line (use macro MULTICOL)}}
+\DoxyCodeLine{58 \textcolor{keywordtype}{void} ScreenSegmColor(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, u32 col1, u32 col2);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{comment}{// set video segment to gradient with 1 line}}
+\DoxyCodeLine{61 \textcolor{comment}{//   data = pointer to data buffer with gradient}}
+\DoxyCodeLine{62 \textcolor{comment}{//   wb = pitch -\/ length of buffer}}
+\DoxyCodeLine{63 \textcolor{comment}{// To scroll gradient, set virtual dimension wrapx, then shift offx}}
+\DoxyCodeLine{64 \textcolor{keywordtype}{void} ScreenSegmGrad1(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{comment}{// set video segment to gradient with 2 lines}}
+\DoxyCodeLine{67 \textcolor{comment}{//   data = pointer to data buffer with gradient}}
+\DoxyCodeLine{68 \textcolor{comment}{//   wb = pitch -\/ lenght of buffer}}
+\DoxyCodeLine{69 \textcolor{comment}{// To scroll gradient, set virtual dimension wrapx, then shift offx}}
+\DoxyCodeLine{70 \textcolor{keywordtype}{void} ScreenSegmGrad2(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{comment}{// set video segment to native 8-\/bit graphics (R3G3B2)}}
+\DoxyCodeLine{73 \textcolor{comment}{//   data = pointer to data buffer}}
+\DoxyCodeLine{74 \textcolor{comment}{//   wb = pitch -\/ number of bytes between lines}}
+\DoxyCodeLine{75 \textcolor{comment}{// To scroll image, set virtual dimension wrapx and wrapy, then shift offx and offy.}}
+\DoxyCodeLine{76 \textcolor{keywordtype}{void} ScreenSegmGraph8(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{comment}{// generate 16-\/color palette translation table}}
+\DoxyCodeLine{79 \textcolor{comment}{//  trans = pointer to destination palette translation table (u16 trans[256])}}
+\DoxyCodeLine{80 \textcolor{comment}{//  pal = pointer to source palette of 16 colors (u8 pal[16])}}
+\DoxyCodeLine{81 \textcolor{keywordtype}{void} GenPal16Trans(u16* trans, \textcolor{keyword}{const} u8* pal);}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 \textcolor{comment}{// set video segment to 4-\/bit palette graphics}}
+\DoxyCodeLine{84 \textcolor{comment}{//   data = pointer to data buffer}}
+\DoxyCodeLine{85 \textcolor{comment}{//   trans = pointer to 16-\/color palette translation table (generated with GenPal16Trans function)}}
+\DoxyCodeLine{86 \textcolor{comment}{//   wb = pitch -\/ number of bytes between lines}}
+\DoxyCodeLine{87 \textcolor{comment}{// To scroll image, set virtual dimension wrapx and wrapy, then shift offx and offy.}}
+\DoxyCodeLine{88 \textcolor{keywordtype}{void} ScreenSegmGraph4(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* trans, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \textcolor{comment}{// generate palette 4 translation table for function ScreenSegmGraph2}}
+\DoxyCodeLine{91 \textcolor{comment}{//  trans = pointer to destination palette translation table (u32 trans[256])}}
+\DoxyCodeLine{92 \textcolor{comment}{//  pal = pointer to source palette of 4 colors (u8 pal[4])}}
+\DoxyCodeLine{93 \textcolor{keywordtype}{void} GenPal4Trans(u32* trans, \textcolor{keyword}{const} u8* pal);}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{comment}{// set video segment to 2-\/bit palette graphics}}
+\DoxyCodeLine{96 \textcolor{comment}{//   data = pointer to data buffer}}
+\DoxyCodeLine{97 \textcolor{comment}{//   trans = pointer to 4-\/color palette translation table (generated with GenPal4Trans function)}}
+\DoxyCodeLine{98 \textcolor{comment}{//   wb = pitch -\/ number of bytes between lines}}
+\DoxyCodeLine{99 \textcolor{comment}{// To scroll image, set virtual dimension wrapx and wrapy, then shift offx and offy.}}
+\DoxyCodeLine{100 \textcolor{keywordtype}{void} ScreenSegmGraph2(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* trans, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{comment}{// set video segment to 1-\/bit palette graphics}}
+\DoxyCodeLine{103 \textcolor{comment}{//   data = pointer to data buffer}}
+\DoxyCodeLine{104 \textcolor{comment}{//   bg = background color}}
+\DoxyCodeLine{105 \textcolor{comment}{//   fg = foreground color}}
+\DoxyCodeLine{106 \textcolor{comment}{//   wb = pitch -\/ number of bytes between lines}}
+\DoxyCodeLine{107 \textcolor{comment}{// To scroll image, set virtual dimension wrapx and wrapy, then shift offx and offy.}}
+\DoxyCodeLine{108 \textcolor{keywordtype}{void} ScreenSegmGraph1(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, u8 bg, u8 fg, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110 \textcolor{comment}{// set video segment to 8-\/pixel mono text}}
+\DoxyCodeLine{111 \textcolor{comment}{//   data = pointer to text buffer}}
+\DoxyCodeLine{112 \textcolor{comment}{//   font = pointer to 1-\/bit font of 256 characters of width 8 (total width of image 2048 pixels)}}
+\DoxyCodeLine{113 \textcolor{comment}{//   fontheight = font height}}
+\DoxyCodeLine{114 \textcolor{comment}{//   bg = background color}}
+\DoxyCodeLine{115 \textcolor{comment}{//   fg = foreground color}}
+\DoxyCodeLine{116 \textcolor{comment}{//   wb = pitch -\/ number of bytes between text lines}}
+\DoxyCodeLine{117 \textcolor{keywordtype}{void} ScreenSegmMText(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* font, u16 fontheight, u8 bg, u8 fg, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \textcolor{comment}{// set video segment to 8-\/pixel attribute text}}
+\DoxyCodeLine{120 \textcolor{comment}{//   data = pointer to text buffer (character + 2x4 bit attributes)}}
+\DoxyCodeLine{121 \textcolor{comment}{//   font = pointer to 1-\/bit font of 256 characters of width 8 (total width of image 2048 pixels)}}
+\DoxyCodeLine{122 \textcolor{comment}{//   fontheight = font height}}
+\DoxyCodeLine{123 \textcolor{comment}{//   pal = pointer to palette of 16 colors}}
+\DoxyCodeLine{124 \textcolor{comment}{//   wb = pitch -\/ number of bytes between text lines}}
+\DoxyCodeLine{125 \textcolor{keywordtype}{void} ScreenSegmAText(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* font, u16 fontheight, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* pal, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127 \textcolor{comment}{// set video segment to 8-\/pixel foreground color text}}
+\DoxyCodeLine{128 \textcolor{comment}{//   data = pointer to text buffer (character + foreground color)}}
+\DoxyCodeLine{129 \textcolor{comment}{//   font = pointer to 1-\/bit font of 256 characters of width 8 (total width of image 2048 pixels)}}
+\DoxyCodeLine{130 \textcolor{comment}{//   fontheight = font height}}
+\DoxyCodeLine{131 \textcolor{comment}{//   bg = background color}}
+\DoxyCodeLine{132 \textcolor{comment}{//   wb = pitch -\/ number of bytes between text lines}}
+\DoxyCodeLine{133 \textcolor{keywordtype}{void} ScreenSegmFText(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* font, u16 fontheight, u8 bg, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135 \textcolor{comment}{// set video segment to 8-\/pixel color text}}
+\DoxyCodeLine{136 \textcolor{comment}{//   data = pointer to text buffer (character + background color + foreground color)}}
+\DoxyCodeLine{137 \textcolor{comment}{//   font = pointer to 1-\/bit font of 256 characters of width 8 (total width of image 2048 pixels)}}
+\DoxyCodeLine{138 \textcolor{comment}{//   fontheight = font height}}
+\DoxyCodeLine{139 \textcolor{comment}{//   wb = pitch -\/ number of bytes between text lines}}
+\DoxyCodeLine{140 \textcolor{keywordtype}{void} ScreenSegmCText(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* font, u16 fontheight, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142 \textcolor{comment}{// set video segment to 8-\/pixel gradient color text}}
+\DoxyCodeLine{143 \textcolor{comment}{//   data = pointer to text buffer (character + foreground color)}}
+\DoxyCodeLine{144 \textcolor{comment}{//   font = pointer to 1-\/bit font of 256 characters of width 8 (total width of image 2048 pixels)}}
+\DoxyCodeLine{145 \textcolor{comment}{//   fontheight = font height}}
+\DoxyCodeLine{146 \textcolor{comment}{//   bg = background color}}
+\DoxyCodeLine{147 \textcolor{comment}{//   grad = pointer to array of gradient colors}}
+\DoxyCodeLine{148 \textcolor{comment}{//   wb = pitch -\/ number of bytes between text lines}}
+\DoxyCodeLine{149 \textcolor{keywordtype}{void} ScreenSegmGText(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* font, u8 fontheight, u8 bg, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* grad, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151 \textcolor{comment}{// set video segment to 8-\/pixel double gradient color text}}
+\DoxyCodeLine{152 \textcolor{comment}{//   data = pointer to text buffer (character + foreground color)}}
+\DoxyCodeLine{153 \textcolor{comment}{//   font = pointer to 1-\/bit font of 256 characters of width 8 (total width of image 2048 pixels)}}
+\DoxyCodeLine{154 \textcolor{comment}{//   fontheight = font height}}
+\DoxyCodeLine{155 \textcolor{comment}{//   bg = background color}}
+\DoxyCodeLine{156 \textcolor{comment}{//   grad = pointer to array of gradient colors}}
+\DoxyCodeLine{157 \textcolor{comment}{//   wb = pitch -\/ number of bytes between text lines}}
+\DoxyCodeLine{158 \textcolor{keywordtype}{void} ScreenSegmDText(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* font, u8 fontheight, u8 bg, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* grad, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160 \textcolor{comment}{// set video segment to tiles}}
+\DoxyCodeLine{161 \textcolor{comment}{//   data = pointer to tile map buffer (with tile indices)}}
+\DoxyCodeLine{162 \textcolor{comment}{//   tiles = pointer to 1 column of tiles, 1 pixel = 8 bits}}
+\DoxyCodeLine{163 \textcolor{comment}{//   w = tile width (must be multiple of 4)}}
+\DoxyCodeLine{164 \textcolor{comment}{//   h = tile height}}
+\DoxyCodeLine{165 \textcolor{comment}{//   wb = pitch -\/ number of bytes between tile map rows}}
+\DoxyCodeLine{166 \textcolor{keywordtype}{void} ScreenSegmTile(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* tiles, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168 \textcolor{comment}{// set video segment to alternate tiles}}
+\DoxyCodeLine{169 \textcolor{comment}{//   data = pointer to tile map buffer (with tile indices)}}
+\DoxyCodeLine{170 \textcolor{comment}{//   tiles = pointer to 1 row of tiles, 1 pixel = 8 bits}}
+\DoxyCodeLine{171 \textcolor{comment}{//   w = tile width (must be multiple of 4)}}
+\DoxyCodeLine{172 \textcolor{comment}{//   h = tile height}}
+\DoxyCodeLine{173 \textcolor{comment}{//   tilewb = tile width bytes (usually tile width * number of tiles)}}
+\DoxyCodeLine{174 \textcolor{comment}{//   wb = pitch -\/ number of bytes between tile map rows}}
+\DoxyCodeLine{175 \textcolor{keywordtype}{void} ScreenSegmTile2(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* tiles, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} tilewb, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 \textcolor{comment}{// set video segment to level graph GF\_LEVEL}}
+\DoxyCodeLine{178 \textcolor{comment}{//   data = pointer to buffer with line samples 0..255}}
+\DoxyCodeLine{179 \textcolor{comment}{//   zero = Y zero level}}
+\DoxyCodeLine{180 \textcolor{comment}{//   bg = background color}}
+\DoxyCodeLine{181 \textcolor{comment}{//   fg = foreground color}}
+\DoxyCodeLine{182 \textcolor{keywordtype}{void} ScreenSegmLevel(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, u8 zero, u8 bg, u8 fg);}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184 \textcolor{comment}{// set video segment to leve gradient graph GF\_LEVELGRAD}}
+\DoxyCodeLine{185 \textcolor{comment}{//   data = pointer to buffer with values 0..255 of 4-\/pixels in rows}}
+\DoxyCodeLine{186 \textcolor{comment}{//   sample1 = scanline sample < data}}
+\DoxyCodeLine{187 \textcolor{comment}{//   sample2 = scanline sample >= data}}
+\DoxyCodeLine{188 \textcolor{keywordtype}{void} ScreenSegmLevelGrad(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* sample1, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* sample2);}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190 \textcolor{comment}{// set video segment to oscilloscope 1-\/pixel graph GF\_OSCIL}}
+\DoxyCodeLine{191 \textcolor{comment}{//   data = pointer to buffer with line samples 0..255}}
+\DoxyCodeLine{192 \textcolor{comment}{//   bg = background color}}
+\DoxyCodeLine{193 \textcolor{comment}{//   fg = foreground color}}
+\DoxyCodeLine{194 \textcolor{comment}{//   pixh = height of pixels -\/ 1}}
+\DoxyCodeLine{195 \textcolor{keywordtype}{void} ScreenSegmOscil(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, u8 bg, u8 fg, \textcolor{keywordtype}{int} pixh);}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197 \textcolor{comment}{// set video segment to oscilloscope line graph GF\_OSCLINE}}
+\DoxyCodeLine{198 \textcolor{comment}{//   data = pointer to buffer with line samples 0..255}}
+\DoxyCodeLine{199 \textcolor{comment}{//   bg = background color}}
+\DoxyCodeLine{200 \textcolor{comment}{//   fg = foreground color}}
+\DoxyCodeLine{201 \textcolor{keywordtype}{void} ScreenSegmOscLine(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, u8 bg, u8 fg);}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203 \textcolor{comment}{// generate palette 4-\/color translation table for function ScreenSegmPlane2}}
+\DoxyCodeLine{204 \textcolor{comment}{//  trans = pointer to destination palette translation table (u32 trans[256])}}
+\DoxyCodeLine{205 \textcolor{comment}{//  pal = pointer to source palette of 4 colors (u8 pal[4])}}
+\DoxyCodeLine{206 \textcolor{keywordtype}{void} GenPal4Plane(u32* trans, \textcolor{keyword}{const} u8* pal);}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208 \textcolor{comment}{// set video segment to 4-\/color on 2-\/planes graphics}}
+\DoxyCodeLine{209 \textcolor{comment}{//   data = pointer to data buffer}}
+\DoxyCodeLine{210 \textcolor{comment}{//   plane = offset of 2nd graphics plane (in bytes), size of one graphics plane}}
+\DoxyCodeLine{211 \textcolor{comment}{//   trans = pointer to 4-\/color palette translation table (generated with GenPal4Plane function)}}
+\DoxyCodeLine{212 \textcolor{comment}{//   wb = pitch -\/ number of bytes between lines}}
+\DoxyCodeLine{213 \textcolor{comment}{// To scroll image, set virtual dimension wrapx and wrapy, then shift offx and offy.}}
+\DoxyCodeLine{214 \textcolor{keywordtype}{void} ScreenSegmPlane2(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keywordtype}{int} plane, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* trans, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216 \textcolor{comment}{// set video segment to 2x4 bit color attribute per 8x8 pixel sample graphics}}
+\DoxyCodeLine{217 \textcolor{comment}{//   data = pointer to data buffer with mono pixels}}
+\DoxyCodeLine{218 \textcolor{comment}{//   attr = pointer to color attributes}}
+\DoxyCodeLine{219 \textcolor{comment}{//   pal = pointer to 16-\/color palette table}}
+\DoxyCodeLine{220 \textcolor{comment}{//   wb = pitch -\/ number of bytes between lines}}
+\DoxyCodeLine{221 \textcolor{comment}{// To scroll image, set virtual dimension wrapx and wrapy, then shift offx and offy.}}
+\DoxyCodeLine{222 \textcolor{keywordtype}{void} ScreenSegmAttrib8(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* attr, \textcolor{keyword}{const} u8* pal, \textcolor{keywordtype}{int} wb);}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224 \textcolor{comment}{// set video segment to horizontal progress indicator GF\_PROGRESS}}
+\DoxyCodeLine{225 \textcolor{comment}{//   data = pointer to buffer with values 0..255 of 4-\/pixels in rows}}
+\DoxyCodeLine{226 \textcolor{comment}{//   sample1 = scanline sample < data}}
+\DoxyCodeLine{227 \textcolor{comment}{//   sample2 = scanline sample >= data}}
+\DoxyCodeLine{228 \textcolor{keywordtype}{void} ScreenSegmProgress(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* sample1, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* sample2);}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230 \textcolor{comment}{// set video segment to 8-\/bit graphics with 2D matrix transformation}}
+\DoxyCodeLine{231 \textcolor{comment}{//   data = pointer to image data (width and height of image must be power of 2)}}
+\DoxyCodeLine{232 \textcolor{comment}{//   mat = pointer to array of 6 matrix integer parameters m11, m12...m23 (exported with ExportInt function)}}
+\DoxyCodeLine{233 \textcolor{comment}{//   xbits = number of bits of image width (image width must be power of 2 and must be = pitch width bytes)}}
+\DoxyCodeLine{234 \textcolor{comment}{//   ybits = number of bits of image height (image height must be power of 2)}}
+\DoxyCodeLine{235 \textcolor{comment}{// Use default settings of parameters: offx = 0, offy = 0, wrapx = segment width, wrapy = segment height}}
+\DoxyCodeLine{236 \textcolor{keywordtype}{void} ScreenSegmGraph8Mat(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{int}* mat, u16 xbits, u16 ybits);}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238 \textcolor{comment}{// set video segment to 8-\/bit graphics with perspective projection}}
+\DoxyCodeLine{239 \textcolor{comment}{//   data = pointer to image data (width and height of image must be power of 2)}}
+\DoxyCodeLine{240 \textcolor{comment}{//   mat = pointer to array of 6 matrix integer parameters m11, m12...m23 (exported with ExportInt function)}}
+\DoxyCodeLine{241 \textcolor{comment}{//   xbits = number of bits of image width (image width must be power of 2 and must be = pitch width bytes)}}
+\DoxyCodeLine{242 \textcolor{comment}{//   ybits = number of bits of image height (image height must be power of 2)}}
+\DoxyCodeLine{243 \textcolor{comment}{//   horiz = horizon offset}}
+\DoxyCodeLine{244 \textcolor{comment}{// Use default settings of parameters: offx = 0, offy = 0, wrapx = segment width, wrapy = segment height}}
+\DoxyCodeLine{245 \textcolor{keywordtype}{void} ScreenSegmGraph8Persp(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} \textcolor{keywordtype}{int}* mat, u16 xbits, u16 ybits, u16 horiz);}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247 \textcolor{comment}{// set video segment to tiles with perspective}}
+\DoxyCodeLine{248 \textcolor{comment}{//   map = pointer to tile map with tile indices (width and height must be power of 2)}}
+\DoxyCodeLine{249 \textcolor{comment}{//   tiles = pointer to 1 column of square tiles, 1 pixel = 8 bits (width and height must be power of 2)}}
+\DoxyCodeLine{250 \textcolor{comment}{//   mat = pointer to array of 6 matrix integer parameters m11, m12...m23 (exported with ExportInt function)}}
+\DoxyCodeLine{251 \textcolor{comment}{//   mapwbits = number of bits of tile map width}}
+\DoxyCodeLine{252 \textcolor{comment}{//   maphbits = number of bits of tile map height}}
+\DoxyCodeLine{253 \textcolor{comment}{//   tilebits = number of bits of tile width and height}}
+\DoxyCodeLine{254 \textcolor{comment}{//   horizon = horizon offset/4 (0=do not use perspective projection, <0=vertical flip to display ceiling)}}
+\DoxyCodeLine{255 \textcolor{comment}{// Use default settings of parameters: offx = 0, offy = 0, wrapx = segment width, wrapy = segment height}}
+\DoxyCodeLine{256 \textcolor{keywordtype}{void} ScreenSegmTilePersp(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} u8* map, \textcolor{keyword}{const} u8* tiles, \textcolor{keyword}{const} \textcolor{keywordtype}{int}* mat, }
+\DoxyCodeLine{257     u8 mapwbits, u8 maphbits, u8 tilebits, s8 horizon);}
+\DoxyCodeLine{258 }
+\DoxyCodeLine{259 \textcolor{comment}{// set video segment to tiles with perspective, 1.5 pixels}}
+\DoxyCodeLine{260 \textcolor{comment}{//   map = pointer to tile map with tile indices (width and height must be power of 2)}}
+\DoxyCodeLine{261 \textcolor{comment}{//   tiles = pointer to 1 column of square tiles, 1 pixel = 8 bits (width and height must be power of 2)}}
+\DoxyCodeLine{262 \textcolor{comment}{//   mat = pointer to array of 6 matrix integer parameters m11, m12...m23 (exported with ExportInt function)}}
+\DoxyCodeLine{263 \textcolor{comment}{//   mapwbits = number of bits of tile map width}}
+\DoxyCodeLine{264 \textcolor{comment}{//   maphbits = number of bits of tile map height}}
+\DoxyCodeLine{265 \textcolor{comment}{//   tilebits = number of bits of tile width and height}}
+\DoxyCodeLine{266 \textcolor{comment}{//   horizon = horizon offset/4 (0=do not use perspective projection, <0=vertical flip to display ceiling)}}
+\DoxyCodeLine{267 \textcolor{comment}{// Use default settings of parameters: offx = 0, offy = 0, wrapx = segment width, wrapy = segment height}}
+\DoxyCodeLine{268 \textcolor{keywordtype}{void} ScreenSegmTilePersp15(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} u8* map, \textcolor{keyword}{const} u8* tiles, \textcolor{keyword}{const} \textcolor{keywordtype}{int}* mat, }
+\DoxyCodeLine{269     u8 mapwbits, u8 maphbits, u8 tilebits, s8 horizon);}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{271 \textcolor{comment}{// set video segment to tiles with perspective, double pixels}}
+\DoxyCodeLine{272 \textcolor{comment}{//   map = pointer to tile map with tile indices (width and height must be power of 2)}}
+\DoxyCodeLine{273 \textcolor{comment}{//   tiles = pointer to 1 column of square tiles, 1 pixel = 8 bits (width and height must be power of 2)}}
+\DoxyCodeLine{274 \textcolor{comment}{//   mat = pointer to array of 6 matrix integer parameters m11, m12...m23 (exported with ExportInt function)}}
+\DoxyCodeLine{275 \textcolor{comment}{//   mapwbits = number of bits of tile map width}}
+\DoxyCodeLine{276 \textcolor{comment}{//   maphbits = number of bits of tile map height}}
+\DoxyCodeLine{277 \textcolor{comment}{//   tilebits = number of bits of tile width and height}}
+\DoxyCodeLine{278 \textcolor{comment}{//   horizon = horizon offset/4 (0=do not use perspective projection, <0=vertical flip to display ceiling)}}
+\DoxyCodeLine{279 \textcolor{comment}{// Use default settings of parameters: offx = 0, offy = 0, wrapx = segment width, wrapy = segment height}}
+\DoxyCodeLine{280 \textcolor{keywordtype}{void} ScreenSegmTilePersp2(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} u8* map, \textcolor{keyword}{const} u8* tiles, \textcolor{keyword}{const} \textcolor{keywordtype}{int}* mat, }
+\DoxyCodeLine{281     u8 mapwbits, u8 maphbits, u8 tilebits, s8 horizon);}
+\DoxyCodeLine{282 }
+\DoxyCodeLine{283 \textcolor{comment}{// set video segment to tiles with perspective, triple pixels}}
+\DoxyCodeLine{284 \textcolor{comment}{//   map = pointer to tile map with tile indices (width and height must be power of 2)}}
+\DoxyCodeLine{285 \textcolor{comment}{//   tiles = pointer to 1 column of square tiles, 1 pixel = 8 bits (width and height must be power of 2)}}
+\DoxyCodeLine{286 \textcolor{comment}{//   mat = pointer to array of 6 matrix integer parameters m11, m12...m23 (exported with ExportInt function)}}
+\DoxyCodeLine{287 \textcolor{comment}{//   mapwbits = number of bits of tile map width}}
+\DoxyCodeLine{288 \textcolor{comment}{//   maphbits = number of bits of tile map height}}
+\DoxyCodeLine{289 \textcolor{comment}{//   tilebits = number of bits of tile width and height}}
+\DoxyCodeLine{290 \textcolor{comment}{//   horizon = horizon offset/4 (0=do not use perspective projection, <0=vertical flip to display ceiling)}}
+\DoxyCodeLine{291 \textcolor{comment}{// Use default settings of parameters: offx = 0, offy = 0, wrapx = segment width, wrapy = segment height}}
+\DoxyCodeLine{292 \textcolor{keywordtype}{void} ScreenSegmTilePersp3(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} u8* map, \textcolor{keyword}{const} u8* tiles, \textcolor{keyword}{const} \textcolor{keywordtype}{int}* mat, }
+\DoxyCodeLine{293     u8 mapwbits, u8 maphbits, u8 tilebits, s8 horizon);}
+\DoxyCodeLine{294 }
+\DoxyCodeLine{295 \textcolor{comment}{// set video segment to tiles with perspective, quadruple pixels}}
+\DoxyCodeLine{296 \textcolor{comment}{//   map = pointer to tile map with tile indices (width and height must be power of 2)}}
+\DoxyCodeLine{297 \textcolor{comment}{//   tiles = pointer to 1 column of square tiles, 1 pixel = 8 bits (width and height must be power of 2)}}
+\DoxyCodeLine{298 \textcolor{comment}{//   mat = pointer to array of 6 matrix integer parameters m11, m12...m23 (exported with ExportInt function)}}
+\DoxyCodeLine{299 \textcolor{comment}{//   mapwbits = number of bits of tile map width}}
+\DoxyCodeLine{300 \textcolor{comment}{//   maphbits = number of bits of tile map height}}
+\DoxyCodeLine{301 \textcolor{comment}{//   tilebits = number of bits of tile width and height}}
+\DoxyCodeLine{302 \textcolor{comment}{//   horizon = horizon offset/4 (0=do not use perspective projection, <0=vertical flip to display ceiling)}}
+\DoxyCodeLine{303 \textcolor{comment}{// Use default settings of parameters: offx = 0, offy = 0, wrapx = segment width, wrapy = segment height}}
+\DoxyCodeLine{304 \textcolor{keywordtype}{void} ScreenSegmTilePersp4(\mbox{\hyperlink{structs_segm}{sSegm}}* segm, \textcolor{keyword}{const} u8* map, \textcolor{keyword}{const} u8* tiles, \textcolor{keyword}{const} \textcolor{keywordtype}{int}* mat, }
+\DoxyCodeLine{305     u8 mapwbits, u8 maphbits, u8 tilebits, s8 horizon);}
+\DoxyCodeLine{306 }
+\DoxyCodeLine{307 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_VGA\_SCREEN\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,61 @@
+\hypertarget{structsd__card__t}{}\doxysection{sd\+\_\+card\+\_\+t Struct Reference}
+\label{structsd__card__t}\index{sd\_card\_t@{sd\_card\_t}}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structsd__card__t_ae6cb5ec2733f26b5dd1d729d41b793cf}\label{structsd__card__t_ae6cb5ec2733f26b5dd1d729d41b793cf}} 
+const char $\ast$ {\bfseries pc\+Name}
+\item 
+\mbox{\Hypertarget{structsd__card__t_ae1722578c627bdeb55cf5fcd5f7beb28}\label{structsd__card__t_ae1722578c627bdeb55cf5fcd5f7beb28}} 
+\mbox{\hyperlink{structspi__t}{spi\+\_\+t}} $\ast$ {\bfseries spi}
+\item 
+\mbox{\Hypertarget{structsd__card__t_a256fddde294b4980a86971aee3b8716f}\label{structsd__card__t_a256fddde294b4980a86971aee3b8716f}} 
+uint {\bfseries ss\+\_\+gpio}
+\item 
+\mbox{\Hypertarget{structsd__card__t_a53d4cefd22f526ad731a25d5d572d841}\label{structsd__card__t_a53d4cefd22f526ad731a25d5d572d841}} 
+bool {\bfseries use\+\_\+card\+\_\+detect}
+\item 
+\mbox{\Hypertarget{structsd__card__t_a3a8aee8215d34d3f268bd5beefb1b1b8}\label{structsd__card__t_a3a8aee8215d34d3f268bd5beefb1b1b8}} 
+uint {\bfseries card\+\_\+detect\+\_\+gpio}
+\item 
+\mbox{\Hypertarget{structsd__card__t_a9bf5f673c9359c767fd9d4d30f7df5c8}\label{structsd__card__t_a9bf5f673c9359c767fd9d4d30f7df5c8}} 
+uint {\bfseries card\+\_\+detected\+\_\+true}
+\item 
+\mbox{\Hypertarget{structsd__card__t_af904a2208dbaa36f6a152ba61bb9154b}\label{structsd__card__t_af904a2208dbaa36f6a152ba61bb9154b}} 
+bool {\bfseries set\+\_\+drive\+\_\+strength}
+\item 
+\mbox{\Hypertarget{structsd__card__t_a65675e6dd36a081d68939a683196ce1f}\label{structsd__card__t_a65675e6dd36a081d68939a683196ce1f}} 
+enum gpio\+\_\+drive\+\_\+strength {\bfseries ss\+\_\+gpio\+\_\+drive\+\_\+strength}
+\item 
+\mbox{\Hypertarget{structsd__card__t_ac3d5f1250a025eac8a9a798993619ec4}\label{structsd__card__t_ac3d5f1250a025eac8a9a798993619ec4}} 
+int {\bfseries m\+\_\+\+Status}
+\item 
+\mbox{\Hypertarget{structsd__card__t_ab514d0e9124651973d64396f0770128d}\label{structsd__card__t_ab514d0e9124651973d64396f0770128d}} 
+uint64\+\_\+t {\bfseries sectors}
+\item 
+\mbox{\Hypertarget{structsd__card__t_a6cd24b10da9dd19ba594b8e4c5866deb}\label{structsd__card__t_a6cd24b10da9dd19ba594b8e4c5866deb}} 
+int {\bfseries card\+\_\+type}
+\item 
+\mbox{\Hypertarget{structsd__card__t_a5d4cee22f7cfee1bef6ea745e2211d64}\label{structsd__card__t_a5d4cee22f7cfee1bef6ea745e2211d64}} 
+mutex\+\_\+t {\bfseries mutex}
+\item 
+\mbox{\Hypertarget{structsd__card__t_ad344048134485eb6d8e4d0fb28ef5503}\label{structsd__card__t_ad344048134485eb6d8e4d0fb28ef5503}} 
+\mbox{\hyperlink{struct_f_a_t_f_s}{FATFS}} {\bfseries fatfs}
+\item 
+\mbox{\Hypertarget{structsd__card__t_ad76005e2f55cfe405aa9ad4eaa035476}\label{structsd__card__t_ad76005e2f55cfe405aa9ad4eaa035476}} 
+bool {\bfseries mounted}
+\item 
+\mbox{\Hypertarget{structsd__card__t_a0c20e9001854d13c2df834b5468aaab6}\label{structsd__card__t_a0c20e9001854d13c2df834b5468aaab6}} 
+int($\ast$ {\bfseries init} )(\mbox{\hyperlink{structsd__card__t}{sd\+\_\+card\+\_\+t}} $\ast$sd\+\_\+card\+\_\+p)
+\item 
+\mbox{\Hypertarget{structsd__card__t_ad01789c0968867eb313854b58abd3c1e}\label{structsd__card__t_ad01789c0968867eb313854b58abd3c1e}} 
+int($\ast$ {\bfseries write\+\_\+blocks} )(\mbox{\hyperlink{structsd__card__t}{sd\+\_\+card\+\_\+t}} $\ast$sd\+\_\+card\+\_\+p, const uint8\+\_\+t $\ast$buffer, uint64\+\_\+t ul\+Sector\+Number, uint32\+\_\+t block\+Cnt)
+\item 
+\mbox{\Hypertarget{structsd__card__t_ad8895d5726011f93fe26022a57f6a491}\label{structsd__card__t_ad8895d5726011f93fe26022a57f6a491}} 
+int($\ast$ {\bfseries read\+\_\+blocks} )(\mbox{\hyperlink{structsd__card__t}{sd\+\_\+card\+\_\+t}} $\ast$sd\+\_\+card\+\_\+p, uint8\+\_\+t $\ast$buffer, uint64\+\_\+t ul\+Sector\+Number, uint32\+\_\+t ul\+Sector\+Count)
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+SDwrapper\+\_\+lib/\+Fat\+Fs\+\_\+\+SPI/sd\+\_\+driver/sd\+\_\+card.\+h\end{DoxyCompactItemize}

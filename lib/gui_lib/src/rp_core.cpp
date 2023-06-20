@@ -71,15 +71,15 @@ ID rpgui::core::MainApp::GetSelectedPageId()
     return _selectedPage->GetId();
 }
 
-ID rpgui::core::MainApp::GetSelectedPageAt()
+uint8_t rpgui::core::MainApp::GetSelectedPageAt()
 {
     for (size_t i = 0; i < _pages.size(); i++)
     {
         if(_selectedPage == _pages.at(i))
-            return _selectedPage->GetId();
+            return i;
     }
     
-    return ID();
+    return -1;
 }
 
 void rpgui::core::MainApp::Update()

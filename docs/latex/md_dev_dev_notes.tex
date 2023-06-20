@@ -1,0 +1,22 @@
+
+\begin{DoxyItemize}
+\item IRQ handler nejde nastavit pre sd kartu ked je inicializovana VGA knihovna
+\begin{DoxyItemize}
+\item zmeneny DMA IRQ kanal v spi.\+c ??? alebo vo VGA kniznici ? ani jedno nefunguje ... nechodi IRQ na VGA scanline
+\item zmenene DMA IRQ v spi.\+c na IRQ1 a v qvga settingoch zmenene DMA kanaly na 8 a 9 nech sa nebiju o ne z DMA pre SPI zbernicu
+\end{DoxyItemize}
+\item FIXED
+\end{DoxyItemize}\hypertarget{md_dev_dev_notes_autotoc_md1}{}\doxysection{Include hell resolve ???}\label{md_dev_dev_notes_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Pri includnuti vgalib pisti usb kniznica
+\item Incluovanie IVGA v kombinacii z vga\+\_\+lib nadava na undefined \mbox{\hyperlink{structs_canvas}{s\+Canvas}} .... pri pouziti zvlast funguje \#
+\end{DoxyItemize}\hypertarget{md_dev_dev_notes_autotoc_md2}{}\doxysection{DATABINDING}\label{md_dev_dev_notes_autotoc_md2}
+pridany zatial do button a checkbox\hypertarget{md_dev_dev_notes_autotoc_md3}{}\doxysection{SD example, praca zo zlockami atd example...}\label{md_dev_dev_notes_autotoc_md3}
+
+\begin{DoxyItemize}
+\item na sd bitmapa a z nej vga kniznica zobrazi na monitoru
+\item prerobit rasp\+Pico\+Img a Snd ...
+\item nemecek postup prace z obrazkami
+\item runtime preklad obrazkou z bmp
+\end{DoxyItemize}\hypertarget{md_dev_dev_notes_autotoc_md4}{}\doxysection{UPDATE SDK}\label{md_dev_dev_notes_autotoc_md4}

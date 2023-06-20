@@ -1,0 +1,69 @@
+\hypertarget{_sprite_data_8hpp_source}{}\doxysection{Sprite\+Data.\+hpp}
+\label{_sprite_data_8hpp_source}\index{lib/gui\_lib/include/common/SpriteData.hpp@{lib/gui\_lib/include/common/SpriteData.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <cstdint>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{namespace }rpgui::common}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9     \textcolor{keyword}{struct }\mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{SpriteData}}}
+\DoxyCodeLine{10     \{}
+\DoxyCodeLine{11         uint8\_t *image;}
+\DoxyCodeLine{12         \textcolor{keyword}{const} int16\_t size;}
+\DoxyCodeLine{13         \textcolor{keyword}{const} int16\_t width;}
+\DoxyCodeLine{14         \textcolor{keyword}{const} int16\_t height;}
+\DoxyCodeLine{15         \textcolor{keyword}{const} int16\_t pitch;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17         \textcolor{comment}{// Rule of 5}}
+\DoxyCodeLine{18         \mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{SpriteData}}() : image(\textcolor{keyword}{nullptr}), size(0), width(0), height(0), pitch(0) \{\}}
+\DoxyCodeLine{19         \mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{SpriteData}}(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{SpriteData}} \&s) : image(s.image), size(s.size), width(s.width), height(s.height), pitch(s.pitch) \{\}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21         \mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{SpriteData}}(\mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{SpriteData}} \&\&s) noexcept : image(std::exchange(s.image, \textcolor{keyword}{nullptr})),}
+\DoxyCodeLine{22                                                 size(s.size),}
+\DoxyCodeLine{23                                                 width(s.width),}
+\DoxyCodeLine{24                                                 height(s.height),}
+\DoxyCodeLine{25                                                 pitch(s.pitch)}
+\DoxyCodeLine{26         \{}
+\DoxyCodeLine{27         \}}
+\DoxyCodeLine{28         \mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{\string~SpriteData}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{SpriteData}}(uint8\_t *img, \textcolor{keyword}{const} int16\_t size, \textcolor{keyword}{const} int16\_t width, \textcolor{keyword}{const} int16\_t height, \textcolor{keyword}{const} int16\_t pitch)}
+\DoxyCodeLine{31             : image(img), size(size), width(width), height(height), pitch(pitch) \{\}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{comment}{// Copy assignment}}
+\DoxyCodeLine{34         \mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{SpriteData}} \&operator=(\textcolor{keyword}{const} \mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{SpriteData}} \&rhs)}
+\DoxyCodeLine{35         \{}
+\DoxyCodeLine{36             \textcolor{keywordflow}{if} (\textcolor{keyword}{this} == \&rhs)}
+\DoxyCodeLine{37                 \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39             image = rhs.image;}
+\DoxyCodeLine{40             \textcolor{keyword}{const\_cast<}int16\_t \&\textcolor{keyword}{>}(size) = rhs.size;}
+\DoxyCodeLine{41             \textcolor{keyword}{const\_cast<}int16\_t \&\textcolor{keyword}{>}(width) = rhs.width;}
+\DoxyCodeLine{42             \textcolor{keyword}{const\_cast<}int16\_t \&\textcolor{keyword}{>}(height) = rhs.height;}
+\DoxyCodeLine{43             \textcolor{keyword}{const\_cast<}int16\_t \&\textcolor{keyword}{>}(pitch) = rhs.pitch;}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45             \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{46         \}}
+\DoxyCodeLine{47         \textcolor{comment}{// Move assignment}}
+\DoxyCodeLine{48         \mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{SpriteData}} \&operator=(\mbox{\hyperlink{structrpgui_1_1common_1_1_sprite_data}{SpriteData}} \&\&rhs) \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{49         \{}
+\DoxyCodeLine{50             \textcolor{keywordflow}{if} (\textcolor{keyword}{this} == \&rhs)}
+\DoxyCodeLine{51                 \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53             \textcolor{keyword}{delete}[] image;}
+\DoxyCodeLine{54             image = std::exchange(rhs.image, \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{55             \textcolor{keyword}{const\_cast<}int16\_t \&\textcolor{keyword}{>}(size) = rhs.size;}
+\DoxyCodeLine{56             \textcolor{keyword}{const\_cast<}int16\_t \&\textcolor{keyword}{>}(width) = rhs.width;}
+\DoxyCodeLine{57             \textcolor{keyword}{const\_cast<}int16\_t \&\textcolor{keyword}{>}(height) = rhs.height;}
+\DoxyCodeLine{58             \textcolor{keyword}{const\_cast<}int16\_t \&\textcolor{keyword}{>}(pitch) = rhs.pitch;}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60             \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{61         \}}
+\DoxyCodeLine{62     \};}
+\DoxyCodeLine{63 \} \textcolor{comment}{// namespace rpgui::type}}
+
+\end{DoxyCode}

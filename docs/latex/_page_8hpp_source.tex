@@ -1,0 +1,53 @@
+\hypertarget{_page_8hpp_source}{}\doxysection{Page.\+hpp}
+\label{_page_8hpp_source}\index{lib/gui\_lib/include/pages/Page.hpp@{lib/gui\_lib/include/pages/Page.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by kefas on 26.2.23.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PICO\_KIT\_FRAMEWORK\_PAGE\_HPP}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PICO\_KIT\_FRAMEWORK\_PAGE\_HPP}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}Layout.hpp"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <type\_traits>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{using namespace }rpgui::layout;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }rpgui::page}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1page_1_1_page}{Page}} : \textcolor{keyword}{public} \mbox{\hyperlink{classrpgui_1_1common_1_1_element}{rpgui::common::Element}}}
+\DoxyCodeLine{17     \{}
+\DoxyCodeLine{18     \textcolor{keyword}{private}:}
+\DoxyCodeLine{19         std::vector<Layout *> \_children;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keyword}{public}:}
+\DoxyCodeLine{22         \mbox{\hyperlink{classrpgui_1_1page_1_1_page}{Page}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{23         \mbox{\hyperlink{classrpgui_1_1page_1_1_page}{Page}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpgui_1_1page_1_1_page}{Page}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{24         \mbox{\hyperlink{classrpgui_1_1page_1_1_page}{\string~Page}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         \mbox{\hyperlink{classrpgui_1_1page_1_1_page}{Page}}(\mbox{\hyperlink{classrpgui_1_1layout_1_1_layout}{Layout}} *layout)}
+\DoxyCodeLine{27         \{}
+\DoxyCodeLine{28             \_children.push\_back(layout);}
+\DoxyCodeLine{29         \}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} Draw()}
+\DoxyCodeLine{32         \{}
+\DoxyCodeLine{33             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&\&child : \_children)}
+\DoxyCodeLine{34             \{}
+\DoxyCodeLine{35                 child-\/>Draw();}
+\DoxyCodeLine{36             \}}
+\DoxyCodeLine{37         \}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} AddLayout(\mbox{\hyperlink{classrpgui_1_1layout_1_1_layout}{Layout}} *layout)}
+\DoxyCodeLine{40         \{}
+\DoxyCodeLine{41             \_children.push\_back(layout);}
+\DoxyCodeLine{42         \}}
+\DoxyCodeLine{43     \};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \} \textcolor{comment}{// namespace rpgui::page}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// PICO\_KIT\_FRAMEWORK\_PAGE\_HPP}}
+
+\end{DoxyCode}

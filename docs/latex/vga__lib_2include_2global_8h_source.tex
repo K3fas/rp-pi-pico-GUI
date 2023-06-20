@@ -1,0 +1,290 @@
+\hypertarget{vga__lib_2include_2global_8h_source}{}\doxysection{global.\+h}
+\label{vga__lib_2include_2global_8h_source}\index{lib/vga\_lib/include/global.h@{lib/vga\_lib/include/global.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//                           Global common definitions}}
+\DoxyCodeLine{5 \textcolor{comment}{//}}
+\DoxyCodeLine{6 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{9 \textcolor{comment}{//                              Base data types}}
+\DoxyCodeLine{10 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{typedef} \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} s8;}
+\DoxyCodeLine{15 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} u8;}
+\DoxyCodeLine{16 \textcolor{keyword}{typedef} \textcolor{keywordtype}{signed} \textcolor{keywordtype}{short} s16;}
+\DoxyCodeLine{17 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} u16;}
+\DoxyCodeLine{18 \textcolor{keyword}{typedef} \textcolor{keywordtype}{signed} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} s32;}
+\DoxyCodeLine{19 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} u32;}
+\DoxyCodeLine{20 \textcolor{keyword}{typedef} \textcolor{keywordtype}{signed} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} s64;}
+\DoxyCodeLine{21 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} u64;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} uint;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} Bool;}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define True 1}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define False 0}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{comment}{// NULL}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#ifndef NULL}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define NULL 0}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define NULL ((void *)0)}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{comment}{// I/O port prefix}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define \_\_IO volatile}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{comment}{// request to use inline}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define INLINE \_\_attribute\_\_((always\_inline)) inline}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{comment}{// avoid to use inline}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define NOINLINE \_\_attribute\_\_((noinline))}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{// weak function}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define WEAK \_\_attribute\_\_((weak))}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{comment}{// align array to 4-\/bytes}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define ALIGNED \_\_attribute\_\_((aligned(4)))}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define LED\_PIN 25}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{56 \textcolor{comment}{//                               Constants}}
+\DoxyCodeLine{57 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#define B0 (1 << 0)}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#define B1 (1 << 1)}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define B2 (1 << 2)}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define B3 (1 << 3)}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define B4 (1 << 4)}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define B5 (1 << 5)}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#define B6 (1 << 6)}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define B7 (1 << 7)}}
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#define B8 (1U << 8)}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#define B9 (1U << 9)}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define B10 (1U << 10)}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#define B11 (1U << 11)}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#define B12 (1U << 12)}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define B13 (1U << 13)}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define B14 (1U << 14)}}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#define B15 (1U << 15)}}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#define B16 (1UL << 16)}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#define B17 (1UL << 17)}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#define B18 (1UL << 18)}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#define B19 (1UL << 19)}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#define B20 (1UL << 20)}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#define B21 (1UL << 21)}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#define B22 (1UL << 22)}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#define B23 (1UL << 23)}}
+\DoxyCodeLine{83 \textcolor{preprocessor}{\#define B24 (1UL << 24)}}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#define B25 (1UL << 25)}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#define B26 (1UL << 26)}}
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#define B27 (1UL << 27)}}
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#define B28 (1UL << 28)}}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#define B29 (1UL << 29)}}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#define B30 (1UL << 30)}}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#define B31 (1UL << 31)}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#define BIT(pos) (1UL << (pos))}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#define BIGINT 0x40000000 }\textcolor{comment}{// big int value}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#define \_T(a) a}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#define PI 3.14159265358979324}}
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#define PI2 (3.14159265358979324 * 2)}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{102 \textcolor{comment}{//                                   Includes}}
+\DoxyCodeLine{103 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 \textcolor{comment}{// fonts}}
+\DoxyCodeLine{106 \textcolor{keyword}{extern} \textcolor{keyword}{const} ALIGNED u8 FontBold8x8[2048];}
+\DoxyCodeLine{107 \textcolor{keyword}{extern} \textcolor{keyword}{const} ALIGNED u8 FontBold8x14[3584];}
+\DoxyCodeLine{108 \textcolor{keyword}{extern} \textcolor{keyword}{const} ALIGNED u8 FontBold8x16[4096];}
+\DoxyCodeLine{109 \textcolor{keyword}{extern} \textcolor{keyword}{const} ALIGNED u8 FontBoldB8x14[3584];}
+\DoxyCodeLine{110 \textcolor{keyword}{extern} \textcolor{keyword}{const} ALIGNED u8 FontBoldB8x16[4096];}
+\DoxyCodeLine{111 \textcolor{keyword}{extern} \textcolor{keyword}{const} ALIGNED u8 FontGame8x8[2048];}
+\DoxyCodeLine{112 \textcolor{keyword}{extern} \textcolor{keyword}{const} ALIGNED u8 FontIbm8x8[2048];}
+\DoxyCodeLine{113 \textcolor{keyword}{extern} \textcolor{keyword}{const} ALIGNED u8 FontIbm8x14[3584];}
+\DoxyCodeLine{114 \textcolor{keyword}{extern} \textcolor{keyword}{const} ALIGNED u8 FontIbm8x16[4096];}
+\DoxyCodeLine{115 \textcolor{keyword}{extern} \textcolor{keyword}{const} ALIGNED u8 FontIbmTiny8x8[2048];}
+\DoxyCodeLine{116 \textcolor{keyword}{extern} \textcolor{keyword}{const} ALIGNED u8 FontItalic8x8[2048];}
+\DoxyCodeLine{117 \textcolor{keyword}{extern} \textcolor{keyword}{const} ALIGNED u8 FontThin8x8[2048];}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \textcolor{comment}{// system includes}}
+\DoxyCodeLine{120 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{comment}{// SDK includes}}
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#include "{}boards/pico.h"{}}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#include "{}hardware/regs/addressmap.h"{}}}
+\DoxyCodeLine{126 \textcolor{preprocessor}{\#include "{}hardware/regs/adc.h"{}}}
+\DoxyCodeLine{127 \textcolor{preprocessor}{\#include "{}hardware/regs/busctrl.h"{}}}
+\DoxyCodeLine{128 \textcolor{preprocessor}{\#include "{}hardware/regs/clocks.h"{}}}
+\DoxyCodeLine{129 \textcolor{preprocessor}{\#include "{}hardware/regs/dma.h"{}}}
+\DoxyCodeLine{130 \textcolor{preprocessor}{\#include "{}hardware/regs/dreq.h"{}}}
+\DoxyCodeLine{131 \textcolor{preprocessor}{\#include "{}hardware/regs/i2c.h"{}}}
+\DoxyCodeLine{132 \textcolor{preprocessor}{\#include "{}hardware/regs/intctrl.h"{}}}
+\DoxyCodeLine{133 \textcolor{preprocessor}{\#include "{}hardware/regs/io\_bank0.h"{}}}
+\DoxyCodeLine{134 \textcolor{preprocessor}{\#include "{}hardware/regs/io\_qspi.h"{}}}
+\DoxyCodeLine{135 \textcolor{preprocessor}{\#include "{}hardware/regs/m0plus.h"{}}}
+\DoxyCodeLine{136 \textcolor{preprocessor}{\#include "{}hardware/regs/pads\_bank0.h"{}}}
+\DoxyCodeLine{137 \textcolor{preprocessor}{\#include "{}hardware/regs/pads\_qspi.h"{}}}
+\DoxyCodeLine{138 \textcolor{preprocessor}{\#include "{}hardware/regs/pio.h"{}}}
+\DoxyCodeLine{139 \textcolor{preprocessor}{\#include "{}hardware/regs/pll.h"{}}}
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#include "{}hardware/regs/psm.h"{}}}
+\DoxyCodeLine{141 \textcolor{preprocessor}{\#include "{}hardware/regs/pwm.h"{}}}
+\DoxyCodeLine{142 \textcolor{preprocessor}{\#include "{}hardware/regs/resets.h"{}}}
+\DoxyCodeLine{143 \textcolor{preprocessor}{\#include "{}hardware/regs/rosc.h"{}}}
+\DoxyCodeLine{144 \textcolor{preprocessor}{\#include "{}hardware/regs/rtc.h"{}}}
+\DoxyCodeLine{145 \textcolor{preprocessor}{\#include "{}hardware/regs/sio.h"{}}}
+\DoxyCodeLine{146 \textcolor{preprocessor}{\#include "{}hardware/regs/spi.h"{}}}
+\DoxyCodeLine{147 \textcolor{preprocessor}{\#include "{}hardware/regs/ssi.h"{}}}
+\DoxyCodeLine{148 \textcolor{preprocessor}{\#include "{}hardware/regs/syscfg.h"{}}}
+\DoxyCodeLine{149 \textcolor{preprocessor}{\#include "{}hardware/regs/sysinfo.h"{}}}
+\DoxyCodeLine{150 \textcolor{preprocessor}{\#include "{}hardware/regs/tbman.h"{}}}
+\DoxyCodeLine{151 \textcolor{preprocessor}{\#include "{}hardware/regs/timer.h"{}}}
+\DoxyCodeLine{152 \textcolor{preprocessor}{\#include "{}hardware/regs/uart.h"{}}}
+\DoxyCodeLine{153 \textcolor{preprocessor}{\#include "{}hardware/regs/usb.h"{}}}
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#include "{}hardware/regs/vreg\_and\_chip\_reset.h"{}}}
+\DoxyCodeLine{155 \textcolor{preprocessor}{\#include "{}hardware/regs/watchdog.h"{}}}
+\DoxyCodeLine{156 \textcolor{preprocessor}{\#include "{}hardware/regs/xip.h"{}}}
+\DoxyCodeLine{157 \textcolor{preprocessor}{\#include "{}hardware/regs/xosc.h"{}}}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159 \textcolor{preprocessor}{\#include "{}hardware/structs/adc.h"{}}}
+\DoxyCodeLine{160 \textcolor{preprocessor}{\#include "{}hardware/structs/bus\_ctrl.h"{}}}
+\DoxyCodeLine{161 \textcolor{preprocessor}{\#include "{}hardware/structs/clocks.h"{}}}
+\DoxyCodeLine{162 \textcolor{preprocessor}{\#include "{}hardware/structs/dma.h"{}}}
+\DoxyCodeLine{163 \textcolor{preprocessor}{\#include "{}hardware/structs/i2c.h"{}}}
+\DoxyCodeLine{164 \textcolor{preprocessor}{\#include "{}hardware/structs/interp.h"{}}}
+\DoxyCodeLine{165 \textcolor{preprocessor}{\#include "{}hardware/structs/iobank0.h"{}}}
+\DoxyCodeLine{166 \textcolor{preprocessor}{\#include "{}hardware/structs/ioqspi.h"{}}}
+\DoxyCodeLine{167 \textcolor{preprocessor}{\#include "{}hardware/structs/mpu.h"{}}}
+\DoxyCodeLine{168 \textcolor{preprocessor}{\#include "{}hardware/structs/padsbank0.h"{}}}
+\DoxyCodeLine{169 \textcolor{preprocessor}{\#include "{}hardware/structs/pads\_qspi.h"{}}}
+\DoxyCodeLine{170 \textcolor{preprocessor}{\#include "{}hardware/structs/pio.h"{}}}
+\DoxyCodeLine{171 \textcolor{preprocessor}{\#include "{}hardware/structs/pll.h"{}}}
+\DoxyCodeLine{172 \textcolor{preprocessor}{\#include "{}hardware/structs/psm.h"{}}}
+\DoxyCodeLine{173 \textcolor{preprocessor}{\#include "{}hardware/structs/pwm.h"{}}}
+\DoxyCodeLine{174 \textcolor{preprocessor}{\#include "{}hardware/structs/resets.h"{}}}
+\DoxyCodeLine{175 \textcolor{preprocessor}{\#include "{}hardware/structs/rosc.h"{}}}
+\DoxyCodeLine{176 \textcolor{preprocessor}{\#include "{}hardware/structs/rtc.h"{}}}
+\DoxyCodeLine{177 \textcolor{preprocessor}{\#include "{}hardware/structs/scb.h"{}}}
+\DoxyCodeLine{178 \textcolor{preprocessor}{\#include "{}hardware/structs/sio.h"{}}}
+\DoxyCodeLine{179 \textcolor{preprocessor}{\#include "{}hardware/structs/spi.h"{}}}
+\DoxyCodeLine{180 \textcolor{preprocessor}{\#include "{}hardware/structs/ssi.h"{}}}
+\DoxyCodeLine{181 \textcolor{preprocessor}{\#include "{}hardware/structs/syscfg.h"{}}}
+\DoxyCodeLine{182 \textcolor{preprocessor}{\#include "{}hardware/structs/systick.h"{}}}
+\DoxyCodeLine{183 \textcolor{preprocessor}{\#include "{}hardware/structs/timer.h"{}}}
+\DoxyCodeLine{184 \textcolor{preprocessor}{\#include "{}hardware/structs/uart.h"{}}}
+\DoxyCodeLine{185 \textcolor{preprocessor}{\#include "{}hardware/structs/usb.h"{}}}
+\DoxyCodeLine{186 \textcolor{preprocessor}{\#include "{}hardware/structs/vreg\_and\_chip\_reset.h"{}}}
+\DoxyCodeLine{187 \textcolor{preprocessor}{\#include "{}hardware/structs/watchdog.h"{}}}
+\DoxyCodeLine{188 \textcolor{preprocessor}{\#include "{}hardware/structs/xip\_ctrl.h"{}}}
+\DoxyCodeLine{189 \textcolor{preprocessor}{\#include "{}hardware/structs/xosc.h"{}}}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191 \textcolor{preprocessor}{\#include "{}hardware/adc.h"{}}}
+\DoxyCodeLine{192 \textcolor{preprocessor}{\#include "{}hardware/address\_mapped.h"{}}}
+\DoxyCodeLine{193 \textcolor{preprocessor}{\#include "{}hardware/claim.h"{}}}
+\DoxyCodeLine{194 \textcolor{preprocessor}{\#include "{}hardware/clocks.h"{}}}
+\DoxyCodeLine{195 \textcolor{preprocessor}{\#include "{}hardware/divider.h"{}}}
+\DoxyCodeLine{196 \textcolor{preprocessor}{\#include "{}hardware/dma.h"{}}}
+\DoxyCodeLine{197 \textcolor{preprocessor}{\#include "{}hardware/flash.h"{}}}
+\DoxyCodeLine{198 \textcolor{preprocessor}{\#include "{}hardware/gpio.h"{}}}
+\DoxyCodeLine{199 \textcolor{preprocessor}{\#include "{}hardware/i2c.h"{}}}
+\DoxyCodeLine{200 \textcolor{preprocessor}{\#include "{}hardware/interp.h"{}}}
+\DoxyCodeLine{201 \textcolor{preprocessor}{\#include "{}hardware/irq.h"{}}}
+\DoxyCodeLine{202 \textcolor{preprocessor}{\#include "{}hardware/pio.h"{}}}
+\DoxyCodeLine{203 \textcolor{preprocessor}{\#include "{}hardware/pio\_instructions.h"{}}}
+\DoxyCodeLine{204 \textcolor{preprocessor}{\#include "{}hardware/platform\_defs.h"{}}}
+\DoxyCodeLine{205 \textcolor{preprocessor}{\#include "{}hardware/pll.h"{}}}
+\DoxyCodeLine{206 \textcolor{preprocessor}{\#include "{}hardware/pwm.h"{}}}
+\DoxyCodeLine{207 \textcolor{preprocessor}{\#include "{}hardware/resets.h"{}}}
+\DoxyCodeLine{208 \textcolor{preprocessor}{\#include "{}hardware/rtc.h"{}}}
+\DoxyCodeLine{209 \textcolor{preprocessor}{\#include "{}hardware/spi.h"{}}}
+\DoxyCodeLine{210 \textcolor{preprocessor}{\#include "{}hardware/sync.h"{}}}
+\DoxyCodeLine{211 \textcolor{preprocessor}{\#include "{}hardware/timer.h"{}}}
+\DoxyCodeLine{212 \textcolor{preprocessor}{\#include "{}hardware/uart.h"{}}}
+\DoxyCodeLine{213 \textcolor{preprocessor}{\#include "{}hardware/vreg.h"{}}}
+\DoxyCodeLine{214 \textcolor{preprocessor}{\#include "{}hardware/watchdog.h"{}}}
+\DoxyCodeLine{215 \textcolor{preprocessor}{\#include "{}hardware/xosc.h"{}}}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217 \textcolor{preprocessor}{\#include "{}boot/picoboot.h"{}}}
+\DoxyCodeLine{218 \textcolor{preprocessor}{\#include "{}boot/uf2.h"{}}}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220 \textcolor{preprocessor}{\#include "{}pico.h"{}}}
+\DoxyCodeLine{221 \textcolor{preprocessor}{\#include "{}tusb\_config.h"{}}}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223 \textcolor{preprocessor}{\#include "{}pico/assert.h"{}}}
+\DoxyCodeLine{224 \textcolor{preprocessor}{\#include "{}pico/binary\_info.h"{}}}
+\DoxyCodeLine{225 \textcolor{preprocessor}{\#include "{}pico/bit\_ops.h"{}}}
+\DoxyCodeLine{226 \textcolor{preprocessor}{\#include "{}pico/bootrom.h"{}}}
+\DoxyCodeLine{227 \textcolor{preprocessor}{\#include "{}pico/config.h"{}}}
+\DoxyCodeLine{228 \textcolor{preprocessor}{\#include "{}pico/config\_autogen.h"{}}}
+\DoxyCodeLine{229 \textcolor{preprocessor}{\#include "{}pico/critical\_section.h"{}}}
+\DoxyCodeLine{230 \textcolor{preprocessor}{\#include "{}pico/divider.h"{}}}
+\DoxyCodeLine{231 \textcolor{preprocessor}{\#include "{}pico/double.h"{}}}
+\DoxyCodeLine{232 \textcolor{preprocessor}{\#include "{}pico/error.h"{}}}
+\DoxyCodeLine{233 \textcolor{preprocessor}{\#include "{}pico/float.h"{}}}
+\DoxyCodeLine{234 \textcolor{preprocessor}{\#include "{}pico/int64\_ops.h"{}}}
+\DoxyCodeLine{235 \textcolor{preprocessor}{\#include "{}pico/lock\_core.h"{}}}
+\DoxyCodeLine{236 \textcolor{preprocessor}{\#include "{}pico/malloc.h"{}}}
+\DoxyCodeLine{237 \textcolor{comment}{//  \#include "{}pico/mem\_ops.h"{}}}
+\DoxyCodeLine{238 \textcolor{preprocessor}{\#include "{}pico/multicore.h"{}}}
+\DoxyCodeLine{239 \textcolor{preprocessor}{\#include "{}pico/mutex.h"{}}}
+\DoxyCodeLine{240 \textcolor{preprocessor}{\#include "{}pico/platform.h"{}}}
+\DoxyCodeLine{241 \textcolor{preprocessor}{\#include "{}pico/printf.h"{}}}
+\DoxyCodeLine{242 \textcolor{preprocessor}{\#include "{}pico/runtime.h"{}}}
+\DoxyCodeLine{243 \textcolor{preprocessor}{\#include "{}pico/sem.h"{}}}
+\DoxyCodeLine{244 \textcolor{preprocessor}{\#include "{}pico/stdio.h"{}}}
+\DoxyCodeLine{245 \textcolor{comment}{// \#include "{}pico/stdio\_semihosting.h"{}}}
+\DoxyCodeLine{246 \textcolor{preprocessor}{\#include "{}pico/stdio\_uart.h"{}}}
+\DoxyCodeLine{247 \textcolor{comment}{//  \#include "{}pico/stdio\_usb.h"{}}}
+\DoxyCodeLine{248 \textcolor{preprocessor}{\#include "{}pico/stdlib.h"{}}}
+\DoxyCodeLine{249 \textcolor{preprocessor}{\#include "{}pico/sync.h"{}}}
+\DoxyCodeLine{250 \textcolor{preprocessor}{\#include "{}pico/time.h"{}}}
+\DoxyCodeLine{251 \textcolor{preprocessor}{\#include "{}pico/timeout\_helper.h"{}}}
+\DoxyCodeLine{252 \textcolor{preprocessor}{\#include "{}pico/types.h"{}}}
+\DoxyCodeLine{253 \textcolor{comment}{// \#include "{}pico/unique\_id.h"{}}}
+\DoxyCodeLine{254 \textcolor{preprocessor}{\#include "{}pico/version.h"{}}}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256 \textcolor{preprocessor}{\#include "{}pico/binary\_info/code.h"{}}}
+\DoxyCodeLine{257 \textcolor{preprocessor}{\#include "{}pico/binary\_info/defs.h"{}}}
+\DoxyCodeLine{258 \textcolor{preprocessor}{\#include "{}pico/binary\_info/structure.h"{}}}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{260 \textcolor{preprocessor}{\#include "{}pico/bootrom/sf\_table.h"{}}}
+\DoxyCodeLine{261 }
+\DoxyCodeLine{262 \textcolor{comment}{// \#include "{}pico/fix/rp2040\_usb\_device\_enumeration.h"{}}}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264 \textcolor{preprocessor}{\#include "{}pico/stdio/driver.h"{}}}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{266 \textcolor{preprocessor}{\#include "{}pico/util/datetime.h"{}}}
+\DoxyCodeLine{267 \textcolor{preprocessor}{\#include "{}pico/util/pheap.h"{}}}
+\DoxyCodeLine{268 \textcolor{preprocessor}{\#include "{}pico/util/queue.h"{}}}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{270 \textcolor{comment}{// PicoVGA includes}}
+\DoxyCodeLine{271 \textcolor{preprocessor}{\#include "{}vga/define.h"{}}     \textcolor{comment}{// common definitions of C and ASM}}
+\DoxyCodeLine{272 \textcolor{preprocessor}{\#include "{}util/canvas.h"{}}    \textcolor{comment}{// canvas}}
+\DoxyCodeLine{273 \textcolor{preprocessor}{\#include "{}util/overclock.h"{}} \textcolor{comment}{// overclock}}
+\DoxyCodeLine{274 \textcolor{preprocessor}{\#include "{}util/print.h"{}}     \textcolor{comment}{// print to attribute text buffer}}
+\DoxyCodeLine{275 \textcolor{preprocessor}{\#include "{}util/rand.h"{}}      \textcolor{comment}{// random number generator}}
+\DoxyCodeLine{276 \textcolor{preprocessor}{\#include "{}util/mat2d.h"{}}     \textcolor{comment}{// 2D transformation matrix}}
+\DoxyCodeLine{277 \textcolor{preprocessor}{\#include "{}util/pwmsnd.h"{}}    \textcolor{comment}{// PWM sound output}}
+\DoxyCodeLine{278 \textcolor{preprocessor}{\#include "{}vga/vga\_pal.h"{}}    \textcolor{comment}{// VGA colors and palettes}}
+\DoxyCodeLine{279 \textcolor{preprocessor}{\#include "{}vga/vga\_vmode.h"{}}  \textcolor{comment}{// VGA videomodes}}
+\DoxyCodeLine{280 \textcolor{preprocessor}{\#include "{}vga/vga\_layer.h"{}}  \textcolor{comment}{// VGA layers}}
+\DoxyCodeLine{281 \textcolor{preprocessor}{\#include "{}vga/vga\_screen.h"{}} \textcolor{comment}{// VGA screen layout}}
+\DoxyCodeLine{282 \textcolor{preprocessor}{\#include "{}vga/vga\_util.h"{}}   \textcolor{comment}{// VGA utilities}}
+\DoxyCodeLine{283 \textcolor{preprocessor}{\#include "{}vga/vga.h"{}}        \textcolor{comment}{// VGA output}}
+\DoxyCodeLine{284 \textcolor{preprocessor}{\#include "{}vga/vga.pio.h"{}}}
+
+\end{DoxyCode}

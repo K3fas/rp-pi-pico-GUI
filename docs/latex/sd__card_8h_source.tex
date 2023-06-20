@@ -1,0 +1,100 @@
+\hypertarget{sd__card_8h_source}{}\doxysection{sd\+\_\+card.\+h}
+\label{sd__card_8h_source}\index{lib/SDwrapper\_lib/FatFs\_SPI/sd\_driver/sd\_card.h@{lib/SDwrapper\_lib/FatFs\_SPI/sd\_driver/sd\_card.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/* sd\_card.h}}
+\DoxyCodeLine{2 \textcolor{comment}{Copyright 2021 Carl John Kugler III}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{Licensed under the Apache License, Version 2.0 (the License); you may not use }}
+\DoxyCodeLine{5 \textcolor{comment}{this file except in compliance with the License. You may obtain a copy of the }}
+\DoxyCodeLine{6 \textcolor{comment}{License at}}
+\DoxyCodeLine{7 \textcolor{comment}{}}
+\DoxyCodeLine{8 \textcolor{comment}{   http://www.apache.org/licenses/LICENSE-\/2.0 }}
+\DoxyCodeLine{9 \textcolor{comment}{Unless required by applicable law or agreed to in writing, software distributed }}
+\DoxyCodeLine{10 \textcolor{comment}{under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR }}
+\DoxyCodeLine{11 \textcolor{comment}{CONDITIONS OF ANY KIND, either express or implied. See the License for the }}
+\DoxyCodeLine{12 \textcolor{comment}{specific language governing permissions and limitations under the License.}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// Note: The model used here is one FatFS per SD card. }}
+\DoxyCodeLine{16 \textcolor{comment}{// Multiple partitions on a card are not supported.}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{21 \textcolor{comment}{//}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include "{}hardware/gpio.h"{}}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include "{}pico/mutex.h"{}}}
+\DoxyCodeLine{24 \textcolor{comment}{//}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include "{}ff.h"{}}}
+\DoxyCodeLine{26 \textcolor{comment}{//}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include "{}spi.h"{}}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{30 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structsd__card__t}{sd\_card\_t}} \mbox{\hyperlink{structsd__card__t}{sd\_card\_t}};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{// "{}Class"{} representing SD Cards}}
+\DoxyCodeLine{36 \textcolor{keyword}{struct }\mbox{\hyperlink{structsd__card__t}{sd\_card\_t}} \{}
+\DoxyCodeLine{37     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *pcName;}
+\DoxyCodeLine{38     \mbox{\hyperlink{structspi__t}{spi\_t}} *spi;}
+\DoxyCodeLine{39     \textcolor{comment}{// Slave select is here instead of in spi\_t because multiple SDs can share an SPI.}}
+\DoxyCodeLine{40     uint ss\_gpio;                   \textcolor{comment}{// Slave select for this SD card}}
+\DoxyCodeLine{41     \textcolor{keywordtype}{bool} use\_card\_detect;}
+\DoxyCodeLine{42     uint card\_detect\_gpio;    \textcolor{comment}{// Card detect; ignored if !use\_card\_detect}}
+\DoxyCodeLine{43     uint card\_detected\_true;  \textcolor{comment}{// Varies with card socket; ignored if !use\_card\_detect}}
+\DoxyCodeLine{44     \textcolor{comment}{// Drive strength levels for GPIO outputs.}}
+\DoxyCodeLine{45     \textcolor{comment}{// enum gpio\_drive\_strength \{ GPIO\_DRIVE\_STRENGTH\_2MA = 0, GPIO\_DRIVE\_STRENGTH\_4MA = 1, GPIO\_DRIVE\_STRENGTH\_8MA = 2,}}
+\DoxyCodeLine{46     \textcolor{comment}{// GPIO\_DRIVE\_STRENGTH\_12MA = 3 \}}}
+\DoxyCodeLine{47     \textcolor{keywordtype}{bool} set\_drive\_strength;}
+\DoxyCodeLine{48     \textcolor{keyword}{enum} gpio\_drive\_strength ss\_gpio\_drive\_strength;}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{comment}{// Following fields are used to keep track of the state of the card:}}
+\DoxyCodeLine{51     \textcolor{keywordtype}{int} m\_Status;                                    \textcolor{comment}{// Card status}}
+\DoxyCodeLine{52     uint64\_t sectors;                                \textcolor{comment}{// Assigned dynamically}}
+\DoxyCodeLine{53     \textcolor{keywordtype}{int} card\_type;                                   \textcolor{comment}{// Assigned dynamically}}
+\DoxyCodeLine{54     mutex\_t mutex;}
+\DoxyCodeLine{55     \mbox{\hyperlink{struct_f_a_t_f_s}{FATFS}} fatfs;}
+\DoxyCodeLine{56     \textcolor{keywordtype}{bool} mounted;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     int (*init)(\mbox{\hyperlink{structsd__card__t}{sd\_card\_t}} *sd\_card\_p);}
+\DoxyCodeLine{59     int (*write\_blocks)(\mbox{\hyperlink{structsd__card__t}{sd\_card\_t}} *sd\_card\_p, \textcolor{keyword}{const} uint8\_t *buffer,}
+\DoxyCodeLine{60                     uint64\_t ulSectorNumber, uint32\_t blockCnt);}
+\DoxyCodeLine{61     int (*read\_blocks)(\mbox{\hyperlink{structsd__card__t}{sd\_card\_t}} *sd\_card\_p, uint8\_t *buffer, uint64\_t ulSectorNumber,}
+\DoxyCodeLine{62                     uint32\_t ulSectorCount);}
+\DoxyCodeLine{63 \};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#define SD\_BLOCK\_DEVICE\_ERROR\_NONE 0}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define SD\_BLOCK\_DEVICE\_ERROR\_WOULD\_BLOCK -\/5001 }}
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#define SD\_BLOCK\_DEVICE\_ERROR\_UNSUPPORTED -\/5002 }}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#define SD\_BLOCK\_DEVICE\_ERROR\_PARAMETER -\/5003   }}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define SD\_BLOCK\_DEVICE\_ERROR\_NO\_INIT -\/5004     }}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#define SD\_BLOCK\_DEVICE\_ERROR\_NO\_DEVICE -\/5005   }}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#define SD\_BLOCK\_DEVICE\_ERROR\_WRITE\_PROTECTED -\/5006 }}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define SD\_BLOCK\_DEVICE\_ERROR\_UNUSABLE -\/5007    }}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define SD\_BLOCK\_DEVICE\_ERROR\_NO\_RESPONSE -\/5008 }}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#define SD\_BLOCK\_DEVICE\_ERROR\_CRC -\/5009    }}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#define SD\_BLOCK\_DEVICE\_ERROR\_ERASE -\/5010 }}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#define SD\_BLOCK\_DEVICE\_ERROR\_WRITE -\/5011 }}
+\DoxyCodeLine{79 \textcolor{comment}{// See diskio.h.}}
+\DoxyCodeLine{80 \textcolor{comment}{//enum \{}}
+\DoxyCodeLine{81 \textcolor{comment}{//    STA\_NOINIT = 0x01, /* Drive not initialized */}}
+\DoxyCodeLine{82 \textcolor{comment}{//    STA\_NODISK = 0x02, /* No medium in the drive */}}
+\DoxyCodeLine{83 \textcolor{comment}{//    STA\_PROTECT = 0x04 /* Write protected */}}
+\DoxyCodeLine{84 \textcolor{comment}{//\};}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{keywordtype}{bool} sd\_card\_detect(\mbox{\hyperlink{structsd__card__t}{sd\_card\_t}} *pSD);}
+\DoxyCodeLine{87 uint64\_t sd\_sectors(\mbox{\hyperlink{structsd__card__t}{sd\_card\_t}} *pSD);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{keywordtype}{bool} sd\_init\_driver();}
+\DoxyCodeLine{90 \textcolor{keywordtype}{bool} sd\_card\_detect(\mbox{\hyperlink{structsd__card__t}{sd\_card\_t}} *sd\_card\_p);}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{93 \}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{comment}{/* [] END OF FILE */}}
+
+\end{DoxyCode}

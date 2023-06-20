@@ -1,0 +1,147 @@
+\hypertarget{classrpgui_1_1common_1_1_visual_element}{}\doxysection{rpgui\+::common\+::Visual\+Element Class Reference}
+\label{classrpgui_1_1common_1_1_visual_element}\index{rpgui::common::VisualElement@{rpgui::common::VisualElement}}
+
+
+Base class of every drawable element.  
+
+
+
+
+{\ttfamily \#include $<$Visual\+Element.\+hpp$>$}
+
+Inheritance diagram for rpgui\+::common\+::Visual\+Element\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{classrpgui_1_1common_1_1_visual_element}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrpgui_1_1common_1_1_visual_element_aebc7151d2488f4d4c02da6281993e1da}\label{classrpgui_1_1common_1_1_visual_element_aebc7151d2488f4d4c02da6281993e1da}} 
+{\bfseries Visual\+Element} (const \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&bounds, const Color \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}{color}})
+\item 
+\mbox{\Hypertarget{classrpgui_1_1common_1_1_visual_element_af62258288b04b8b4f2acc49671918b1f}\label{classrpgui_1_1common_1_1_visual_element_af62258288b04b8b4f2acc49671918b1f}} 
+{\bfseries Visual\+Element} (const \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element}{Visual\+Element}} \&)=default
+\item 
+const \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \& \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_ad8a190f6bd967680db8b75ca95adc438}{Get\+Bounds}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} getter. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a4290e9cdd0e89b07ff933d5f1c4ff86f}{Set\+Bounds}} (const \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&bounds)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} setter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a6fbb18af398e8f654a22d3ed18cb5a5c}{Is\+In\+Bounds}} (const \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} \&point)
+\begin{DoxyCompactList}\small\item\em Determine if point is inside bounds of element. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_adb2b5674daaf3fa8f0c98dab649744fe}{Draw}} () const =0
+\begin{DoxyCompactList}\small\item\em Pure virtual draw function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classrpgui_1_1common_1_1_visual_element_a2296265f17da2e3305944495c0c34e60}{Is\+In\+Bounds}} (const \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} bounds, const \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} \&point)
+\begin{DoxyCompactList}\small\item\em Determine if point is inside bounds of element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}\label{classrpgui_1_1common_1_1_visual_element_a1bb465c30e34ae37368a9022f9b55e4f}} 
+Color {\bfseries color}
+\begin{DoxyCompactList}\small\item\em Base color of element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrpgui_1_1common_1_1_visual_element_a5f50be22fcd36dcf920fa24931f67633}\label{classrpgui_1_1common_1_1_visual_element_a5f50be22fcd36dcf920fa24931f67633}} 
+\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} {\bfseries \+\_\+bounds}
+\begin{DoxyCompactList}\small\item\em Position and size of element on the display. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class of every drawable element. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classrpgui_1_1common_1_1_visual_element_adb2b5674daaf3fa8f0c98dab649744fe}\label{classrpgui_1_1common_1_1_visual_element_adb2b5674daaf3fa8f0c98dab649744fe}} 
+\index{rpgui::common::VisualElement@{rpgui::common::VisualElement}!Draw@{Draw}}
+\index{Draw@{Draw}!rpgui::common::VisualElement@{rpgui::common::VisualElement}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily virtual void rpgui\+::common\+::\+Visual\+Element\+::\+Draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual draw function. 
+
+
+
+Implemented in \mbox{\hyperlink{classrpgui_1_1ui_1_1_button_a4ed14f0f8844bb33c15078d4a91e5cab}{rpgui\+::ui\+::\+Button}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_check_box_a83d7a5daf24aec66a807055854f1dc72}{rpgui\+::ui\+::\+Check\+Box}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_circle_ab1647f035fbd4976729daeb29a2a6aaa}{rpgui\+::ui\+::\+Circle}}, \mbox{\hyperlink{classrpgui_1_1core_1_1_cursor_afb2919bbc91c8ce0537b0a4a89eb417d}{rpgui\+::core\+::\+Cursor}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_entry_ad14e3a96857791c534ea1c08bcbaf0ec}{rpgui\+::ui\+::\+Entry}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_label_a915488bafd6242d8fb7ef2de9d816a83}{rpgui\+::ui\+::\+Label}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_line_a8e998c024e738542e153792493b6191d}{rpgui\+::ui\+::\+Line}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_polyline_a0b08beeb9e4179799ec7692bfc85d8e4}{rpgui\+::ui\+::\+Polyline}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_progress_bar_a6f7f28e25284c68d7c7fb8aec48514a7}{rpgui\+::ui\+::\+Progress\+Bar}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_radio_button_a07f2c3b5a76cdc860982fecf4c484687}{rpgui\+::ui\+::\+Radio\+Button}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_rectangle_ac726934c93fe6c92e9ab05faa58ac87b}{rpgui\+::ui\+::\+Rectangle}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_slider_ad37c54f5bbb6cc48f39ea8f39b6beaf6}{rpgui\+::ui\+::\+Slider}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_sprite_a092d084d9e1e287d660c284f2f6c953b}{rpgui\+::ui\+::\+Sprite}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper_a620b2fc530a6b816e4278d3bc5fe3966}{rpgui\+::ui\+::\+Stepper$<$ T $>$}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_switch_a7631c1985b8a0bfb4b252124927ca9fd}{rpgui\+::ui\+::\+Switch}}, \mbox{\hyperlink{classrpgui_1_1layout_1_1_absolute_layout_af416c064912b6007742da95f59430343}{rpgui\+::layout\+::\+Absolute\+Layout}}, and \mbox{\hyperlink{classrpgui_1_1layout_1_1_stack_layout_a4329462058082d7b39321983dc1f29df}{rpgui\+::layout\+::\+Stack\+Layout}}.
+
+\mbox{\Hypertarget{classrpgui_1_1common_1_1_visual_element_ad8a190f6bd967680db8b75ca95adc438}\label{classrpgui_1_1common_1_1_visual_element_ad8a190f6bd967680db8b75ca95adc438}} 
+\index{rpgui::common::VisualElement@{rpgui::common::VisualElement}!GetBounds@{GetBounds}}
+\index{GetBounds@{GetBounds}!rpgui::common::VisualElement@{rpgui::common::VisualElement}}
+\doxysubsubsection{\texorpdfstring{GetBounds()}{GetBounds()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \& rpgui\+::common\+::\+Visual\+Element\+::\+Get\+Bounds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} getter. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} of element 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classrpgui_1_1common_1_1_visual_element_a2296265f17da2e3305944495c0c34e60}\label{classrpgui_1_1common_1_1_visual_element_a2296265f17da2e3305944495c0c34e60}} 
+\index{rpgui::common::VisualElement@{rpgui::common::VisualElement}!IsInBounds@{IsInBounds}}
+\index{IsInBounds@{IsInBounds}!rpgui::common::VisualElement@{rpgui::common::VisualElement}}
+\doxysubsubsection{\texorpdfstring{IsInBounds()}{IsInBounds()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool rpgui\+::common\+::\+Visual\+Element\+::\+Is\+In\+Bounds (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}}}]{bounds,  }\item[{const \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} \&}]{point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Determine if point is inside bounds of element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bounds} & \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} of element \\
+\hline
+{\em point} & Point to be determined \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if point is inside bounds 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classrpgui_1_1common_1_1_visual_element_a6fbb18af398e8f654a22d3ed18cb5a5c}\label{classrpgui_1_1common_1_1_visual_element_a6fbb18af398e8f654a22d3ed18cb5a5c}} 
+\index{rpgui::common::VisualElement@{rpgui::common::VisualElement}!IsInBounds@{IsInBounds}}
+\index{IsInBounds@{IsInBounds}!rpgui::common::VisualElement@{rpgui::common::VisualElement}}
+\doxysubsubsection{\texorpdfstring{IsInBounds()}{IsInBounds()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool rpgui\+::common\+::\+Visual\+Element\+::\+Is\+In\+Bounds (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structrpgui_1_1type_1_1_point}{Point}} \&}]{point }\end{DoxyParamCaption})}
+
+
+
+Determine if point is inside bounds of element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & Point to be determined \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if point is inside bounds 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classrpgui_1_1common_1_1_visual_element_a4290e9cdd0e89b07ff933d5f1c4ff86f}\label{classrpgui_1_1common_1_1_visual_element_a4290e9cdd0e89b07ff933d5f1c4ff86f}} 
+\index{rpgui::common::VisualElement@{rpgui::common::VisualElement}!SetBounds@{SetBounds}}
+\index{SetBounds@{SetBounds}!rpgui::common::VisualElement@{rpgui::common::VisualElement}}
+\doxysubsubsection{\texorpdfstring{SetBounds()}{SetBounds()}}
+{\footnotesize\ttfamily void rpgui\+::common\+::\+Visual\+Element\+::\+Set\+Bounds (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} \&}]{bounds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{structrpgui_1_1common_1_1_bounds}{Bounds}} setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bounds} & New bounds of element \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classrpgui_1_1ui_1_1_button_aa91d173eade0c34016600971d440f91f}{rpgui\+::ui\+::\+Button}}, \mbox{\hyperlink{classrpgui_1_1core_1_1_cursor_ab435203e731d1d285e92b1ecad7a7e5d}{rpgui\+::core\+::\+Cursor}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_progress_bar_a5d8f2c8ad87b16bf410919d834d6008a}{rpgui\+::ui\+::\+Progress\+Bar}}, \mbox{\hyperlink{classrpgui_1_1ui_1_1_radio_button_a877f6c66a8c011cabc654811a175abe8}{rpgui\+::ui\+::\+Radio\+Button}}, and \mbox{\hyperlink{classrpgui_1_1ui_1_1_stepper_a94e836c418f5c76dda1ead552fd52be2}{rpgui\+::ui\+::\+Stepper$<$ T $>$}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/gui\+\_\+lib/include/common/Visual\+Element.\+hpp\item 
+lib/gui\+\_\+lib/src/common/Visual\+Element.\+cpp\end{DoxyCompactItemize}

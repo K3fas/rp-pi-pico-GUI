@@ -1,0 +1,86 @@
+\hypertarget{config_8h_source}{}\doxysection{config.\+h}
+\label{config_8h_source}\index{lib/qvga\_lib/include/qvga/config.h@{lib/qvga\_lib/include/qvga/config.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_CONFIG\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_CONFIG\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{5 \textcolor{comment}{//}}
+\DoxyCodeLine{6 \textcolor{comment}{//                                    QVGA configuration}}
+\DoxyCodeLine{7 \textcolor{comment}{//}}
+\DoxyCodeLine{8 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{9 \textcolor{comment}{// port pins}}
+\DoxyCodeLine{10 \textcolor{comment}{//  GP8  ... Audio: PWM mono, 22050 Hz, 8 bits unsigned}}
+\DoxyCodeLine{11 \textcolor{comment}{//  GP11 ... VGA B0 blue}}
+\DoxyCodeLine{12 \textcolor{comment}{//  GP12 ... VGA B1}}
+\DoxyCodeLine{13 \textcolor{comment}{//  GP13 ... VGA G0 green}}
+\DoxyCodeLine{14 \textcolor{comment}{//  GP14 ... VGA G1}}
+\DoxyCodeLine{15 \textcolor{comment}{//  GP15 ... VGA G2}}
+\DoxyCodeLine{16 \textcolor{comment}{//  GP16 ... VGA R0 red}}
+\DoxyCodeLine{17 \textcolor{comment}{//  GP17 ... VGA R1}}
+\DoxyCodeLine{18 \textcolor{comment}{//  GP18 ... VGA R2}}
+\DoxyCodeLine{19 \textcolor{comment}{//  GP19 ... VGA HSYNC/CSYNC synchronization (inverted: negative SYNC=LOW=0x80, BLACK=HIGH=0x00)}}
+\DoxyCodeLine{20 \textcolor{comment}{//  GP20 ... VSYNC}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{// QVGA port pins}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define QVGA\_GPIO\_FIRST 11  }\textcolor{comment}{// first QVGA GPIO}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define QVGA\_GPIO\_NUM   8   }\textcolor{comment}{// number of QVGA color GPIOs, without HSYNC and VSYNC}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define QVGA\_GPIO\_LAST  (QVGA\_GPIO\_FIRST+QVGA\_GPIO\_NUM-\/1) }\textcolor{comment}{// last QVGA GPIO}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define QVGA\_GPIO\_HSYNC 19  }\textcolor{comment}{// QVGA HSYNC/CSYNC GPIO}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define QVGA\_GPIO\_VSYNC (QVGA\_GPIO\_HSYNC+1) }\textcolor{comment}{// QVGA VSYNC GPIO}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{comment}{// QVGA PIO and state machines}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define QVGA\_PIO    pio0    }\textcolor{comment}{// QVGA PIO}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define QVGA\_SM     0   }\textcolor{comment}{// QVGA state machine}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{comment}{// QVGA DMA channel}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define QVGA\_DMA\_CB 0   }\textcolor{comment}{// DMA control block of base layer}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define QVGA\_DMA\_PIO    1   }\textcolor{comment}{// DMA copy data to PIO (raises IRQ0 on quiet)}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{comment}{// QVGA display resolution}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define WIDTH   320     }\textcolor{comment}{// display width}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define HEIGHT  240     }\textcolor{comment}{// display height}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define WIDTHBYTE WIDTH     }\textcolor{comment}{// scanline length (byte offset between image rows)}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define FRAMESIZE (WIDTH*HEIGHT) }\textcolor{comment}{// display frame size in bytes (=76800)}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{comment}{// QVGA horizonal timings}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define QVGA\_CLKDIV 2   }\textcolor{comment}{// SM divide clock ticks}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define QVGA\_CPP    5   }\textcolor{comment}{// state machine clock ticks per pixel}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define QVGA\_SYSCPP (QVGA\_CLKDIV*QVGA\_SMCPP) }\textcolor{comment}{// system clock ticks per pixel (=10)}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{// 126 MHz timings}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define QVGA\_VCO    (1008*1000*1000) }\textcolor{comment}{// PLL VCO frequency in Hz}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define QVGA\_PD1    4   }\textcolor{comment}{// PLL PD1}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define QVGA\_PD2    2   }\textcolor{comment}{// PLL PD2}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define QVGA\_TOTAL  2002    }\textcolor{comment}{// total clock ticks (= QVGA\_HSYNC + QVGA\_BP + WIDTH*QVGA\_CPP[1600] + QVGA\_FP)}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define QVGA\_HSYNC  240 }\textcolor{comment}{// horizontal sync clock ticks}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define QVGA\_BP 121 }\textcolor{comment}{// back porch clock ticks}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define QVGA\_FP 41  }\textcolor{comment}{// front porch clock ticks}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{comment}{// 125 MHz timings (first and last pixel can be hidden)}}
+\DoxyCodeLine{58 \textcolor{comment}{/*}}
+\DoxyCodeLine{59 \textcolor{comment}{\#define QVGA\_VCO    (1500*1000*1000) // PLL VCO frequency in Hz}}
+\DoxyCodeLine{60 \textcolor{comment}{\#define QVGA\_PD1    6   // PLL PD1}}
+\DoxyCodeLine{61 \textcolor{comment}{\#define QVGA\_PD2    2   // PLL PD2}}
+\DoxyCodeLine{62 \textcolor{comment}{\#define QVGA\_TOTAL  1986    // total clock ticks (= QVGA\_HSYNC + QVGA\_BP + WIDTH*QVGA\_CPP[1600] + QVGA\_FP)}}
+\DoxyCodeLine{63 \textcolor{comment}{\#define QVGA\_HSYNC  238 // horizontal sync clock ticks}}
+\DoxyCodeLine{64 \textcolor{comment}{\#define QVGA\_BP 114 // back porch clock ticks}}
+\DoxyCodeLine{65 \textcolor{comment}{\#define QVGA\_FP 34  // front porch clock ticks}}
+\DoxyCodeLine{66 \textcolor{comment}{*/}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{comment}{// QVGA vertical timings}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define QVGA\_VTOT   525 }\textcolor{comment}{// total scanlines (= QVGA\_VSYNC + QVGA\_VBACK + QVGA\_VACT + QVGA\_VFRONT)}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#define QVGA\_VSYNC  2   }\textcolor{comment}{// length of V sync (number of scanlines)}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#define QVGA\_VBACK  33  }\textcolor{comment}{// V back porch}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define QVGA\_VACT   480 }\textcolor{comment}{// V active scanlines (= 2*HEIGHT)}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define QVGA\_VFRONT 10  }\textcolor{comment}{// V front porch}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{comment}{// === PWM sound configuration}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#define PWMSND\_GPIO 8   }\textcolor{comment}{// PWM output GPIO pin (0..29)}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#define PWMSND\_SLICE    ((PWMSND\_GPIO>>1)\&7) }\textcolor{comment}{// PWM slice index}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#define PWMSND\_CHAN (PWMSND\_GPIO\&1) }\textcolor{comment}{// PWM channel index}}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_CONFIG\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,57 @@
+\hypertarget{_dispatcher_8hpp_source}{}\doxysection{Dispatcher.\+hpp}
+\label{_dispatcher_8hpp_source}\index{lib/gui\_lib/include/events/Dispatcher.hpp@{lib/gui\_lib/include/events/Dispatcher.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by kefas on 27.2.23.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PICO\_KIT\_FRAMEWORK\_DISPATCHER\_HPP}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PICO\_KIT\_FRAMEWORK\_DISPATCHER\_HPP}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}Event.hpp"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }rpgui::event}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{18     \textcolor{keyword}{using }SlotType = std::function<void(\textcolor{keyword}{const} MouseEvent<T> \&)>;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{21     \textcolor{keyword}{class }\mbox{\hyperlink{classrpgui_1_1event_1_1_dispatcher}{Dispatcher}}}
+\DoxyCodeLine{22     \{}
+\DoxyCodeLine{23     \textcolor{keyword}{public}:}
+\DoxyCodeLine{24     \textcolor{keyword}{private}:}
+\DoxyCodeLine{25         std::map<T, std::vector<rpgui::event::SlotType<T>>> \_observers;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keyword}{public}:}
+\DoxyCodeLine{28         \mbox{\hyperlink{classrpgui_1_1event_1_1_dispatcher}{Dispatcher}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \textcolor{keywordtype}{void} Subscribe(T type, \textcolor{keyword}{const} SlotType<T> \&function) \{ \_observers[type].push\_back(function); \}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         \textcolor{keywordtype}{void} Post(\mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_event}{MouseEvent<T>}} \&event);}
+\DoxyCodeLine{33     \};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{36     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpgui_1_1event_1_1_dispatcher}{Dispatcher<T>::Post}}(\mbox{\hyperlink{classrpgui_1_1event_1_1_mouse_event}{MouseEvent<T>}} \&event)}
+\DoxyCodeLine{37     \{}
+\DoxyCodeLine{38         \textcolor{comment}{// No subscribers found}}
+\DoxyCodeLine{39         \textcolor{keywordflow}{if} (\_observers.find(event.Type()) == \_observers.end())}
+\DoxyCodeLine{40             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&\&observer : \_observers.at(event.Type()))}
+\DoxyCodeLine{43         \{}
+\DoxyCodeLine{44             \textcolor{keywordflow}{if} (!event.IsHandled())}
+\DoxyCodeLine{45                 observer(event);}
+\DoxyCodeLine{46         \}}
+\DoxyCodeLine{47     \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \} \textcolor{comment}{// namespace rpgui::events}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// PICO\_KIT\_FRAMEWORK\_DISPATCHER\_HPP}}
+
+\end{DoxyCode}

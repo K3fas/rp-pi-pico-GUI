@@ -1,0 +1,147 @@
+\hypertarget{vga__pal_8h_source}{}\doxysection{vga\+\_\+pal.\+h}
+\label{vga__pal_8h_source}\index{lib/vga\_lib/include/vga/vga\_pal.h@{lib/vga\_lib/include/vga/vga\_pal.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//                           VGA colors and palettes}}
+\DoxyCodeLine{5 \textcolor{comment}{//}}
+\DoxyCodeLine{6 \textcolor{comment}{// ****************************************************************************}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef \_VGA\_PAL\_H}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define \_VGA\_PAL\_H}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define MULTICOL(a,b,c,d) ((a)|((b)<<8)|((c)<<16)|((d)<<24)) }\textcolor{comment}{// multiply color pattern (used in mode GF\_COLOR)}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{comment}{// CGA colors}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define CGACOL\_0    0   }\textcolor{comment}{// 0x000000 black}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define CGACOL\_1    2   }\textcolor{comment}{// 0x0000C3 dark blue}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define CGACOL\_2    20  }\textcolor{comment}{// 0x00C300 dark green}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define CGACOL\_3    22  }\textcolor{comment}{// 0x00C3C3 dark cyan}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define CGACOL\_4    160 }\textcolor{comment}{// 0xC30000 dark red}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define CGACOL\_5    162 }\textcolor{comment}{// 0xC300C3 dark magenta}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define CGACOL\_6    168 }\textcolor{comment}{// 0xC35400 brown}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define CGACOL\_7    182 }\textcolor{comment}{// 0xC3C3C3 light gray}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define CGACOL\_8    73  }\textcolor{comment}{// 0x545454 dark gray}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define CGACOL\_9    75  }\textcolor{comment}{// 0x5454FF light blue}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define CGACOL\_10   93  }\textcolor{comment}{// 0x54FF54 light green}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define CGACOL\_11   95  }\textcolor{comment}{// 0x54FFFF light cyan}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define CGACOL\_12   233 }\textcolor{comment}{// 0xFF5454 light red}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define CGACOL\_13   235 }\textcolor{comment}{// 0xFF54FF light magenta}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define CGACOL\_14   253 }\textcolor{comment}{// 0xFFFF54 yellow}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define CGACOL\_15   255 }\textcolor{comment}{// 0xFFFFFF white}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{comment}{// ZX Spectrum color}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define ZXCOL\_0     0   }\textcolor{comment}{// 0x000000 black}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define ZXCOL\_1     2   }\textcolor{comment}{// 0x0000C3 dark blue}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define ZXCOL\_2     160 }\textcolor{comment}{// 0xC30000 dark red}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define ZXCOL\_3     162 }\textcolor{comment}{// 0xC300C3 dark magenta}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define ZXCOL\_4     20  }\textcolor{comment}{// 0x00C300 dark green}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define ZXCOL\_5     22  }\textcolor{comment}{// 0x00C3C3 dark cyan}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define ZXCOL\_6     180 }\textcolor{comment}{// 0xC3C300 dark yellow}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define ZXCOL\_7     182 }\textcolor{comment}{// 0xC3C3C3 light gray}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define ZXCOL\_8     73  }\textcolor{comment}{// 0x545454 dark gray}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define ZXCOL\_9     3   }\textcolor{comment}{// 0x0000FF light blue}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define ZXCOL\_10    224 }\textcolor{comment}{// 0xFF0000 light red}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define ZXCOL\_11    227 }\textcolor{comment}{// 0xFF00FF light magenta}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define ZXCOL\_12    28  }\textcolor{comment}{// 0x00FF00 light green}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define ZXCOL\_13    31  }\textcolor{comment}{// 0x00FFFF light cyan}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define ZXCOL\_14    252 }\textcolor{comment}{// 0xFFFF00 yellow}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define ZXCOL\_15    255 }\textcolor{comment}{// 0xFFFFFF white}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{comment}{// Colors}}
+\DoxyCodeLine{50 \textcolor{comment}{//  GP0 ... B0 ... VGA B0 blue}}
+\DoxyCodeLine{51 \textcolor{comment}{//  GP1 ... B1 ... VGA B1}}
+\DoxyCodeLine{52 \textcolor{comment}{//  GP2 ... B2 ... VGA G0 green}}
+\DoxyCodeLine{53 \textcolor{comment}{//  GP3 ... B3 ... VGA G1}}
+\DoxyCodeLine{54 \textcolor{comment}{//  GP4 ... B4 ... VGA G2}}
+\DoxyCodeLine{55 \textcolor{comment}{//  GP5 ... B5 ... VGA R0 red}}
+\DoxyCodeLine{56 \textcolor{comment}{//  GP6 ... B6 ... VGA R1}}
+\DoxyCodeLine{57 \textcolor{comment}{//  GP7 ... B7 ... VGA R2}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#define COL\_BLACK   0}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define COL\_DARKBLUE    B0}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define COL\_SEMIBLUE    B1}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define COL\_BLUE    (B0+B1)}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define COL\_MOREBLUE    (COL\_BLUE+B3+B6)}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#define COL\_LIGHTBLUE   (COL\_BLUE+B4+B7)}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#define COL\_DARKGREEN   B3}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#define COL\_SEMIGREEN   B4}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define COL\_GREEN   (B2+B3+B4)}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#define COL\_MOREGREEN   (COL\_GREEN+B0+B6)}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#define COL\_LIGHTGREEN  (COL\_GREEN+B1+B7)}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define COL\_DARKRED B6}}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#define COL\_SEMIRED B7}}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#define COL\_RED     (B5+B6+B7)}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#define COL\_MORERED (COL\_RED+B0+B3)}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#define COL\_LIGHTRED    (COL\_RED+B1+B4)}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#define COL\_DARKCYAN    (B0+B3)}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#define COL\_SEMICYAN    (B1+B4)}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#define COL\_CYAN    (B0+B1+B2+B3+B4)}}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 \textcolor{preprocessor}{\#define COL\_DARKMAGENTA (B0+B6)}}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#define COL\_SEMIMAGENTA (B1+B7)}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#define COL\_MAGENTA (B0+B1+B5+B6+B7)}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#define COL\_DARKYELLOW  (B3+B6)}}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#define COL\_SEMIYELLOW  (B4+B7)}}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#define COL\_YELLOW  (B2+B3+B4+B5+B6+B7)}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#define COL\_GRAY0   0}}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#define COL\_GRAY1   (B2+B5)}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#define COL\_GRAY2   (B0+B3+B6)}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#define COL\_GRAY3   (B0+B2+B3+B5+B6)}}
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#define COL\_GRAY4   (B1+B4+B7)}}
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#define COL\_GRAY5   (B1+B2+B4+B5+B7)}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#define COL\_GRAY6   (B0+B1+B3+B4+B6+B7)}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#define COL\_GRAY7   (B0+B1+B2+B3+B4+B5+B6+B7)}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#define COL\_WHITE   COL\_GRAY7}}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{comment}{// compose color from RGB}}
+\DoxyCodeLine{103 \textcolor{preprocessor}{\#define COLRGB(r,g,b) ((u8)(((r)\&0xe0)|(((g)\&0xe0)>>3)|((b)>>6)))}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 \textcolor{comment}{// default 16-\/color palettes (CGA colors)}}
+\DoxyCodeLine{106 \textcolor{comment}{// -\/ do not set "{}const"{}, to stay in faster RAM}}
+\DoxyCodeLine{107 \textcolor{keyword}{extern} u8 DefPal16[16];}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{comment}{// ZX Spectrum color palettes}}
+\DoxyCodeLine{110 \textcolor{comment}{// -\/ do not set "{}const"{}, to stay in faster RAM}}
+\DoxyCodeLine{111 \textcolor{keyword}{extern} u8 ZXPal16[16];}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 \textcolor{comment}{// 4-\/color palettes (CGA colors) }}
+\DoxyCodeLine{114 \textcolor{comment}{// -\/ do not set "{}const"{}, to stay in faster RAM}}
+\DoxyCodeLine{115 \textcolor{keyword}{extern} u8 PalCGA1[4]; \textcolor{comment}{// palette 0, low intensity (black, dark green, brown)}}
+\DoxyCodeLine{116 \textcolor{keyword}{extern} u8 PalCGA2[4]; \textcolor{comment}{// palette 0, high intensity (black, light green, light red, yellow)}}
+\DoxyCodeLine{117 \textcolor{keyword}{extern} u8 PalCGA3[4]; \textcolor{comment}{// palette 1, low intensity (black, dark cyan, dark magenta, light gray)}}
+\DoxyCodeLine{118 \textcolor{keyword}{extern} u8 PalCGA4[4]; \textcolor{comment}{// palette 1, high intensity (black, light cyan, light magenta, white)}}
+\DoxyCodeLine{119 \textcolor{keyword}{extern} u8 PalCGA5[4]; \textcolor{comment}{// palette 1, low intensity (black, dark cyan, dark red, light gray)}}
+\DoxyCodeLine{120 \textcolor{keyword}{extern} u8 PalCGA6[4]; \textcolor{comment}{// palette 1, high intensity (black, light cyan, light red, white)}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{comment}{// 4-\/color palette translation table}}
+\DoxyCodeLine{123 \textcolor{comment}{//extern u32 Pal4Trans[256];}}
+\DoxyCodeLine{124 \textcolor{comment}{//extern u32 Pal4Plane[256];}}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126 \textcolor{comment}{// 16-\/color palette translation table}}
+\DoxyCodeLine{127 \textcolor{comment}{//extern u16 Pal16Trans[256];}}
+\DoxyCodeLine{128 \textcolor{comment}{//extern u16 ZX16Trans[256];}}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130 \textcolor{comment}{// values of color components}}
+\DoxyCodeLine{131 \textcolor{keyword}{extern} u8 RGVal[8]; \textcolor{comment}{// values of Red and Green components}}
+\DoxyCodeLine{132 \textcolor{keyword}{extern} u8 BVal[4]; \textcolor{comment}{// values of Blue components}}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134 \textcolor{comment}{// distance of 2 colors in 332 format (R3G3B2)}}
+\DoxyCodeLine{135 \textcolor{comment}{// -\/ returns value 0..195075}}
+\DoxyCodeLine{136 \textcolor{keywordtype}{int} ColDist(u8 col1, u8 col2);}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138 \textcolor{comment}{// generate gradient}}
+\DoxyCodeLine{139 \textcolor{keywordtype}{void} GenGrad(u8* dst, \textcolor{keywordtype}{int} w);}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_VGA\_PAL\_H}}
+
+\end{DoxyCode}
