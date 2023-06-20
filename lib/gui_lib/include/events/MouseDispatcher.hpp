@@ -42,7 +42,7 @@ namespace rpgui::event
         MouseDispatcher(const MouseDispatcher &) = default;
         ~MouseDispatcher();
 
-        void Post(MouseEvent<MouseEventType> &event);
+        void Post(MouseEvent<MouseEventType> &event, ID activePage);
 
         void Subscribe(MouseEventType type, const Handler &handler, const uint8_t priority = 0);
     };

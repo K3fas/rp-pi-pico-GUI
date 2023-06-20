@@ -21,7 +21,7 @@ rpgui::event::MouseDispatcher::~MouseDispatcher()
     _listeners.clear();
 }
 
-void rpgui::event::MouseDispatcher::Post(MouseEvent<MouseEventType> &event)
+void rpgui::event::MouseDispatcher::Post(MouseEvent<MouseEventType> &event, ID activePage)
 {
     for (auto const &priority : _listeners)
     {
@@ -46,7 +46,7 @@ void rpgui::event::MouseDispatcher::Post(MouseEvent<MouseEventType> &event)
             {
                 element = const_cast<rpgui::common::Element *>(element->GetParrent());
             }
-            if(element->GetId() != rpgui::core::MainApp::GetSelectedPageID())
+            if(element->GetId() != activePage)
                 continue;
                 
             // Post event if cursor is above element and that element is currently beeing drawn

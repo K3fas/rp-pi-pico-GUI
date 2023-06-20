@@ -137,7 +137,7 @@ void rpgui::core::MainApp::processMouseInput()
 
         auto pos = _cursor.GetBounds();
         auto event = MouseEvent<MouseEventType>(MouseEventType::Pressed, Point(pos.x, pos.y));
-        MainApp::_mouseHandler.Post(event);
+        MainApp::_mouseHandler.Post(event, _selectedPage->GetId());
     }
 
     // handle released key
@@ -148,8 +148,8 @@ void rpgui::core::MainApp::processMouseInput()
         auto pos = _cursor.GetBounds();
         auto eReleased = MouseEvent<MouseEventType>(MouseEventType::Released, Point(pos.x, pos.y));
         auto eClicked = MouseEvent<MouseEventType>(MouseEventType::Clicked, Point(pos.x, pos.y));
-        MainApp::_mouseHandler.Post(eReleased);
-        MainApp::_mouseHandler.Post(eClicked);
+        MainApp::_mouseHandler.Post(eReleased, _selectedPage->GetId());
+        MainApp::_mouseHandler.Post(eClicked, _selectedPage->GetId());
     }
 }
 
